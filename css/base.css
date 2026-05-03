@@ -1,5 +1,5 @@
 /* ==========================================================================
-   American Pro Building Products — Base
+   American Pro Building Products, Base
    Design tokens, reset, typography
    ========================================================================== */
 
@@ -147,6 +147,26 @@ p {
   text-wrap: pretty;
   max-width: 65ch;
 }
+
+/* Sensible default vertical rhythm for prose blocks. Components that need
+   different spacing override locally. */
+.prose p + p,
+.prose p + ul,
+.prose p + ol,
+.prose ul + p,
+.prose ol + p,
+.prose h2 + p,
+.prose h3 + p,
+.prose p + h2,
+.prose p + h3 { margin-top: 1rem; }
+
+/* Sibling spacing for any paragraph followed by a list or another paragraph
+   inside common content containers. Cheap insurance against zero-margin reset. */
+p + p,
+p + ul,
+p + ol,
+ul + p,
+ol + p { margin-top: var(--space-4); }
 
 ::selection {
   background: var(--color-primary);

@@ -19,7 +19,8 @@
       .porch-hero p { color: rgba(255,255,255,.85); margin-top: var(--space-5); max-width: 50ch; }
 
       /* Color swatches with actual board photos */
-      .colors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-4); }
+      .colors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+      @media (max-width: 880px) { .colors-grid { grid-template-columns: repeat(2, 1fr); } }
       .swatch { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-divider); background: var(--color-surface); transition: var(--transition-interactive); cursor: pointer; }
       .swatch:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
       .swatch-color { aspect-ratio: 3/5; background-size: cover; background-position: center; background-repeat: no-repeat; }

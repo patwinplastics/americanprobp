@@ -1,4 +1,4 @@
-/* American Pro — site behaviors */
+/* American Pro site behaviors */
 (function () {
   // Sticky header shadow on scroll
   const header = document.querySelector('.site-header');

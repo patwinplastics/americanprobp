@@ -14,7 +14,7 @@
   const HEADER = `
   <header class="site-header">
     <div class="container header-inner">
-      <a href="${B}index.html" class="logo" aria-label="American Pro Building Products — Home">
+      <a href="${B}index.html" class="logo" aria-label="American Pro Building Products, Home">
         <svg class="logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect width="36" height="36" rx="7" fill="#0e1f3a"/>
           <rect x="6" y="10" width="14" height="2" fill="#b91c2c"/>
