@@ -3,213 +3,316 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PVC Decking — American Pro Building Products</title>
-    <meta name="description" content="American-made cellular PVC composite decking. Wood-grain finishes, hidden-fastener system, and a 25-year limited warranty. Won't rot, splinter, or fade." />
+    <title>PVC Decking · American Pro Building Products</title>
+    <meta name="description" content="American Pro PVC Decking. Six wood-grain colors, 1 inch by 5.5 inch boards in 12, 16, and 20 foot lengths, available in Solid Edge or Grooved profiles. 25-year residential limited warranty. Made in the USA by Patwin Plastics." />
     <link href="https://api.fontshare.com/v2/css?f[]=boska@400,500,500i,700&f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/base.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <style>
-      .deck-hero {
-        position: relative;
-        min-height: 60vh;
-        display: flex;
-        align-items: flex-end;
-        color: #fff;
-        isolation: isolate;
-      }
-      .deck-hero img {
-        position: absolute; inset: 0;
-        width: 100%; height: 100%;
-        object-fit: cover;
-        z-index: -2;
-      }
-      .deck-hero::after {
-        content: "";
-        position: absolute; inset: 0;
-        background: linear-gradient(180deg, rgba(14,31,58,.25), rgba(14,31,58,.85));
-        z-index: -1;
-      }
+      /* Hero */
+      .deck-hero { position: relative; min-height: 60vh; display: flex; align-items: flex-end; color: #fff; isolation: isolate; }
+      .deck-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+      .deck-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,31,58,.10), rgba(14,31,58,.85)); z-index: -1; }
       .deck-hero-inner { padding-block: var(--space-16) var(--space-12); }
-      .deck-hero h1 {
-        color: #fff;
-        font-size: var(--text-3xl);
-        max-width: 14ch;
-        letter-spacing: -0.025em;
-      }
+      .deck-hero h1 { color: #fff; font-size: var(--text-3xl); max-width: 16ch; letter-spacing: -0.025em; }
       .deck-hero h1 em { font-style: italic; font-weight: 400; }
       .deck-hero p { color: rgba(255,255,255,.85); margin-top: var(--space-5); max-width: 50ch; }
 
-      .colors-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: var(--space-4);
-      }
-      .swatch {
-        border-radius: var(--radius-md);
-        overflow: hidden;
-        border: 1px solid var(--color-divider);
-        background: var(--color-surface);
-        transition: var(--transition-interactive);
-        cursor: pointer;
-      }
+      /* Color swatches */
+      .colors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-4); }
+      .swatch { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-divider); background: var(--color-surface); transition: var(--transition-interactive); }
       .swatch:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-      .swatch-color {
-        height: 140px;
-        background-size: cover;
-        background-position: center;
-      }
+      .swatch-color { aspect-ratio: 3/5; background-size: cover; background-position: center; background-repeat: no-repeat; }
       .swatch-body { padding: var(--space-4) var(--space-5) var(--space-5); }
       .swatch-name { font-family: var(--font-display); font-size: var(--text-base); font-weight: 500; }
       .swatch-meta { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
 
-      .specs {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: var(--space-6);
-        background: var(--color-surface-2);
-        border-radius: var(--radius-lg);
-        padding: clamp(var(--space-6), 4vw, var(--space-10));
-      }
-      .spec strong {
-        display: block;
-        font-family: var(--font-display);
-        font-size: var(--text-xl);
-        font-weight: 500;
-        color: var(--color-primary);
-      }
-      .spec span {
-        font-size: var(--text-xs);
-        color: var(--color-text-muted);
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        margin-top: var(--space-2);
-        display: block;
-      }
+      /* Specs grid */
+      .specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-6); background: var(--color-surface-2); border-radius: var(--radius-lg); padding: clamp(var(--space-6), 4vw, var(--space-10)); }
+      .spec strong { display: block; font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; color: var(--color-primary); }
+      .spec span { font-size: var(--text-xs); color: var(--color-text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: var(--space-2); display: block; }
+
+      /* Profile types (Solid Edge vs Grooved) */
+      .profile-types { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); }
+      .profile-card { background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-md); padding: clamp(var(--space-6), 3vw, var(--space-8)); }
+      .profile-card h3 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; letter-spacing: -0.015em; margin-bottom: var(--space-3); }
+      .profile-card p { color: var(--color-text-muted); font-size: var(--text-sm); margin: 0; }
+      .profile-tag { display: inline-block; font-size: var(--text-xs); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent); font-weight: 600; margin-bottom: var(--space-2); }
+
+      /* Calculator quick-reference */
+      .calc-card { background: var(--color-primary); color: #fff; border-radius: var(--radius-lg); padding: clamp(var(--space-7), 4vw, var(--space-10)); display: grid; grid-template-columns: 1fr auto; gap: var(--space-6); align-items: center; }
+      @media (max-width: 700px) { .calc-card { grid-template-columns: 1fr; } }
+      .calc-card h3 { color: #fff; font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 500; letter-spacing: -0.015em; margin-bottom: var(--space-3); }
+      .calc-card p { color: rgba(255,255,255,.82); font-size: var(--text-sm); margin: 0; max-width: 60ch; }
+
+      /* Sample checkbox grid */
+      .swatch-checks { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-2); }
+      @media (min-width: 480px) { .swatch-checks { grid-template-columns: repeat(3, 1fr); } }
     </style>
   </head>
   <body>
     <div data-include="header"></div>
 
     <main>
+      <!-- Hero -->
       <section class="deck-hero">
-        <img src="../images/product_decking.jpg" alt="PVC composite decking detail" />
+        <img src="../images/product_decking.jpg" alt="American Pro PVC decking on a residential outdoor deck" />
         <div class="container deck-hero-inner">
-          <span class="hero-eyebrow">Outdoor Living</span>
-          <h1>PVC Decking that<br /><em>looks like wood, lives like stone.</em></h1>
+          <span class="hero-eyebrow">PVC Decking</span>
+          <h1>The backbone of<br /><em>outdoor living.</em></h1>
           <p>
-            Capped cellular PVC boards with realistic embossed wood grain. Five
-            colorways. Hidden fastener system. Ships in 12, 16, and 20-foot lengths.
+            American Pro PVC Decking is American-made, UV-stabilized, and built
+            to outlast wood. Six wood-grain colors, two profile choices, and a
+            25-year limited residential warranty.
           </p>
+          <div class="hero-actions" style="margin-top: var(--space-7);">
+            <a href="#samples" class="btn btn--primary btn--lg">Request Free Samples</a>
+            <a href="../pages/contact.html" class="btn btn--ghost-light btn--lg">Get a Quote</a>
+          </div>
         </div>
       </section>
 
-      <!-- Colors -->
+      <!-- Why American Pro Decking -->
       <section class="section">
         <div class="container">
-          <header class="section-head" data-reveal>
-            <div>
-              <span class="eyebrow">Five Finishes</span>
-              <h2>Choose the color that<br /><em>belongs on your home.</em></h2>
-            </div>
+          <div style="max-width: 60ch; margin-bottom: var(--space-10);" data-reveal>
+            <span class="eyebrow">Why American Pro</span>
+            <h2>Decking that doesn't<br /><em>ask much of you.</em></h2>
             <p>
-              Each finish is engineered to age gracefully — no greying, no fading,
-              no annual restaining. Order free samples of any combination and
-              compare them in your own light.
+              All the look of real wood. None of the sanding, staining, or
+              splinters. American Pro PVC decking is manufactured in the United
+              States by Patwin Plastics from UV-stabilized PVC, so the colors
+              you pick today are the colors you'll still have in twenty years.
+              Clean it with a hose and walk away.
             </p>
-          </header>
+          </div>
 
+          <div class="profile-types" data-reveal>
+            <div class="profile-card">
+              <span class="profile-tag">Profile</span>
+              <h3>Solid Edge</h3>
+              <p>
+                Traditional square-edge boards. Top-fastened with screws and
+                color-matched plugs. The most flexible install for picture
+                framing, breaker boards, and angled patterns.
+              </p>
+            </div>
+            <div class="profile-card">
+              <span class="profile-tag">Profile</span>
+              <h3>Grooved</h3>
+              <p>
+                Side-grooved boards for use with hidden fastener clips. Cleaner
+                finished surface with no visible screws across the field.
+                Ideal for straight runs over standard joist framing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Color palette -->
+      <section class="section section--alt" id="colors">
+        <div class="container">
+          <div style="max-width: 60ch; margin-bottom: var(--space-8);" data-reveal>
+            <span class="eyebrow">Six wood-grain colors</span>
+            <h2>Pick a color you'll<br /><em>still love next decade.</em></h2>
+            <p>
+              From light driftwood greys to warm reds. Every board is
+              UV-stabilized so it lightens gently over time rather than
+              fading. Order free samples below to see the grain and tone in
+              your own light.
+            </p>
+          </div>
           <div class="colors-grid" data-reveal>
             <div class="swatch">
-              <div class="swatch-color" style="background:linear-gradient(135deg,#7a5a44,#a17d5b);"></div>
-              <div class="swatch-body"><div class="swatch-name">Coastal Driftwood</div><div class="swatch-meta">Warm · Multi-tone</div></div>
+              <div class="swatch-color" style="background-image: url('../images/deck_swatches/driftwood.jpg');"></div>
+              <div class="swatch-body">
+                <div class="swatch-name">Driftwood</div>
+                <div class="swatch-meta">Light grey wood-grain</div>
+              </div>
             </div>
             <div class="swatch">
-              <div class="swatch-color" style="background:linear-gradient(135deg,#3a3a3a,#5b5b5b);"></div>
-              <div class="swatch-body"><div class="swatch-name">Charcoal Slate</div><div class="swatch-meta">Cool · Modern</div></div>
+              <div class="swatch-color" style="background-image: url('../images/deck_swatches/khaki.jpg');"></div>
+              <div class="swatch-body">
+                <div class="swatch-name">Khaki</div>
+                <div class="swatch-meta">Warm tan</div>
+              </div>
             </div>
             <div class="swatch">
-              <div class="swatch-color" style="background:linear-gradient(135deg,#a3a09a,#c4c1bb);"></div>
-              <div class="swatch-body"><div class="swatch-name">Weathered Grey</div><div class="swatch-meta">Cool · Coastal</div></div>
+              <div class="swatch-color" style="background-image: url('../images/deck_swatches/hazelnut.jpg');"></div>
+              <div class="swatch-body">
+                <div class="swatch-name">Hazelnut</div>
+                <div class="swatch-meta">Medium warm brown</div>
+              </div>
             </div>
             <div class="swatch">
-              <div class="swatch-color" style="background:linear-gradient(135deg,#6b4828,#8a6038);"></div>
-              <div class="swatch-body"><div class="swatch-name">Heritage Walnut</div><div class="swatch-meta">Warm · Rich</div></div>
+              <div class="swatch-color" style="background-image: url('../images/deck_swatches/beachwood.jpg');"></div>
+              <div class="swatch-body">
+                <div class="swatch-name">Beachwood</div>
+                <div class="swatch-meta">Cool grey grain</div>
+              </div>
             </div>
             <div class="swatch">
-              <div class="swatch-color" style="background:linear-gradient(135deg,#d8c5a8,#b89c75);"></div>
-              <div class="swatch-body"><div class="swatch-name">Honey Cedar</div><div class="swatch-meta">Warm · Light</div></div>
+              <div class="swatch-color" style="background-image: url('../images/deck_swatches/chestnut.jpg');"></div>
+              <div class="swatch-body">
+                <div class="swatch-name">Chestnut</div>
+                <div class="swatch-meta">Rich red-brown</div>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background-image: url('../images/deck_swatches/redwood.jpg');"></div>
+              <div class="swatch-body">
+                <div class="swatch-name">Redwood</div>
+                <div class="swatch-meta">Warm reddish-brown</div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Specs -->
-      <section class="section section--tight">
+      <section class="section">
         <div class="container">
-          <header class="section-head" data-reveal>
-            <div>
-              <span class="eyebrow">Specifications</span>
-              <h2>Engineered.<br /><em>Not assumed.</em></h2>
-            </div>
+          <div style="max-width: 60ch; margin-bottom: var(--space-8);" data-reveal>
+            <span class="eyebrow">Board specs</span>
+            <h2>Everything you need<br /><em>to plan your install.</em></h2>
             <p>
-              Full technical data sheets, span tables, and installation guides
-              are available on request. Contact our sales team for engineering
-              support on any project.
+              Boards are 1 inch by 5.5 inch actual, with a recommended 3/16
+              inch gap between boards. Standard lengths: 12, 16, and 20 feet.
+              For full coverage planning use the calculator below.
             </p>
-          </header>
+          </div>
           <div class="specs" data-reveal>
-            <div class="spec"><strong>5.5"</strong><span>Board Width</span></div>
-            <div class="spec"><strong>1"</strong><span>Board Thickness</span></div>
-            <div class="spec"><strong>12 / 16 / 20'</strong><span>Available Lengths</span></div>
-            <div class="spec"><strong>16" o.c.</strong><span>Recommended Joist Spacing</span></div>
-            <div class="spec"><strong>25 yr</strong><span>Limited Warranty</span></div>
-            <div class="spec"><strong>ASTM E84</strong><span>Class B Flame Spread</span></div>
+            <div class="spec">
+              <strong>1 in × 5.5 in</strong>
+              <span>Actual board dimensions</span>
+            </div>
+            <div class="spec">
+              <strong>3/16 in</strong>
+              <span>Recommended gap</span>
+            </div>
+            <div class="spec">
+              <strong>12 / 16 / 20 ft</strong>
+              <span>Standard lengths</span>
+            </div>
+            <div class="spec">
+              <strong>16 in OC</strong>
+              <span>Joist spacing (standard)</span>
+            </div>
+            <div class="spec">
+              <strong>12 in OC</strong>
+              <span>For heavy loads or angles</span>
+            </div>
+            <div class="spec">
+              <strong>25-Year</strong>
+              <span>Limited residential warranty</span>
+            </div>
+            <div class="spec">
+              <strong>10-Year</strong>
+              <span>Limited commercial warranty</span>
+            </div>
+            <div class="spec">
+              <strong>Made in USA</strong>
+              <span>Patwin Plastics, Linden NJ</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Inline samples form (re-using component) -->
-      <section class="section samples" id="samples">
+      <!-- Calculator callout -->
+      <section class="section" style="padding-top:0;">
         <div class="container">
-          <div class="samples-inner">
-            <div data-reveal>
-              <span class="eyebrow">Free Samples</span>
-              <h2>Order all five<br /><em>colorways.</em></h2>
+          <div class="calc-card" data-reveal>
+            <div>
+              <h3>Plan your deck<br /><em>with the calculator.</em></h3>
               <p>
-                We'll mail you a full set of decking samples so you can compare
-                them on your deck, in your light, against your siding. Free
-                shipping. No follow-up calls unless you ask for them.
+                Enter your square footage or dimensions and we'll estimate
+                board count, joist count, fasteners, and material cost. Built
+                in a 7.5% overage for waste and cuts.
               </p>
-              <ul class="samples-list">
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Free shipping anywhere in the U.S.</li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Real product, full board profile</li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Ships within two business days</li>
-              </ul>
             </div>
-            <div class="form-card" data-reveal data-reveal-delay="1">
-              <form data-demo>
-                <div class="form-grid">
-                  <div class="field"><label for="first">First Name</label><input id="first" type="text" required /></div>
-                  <div class="field"><label for="last">Last Name</label><input id="last" type="text" required /></div>
-                  <div class="field form-row"><label for="email">Email</label><input id="email" type="email" required /></div>
-                  <div class="field"><label for="zip">ZIP Code</label><input id="zip" type="text" required /></div>
-                  <div class="field"><label for="role">I Am A</label>
-                    <select id="role" required><option value="">Select…</option><option>Homeowner</option><option>Builder / Contractor</option><option>Architect / Designer</option><option>Dealer</option></select>
-                  </div>
-                </div>
-                <div class="form-submit">
-                  <small>By submitting you agree to our privacy policy.</small>
-                  <button type="submit" class="btn btn--primary">Send My Samples</button>
-                </div>
-              </form>
-            </div>
+            <a href="https://www-americanprobuilding-com.filesusr.com/html/8a6196_5a1f9459f43ece3c8418c542ed9d4d4a.html" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Open Calculator</a>
           </div>
+        </div>
+      </section>
+
+      <!-- Warranty highlight -->
+      <section class="section section--alt">
+        <div class="container">
+          <div style="max-width: 70ch;" data-reveal>
+            <span class="eyebrow">Warranty</span>
+            <h2>25 years residential.<br /><em>10 years commercial.</em></h2>
+            <p>
+              Patwin Plastics warrants every Patwin deck and porch board against
+              splitting, flaking, rotting, or structural defects from
+              manufacturing. Boards are designed to resist fading and will not
+              fade more than 5 Delta E (CIE) units after exposure to UV and
+              weathering. The stain warranty covers permanent staining from
+              food and beverage when cleaned within one week of exposure.
+            </p>
+            <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted);">
+              Full terms, exclusions, and claim procedure on the
+              <a href="https://www.americanprobuilding.com/deck-porch-warranty" target="_blank" rel="noopener">warranty page</a>.
+              Manufacturer: Patwin Plastics, Inc., 2300 E Linden Ave, Linden NJ 07036.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sample request form -->
+      <section class="section" id="samples">
+        <div class="container">
+          <div style="max-width: 60ch; margin-bottom: var(--space-8);" data-reveal>
+            <span class="eyebrow">Free samples</span>
+            <h2>See and feel<br /><em>before you commit.</em></h2>
+            <p>
+              We'll mail real board samples in your chosen colors so you can
+              compare them against your house, your light, and your existing
+              materials. No charge, no salesperson follow-up.
+            </p>
+          </div>
+
+          <form class="form-card" data-reveal>
+            <div class="form-grid">
+              <label class="field"><span>First Name *</span><input type="text" name="first_name" required /></label>
+              <label class="field"><span>Last Name *</span><input type="text" name="last_name" required /></label>
+              <label class="field field--full"><span>Address *</span><input type="text" name="address" required /></label>
+              <label class="field"><span>Email *</span><input type="email" name="email" required /></label>
+              <label class="field"><span>Phone</span><input type="tel" name="phone" /></label>
+
+              <fieldset class="field field--full">
+                <legend>Choose Your Samples</legend>
+                <div class="swatch-checks">
+                  <label><input type="checkbox" name="samples" value="Driftwood" /> Driftwood</label>
+                  <label><input type="checkbox" name="samples" value="Khaki" /> Khaki</label>
+                  <label><input type="checkbox" name="samples" value="Hazelnut" /> Hazelnut</label>
+                  <label><input type="checkbox" name="samples" value="Beachwood" /> Beachwood</label>
+                  <label><input type="checkbox" name="samples" value="Chestnut" /> Chestnut</label>
+                  <label><input type="checkbox" name="samples" value="Redwood" /> Redwood</label>
+                </div>
+              </fieldset>
+
+              <label class="field field--full">
+                <span>Select Type *</span>
+                <select name="profile_type" required>
+                  <option value="" disabled selected>Required</option>
+                  <option value="Solid Edge">Solid Edge</option>
+                  <option value="Grooved">Grooved</option>
+                  <option value="Other">Other (Please Specify)</option>
+                </select>
+              </label>
+            </div>
+            <button type="submit" class="btn btn--primary btn--lg" style="margin-top: var(--space-6);">Submit Request</button>
+            <p style="margin-top: var(--space-4); font-size: var(--text-xs); color: var(--color-text-muted);">
+              Samples on the way. We'll confirm by email within one business day.
+            </p>
+          </form>
         </div>
       </section>
     </main>
 
     <div data-include="footer"></div>
-    <script src="../pages/_partials.js"></script>
-    <script src="../js/site.js" defer></script>
+    <script src="./_partials.js"></script>
+    <script src="../js/site.js"></script>
   </body>
 </html>

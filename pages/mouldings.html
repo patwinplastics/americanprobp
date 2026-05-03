@@ -3,115 +3,340 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PVC Mouldings — American Pro Building Products</title>
-    <meta name="description" content="Over 100 architectural moulding profiles in cellular PVC: crown, casing, baseboard, brick mould, columns, and more. American-made, paint-ready." />
+    <title>PVC Mouldings · American Pro Building Products</title>
+    <meta name="description" content="American Pro PVC Mouldings. A full catalog of standard and special exterior trim profiles including crowns, casings, sills, brick mould, and water table. Made in the USA by Patwin Plastics." />
     <link href="https://api.fontshare.com/v2/css?f[]=boska@400,500,500i,700&f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/base.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <style>
-      .moulding-hero { position: relative; min-height: 60vh; display: flex; align-items: flex-end; color: #fff; isolation: isolate; }
-      .moulding-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; object-position: center 40%; }
-      .moulding-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,31,58,.05), rgba(14,31,58,.78)); z-index: -1; }
-      .moulding-hero-inner { padding-block: var(--space-16) var(--space-12); }
-      .moulding-hero h1 { color: #fff; font-size: var(--text-3xl); max-width: 16ch; letter-spacing: -0.025em; }
-      .moulding-hero h1 em { font-style: italic; font-weight: 400; }
-      .moulding-hero p { color: rgba(255,255,255,.85); margin-top: var(--space-5); max-width: 50ch; }
+      /* Hero */
+      .moul-hero { position: relative; min-height: 60vh; display: flex; align-items: flex-end; color: #fff; isolation: isolate; }
+      .moul-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+      .moul-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,31,58,.10), rgba(14,31,58,.85)); z-index: -1; }
+      .moul-hero-inner { padding-block: var(--space-16) var(--space-12); }
+      .moul-hero h1 { color: #fff; font-size: var(--text-3xl); max-width: 16ch; letter-spacing: -0.025em; }
+      .moul-hero h1 em { font-style: italic; font-weight: 400; }
+      .moul-hero p { color: rgba(255,255,255,.85); margin-top: var(--space-5); max-width: 50ch; }
 
-      .profile-cats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: var(--space-4);
-      }
-      .profile-card {
-        background: var(--color-surface);
-        border: 1px solid var(--color-divider);
-        border-radius: var(--radius-lg);
-        padding: var(--space-6);
-        transition: var(--transition-interactive);
-      }
-      .profile-card:hover { transform: translateY(-3px); border-color: var(--color-text-muted); box-shadow: var(--shadow-md); }
-      .profile-count { font-family: var(--font-display); font-size: var(--text-2xl); color: var(--color-accent); font-weight: 500; line-height: 1; }
-      .profile-name { font-family: var(--font-display); font-size: var(--text-lg); margin: var(--space-3) 0 var(--space-2); }
-      .profile-desc { color: var(--color-text-muted); font-size: var(--text-sm); }
+      /* Profile grid */
+      .profile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--space-5); }
+      .profile-tile { background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-md); overflow: hidden; transition: var(--transition-interactive); }
+      .profile-tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+      .profile-img { aspect-ratio: 4/3; background: #fff; display: flex; align-items: center; justify-content: center; padding: var(--space-4); }
+      .profile-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+      .profile-body { padding: var(--space-3) var(--space-4) var(--space-4); border-top: 1px solid var(--color-divider); }
+      .profile-name { font-family: var(--font-display); font-size: var(--text-sm); font-weight: 500; line-height: 1.3; }
+      .profile-sku { font-size: 11px; color: var(--color-text-muted); margin-top: 4px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+      /* Category tab */
+      .cat-tabs { display: flex; gap: var(--space-3); margin-bottom: var(--space-8); flex-wrap: wrap; }
+      .cat-tab { background: transparent; border: 1px solid var(--color-divider); border-radius: 999px; padding: var(--space-2) var(--space-5); font-family: var(--font-display); font-size: var(--text-sm); cursor: pointer; transition: var(--transition-interactive); color: var(--color-text); }
+      .cat-tab.active { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+      .cat-tab:hover:not(.active) { border-color: var(--color-primary); }
+      .cat-section { display: none; }
+      .cat-section.active { display: block; }
+
+      /* Quick facts */
+      .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-6); background: var(--color-surface-2); border-radius: var(--radius-lg); padding: clamp(var(--space-6), 4vw, var(--space-10)); }
+      .fact strong { display: block; font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; color: var(--color-primary); }
+      .fact span { font-size: var(--text-xs); color: var(--color-text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: var(--space-2); display: block; }
+
+      /* Sample form profile checkboxes (compact) */
+      .moul-checks { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-2); font-size: var(--text-sm); }
+      @media (min-width: 600px) { .moul-checks { grid-template-columns: repeat(3, 1fr); } }
+      @media (min-width: 900px) { .moul-checks { grid-template-columns: repeat(4, 1fr); } }
     </style>
   </head>
   <body>
     <div data-include="header"></div>
 
     <main>
-      <section class="moulding-hero">
-        <img src="../images/product_moulding.jpg" alt="White PVC architectural moulding and trim detail" />
-        <div class="container moulding-hero-inner">
-          <span class="hero-eyebrow">Architectural Detail</span>
-          <h1>Over a hundred profiles.<br /><em>One material that lasts.</em></h1>
+      <!-- Hero -->
+      <section class="moul-hero">
+        <img src="../images/product_moulding.jpg" alt="American Pro PVC mouldings on a residential exterior" />
+        <div class="container moul-hero-inner">
+          <span class="hero-eyebrow">PVC Mouldings</span>
+          <h1>The trim that<br /><em>shapes a house.</em></h1>
           <p>
-            American Pro mouldings are extruded from the same UV-stabilized cellular
-            PVC as our decking — so the trim that frames your home will look as good
-            as the day you installed it, decade after decade.
+            Crowns, casings, sills, brick mould, water table, and balluster.
+            American-made PVC profiles for the details that finish a building.
+            Find the perfect moulding for your next project.
           </p>
+          <div class="hero-actions" style="margin-top: var(--space-7);">
+            <a href="#samples" class="btn btn--primary btn--lg">Request Samples</a>
+            <a href="../pages/contact.html" class="btn btn--ghost-light btn--lg">Get a Quote</a>
+          </div>
         </div>
       </section>
 
+      <!-- Intro -->
       <section class="section">
         <div class="container">
-          <header class="section-head" data-reveal>
-            <div>
-              <span class="eyebrow">Profile Catalog</span>
-              <h2>Eight categories.<br /><em>One hundred profiles.</em></h2>
-            </div>
+          <div style="max-width: 60ch; margin-bottom: var(--space-10);" data-reveal>
+            <span class="eyebrow">A full profile catalog</span>
+            <h2>Standard profiles<br /><em>and the unusual ones.</em></h2>
             <p>
-              From classic colonial casing to ornate crown to a simple square stock —
-              if you've specified it in wood, we make it in PVC. Stocked profiles
-              ship in 16-foot lengths.
+              The Standard catalog covers the trim families you'll specify
+              most often: crowns in five sizes, casings, sills, base cap, bed
+              mould, brick mould, and quarter round. The Special catalog
+              covers the profiles that solve a specific problem, including
+              water table, large coves, sill noses, and balluster stock.
             </p>
-          </header>
+          </div>
 
-          <div class="profile-cats" data-reveal>
-            <div class="profile-card"><div class="profile-count">28</div><div class="profile-name">Crown &amp; Cornice</div><div class="profile-desc">From subtle 3" coves to dramatic 8" colonial crowns.</div></div>
-            <div class="profile-card"><div class="profile-count">22</div><div class="profile-name">Casing &amp; Trim</div><div class="profile-desc">Window and door casings, including backband variants.</div></div>
-            <div class="profile-card"><div class="profile-count">14</div><div class="profile-name">Baseboard</div><div class="profile-desc">Profile heights from 3-1/4" to 7-1/4".</div></div>
-            <div class="profile-card"><div class="profile-count">9</div><div class="profile-name">Brick Mould</div><div class="profile-desc">Standard and historical brickmould profiles.</div></div>
-            <div class="profile-card"><div class="profile-count">12</div><div class="profile-name">Columns &amp; Posts</div><div class="profile-desc">Fluted columns, square posts, decorative caps.</div></div>
-            <div class="profile-card"><div class="profile-count">8</div><div class="profile-name">Dentil &amp; Detail</div><div class="profile-desc">Dentil blocks, decorative bands, ornamental trim.</div></div>
-            <div class="profile-card"><div class="profile-count">15</div><div class="profile-name">Sheet &amp; Boards</div><div class="profile-desc">Flat sheet stock, S4S boards, custom-rip widths.</div></div>
-            <div class="profile-card"><div class="profile-count">+</div><div class="profile-name">Custom Profiles</div><div class="profile-desc">We extrude custom profiles for OEM and architectural specifications. Contact our engineering team.</div></div>
+          <div class="facts" data-reveal>
+            <div class="fact">
+              <strong>21</strong>
+              <span>Standard (Common) profiles</span>
+            </div>
+            <div class="fact">
+              <strong>8</strong>
+              <span>Special / specialty profiles</span>
+            </div>
+            <div class="fact">
+              <strong>5</strong>
+              <span>Crown sizes (2 3/4 to 8 in)</span>
+            </div>
+            <div class="fact">
+              <strong>Made in USA</strong>
+              <span>Patwin Plastics, Linden NJ</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="section samples" id="samples">
+      <!-- Profile catalog -->
+      <section class="section section--alt" id="catalog">
         <div class="container">
-          <div class="samples-inner">
-            <div data-reveal>
-              <span class="eyebrow">Profile Samples &amp; Catalog</span>
-              <h2>Get the full<br /><em>profile catalog.</em></h2>
-              <p>Request the complete profile guide and samples of any profiles you'd like to see in person. We'll mail both within two business days.</p>
-            </div>
-            <div class="form-card" data-reveal data-reveal-delay="1">
-              <form data-demo>
-                <div class="form-grid">
-                  <div class="field"><label for="first">First Name</label><input id="first" type="text" required /></div>
-                  <div class="field"><label for="last">Last Name</label><input id="last" type="text" required /></div>
-                  <div class="field form-row"><label for="email">Email</label><input id="email" type="email" required /></div>
-                  <div class="field"><label for="zip">ZIP Code</label><input id="zip" type="text" required /></div>
-                  <div class="field"><label for="role">I Am A</label>
-                    <select id="role" required><option value="">Select…</option><option>Homeowner</option><option>Builder / Contractor</option><option>Architect / Designer</option><option>Dealer</option></select>
-                  </div>
-                  <div class="field form-row"><label for="message">Profiles of Interest</label><textarea id="message" placeholder="e.g. 5-1/4 colonial baseboard, brickmould, fluted columns…"></textarea></div>
-                </div>
-                <div class="form-submit">
-                  <small>By submitting you agree to our privacy policy.</small>
-                  <button type="submit" class="btn btn--primary">Send Catalog &amp; Samples</button>
-                </div>
-              </form>
+          <div style="max-width: 60ch; margin-bottom: var(--space-7);" data-reveal>
+            <span class="eyebrow">Profile catalog</span>
+            <h2>Browse the<br /><em>full lineup.</em></h2>
+          </div>
+
+          <div class="cat-tabs" data-reveal>
+            <button class="cat-tab active" data-cat="standard">Standard (Common)</button>
+            <button class="cat-tab" data-cat="special">Special</button>
+          </div>
+
+          <!-- Standard -->
+          <div class="cat-section active" data-cat="standard" data-reveal>
+            <div class="profile-grid">
+
+              <!-- Crowns first (sorted by size) -->
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/crown_2_75.jpg" alt="2 3/4 inch Crown profile" /></div>
+                <div class="profile-body"><div class="profile-name">2 3/4" Crown</div><div class="profile-sku">Standard</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/crown_3_625.jpg" alt="3 5/8 inch Crown profile" /></div>
+                <div class="profile-body"><div class="profile-name">3 5/8" Crown</div><div class="profile-sku">Standard</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/crown_4_625.jpg" alt="4 5/8 inch Crown profile" /></div>
+                <div class="profile-body"><div class="profile-name">4 5/8" Crown</div><div class="profile-sku">Standard</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/crown_5_25.jpg" alt="5 1/4 inch Crown profile" /></div>
+                <div class="profile-body"><div class="profile-name">5 1/4" Crown</div><div class="profile-sku">Standard</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/crown_8.jpg" alt="8 inch Crown profile" /></div>
+                <div class="profile-body"><div class="profile-name">8" Crown</div><div class="profile-sku">Standard</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/solid_crown.jpg" alt="Solid Crown profile" /></div>
+                <div class="profile-body"><div class="profile-name">Solid Crown</div><div class="profile-sku">Standard</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/rams_crown.jpg" alt="Rams Crown profile" /></div>
+                <div class="profile-body"><div class="profile-name">Rams Crown</div><div class="profile-sku">APV-158</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/rake_mold.jpg" alt="Rake Mold profile" /></div>
+                <div class="profile-body"><div class="profile-name">Rake Mold</div><div class="profile-sku">APV-158</div></div>
+              </div>
+
+              <!-- Casings & sills -->
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/adams_casing.jpg" alt="Adam's Casing profile" /></div>
+                <div class="profile-body"><div class="profile-name">Adam's Casing</div><div class="profile-sku">Standard</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/heavy_sill.jpg" alt="Heavy Sill, also called Large Sill" /></div>
+                <div class="profile-body"><div class="profile-name">Heavy Sill (Large Sill)</div><div class="profile-sku">APV-6993</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/historic_sill.jpg" alt="Historic Sill profile" /></div>
+                <div class="profile-body"><div class="profile-name">Historic Sill</div><div class="profile-sku">APV-7650</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/drip_cap.jpg" alt="Drip Cap profile" /></div>
+                <div class="profile-body"><div class="profile-name">Drip Cap</div><div class="profile-sku">APV-188</div></div>
+              </div>
+
+              <!-- Brick & back -->
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/brick.jpg" alt="Brick Mould profile" /></div>
+                <div class="profile-body"><div class="profile-name">Brick Mould</div><div class="profile-sku">Standard</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/j_brick.jpg" alt="J-Brick profile" /></div>
+                <div class="profile-body"><div class="profile-name">J-Brick</div><div class="profile-sku">Standard</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/back_band.jpg" alt="Back Band profile" /></div>
+                <div class="profile-body"><div class="profile-name">Back Band</div><div class="profile-sku">APV-745</div></div>
+              </div>
+
+              <!-- Smaller utility profiles -->
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/bed_mould.jpg" alt="Bed Mould profile" /></div>
+                <div class="profile-body"><div class="profile-name">Bed Mould</div><div class="profile-sku">APV-75</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/bead_cap.jpg" alt="Bead Cap profile" /></div>
+                <div class="profile-body"><div class="profile-name">Bead Cap</div><div class="profile-sku">APV-9</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/base_cap.jpg" alt="Base Cap profile" /></div>
+                <div class="profile-body"><div class="profile-name">Base Cap</div><div class="profile-sku">APV-164</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/quarter_round.jpg" alt="Quarter Round profile" /></div>
+                <div class="profile-body"><div class="profile-name">Quarter Round</div><div class="profile-sku">APV-106</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/scotia_cove.jpg" alt="Scotia Cove profile" /></div>
+                <div class="profile-body"><div class="profile-name">Scotia Cove</div><div class="profile-sku">APV-2021</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/shingle.jpg" alt="Shingle moulding profile" /></div>
+                <div class="profile-body"><div class="profile-name">Shingle</div><div class="profile-sku">Standard</div></div>
+              </div>
             </div>
           </div>
+
+          <!-- Special -->
+          <div class="cat-section" data-cat="special">
+            <div class="profile-grid">
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/cove.jpg" alt="Cove profile" /></div>
+                <div class="profile-body"><div class="profile-name">Cove</div><div class="profile-sku">Special · GS-COVPVC</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/water_table_silo.jpg" alt="Water Table Silo profile" /></div>
+                <div class="profile-body"><div class="profile-name">Water Table Silo</div><div class="profile-sku">Special</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img"><img src="../images/mouldings_profiles/square_125.jpg" alt="1.25 inch Square profile" /></div>
+                <div class="profile-body"><div class="profile-name">1.25" Square</div><div class="profile-sku">Special</div></div>
+              </div>
+              <!-- Form-only profiles, shown as "by request" placeholders -->
+              <div class="profile-tile">
+                <div class="profile-img" style="font-family: var(--font-display); color: var(--color-text-muted); font-size: var(--text-sm); text-align: center; padding: var(--space-3);">By request</div>
+                <div class="profile-body"><div class="profile-name">7" Large Cove</div><div class="profile-sku">Special</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img" style="font-family: var(--font-display); color: var(--color-text-muted); font-size: var(--text-sm); text-align: center; padding: var(--space-3);">By request</div>
+                <div class="profile-body"><div class="profile-name">Sill Nose 7117</div><div class="profile-sku">Special</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img" style="font-family: var(--font-display); color: var(--color-text-muted); font-size: var(--text-sm); text-align: center; padding: var(--space-3);">By request</div>
+                <div class="profile-body"><div class="profile-name">Sill Nose 7118</div><div class="profile-sku">Special</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img" style="font-family: var(--font-display); color: var(--color-text-muted); font-size: var(--text-sm); text-align: center; padding: var(--space-3);">By request</div>
+                <div class="profile-body"><div class="profile-name">1.25" Balluster</div><div class="profile-sku">Special</div></div>
+              </div>
+              <div class="profile-tile">
+                <div class="profile-img" style="font-family: var(--font-display); color: var(--color-text-muted); font-size: var(--text-sm); text-align: center; padding: var(--space-3);">By request</div>
+                <div class="profile-body"><div class="profile-name">1.50" Balluster</div><div class="profile-sku">Special</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sample request form -->
+      <section class="section" id="samples">
+        <div class="container">
+          <div style="max-width: 60ch; margin-bottom: var(--space-8);" data-reveal>
+            <span class="eyebrow">PVC Mouldings sample request</span>
+            <h2>Get a hand sample<br /><em>of the profile.</em></h2>
+            <p>
+              Pick the profiles you'd like to see in person. We'll mail a
+              cut sample of each so you can check the dimension, the corner,
+              and the surface finish before you specify or quote.
+            </p>
+          </div>
+
+          <form class="form-card" data-reveal>
+            <div class="form-grid">
+              <label class="field"><span>First Name *</span><input type="text" name="first_name" required /></label>
+              <label class="field"><span>Last Name *</span><input type="text" name="last_name" required /></label>
+              <label class="field field--full"><span>Address *</span><input type="text" name="address" required /></label>
+              <label class="field"><span>Email *</span><input type="email" name="email" required /></label>
+              <label class="field"><span>Phone</span><input type="tel" name="phone" /></label>
+
+              <fieldset class="field field--full">
+                <legend>Choose Your Samples</legend>
+                <div class="moul-checks">
+                  <label><input type="checkbox" name="samples" value="2 3/4 in Crown" /> 2 3/4" Crown</label>
+                  <label><input type="checkbox" name="samples" value="3 5/8 in Crown" /> 3 5/8" Crown</label>
+                  <label><input type="checkbox" name="samples" value="4 5/8 in Crown" /> 4 5/8" Crown</label>
+                  <label><input type="checkbox" name="samples" value="5 1/4 in Crown" /> 5 1/4" Crown</label>
+                  <label><input type="checkbox" name="samples" value="8 in Crown" /> 8" Crown</label>
+                  <label><input type="checkbox" name="samples" value="Solid Crown" /> Solid Crown</label>
+                  <label><input type="checkbox" name="samples" value="Rams Crown" /> Rams Crown</label>
+                  <label><input type="checkbox" name="samples" value="Rake Mold" /> Rake</label>
+                  <label><input type="checkbox" name="samples" value="Adams Casing" /> Adams Casing</label>
+                  <label><input type="checkbox" name="samples" value="Large Sill" /> Large Sill</label>
+                  <label><input type="checkbox" name="samples" value="Historic Sill" /> Historic Sill</label>
+                  <label><input type="checkbox" name="samples" value="Sill Nose 7117" /> Sill Nose 7117</label>
+                  <label><input type="checkbox" name="samples" value="Sill Nose 7118" /> Sill Nose 7118</label>
+                  <label><input type="checkbox" name="samples" value="Drip Cap" /> Drip Cap</label>
+                  <label><input type="checkbox" name="samples" value="Brick Mould" /> Brick Mould</label>
+                  <label><input type="checkbox" name="samples" value="J-Brick" /> J-Brick</label>
+                  <label><input type="checkbox" name="samples" value="Back Band" /> Back Band</label>
+                  <label><input type="checkbox" name="samples" value="Bed Mould" /> Bed Mould</label>
+                  <label><input type="checkbox" name="samples" value="Bead Cap" /> Bead Cap</label>
+                  <label><input type="checkbox" name="samples" value="Base Cap" /> Base Cap</label>
+                  <label><input type="checkbox" name="samples" value="Quarter Round" /> Quarter Round</label>
+                  <label><input type="checkbox" name="samples" value="Scotia" /> Scotia</label>
+                  <label><input type="checkbox" name="samples" value="Shingle" /> Shingle</label>
+                  <label><input type="checkbox" name="samples" value="1.25 in Balluster" /> 1.25" Balluster</label>
+                  <label><input type="checkbox" name="samples" value="1.50 in Balluster" /> 1.50" Balluster</label>
+                  <label><input type="checkbox" name="samples" value="Water Table" /> Water Table</label>
+                  <label><input type="checkbox" name="samples" value="7 in Large Cove" /> 7" Large Cove</label>
+                </div>
+              </fieldset>
+
+              <label class="field field--full">
+                <span>Other (Please Specify)</span>
+                <input type="text" name="other" placeholder="Profile name or part number" />
+              </label>
+            </div>
+            <button type="submit" class="btn btn--primary btn--lg" style="margin-top: var(--space-6);">Submit Request</button>
+            <p style="margin-top: var(--space-4); font-size: var(--text-xs); color: var(--color-text-muted);">
+              Thanks for submitting. We'll confirm by email within one business day.
+            </p>
+          </form>
         </div>
       </section>
     </main>
 
     <div data-include="footer"></div>
-    <script src="../pages/_partials.js"></script>
-    <script src="../js/site.js" defer></script>
+    <script src="./_partials.js"></script>
+    <script src="../js/site.js"></script>
+    <script>
+      // Category tab toggle
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest('.cat-tab');
+        if (!btn) return;
+        var cat = btn.dataset.cat;
+        document.querySelectorAll('.cat-tab').forEach(function (b) { b.classList.toggle('active', b === btn); });
+        document.querySelectorAll('.cat-section').forEach(function (s) { s.classList.toggle('active', s.dataset.cat === cat); });
+      });
+    </script>
   </body>
 </html>
