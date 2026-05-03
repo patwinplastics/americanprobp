@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deck Calculator, American Pro Building Products</title>
+    <meta name="description" content="Estimate deck boards, joists, fasteners, labor and total cost for TrueGrain Deck&trade; and Standard PVC. Built around real American Pro profiles, hidden in our factory math, exposed in plain English." />
+    <link href="https://api.fontshare.com/v2/css?f[]=boska@400,500,500i,700&f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+    <style>
+      /* ───────── Calculator layout ───────── */
+      .calc-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+        gap: clamp(var(--space-8), 4vw, var(--space-16));
+        align-items: start;
+      }
+      @media (max-width: 960px) {
+        .calc-shell { grid-template-columns: 1fr; }
+      }
+
+      .calc-panel {
+        background: var(--color-surface);
+        border: 1px solid var(--color-divider);
+        border-radius: var(--radius-lg);
+        padding: clamp(var(--space-6), 4vw, var(--space-10));
+        box-shadow: var(--shadow-sm);
+      }
+
+      .calc-panel-eyebrow {
+        display: inline-flex; align-items: center; gap: var(--space-2);
+        font-size: var(--text-xs); letter-spacing: 0.2em; text-transform: uppercase;
+        font-weight: 700; color: var(--color-accent);
+        margin-bottom: var(--space-3);
+      }
+      .calc-panel-eyebrow::before {
+        content: ""; display: inline-block; width: 28px; height: 2px; background: var(--color-accent);
+      }
+
+      .calc-panel h2 {
+        font-family: var(--font-display);
+        font-size: clamp(var(--text-xl), 3vw, var(--text-2xl));
+        font-weight: 500;
+        line-height: 1.05;
+        letter-spacing: -0.015em;
+        color: var(--color-primary);
+        margin-bottom: var(--space-2);
+      }
+      .calc-panel h2 em { font-style: italic; color: var(--color-accent); font-weight: 500; }
+
+      .calc-panel p.lede {
+        color: var(--color-text-muted);
+        font-size: var(--text-base);
+        margin-bottom: var(--space-8);
+        line-height: 1.55;
+      }
+
+      /* ───────── Form fields ───────── */
+      .field-group {
+        display: grid;
+        gap: var(--space-3);
+        padding-block: var(--space-5);
+        border-top: 1px solid var(--color-divider);
+      }
+      .field-group:first-of-type { border-top: 0; padding-top: 0; }
+
+      .field-group-title {
+        font-family: var(--font-body);
+        font-size: var(--text-sm);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--color-primary);
+        margin-bottom: var(--space-1);
+      }
+
+      .field-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-3);
+      }
+      @media (max-width: 520px) { .field-row { grid-template-columns: 1fr; } }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+      }
+      .field label {
+        font-size: var(--text-sm);
+        font-weight: 600;
+        color: var(--color-text);
+      }
+      .field .hint {
+        font-size: var(--text-xs);
+        color: var(--color-text-faint);
+      }
+
+      .input-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .input-wrap input,
+      .input-wrap select,
+      .field select {
+        width: 100%;
+        padding: 0.7rem 0.9rem;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        background: var(--color-surface);
+        color: var(--color-text);
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        transition: var(--transition-interactive);
+        appearance: none;
+      }
+      .field select {
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%230e1f3a' stroke-width='2'><polyline points='1,1 6,6 11,1'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        padding-right: 2.4rem;
+      }
+      .input-wrap input:focus,
+      .field select:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(14,31,58,0.10);
+      }
+      .input-wrap .unit {
+        position: absolute;
+        right: 0.9rem;
+        font-size: var(--text-sm);
+        color: var(--color-text-faint);
+        font-weight: 600;
+        pointer-events: none;
+      }
+      .input-wrap input.has-prefix { padding-left: 2rem; }
+      .input-wrap .prefix {
+        position: absolute;
+        left: 0.9rem;
+        font-size: var(--text-sm);
+        color: var(--color-text-faint);
+        font-weight: 600;
+        pointer-events: none;
+      }
+      .input-wrap input.has-unit { padding-right: 3.2rem; }
+
+      /* Hide native number spinners so they don't collide with the unit label */
+      .input-wrap input[type="number"]::-webkit-outer-spin-button,
+      .input-wrap input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      .input-wrap input[type="number"] { -moz-appearance: textfield; }
+
+      .dim-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: var(--space-2);
+      }
+
+      .toggle-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+      }
+      .toggle-pill {
+        flex: 1 1 auto;
+        min-width: 140px;
+        position: relative;
+      }
+      .toggle-pill input { position: absolute; opacity: 0; pointer-events: none; }
+      .toggle-pill label {
+        display: block;
+        text-align: center;
+        padding: 0.7rem 1rem;
+        border: 1.5px solid var(--color-border);
+        border-radius: var(--radius-md);
+        font-size: var(--text-sm);
+        font-weight: 600;
+        color: var(--color-text);
+        cursor: pointer;
+        transition: var(--transition-interactive);
+        background: var(--color-surface);
+      }
+      .toggle-pill label:hover { border-color: var(--color-primary); }
+      .toggle-pill input:checked + label {
+        background: var(--color-primary);
+        border-color: var(--color-primary);
+        color: var(--color-text-inverse);
+      }
+      .toggle-pill input:focus-visible + label {
+        box-shadow: 0 0 0 3px rgba(14,31,58,0.18);
+      }
+
+      .field-actions {
+        display: flex;
+        gap: var(--space-3);
+        margin-top: var(--space-6);
+        padding-top: var(--space-5);
+        border-top: 1px solid var(--color-divider);
+      }
+
+      /* ───────── Results panel ───────── */
+      .result-panel {
+        position: sticky;
+        top: var(--space-8);
+        background: var(--color-primary);
+        color: var(--color-text-inverse);
+        border-radius: var(--radius-lg);
+        padding: clamp(var(--space-6), 4vw, var(--space-10));
+        box-shadow: var(--shadow-lg);
+        overflow: hidden;
+      }
+      @media (max-width: 960px) { .result-panel { position: static; } }
+
+      .result-panel .calc-panel-eyebrow { color: #f3a3aa; }
+      .result-panel .calc-panel-eyebrow::before { background: var(--color-accent); }
+
+      .result-panel h2 {
+        color: #fff;
+        font-family: var(--font-display);
+        font-size: clamp(var(--text-xl), 2.6vw, var(--text-2xl));
+        font-weight: 500;
+        line-height: 1.05;
+        letter-spacing: -0.015em;
+        margin-bottom: var(--space-2);
+      }
+      .result-panel h2 em { color: #f5d4d8; font-style: italic; font-weight: 500; }
+
+      .result-panel p.lede {
+        color: rgba(255,255,255,0.78);
+        margin-bottom: var(--space-6);
+      }
+
+      .result-grandtotal {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: var(--space-4);
+        padding: var(--space-5) var(--space-6);
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.10);
+        border-radius: var(--radius-md);
+        margin-bottom: var(--space-6);
+      }
+      .result-grandtotal .label {
+        font-size: var(--text-sm);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: rgba(255,255,255,0.68);
+        font-weight: 700;
+      }
+      .result-grandtotal .value {
+        font-family: var(--font-display);
+        font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
+        font-weight: 500;
+        color: #fff;
+        letter-spacing: -0.02em;
+      }
+
+      .result-list {
+        display: grid;
+        gap: 0;
+        margin-bottom: var(--space-6);
+      }
+      .result-list li {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: var(--space-4);
+        align-items: baseline;
+        padding: var(--space-3) 0;
+        border-bottom: 1px solid rgba(255,255,255,0.10);
+        list-style: none;
+      }
+      .result-list li:last-child { border-bottom: 0; }
+      .result-list .item-label {
+        font-size: var(--text-sm);
+        color: rgba(255,255,255,0.92);
+      }
+      .result-list .item-meta {
+        display: block;
+        font-size: var(--text-xs);
+        color: rgba(255,255,255,0.55);
+        margin-top: 2px;
+      }
+      .result-list .item-value {
+        font-size: var(--text-base);
+        font-weight: 600;
+        color: #fff;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .result-section-title {
+        font-size: var(--text-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: rgba(255,255,255,0.55);
+        font-weight: 700;
+        margin: var(--space-5) 0 var(--space-3);
+      }
+      .result-section-title:first-of-type { margin-top: 0; }
+
+      .length-options {
+        display: grid;
+        gap: var(--space-2);
+      }
+      .length-option {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: var(--space-3);
+        padding: var(--space-3) var(--space-4);
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.10);
+        border-radius: var(--radius-md);
+        font-size: var(--text-sm);
+      }
+      .length-option.is-best {
+        background: rgba(245,212,216,0.08);
+        border-color: rgba(245,212,216,0.40);
+      }
+      .length-option .len {
+        font-family: var(--font-display);
+        font-size: var(--text-lg);
+        font-weight: 500;
+        color: #fff;
+        min-width: 3.5em;
+      }
+      .length-option .meta {
+        font-size: var(--text-xs);
+        color: rgba(255,255,255,0.65);
+      }
+      .length-option .meta strong { color: rgba(255,255,255,0.92); font-weight: 600; }
+      .length-option .opt-cost {
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+      .length-option .badge {
+        display: inline-block;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        padding: 2px 8px;
+        background: var(--color-accent);
+        color: #fff;
+        border-radius: var(--radius-full);
+        margin-left: var(--space-2);
+        font-weight: 700;
+      }
+
+      .result-empty {
+        text-align: center;
+        padding: var(--space-10) var(--space-4);
+        color: rgba(255,255,255,0.65);
+      }
+      .result-empty svg { opacity: 0.4; margin-bottom: var(--space-4); }
+      .result-empty p { font-size: var(--text-sm); }
+
+      .result-error {
+        background: rgba(185,28,44,0.18);
+        border: 1px solid rgba(185,28,44,0.45);
+        color: #ffd9dc;
+        padding: var(--space-4);
+        border-radius: var(--radius-md);
+        font-size: var(--text-sm);
+        font-weight: 500;
+      }
+
+      .result-cta {
+        margin-top: var(--space-6);
+        padding-top: var(--space-6);
+        border-top: 1px solid rgba(255,255,255,0.15);
+        text-align: center;
+      }
+      .result-cta p {
+        font-size: var(--text-sm);
+        color: rgba(255,255,255,0.78);
+        margin-bottom: var(--space-3);
+      }
+
+      /* ───────── Diagrams ───────── */
+      .diagram {
+        margin-top: var(--space-3);
+        background: var(--color-surface-2);
+        border-radius: var(--radius-md);
+        padding: var(--space-4);
+        text-align: center;
+      }
+      .diagram svg { max-width: 100%; height: auto; }
+      .diagram .caption {
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+        margin-top: var(--space-2);
+      }
+
+      /* ───────── Assumptions block ───────── */
+      .assumptions {
+        margin-top: var(--space-12);
+        padding: clamp(var(--space-6), 4vw, var(--space-10));
+        background: var(--color-surface-2);
+        border-radius: var(--radius-lg);
+      }
+      .assumptions h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        font-weight: 500;
+        color: var(--color-primary);
+        margin-bottom: var(--space-4);
+      }
+      .assumptions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: var(--space-4) var(--space-8);
+      }
+      .assumptions dt {
+        font-size: var(--text-sm);
+        font-weight: 700;
+        color: var(--color-primary);
+        margin-bottom: var(--space-1);
+      }
+      .assumptions dd {
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+        margin-bottom: var(--space-3);
+        line-height: 1.55;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-include="header"></div>
+
+    <main>
+      <section class="page-banner">
+        <div class="container">
+          <span class="eyebrow">Project Estimator</span>
+          <h1>Plan your deck<br /><em>with the calculator.</em></h1>
+          <p>Enter your deck dimensions, pick a profile, and get board count, joist count, fasteners, labor and total cost. Built around real American Pro profile widths and our 7.5% standard overage.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="calc-shell">
+            <!-- INPUT PANEL -->
+            <div class="calc-panel" data-reveal>
+              <span class="calc-panel-eyebrow">Inputs</span>
+              <h2>Tell us about <em>the deck.</em></h2>
+              <p class="lede">All fields update the estimate live. Defaults reflect 2026 North Jersey market pricing, override anything that doesn't match your job.</p>
+
+              <form id="calc-form" novalidate>
+                <!-- Dimensions -->
+                <div class="field-group">
+                  <div class="field-group-title">1. Dimensions</div>
+                  <div class="field">
+                    <label for="lengthFt">Length, along the house</label>
+                    <span class="hint">The side that runs parallel to the wall.</span>
+                    <div class="dim-row">
+                      <div class="input-wrap">
+                        <input type="number" id="lengthFt" min="0" step="1" placeholder="e.g. 20" inputmode="numeric" />
+                        <span class="unit">ft</span>
+                      </div>
+                      <div class="input-wrap">
+                        <input type="number" id="lengthIn" min="0" max="11" step="1" placeholder="0" inputmode="numeric" />
+                        <span class="unit">in</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="widthFt">Width, away from the house</label>
+                    <span class="hint">The side that runs out from the wall toward the yard.</span>
+                    <div class="dim-row">
+                      <div class="input-wrap">
+                        <input type="number" id="widthFt" min="0" step="1" placeholder="e.g. 16" inputmode="numeric" />
+                        <span class="unit">ft</span>
+                      </div>
+                      <div class="input-wrap">
+                        <input type="number" id="widthIn" min="0" max="11" step="1" placeholder="0" inputmode="numeric" />
+                        <span class="unit">in</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product line -->
+                <div class="field-group">
+                  <div class="field-group-title">2. Decking line</div>
+                  <div class="toggle-row" role="radiogroup" aria-label="Decking line">
+                    <div class="toggle-pill">
+                      <input type="radio" name="line" id="line-standard" value="standard" checked />
+                      <label for="line-standard">Standard PVC</label>
+                    </div>
+                    <div class="toggle-pill">
+                      <input type="radio" name="line" id="line-truegrain" value="truegrain" />
+                      <label for="line-truegrain">TrueGrain Deck&trade;</label>
+                    </div>
+                  </div>
+                  <span class="hint">Both are 1&quot; &times; 5.5&quot; actual with a 3/16&quot; gap. Standard PVC defaults to $6.00/ft. TrueGrain Deck price is set by your dealer, enter it below.</span>
+                </div>
+
+                <!-- Orientation + spacing -->
+                <div class="field-group">
+                  <div class="field-group-title">3. Layout</div>
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="orientation">Board orientation</label>
+                      <select id="orientation">
+                        <option value="perpendicular" selected>Perpendicular to house</option>
+                        <option value="parallel">Parallel to house</option>
+                      </select>
+                      <span class="hint">Perpendicular is the most common; boards run away from the house.</span>
+                    </div>
+                    <div class="field">
+                      <label for="joistSpacing">Joist spacing</label>
+                      <select id="joistSpacing">
+                        <option value="12">12&quot; on center</option>
+                        <option value="16" selected>16&quot; on center</option>
+                      </select>
+                      <span class="hint">Use 12&quot; OC for diagonal boards or heavier loads.</span>
+                    </div>
+                  </div>
+                  <div class="diagram" aria-hidden="true">
+                    <svg viewBox="0 0 320 120" width="100%" role="img" aria-label="Deck framing diagram showing joists running perpendicular to deck boards">
+                      <defs>
+                        <pattern id="board" width="20" height="120" patternUnits="userSpaceOnUse">
+                          <rect width="18" height="120" fill="#ebe7df" />
+                          <rect x="18" width="2" height="120" fill="#d6d1c6" />
+                        </pattern>
+                      </defs>
+                      <rect x="10" y="10" width="300" height="100" fill="url(#board)" stroke="#0e1f3a" stroke-width="1.5" rx="2" />
+                      <g stroke="#b91c2c" stroke-width="2" stroke-dasharray="4 3" opacity="0.85">
+                        <line x1="10" y1="30" x2="310" y2="30" />
+                        <line x1="10" y1="60" x2="310" y2="60" />
+                        <line x1="10" y1="90" x2="310" y2="90" />
+                      </g>
+                      <text x="160" y="118" text-anchor="middle" fill="#5b6478" font-size="9" font-family="Satoshi, sans-serif">Boards run left-right, joists (red) run beneath</text>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Pricing -->
+                <div class="field-group">
+                  <div class="field-group-title">4. Pricing (defaults included)</div>
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="boardCostPerFt">Board cost</label>
+                      <div class="input-wrap">
+                        <span class="prefix">$</span>
+                        <input type="number" id="boardCostPerFt" min="0" step="0.01" class="has-prefix has-unit" value="6.00" />
+                        <span class="unit">/ ft</span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label for="joistCostPerFt">PT joist cost</label>
+                      <div class="input-wrap">
+                        <span class="prefix">$</span>
+                        <input type="number" id="joistCostPerFt" min="0" step="0.01" class="has-prefix has-unit" value="1.65" />
+                        <span class="unit">/ ft</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="screwCost">Screw cost</label>
+                      <div class="input-wrap">
+                        <span class="prefix">$</span>
+                        <input type="number" id="screwCost" min="0" step="0.01" class="has-prefix has-unit" value="0.09" />
+                        <span class="unit">each</span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label for="plugCost">Plug cost</label>
+                      <div class="input-wrap">
+                        <span class="prefix">$</span>
+                        <input type="number" id="plugCost" min="0" step="0.01" class="has-prefix has-unit" value="0.09" />
+                        <span class="unit">each</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="laborCost">Labor</label>
+                    <div class="input-wrap">
+                      <span class="prefix">$</span>
+                      <input type="number" id="laborCost" min="0" step="0.01" class="has-prefix has-unit" value="15.00" />
+                      <span class="unit">/ sq ft</span>
+                    </div>
+                    <span class="hint">North Jersey deck-install rates run $10 to $35 per sq ft. $15 is a typical mid-market install. Set to 0 for materials-only.</span>
+                  </div>
+                </div>
+
+                <div class="field-actions">
+                  <button type="button" class="btn btn--ghost" id="resetBtn">Reset</button>
+                  <button type="button" class="btn btn--primary" id="printBtn">Print estimate</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- RESULTS PANEL -->
+            <aside class="result-panel" id="results" aria-live="polite">
+              <span class="calc-panel-eyebrow">Live estimate</span>
+              <h2>Your <em>materials read.</em></h2>
+              <p class="lede">Numbers update as you type. We bake in 7.5% overage for waste and cuts.</p>
+              <div id="results-body">
+                <div class="result-empty">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                  <p>Enter length and width to see boards, joists, fasteners, labor and total cost.</p>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <!-- Assumptions -->
+          <div class="assumptions" data-reveal>
+            <h3>How we compute it</h3>
+            <div class="assumptions-grid">
+              <div>
+                <dt>Board geometry</dt>
+                <dd>1&quot; &times; 5.5&quot; actual board face with a recommended 3/16&quot; gap. Effective coverage per board = 5.6875&quot;.</dd>
+                <dt>Standard lengths</dt>
+                <dd>12 ft, 16 ft, 20 ft. We pick the length that minimizes waste, no spliced rows under 20 ft span.</dd>
+                <dt>Spans over 20 ft</dt>
+                <dd>One 20 ft board plus the smallest standard board that covers the remainder, single-overage applied once.</dd>
+              </div>
+              <div>
+                <dt>Joists</dt>
+                <dd>Joist count = floor(span / spacing) + 1, plus a doubled rim joist on each end. Joist length matches the perpendicular deck dimension.</dd>
+                <dt>Fasteners</dt>
+                <dd>Face-screw + plug system, 2 screws and 2 plugs per board-to-joist intersection. Switch to hidden clips with your dealer if you prefer.</dd>
+                <dt>Overage</dt>
+                <dd>7.5% applied once to total board length. Costs derive from purchased-length, not theoretical-length, so pricing reflects what you actually buy.</dd>
+              </div>
+              <div>
+                <dt>Defaults</dt>
+                <dd>Standard PVC $6.00/ft, PT 2&times;8 joist $1.65/ft, $0.09 each on screws and plugs (works out to $36 per 100 sq ft fastener), labor $15/sq ft.</dd>
+                <dt>What we don't include</dt>
+                <dd>Footings, beams, ledger flashing, railing, stairs, permits. These vary too much by jurisdiction and design to put in a generic calc, talk to your contractor.</dd>
+                <dt>Spans over 40 ft</dt>
+                <dd>Out of scope. Get a structural drawing, our engineering team can help: <a href="contact.html" style="color: var(--color-primary); border-bottom: 1.5px solid var(--color-primary);">contact engineering</a>.</dd>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+    <script src="_partials.js"></script>
+    <script>
+      (function() {
+        'use strict';
+
+        const $ = (id) => document.getElementById(id);
+
+        const els = {
+          lengthFt: $('lengthFt'),
+          lengthIn: $('lengthIn'),
+          widthFt:  $('widthFt'),
+          widthIn:  $('widthIn'),
+          orientation: $('orientation'),
+          joistSpacing: $('joistSpacing'),
+          line: () => document.querySelector('input[name="line"]:checked').value,
+          boardCost: $('boardCostPerFt'),
+          joistCost: $('joistCostPerFt'),
+          screwCost: $('screwCost'),
+          plugCost:  $('plugCost'),
+          laborCost: $('laborCost'),
+          results:   $('results-body'),
+          resetBtn:  $('resetBtn'),
+          printBtn:  $('printBtn'),
+        };
+
+        // ───────── Constants ─────────
+        const BOARD_WIDTH_IN = 5.5;
+        const GAP_IN = 0.1875;
+        const EFFECTIVE_BOARD_WIDTH_FT = (BOARD_WIDTH_IN + GAP_IN) / 12; // 0.4739583
+        const OVERAGE = 1.075;
+        const STD_LENGTHS = [12, 16, 20];
+
+        // ───────── Helpers ─────────
+        const num = (el) => {
+          const v = parseFloat(el.value);
+          return Number.isFinite(v) && v >= 0 ? v : 0;
+        };
+        const fmtMoney = (n) =>
+          '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const fmtNum = (n, d = 1) =>
+          n.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+
+        function showEmpty() {
+          els.results.innerHTML = `
+            <div class="result-empty">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              <p>Enter length and width to see boards, joists, fasteners, labor and total cost.</p>
+            </div>`;
+        }
+
+        function showError(msg) {
+          els.results.innerHTML = `<div class="result-error">${msg}</div>`;
+        }
+
+        // ───────── Core calc ─────────
+        function compute() {
+          const lengthFt = num(els.lengthFt);
+          const lengthIn = num(els.lengthIn);
+          const widthFt  = num(els.widthFt);
+          const widthIn  = num(els.widthIn);
+
+          const length = lengthFt + lengthIn / 12;
+          const width  = widthFt + widthIn / 12;
+
+          if (length <= 0 || width <= 0) {
+            showEmpty();
+            return;
+          }
+
+          const sqFt = length * width;
+          const sqFtWithOverage = sqFt * OVERAGE;
+
+          // Joist spacing in feet
+          const spacingIn = parseFloat(els.joistSpacing.value);
+          const spacingFt = spacingIn / 12;
+          const orientation = els.orientation.value;
+
+          // ───── Boards ─────
+          // Boards run perpendicular to joists. So if boards run perpendicular
+          // to the house, joists run parallel to the house, and the board count
+          // is determined by the dimension parallel to the house (length).
+          const boardCountSpan = orientation === 'parallel' ? width : length;
+          const boardLengthSpan = orientation === 'parallel' ? length : width;
+
+          const boardsNeeded = Math.ceil(boardCountSpan / EFFECTIVE_BOARD_WIDTH_FT);
+
+          // Theoretical board length = number of board-rows * length per row
+          const theoreticalBoardLength = boardsNeeded * boardLengthSpan;
+          // Apply overage once
+          const totalBoardLength = theoreticalBoardLength * OVERAGE;
+
+          // ───── Pricing ─────
+          const boardCostPerFt = num(els.boardCost);
+          const joistCostPerFt = num(els.joistCost);
+          const screwCost = num(els.screwCost);
+          const plugCost  = num(els.plugCost);
+          const laborCostPerSqFt = num(els.laborCost);
+
+          // ───── Length-option logic (single board per row, no splice) ─────
+          let lengthOptions = [];
+          let bestOption = null;
+          let boardCostTotal = 0;
+          let isSpliced = false;
+          let splice = null;
+
+          if (boardLengthSpan <= 20) {
+            // For each standard length, what's the cost if every row uses that length?
+            // We assume one full-length board per row (no end-to-end splices).
+            // numBoards = boardsNeeded * ceil(span/len) per row, but since boardLengthSpan <= 20
+            // and minimum standard is 12, ceil(span/len) is always 1 for len >= span.
+            STD_LENGTHS.forEach(len => {
+              if (len >= boardLengthSpan) {
+                const purchasedLength = boardsNeeded * len;
+                // Theoretical "actually used" length per row is just boardLengthSpan,
+                // but we still want to show overage savings in waste calc.
+                const actuallyUsedPerRow = boardLengthSpan;
+                const wastePerRow = len - actuallyUsedPerRow;
+                const totalWaste = wastePerRow * boardsNeeded;
+                const cost = purchasedLength * boardCostPerFt;
+                lengthOptions.push({
+                  len,
+                  numBoards: boardsNeeded,
+                  purchasedLength,
+                  waste: totalWaste,
+                  wastePerRow,
+                  cost,
+                });
+              }
+            });
+
+            if (lengthOptions.length === 0) {
+              showError('No standard board length covers this span. Spans 12–20 ft are supported in single-length mode.');
+              return;
+            }
+
+            // Best = lowest waste (ties broken by lowest cost)
+            bestOption = lengthOptions.reduce((a, b) => {
+              if (b.waste < a.waste) return b;
+              if (b.waste === a.waste && b.cost < a.cost) return b;
+              return a;
+            });
+            // Apply 7.5% overage to the recommended option only (extra-board contingency)
+            const overageBoards = Math.ceil(bestOption.numBoards * (OVERAGE - 1));
+            bestOption.overageBoards = overageBoards;
+            bestOption.purchasedWithOverage = bestOption.purchasedLength + overageBoards * bestOption.len;
+            bestOption.costWithOverage = bestOption.purchasedWithOverage * boardCostPerFt;
+            boardCostTotal = bestOption.costWithOverage;
+          } else if (boardLengthSpan <= 40) {
+            // Spliced: one 20 ft board + smallest std length covering remainder
+            isSpliced = true;
+            const remainder = boardLengthSpan - 20;
+            let rightLen = STD_LENGTHS.find(l => l >= remainder);
+            if (!rightLen) rightLen = 20;
+            const purchasedPerRow = 20 + rightLen;
+            const wastePerRow = purchasedPerRow - boardLengthSpan;
+            // Apply 7.5% overage as additional contingency boards (round up rows)
+            const baseRows = boardsNeeded;
+            const overageRows = Math.ceil(baseRows * (OVERAGE - 1));
+            const totalRows = baseRows + overageRows;
+            const totalPurchasedLength = totalRows * purchasedPerRow;
+            const cost = totalPurchasedLength * boardCostPerFt;
+            splice = {
+              leftLen: 20,
+              rightLen,
+              purchasedPerRow,
+              wastePerRow,
+              baseRows,
+              overageRows,
+              totalRows,
+              totalPurchasedLength,
+              cost,
+            };
+            boardCostTotal = cost;
+          } else {
+            showError('Span exceeds 40 ft. A custom structural design is required, please contact our engineering team.');
+            return;
+          }
+
+          // ───── Joists ─────
+          // Joists run perpendicular to boards.
+          // Joist span = the dimension along which joists are laid out (= board count span)
+          // Joist length = the dimension across the deck (= board length span)
+          const joistRunSpan = boardCountSpan;
+          const joistLength = boardLengthSpan;
+          // floor(span/spacing) + 1, plus 1 doubled rim on each end = +2 extra
+          const interiorJoists = Math.floor(joistRunSpan / spacingFt) + 1;
+          const rimJoists = 2; // doubled rim, one on each end (the outer joists are already counted, we add a sister on each)
+          const joistCount = interiorJoists + rimJoists;
+          const totalJoistLength = joistCount * joistLength;
+          const joistCostTotal = totalJoistLength * joistCostPerFt;
+
+          // ───── Fasteners (face-screw + plug) ─────
+          // 2 screws and 2 plugs per board/joist intersection.
+          // Intersections = boards * joists touched. Boards = boardsNeeded.
+          // But for spliced rows, each row has 2 boards spanning, so intersections on
+          // shared joists are doubled at the splice. Approximate: intersections =
+          // (board rows × joist count) for non-spliced; spliced adds ~2 extra per row
+          // for the splice block. We'll keep the simple, conservative formula.
+          const intersections = boardsNeeded * joistCount;
+          const totalScrews = intersections * 2;
+          const totalPlugs  = intersections * 2;
+          const screwCostTotal = totalScrews * screwCost;
+          const plugCostTotal  = totalPlugs * plugCost;
+
+          // ───── Labor ─────
+          const laborCostTotal = laborCostPerSqFt * sqFt;
+
+          // ───── Totals ─────
+          const materialCost = boardCostTotal + joistCostTotal + screwCostTotal + plugCostTotal;
+          const grandTotal = materialCost + laborCostTotal;
+
+          render({
+            length, width, sqFt, sqFtWithOverage,
+            boardsNeeded, theoreticalBoardLength, totalBoardLength,
+            lengthOptions, bestOption, isSpliced, splice, boardCostTotal,
+            joistCount, joistLength, joistCostTotal,
+            totalScrews, totalPlugs, screwCostTotal, plugCostTotal,
+            laborCostPerSqFt, laborCostTotal,
+            materialCost, grandTotal,
+            orientation,
+          });
+        }
+
+        // ───────── Render ─────────
+        function render(r) {
+          const lineLabel = els.line() === 'truegrain' ? 'TrueGrain Deck&trade;' : 'Standard PVC';
+
+          let boardSection = '';
+          if (r.isSpliced) {
+            const s = r.splice;
+            boardSection = `
+              <div class="result-section-title">Boards, ${lineLabel} (spliced)</div>
+              <ul class="result-list">
+                <li>
+                  <span class="item-label">Per row<span class="item-meta">20 ft + ${s.rightLen} ft, splice over a joist</span></span>
+                  <span class="item-value">${s.purchasedPerRow} ft</span>
+                </li>
+                <li>
+                  <span class="item-label">Rows of boards<span class="item-meta">${s.baseRows} base + ${s.overageRows} overage = ${s.totalRows}</span></span>
+                  <span class="item-value">${s.totalRows}</span>
+                </li>
+                <li>
+                  <span class="item-label">Total purchased<span class="item-meta">7.5% overage included</span></span>
+                  <span class="item-value">${fmtNum(s.totalPurchasedLength)} ft</span>
+                </li>
+                <li>
+                  <span class="item-label">Boards cost</span>
+                  <span class="item-value">${fmtMoney(r.boardCostTotal)}</span>
+                </li>
+              </ul>`;
+          } else {
+            const b = r.bestOption;
+            const otherOpts = r.lengthOptions.filter(o => o.len !== b.len);
+            boardSection = `
+              <div class="result-section-title">Boards, ${lineLabel}</div>
+              <div class="length-options">
+                <div class="length-option is-best">
+                  <span class="len">${b.len}'</span>
+                  <span class="meta">
+                    <strong>${b.numBoards} boards</strong> + ${b.overageBoards} overage = ${b.numBoards + b.overageBoards} total<br>
+                    ${fmtNum(b.purchasedWithOverage)} ft purchased
+                    <span class="badge">Best</span>
+                  </span>
+                  <span class="opt-cost">${fmtMoney(b.costWithOverage)}</span>
+                </div>
+                ${otherOpts.map(o => {
+                  const overageBoards = Math.ceil(o.numBoards * (OVERAGE - 1));
+                  const purchasedWithOverage = o.purchasedLength + overageBoards * o.len;
+                  const costWithOverage = purchasedWithOverage * num(els.boardCost);
+                  return `
+                    <div class="length-option">
+                      <span class="len">${o.len}'</span>
+                      <span class="meta">
+                        ${o.numBoards} boards + ${overageBoards} overage<br>
+                        ${fmtNum(purchasedWithOverage)} ft, waste ${fmtNum(o.wastePerRow)} ft/row
+                      </span>
+                      <span class="opt-cost">${fmtMoney(costWithOverage)}</span>
+                    </div>`;
+                }).join('')}
+              </div>`;
+          }
+
+          els.results.innerHTML = `
+            <div class="result-grandtotal">
+              <span class="label">Estimated total</span>
+              <span class="value">${fmtMoney(r.grandTotal)}</span>
+            </div>
+
+            <div class="result-section-title">Deck area</div>
+            <ul class="result-list">
+              <li>
+                <span class="item-label">${fmtNum(r.length)} ft &times; ${fmtNum(r.width)} ft<span class="item-meta">${r.orientation === 'parallel' ? 'Boards parallel to house' : 'Boards perpendicular to house'}</span></span>
+                <span class="item-value">${fmtNum(r.sqFt)} sq ft</span>
+              </li>
+            </ul>
+
+            ${boardSection}
+
+            <div class="result-section-title">Framing</div>
+            <ul class="result-list">
+              <li>
+                <span class="item-label">Joists, PT<span class="item-meta">${r.joistCount} pieces &times; ${fmtNum(r.joistLength)} ft each</span></span>
+                <span class="item-value">${fmtMoney(r.joistCostTotal)}</span>
+              </li>
+            </ul>
+
+            <div class="result-section-title">Fasteners</div>
+            <ul class="result-list">
+              <li>
+                <span class="item-label">Screws<span class="item-meta">${r.totalScrews.toLocaleString()} pcs, 2 per intersection</span></span>
+                <span class="item-value">${fmtMoney(r.screwCostTotal)}</span>
+              </li>
+              <li>
+                <span class="item-label">Plugs<span class="item-meta">${r.totalPlugs.toLocaleString()} pcs, 2 per intersection</span></span>
+                <span class="item-value">${fmtMoney(r.plugCostTotal)}</span>
+              </li>
+            </ul>
+
+            <div class="result-section-title">Cost summary</div>
+            <ul class="result-list">
+              <li>
+                <span class="item-label">Material subtotal</span>
+                <span class="item-value">${fmtMoney(r.materialCost)}</span>
+              </li>
+              ${r.laborCostTotal > 0 ? `
+                <li>
+                  <span class="item-label">Labor<span class="item-meta">@ ${fmtMoney(r.laborCostPerSqFt)} / sq ft</span></span>
+                  <span class="item-value">${fmtMoney(r.laborCostTotal)}</span>
+                </li>` : ''}
+            </ul>
+
+            <div class="result-cta">
+              <p>Ready to source materials?</p>
+              <a class="btn btn--ghost-light" href="contact.html">Contact American Pro</a>
+            </div>
+          `;
+        }
+
+        // ───────── Wire-up ─────────
+        const allInputs = document.querySelectorAll('#calc-form input, #calc-form select');
+        allInputs.forEach(el => el.addEventListener('input', compute));
+
+        els.resetBtn.addEventListener('click', () => {
+          els.lengthFt.value = '';
+          els.lengthIn.value = '';
+          els.widthFt.value  = '';
+          els.widthIn.value  = '';
+          els.orientation.value = 'perpendicular';
+          els.joistSpacing.value = '16';
+          document.getElementById('line-standard').checked = true;
+          els.boardCost.value = '6.00';
+          els.joistCost.value = '1.65';
+          els.screwCost.value = '0.09';
+          els.plugCost.value  = '0.09';
+          els.laborCost.value = '15.00';
+          showEmpty();
+        });
+
+        els.printBtn.addEventListener('click', () => window.print());
+
+        // First paint
+        showEmpty();
+      })();
+    </script>
+  </body>
+</html>
