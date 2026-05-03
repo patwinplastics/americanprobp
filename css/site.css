@@ -208,9 +208,6 @@
   padding: 0.625rem 1.125rem;
   font-size: 0.8125rem;
   line-height: 1.2;
-  border-radius: 0.5rem;
-  height: auto;
-  min-height: 0;
 }
 
 .menu-toggle {
@@ -237,6 +234,7 @@
 
 /* Mobile menu */
 .mobile-menu {
+  display: none;
   position: fixed;
   inset: 6.5rem 0 auto 0;
   background: var(--color-surface);
@@ -246,6 +244,9 @@
   transform: translateY(-110%);
   transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: var(--shadow-lg);
+}
+@media (max-width: 960px) {
+  .mobile-menu { display: block; }
 }
 .mobile-menu.is-open { transform: translateY(0); }
 .mobile-menu ul { display: grid; gap: var(--space-3); }
