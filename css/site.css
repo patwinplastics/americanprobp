@@ -204,6 +204,11 @@
   align-items: center;
   gap: 0.4rem;
 }
+.header-actions .btn {
+  padding: 0.625rem 1.125rem;
+  font-size: 0.8125rem;
+  line-height: 1.2;
+}
 
 .menu-toggle {
   display: none;
