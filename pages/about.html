@@ -45,25 +45,33 @@
         background: radial-gradient(circle at 90% 0%, rgba(255,255,255,0.08), transparent 55%);
         pointer-events: none;
       }
-      .capabilities-head { max-width: 60ch; margin-bottom: var(--space-10); position: relative; }
+      .capabilities-head { max-width: 64ch; margin-bottom: var(--space-12); position: relative; }
       .capabilities-head .eyebrow { color: var(--color-accent); }
-      .capabilities-head h2 { color: #fff; font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); letter-spacing: -0.02em; margin-bottom: var(--space-4); }
+      .capabilities-head h2 { color: #fff; font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); letter-spacing: -0.02em; margin-bottom: var(--space-5); }
       .capabilities-head h2 em { font-style: italic; font-weight: 400; }
-      .capabilities-head p { color: rgba(255,255,255,0.82); font-size: var(--text-base); line-height: 1.65; }
-      .cap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-6); position: relative; }
-      .cap-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius-md); padding: var(--space-7); }
-      .cap-card-num { display: inline-block; font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-accent); letter-spacing: 0.18em; font-weight: 600; margin-bottom: var(--space-3); }
-      .cap-card h3 { color: #fff; font-family: var(--font-display); font-size: var(--text-lg); font-weight: 500; margin-bottom: var(--space-3); letter-spacing: -0.01em; }
-      .cap-card p { color: rgba(255,255,255,0.78); font-size: var(--text-sm); line-height: 1.6; margin: 0 0 var(--space-4) 0; }
-      .cap-card p:last-child { margin-bottom: 0; }
-      .cap-card .cap-meta { display: block; margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid rgba(255,255,255,0.10); }
-      .cap-card .cap-meta-label { display: block; font-family: var(--font-body); font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 600; margin-bottom: var(--space-2); }
-      .cap-card .cap-meta-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-      .cap-card .cap-meta-list span { display: inline-block; padding: 0.2rem 0.55rem; border-radius: var(--radius-full); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13); color: rgba(255,255,255,0.85); font-size: 0.75rem; font-weight: 500; line-height: 1.45; }
-      .cap-card .cap-spec { font-size: var(--text-sm); color: rgba(255,255,255,0.78); line-height: 1.6; }
+      .capabilities-head p { color: rgba(255,255,255,0.82); font-size: var(--text-base); line-height: 1.7; }
+      .cap-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-6); position: relative; }
+      @media (min-width: 720px) {
+        .cap-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-7); }
+      }
+      @media (min-width: 1180px) {
+        .cap-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-8); }
+      }
+      .cap-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-lg); padding: var(--space-8); display: flex; flex-direction: column; }
+      @media (min-width: 720px) {
+        .cap-card { padding: var(--space-10); }
+      }
+      .cap-card-num { display: inline-block; font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-accent); letter-spacing: 0.18em; font-weight: 600; margin-bottom: var(--space-5); text-transform: uppercase; }
+      .cap-card h3 { color: #fff; font-family: var(--font-display); font-size: clamp(1.375rem, 2vw, 1.625rem); font-weight: 500; margin-bottom: var(--space-5); letter-spacing: -0.015em; line-height: 1.2; }
+      .cap-card p { color: rgba(255,255,255,0.78); font-size: var(--text-base); line-height: 1.7; margin: 0; }
+      .cap-card .cap-meta { display: block; margin-top: var(--space-7); padding-top: var(--space-6); border-top: 1px solid rgba(255,255,255,0.10); }
+      .cap-card .cap-meta-label { display: block; font-family: var(--font-body); font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-weight: 600; margin-bottom: var(--space-3); }
+      .cap-card .cap-meta-list { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+      .cap-card .cap-meta-list span { display: inline-block; padding: 0.3rem 0.7rem; border-radius: var(--radius-full); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.88); font-size: 0.8125rem; font-weight: 500; line-height: 1.4; }
+      .cap-card .cap-spec { font-size: var(--text-base); color: rgba(255,255,255,0.78); line-height: 1.7; }
       .cap-card .cap-spec strong { color: #fff; font-weight: 600; }
-      .cap-footnote { position: relative; margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid rgba(255,255,255,0.14); display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-8); }
-      .cap-footnote p { color: rgba(255,255,255,0.78); font-size: var(--text-sm); margin: 0; max-width: 60ch; }
+      .cap-footnote { position: relative; margin-top: var(--space-10); padding-top: var(--space-7); border-top: 1px solid rgba(255,255,255,0.14); display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-5) var(--space-8); }
+      .cap-footnote p { color: rgba(255,255,255,0.78); font-size: var(--text-base); line-height: 1.7; margin: 0; max-width: 62ch; }
       .cap-footnote .btn { flex-shrink: 0; }
     </style>
   </head>
@@ -166,7 +174,7 @@
       </section>
 
       <!-- Capabilities (OEM / spec / architect) -->
-      <section class="section">
+      <section class="section" id="capabilities">
         <div class="container">
           <div class="capabilities" data-reveal>
             <div class="capabilities-head">
@@ -239,7 +247,7 @@
                 </div>
               </div>
               <div class="cap-card">
-                <span class="cap-card-num">04 / Prototyping &amp; development</span>
+                <span class="cap-card-num">04 / Prototyping</span>
                 <h3>3D-printed profile prototypes</h3>
                 <p>
                   Bring a drawing, a sample, or a problem. We model the
