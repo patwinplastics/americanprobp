@@ -170,6 +170,23 @@
   right: 0;
 }
 
+.nav a.nav-external {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.nav a.nav-external::after { display: none; }
+.nav-external-arrow {
+  color: var(--color-accent);
+  font-size: 0.85em;
+  font-weight: 600;
+  display: inline-block;
+  transition: transform 220ms ease;
+}
+.nav a.nav-external:hover .nav-external-arrow {
+  transform: translate(2px, -2px);
+}
+
 .header-actions {
   display: flex;
   align-items: center;
