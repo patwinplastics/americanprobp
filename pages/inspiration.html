@@ -101,14 +101,18 @@
               <p>Order free samples or talk to our sales team about your project. We're happy to help you spec the right product for any home.</p>
             </div>
             <div class="form-card" data-reveal data-reveal-delay="1">
-              <form data-demo>
+              <form data-formspree="mlgzgqnn" action="https://formspree.io/f/mlgzgqnn" method="POST">
+                <input type="hidden" name="_subject" value="Sample request from Inspiration page" />
+                <input type="hidden" name="_next" value="./thanks.html" />
+                <input type="hidden" name="_form_source" value="inspiration" />
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-10000px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
                 <div class="form-grid">
-                  <div class="field"><label for="first">First Name</label><input id="first" type="text" required /></div>
-                  <div class="field"><label for="last">Last Name</label><input id="last" type="text" required /></div>
-                  <div class="field form-row"><label for="email">Email</label><input id="email" type="email" required /></div>
-                  <div class="field"><label for="zip">ZIP Code</label><input id="zip" type="text" required /></div>
+                  <div class="field"><label for="first">First Name</label><input id="first" name="first_name" type="text" required autocomplete="given-name" /></div>
+                  <div class="field"><label for="last">Last Name</label><input id="last" name="last_name" type="text" required autocomplete="family-name" /></div>
+                  <div class="field form-row"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email" /></div>
+                  <div class="field"><label for="zip">ZIP Code</label><input id="zip" name="zip" type="text" required autocomplete="postal-code" /></div>
                   <div class="field"><label for="role">I Am A</label>
-                    <select id="role" required><option value="">Select…</option><option>Homeowner</option><option>Builder / Contractor</option><option>Architect / Designer</option><option>Dealer</option></select>
+                    <select id="role" name="role" required><option value="">Select…</option><option>Homeowner</option><option>Builder / Contractor</option><option>Architect / Designer</option><option>Dealer</option></select>
                   </div>
                 </div>
                 <div class="form-submit">

@@ -51,23 +51,103 @@
     items.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // Form: prevent default, show success state
-  document.querySelectorAll('form[data-demo]').forEach((form) => {
-    form.addEventListener('submit', (e) => {
+  // Formspree form submit handler.
+  // Posts via fetch (so the page does not flash a Formspree-hosted screen),
+  // then redirects to the form's _next URL on success. If fetch fails for any
+  // reason (network, CORS, Formspree outage), the form is allowed to submit
+  // natively as a hard fallback so the lead is never silently lost.
+  document.querySelectorAll('form[data-formspree]').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      // Honeypot: if the hidden _gotcha field has any value, the submitter is
+      // a bot. Pretend success, do nothing.
+      const honey = form.querySelector('input[name="_gotcha"]');
+      if (honey && honey.value) {
+        e.preventDefault();
+        return;
+      }
+
+      // Only intercept if we have fetch. Otherwise let the browser submit
+      // natively and Formspree will redirect via _next.
+      if (typeof fetch !== 'function') return;
+
       e.preventDefault();
-      const card = form.closest('.form-card');
-      if (!card) return;
-      card.innerHTML = `
-        <div style="text-align:center; padding: 2rem 0;">
-          <div style="width:64px;height:64px;border-radius:50%;background:var(--color-success);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;color:#fff;">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <h3 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:.75rem;">Thank you</h3>
-          <p style="color:var(--color-text-muted);max-width:36ch;margin:0 auto;">We received your request. A specialist will reach out within one business day with the next steps.</p>
-        </div>
-      `;
+
+      const submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+      const originalLabel = submitBtn ? submitBtn.textContent : null;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+      }
+
+      const data = new FormData(form);
+      const next = form.querySelector('input[name="_next"]');
+      const nextUrl = next ? next.value : null;
+
+      try {
+        const res = await fetch(form.action, {
+          method: form.method || 'POST',
+          headers: { Accept: 'application/json' },
+          body: data,
+        });
+        if (res.ok) {
+          if (nextUrl) {
+            window.location.href = nextUrl;
+          } else {
+            renderInlineThanks(form);
+          }
+          return;
+        }
+        // Formspree returned 4xx/5xx. Show an error inline.
+        let detail = '';
+        try {
+          const j = await res.json();
+          if (j && j.errors && j.errors.length) {
+            detail = j.errors.map((er) => er.message).join(' ');
+          }
+        } catch (_) {}
+        showFormError(form, detail || 'We could not submit your request. Please try again, or call 1-877-442-6776.');
+      } catch (_) {
+        // Network failure. Fall back to native submit so the lead still lands
+        // in Formspree and the user sees the redirect.
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        }
+        form.submit();
+        return;
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      }
     });
   });
+
+  function renderInlineThanks(form) {
+    const card = form.closest('.form-card') || form;
+    card.innerHTML = `
+      <div style="text-align:center; padding: 2rem 0;">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--color-success);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;color:#fff;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:.75rem;">Thank you</h3>
+        <p style="color:var(--color-text-muted);max-width:36ch;margin:0 auto;">We received your request. A specialist will reach out within one business day.</p>
+      </div>
+    `;
+  }
+
+  function showFormError(form, message) {
+    let banner = form.querySelector('.form-error-banner');
+    if (!banner) {
+      banner = document.createElement('div');
+      banner.className = 'form-error-banner';
+      banner.setAttribute('role', 'alert');
+      banner.style.cssText = 'background:#fdecea;color:#a01b1b;border:1px solid #f3c2c2;border-radius:var(--radius-md);padding:.75rem 1rem;margin:0 0 1rem;font-size:var(--text-sm);';
+      form.insertBefore(banner, form.firstChild);
+    }
+    banner.textContent = message;
+  }
 
   // Active nav link by current path
   const path = location.pathname.replace(/\/+$/, '') || '/';

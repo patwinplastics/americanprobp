@@ -74,15 +74,19 @@
             <div class="form-card" data-reveal data-reveal-delay="1">
               <h2 style="font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-2);">Get a quote</h2>
               <p style="color: var(--color-text-muted); margin-bottom: var(--space-6); font-size: var(--text-sm);">Tell us about the project. We'll come back to you within one business day with the right product spec and pricing.</p>
-              <form data-demo>
+              <form data-formspree="mlgzgqnn" action="https://formspree.io/f/mlgzgqnn" method="POST">
+                <input type="hidden" name="_subject" value="Quote / contact request from Contact page" />
+                <input type="hidden" name="_next" value="./thanks.html" />
+                <input type="hidden" name="_form_source" value="contact" />
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-10000px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
                 <div class="form-grid">
-                  <div class="field"><label for="first">First Name</label><input id="first" type="text" required /></div>
-                  <div class="field"><label for="last">Last Name</label><input id="last" type="text" required /></div>
-                  <div class="field form-row"><label for="email">Email</label><input id="email" type="email" required /></div>
-                  <div class="field"><label for="phone">Phone</label><input id="phone" type="tel" /></div>
-                  <div class="field"><label for="zip">Project ZIP</label><input id="zip" type="text" required /></div>
+                  <div class="field"><label for="first">First Name</label><input id="first" name="first_name" type="text" required autocomplete="given-name" /></div>
+                  <div class="field"><label for="last">Last Name</label><input id="last" name="last_name" type="text" required autocomplete="family-name" /></div>
+                  <div class="field form-row"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email" /></div>
+                  <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" /></div>
+                  <div class="field"><label for="zip">Project ZIP</label><input id="zip" name="zip" type="text" required autocomplete="postal-code" /></div>
                   <div class="field form-row"><label for="role">I Am A</label>
-                    <select id="role" required>
+                    <select id="role" name="role" required>
                       <option value="">Select…</option>
                       <option>Homeowner</option>
                       <option>Builder / Contractor</option>
@@ -92,12 +96,12 @@
                   </div>
                   <div class="field form-row"><label>Product Interest</label>
                     <div class="checkbox-row">
-                      <label class="check"><input type="checkbox" name="interest" value="decking" /><span>Decking</span></label>
-                      <label class="check"><input type="checkbox" name="interest" value="porch" /><span>Porch Flooring</span></label>
-                      <label class="check"><input type="checkbox" name="interest" value="mouldings" /><span>Mouldings</span></label>
+                      <label class="check"><input type="checkbox" name="interest[]" value="Decking" /><span>Decking</span></label>
+                      <label class="check"><input type="checkbox" name="interest[]" value="Porch Flooring" /><span>Porch Flooring</span></label>
+                      <label class="check"><input type="checkbox" name="interest[]" value="Mouldings" /><span>Mouldings</span></label>
                     </div>
                   </div>
-                  <div class="field form-row"><label for="message">Tell us about your project</label><textarea id="message" placeholder="Square footage, profiles, timeline, anything else helpful…"></textarea></div>
+                  <div class="field form-row"><label for="message">Tell us about your project</label><textarea id="message" name="message" placeholder="Square footage, profiles, timeline, anything else helpful."></textarea></div>
                 </div>
                 <div class="form-submit">
                   <small>By submitting you agree to our privacy policy.</small>

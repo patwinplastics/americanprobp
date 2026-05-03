@@ -273,23 +273,27 @@
             </p>
           </div>
 
-          <form class="form-card" data-reveal>
+          <form class="form-card" data-reveal data-formspree="mlgzgqnn" action="https://formspree.io/f/mlgzgqnn" method="POST">
+            <input type="hidden" name="_subject" value="Decking sample request" />
+            <input type="hidden" name="_next" value="./thanks.html" />
+            <input type="hidden" name="_form_source" value="decking" />
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-10000px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
             <div class="form-grid">
-              <label class="field"><span>First Name *</span><input type="text" name="first_name" required /></label>
-              <label class="field"><span>Last Name *</span><input type="text" name="last_name" required /></label>
-              <label class="field field--full"><span>Address *</span><input type="text" name="address" required /></label>
-              <label class="field"><span>Email *</span><input type="email" name="email" required /></label>
-              <label class="field"><span>Phone</span><input type="tel" name="phone" /></label>
+              <label class="field"><span>First Name *</span><input type="text" name="first_name" autocomplete="given-name" required /></label>
+              <label class="field"><span>Last Name *</span><input type="text" name="last_name" autocomplete="family-name" required /></label>
+              <label class="field field--full"><span>Address *</span><input type="text" name="address" autocomplete="street-address" required /></label>
+              <label class="field"><span>Email *</span><input type="email" name="email" autocomplete="email" required /></label>
+              <label class="field"><span>Phone</span><input type="tel" name="phone" autocomplete="tel" /></label>
 
               <fieldset class="field field--full">
                 <legend>Choose Your Samples</legend>
                 <div class="swatch-checks">
-                  <label><input type="checkbox" name="samples" value="Driftwood" /> Driftwood</label>
-                  <label><input type="checkbox" name="samples" value="Khaki" /> Khaki</label>
-                  <label><input type="checkbox" name="samples" value="Hazelnut" /> Hazelnut</label>
-                  <label><input type="checkbox" name="samples" value="Beachwood" /> Beachwood</label>
-                  <label><input type="checkbox" name="samples" value="Chestnut" /> Chestnut</label>
-                  <label><input type="checkbox" name="samples" value="Redwood" /> Redwood</label>
+                  <label><input type="checkbox" name="samples[]" value="Driftwood" /> Driftwood</label>
+                  <label><input type="checkbox" name="samples[]" value="Khaki" /> Khaki</label>
+                  <label><input type="checkbox" name="samples[]" value="Hazelnut" /> Hazelnut</label>
+                  <label><input type="checkbox" name="samples[]" value="Beachwood" /> Beachwood</label>
+                  <label><input type="checkbox" name="samples[]" value="Chestnut" /> Chestnut</label>
+                  <label><input type="checkbox" name="samples[]" value="Redwood" /> Redwood</label>
                 </div>
               </fieldset>
 

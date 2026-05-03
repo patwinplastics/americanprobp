@@ -346,15 +346,19 @@
             </div>
 
             <div class="form-card" data-reveal data-reveal-delay="1">
-              <form data-demo>
+              <form data-formspree="mlgzgqnn" action="https://formspree.io/f/mlgzgqnn" method="POST">
+                <input type="hidden" name="_subject" value="Sample request from Home page" />
+                <input type="hidden" name="_next" value="./pages/thanks.html" />
+                <input type="hidden" name="_form_source" value="home" />
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-10000px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
                 <div class="form-grid">
                   <div class="field">
                     <label for="first">First Name</label>
-                    <input id="first" name="first" type="text" required autocomplete="given-name" />
+                    <input id="first" name="first_name" type="text" required autocomplete="given-name" />
                   </div>
                   <div class="field">
                     <label for="last">Last Name</label>
-                    <input id="last" name="last" type="text" required autocomplete="family-name" />
+                    <input id="last" name="last_name" type="text" required autocomplete="family-name" />
                   </div>
                   <div class="field form-row">
                     <label for="email">Email</label>
@@ -377,9 +381,9 @@
                   <div class="field form-row">
                     <label>Send Samples Of</label>
                     <div class="checkbox-row">
-                      <label class="check"><input type="checkbox" name="samples" value="decking" /><span>Decking</span></label>
-                      <label class="check"><input type="checkbox" name="samples" value="porch" /><span>Porch Flooring</span></label>
-                      <label class="check"><input type="checkbox" name="samples" value="mouldings" /><span>Mouldings</span></label>
+                      <label class="check"><input type="checkbox" name="samples[]" value="Decking" /><span>Decking</span></label>
+                      <label class="check"><input type="checkbox" name="samples[]" value="Porch Flooring" /><span>Porch Flooring</span></label>
+                      <label class="check"><input type="checkbox" name="samples[]" value="Mouldings" /><span>Mouldings</span></label>
                     </div>
                   </div>
                 </div>
