@@ -41,10 +41,53 @@
       .profile-tag { display: inline-block; font-size: var(--text-xs); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent); font-weight: 600; margin-bottom: var(--space-2); }
 
       /* Calculator quick-reference */
-      .calc-card { background: var(--color-primary); color: #fff; border-radius: var(--radius-lg); padding: clamp(var(--space-7), 4vw, var(--space-10)); display: grid; grid-template-columns: 1fr auto; gap: var(--space-6); align-items: center; }
-      @media (max-width: 700px) { .calc-card { grid-template-columns: 1fr; } }
-      .calc-card h3 { color: #fff; font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 500; letter-spacing: -0.015em; margin-bottom: var(--space-3); }
-      .calc-card p { color: rgba(255,255,255,.82); font-size: var(--text-sm); margin: 0; max-width: 60ch; }
+      .calc-card {
+        position: relative;
+        background: var(--color-primary);
+        color: #fff;
+        border-radius: var(--radius-lg);
+        padding: clamp(var(--space-10), 6vw, var(--space-16)) clamp(var(--space-7), 5vw, var(--space-14));
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: clamp(var(--space-6), 4vw, var(--space-10));
+        align-items: center;
+        overflow: hidden;
+        box-shadow: var(--shadow-lg, 0 18px 40px -12px rgba(14,31,58,0.35));
+      }
+      .calc-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 0 0;
+        background: radial-gradient(circle at 80% -10%, rgba(255,255,255,0.10), transparent 55%);
+        pointer-events: none;
+      }
+      .calc-card-eyebrow {
+        display: inline-flex; align-items: center; gap: var(--space-2);
+        font-size: var(--text-xs); letter-spacing: 0.18em; text-transform: uppercase;
+        font-weight: 600; color: var(--color-accent);
+        margin-bottom: var(--space-4);
+      }
+      .calc-card-eyebrow::before {
+        content: ""; display: inline-block; width: 28px; height: 2px; background: var(--color-accent);
+      }
+      @media (max-width: 700px) { .calc-card { grid-template-columns: 1fr; text-align: left; } }
+      .calc-card h3 {
+        color: #fff;
+        font-family: var(--font-display);
+        font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+        font-weight: 500;
+        letter-spacing: -0.015em;
+        line-height: 1.05;
+        margin-bottom: var(--space-5);
+      }
+      .calc-card p {
+        color: rgba(255,255,255,.85);
+        font-size: var(--text-base);
+        margin: 0;
+        max-width: 60ch;
+        line-height: 1.6;
+      }
+      .calc-card .btn { position: relative; }
 
       /* Sample checkbox grid */
       .swatch-checks { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-2); }
@@ -225,6 +268,7 @@
         <div class="container">
           <div class="calc-card" data-reveal>
             <div>
+              <span class="calc-card-eyebrow">Project Estimator</span>
               <h3>Plan your deck<br /><em>with the calculator.</em></h3>
               <p>
                 Enter your square footage or dimensions and we'll estimate

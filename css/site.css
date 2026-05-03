@@ -209,7 +209,12 @@
    full logo lockup without text wrap. */
 @media (max-width: 540px) {
   .header-actions .btn--primary { display: none; }
-  .logo-img { height: 60px; }
+  /* Bump mobile logo and give the header more vertical room so the flag
+     mark on top of the lockup reads cleanly instead of compressing into
+     a single thin red bar. */
+  .header-inner { min-height: 7.5rem; padding-block: 1.75rem 1.25rem; }
+  .logo-img { height: 76px; }
+  .mobile-menu { inset: 7.5rem 0 auto 0; }
 }
 
 /* Mobile menu */
