@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://americanprobp.com/</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://americanprobp.com/images/og/og-default.jpg</image:loc>
+      <image:title>American Pro PVC decking</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/about.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://americanprobp.com/images/og/og-about.jpg</image:loc>
+      <image:title>Patwin Plastics extrusion facility, Linden NJ</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/decking.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://americanprobp.com/images/og/og-decking.jpg</image:loc>
+      <image:title>TrueGrain Deck PVC decking boards</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/porch.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://americanprobp.com/images/og/og-porch.jpg</image:loc>
+      <image:title>PVC tongue and groove porch flooring</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/mouldings.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://americanprobp.com/images/og/og-mouldings.jpg</image:loc>
+      <image:title>PVC architectural mouldings and trim</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/inspiration.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/calculator.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/contact.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+</urlset>

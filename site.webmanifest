@@ -1,0 +1,25 @@
+{
+  "name": "American Pro Building Products",
+  "short_name": "American Pro",
+  "description": "American-made PVC decking, porch flooring, and architectural mouldings. Manufactured by Patwin Plastics in Linden, NJ.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fbfaf7",
+  "theme_color": "#0e1f3a",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
