@@ -54,7 +54,14 @@
       .cap-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius-md); padding: var(--space-7); }
       .cap-card-num { display: inline-block; font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-accent); letter-spacing: 0.18em; font-weight: 600; margin-bottom: var(--space-3); }
       .cap-card h3 { color: #fff; font-family: var(--font-display); font-size: var(--text-lg); font-weight: 500; margin-bottom: var(--space-3); letter-spacing: -0.01em; }
-      .cap-card p { color: rgba(255,255,255,0.78); font-size: var(--text-sm); line-height: 1.6; margin: 0; }
+      .cap-card p { color: rgba(255,255,255,0.78); font-size: var(--text-sm); line-height: 1.6; margin: 0 0 var(--space-4) 0; }
+      .cap-card p:last-child { margin-bottom: 0; }
+      .cap-card .cap-meta { display: block; margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid rgba(255,255,255,0.10); }
+      .cap-card .cap-meta-label { display: block; font-family: var(--font-body); font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 600; margin-bottom: var(--space-2); }
+      .cap-card .cap-meta-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+      .cap-card .cap-meta-list span { display: inline-block; padding: 0.2rem 0.55rem; border-radius: var(--radius-full); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13); color: rgba(255,255,255,0.85); font-size: 0.75rem; font-weight: 500; line-height: 1.45; }
+      .cap-card .cap-spec { font-size: var(--text-sm); color: rgba(255,255,255,0.78); line-height: 1.6; }
+      .cap-card .cap-spec strong { color: #fff; font-weight: 600; }
       .cap-footnote { position: relative; margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid rgba(255,255,255,0.14); display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-8); }
       .cap-footnote p { color: rgba(255,255,255,0.78); font-size: var(--text-sm); margin: 0; max-width: 60ch; }
       .cap-footnote .btn { flex-shrink: 0; }
@@ -166,66 +173,106 @@
               <span class="eyebrow">Capabilities</span>
               <h2>What we do<br /><em>in-house.</em></h2>
               <p>
-                Patwin is a vertically integrated PVC extruder. Compound
-                chemistry, die design, tooling, extrusion, capping, and
-                lamination all happen under one roof in Linden, NJ. For OEMs,
-                architects, and spec writers, that means one phone call from
-                drawing to production sample, and a single party accountable
-                for the finished profile.
+                Patwin Plastics is a vertically integrated polymer extruder
+                handling compound chemistry, tooling, extrusion, and reinforced
+                composite co-extrusion under one roof in Linden, NJ. One
+                point of accountability from drawing to production sample,
+                with the full polymer slate, the die work, and the finished
+                profile owned by the same engineering team.
               </p>
             </div>
 
             <div class="cap-grid">
               <div class="cap-card">
                 <span class="cap-card-num">01 / Compounding</span>
-                <h3>We mix our own PVC</h3>
+                <h3>Compound mixed on-site</h3>
                 <p>
-                  Compound is formulated and mixed on-site, not bought as
-                  pellets. We control filler load, impact modifier, UV
-                  package, and color batch by lot. Same compound feeds both
-                  Standard PVC and TrueGrain Deck, mouldings, porch
-                  flooring, and OEM profiles.
+                  100% in-house compounding, no pellet sourcing. We control
+                  filler load, impact modifier, UV package, and regrind
+                  blend by lot, with full color matching on any color the
+                  job requires. Same compound feeds every Patwin profile,
+                  from OEM parts to American Pro decking.
+                </p>
+                <div class="cap-meta">
+                  <span class="cap-meta-label">Polymers processed</span>
+                  <div class="cap-meta-list">
+                    <span>Cellular PVC</span>
+                    <span>Rigid PVC</span>
+                    <span>Flexible PVC</span>
+                    <span>PE</span>
+                    <span>PP</span>
+                    <span>PS</span>
+                    <span>TPE</span>
+                  </div>
+                </div>
+              </div>
+              <div class="cap-card">
+                <span class="cap-card-num">02 / Tooling &amp; dies</span>
+                <h3>Dies designed and cut here</h3>
+                <p>
+                  The company was founded by a tool and die maker. Dies are
+                  designed, cut, and maintained internally, so timelines,
+                  modifications, and reorders never wait on an outside
+                  tool shop. Tooling work is also available to outside
+                  customers, with preference for exclusive production use
+                  on Patwin lines.
                 </p>
               </div>
               <div class="cap-card">
-                <span class="cap-card-num">02 / Custom design development</span>
-                <h3>Profiles built to spec</h3>
-                <p>
-                  Bring us a drawing, a sample, or just a problem. We engineer
-                  the profile, cut the die, run a test extrusion, and iterate
-                  until tolerances, finish, and downstream operations are
-                  right. Decades of POP display, furniture, and fence work
-                  feed back into every new development.
+                <span class="cap-card-num">03 / Extrusion</span>
+                <h3>Profiles up to 15&quot; &times; 8&quot;</h3>
+                <p class="cap-spec">
+                  Single-, dual-, and tri-extrusion across the full polymer
+                  slate, in profiles up to <strong>15&quot; wide and 8&quot;
+                  thick</strong>. Reinforced co-extrusion is run in-house
+                  with continuous glass fiber, aluminum, or carbon fiber
+                  cores bonded to polymer in a single pass. Capacity scales
+                  to meet OEM production volumes.
                 </p>
+                <div class="cap-meta">
+                  <span class="cap-meta-label">Reinforced composites</span>
+                  <div class="cap-meta-list">
+                    <span>Continuous glass fiber</span>
+                    <span>Aluminum</span>
+                    <span>Carbon fiber</span>
+                  </div>
+                </div>
               </div>
               <div class="cap-card">
-                <span class="cap-card-num">03 / Tooling &amp; dies</span>
-                <h3>Tool &amp; die in-house</h3>
+                <span class="cap-card-num">04 / Prototyping &amp; development</span>
+                <h3>3D-printed profile prototypes</h3>
                 <p>
-                  The company was founded by a tool and die maker, and we
-                  never let go of the discipline. Dies are designed, cut, and
-                  maintained internally so timelines, modifications, and
-                  reorders aren't dependent on outside tool shops.
+                  Bring a drawing, a sample, or a problem. We model the
+                  profile, 3D-print a prototype for fit and feasibility,
+                  iterate the geometry against downstream operations, then
+                  cut the production die. Customers see a part in hand
+                  before committing to tooling.
                 </p>
-              </div>
-              <div class="cap-card">
-                <span class="cap-card-num">04 / Extrusion &amp; finishing</span>
-                <h3>Extrude, cap, laminate</h3>
-                <p>
-                  Single-screw and twin-screw lines run cellular, solid, and
-                  capped PVC profiles. Capabilities include ASA capstock,
-                  decorative foil lamination (the system behind TrueGrain Deck),
-                  embossing, and color matching. Most parts ship the same
-                  week they're cut.
-                </p>
+                <div class="cap-meta">
+                  <span class="cap-meta-label">Markets served</span>
+                  <div class="cap-meta-list">
+                    <span>POP displays</span>
+                    <span>Furniture</span>
+                    <span>Fence</span>
+                    <span>Decking</span>
+                    <span>Mouldings</span>
+                    <span>Porch flooring</span>
+                    <span>OEM profiles</span>
+                    <span>Marine</span>
+                    <span>RV</span>
+                    <span>Transportation</span>
+                    <span>Window &amp; door</span>
+                  </div>
+                </div>
               </div>
             </div>
 
             <div class="cap-footnote">
               <p>
-                Spec'ing a custom profile, sourcing a private-label building
-                product, or replacing an offshore extruder? Send the drawing
-                or the sample. We'll come back with feasibility and a price.
+                Three ways to engage: send a drawing, send a sample, or
+                describe the problem. A 3D-printed prototype is the fastest
+                feasibility path before tooling is cut, and we can quote
+                back tolerances, materials, and price from any of the three.
               </p>
               <a href="./contact.html" class="btn btn--ghost-light">Talk to engineering</a>
             </div>
