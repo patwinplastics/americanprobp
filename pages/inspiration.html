@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inspiration Gallery — American Pro Building Products</title>
+    <meta name="description" content="Real homes, real decks, real porches built with American Pro PVC building products." />
+    <link href="https://api.fontshare.com/v2/css?f[]=boska@400,500,500i,700&f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+    <style>
+      .insp-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--space-4);
+      }
+      .insp-grid figure {
+        position: relative;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        margin: 0;
+      }
+      .insp-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms ease; }
+      .insp-grid figure:hover img { transform: scale(1.04); }
+      .insp-grid figcaption {
+        position: absolute;
+        left: 0; right: 0; bottom: 0;
+        padding: var(--space-6);
+        color: #fff;
+        background: linear-gradient(to top, rgba(14,31,58,.85), transparent);
+        font-family: var(--font-display);
+        font-size: var(--text-lg);
+      }
+      .insp-grid figcaption span {
+        display: block;
+        font-family: var(--font-body);
+        font-size: var(--text-xs);
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.8);
+        margin-bottom: var(--space-2);
+      }
+      .span-7 { grid-column: span 7; aspect-ratio: 4/3; }
+      .span-5 { grid-column: span 5; aspect-ratio: 4/3; }
+      .span-6 { grid-column: span 6; aspect-ratio: 4/3; }
+      .span-4 { grid-column: span 4; aspect-ratio: 1; }
+      .span-8 { grid-column: span 8; aspect-ratio: 16/9; }
+      .span-12 { grid-column: 1 / -1; aspect-ratio: 16/6; }
+      @media (max-width: 720px) {
+        .insp-grid { grid-template-columns: 1fr; }
+        .insp-grid figure { grid-column: 1 / -1 !important; aspect-ratio: 4/3 !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div data-include="header"></div>
+
+    <main>
+      <section class="page-banner">
+        <div class="container">
+          <span class="eyebrow">Inspiration</span>
+          <h1>Real homes, real decks,<br /><em>real American Pro.</em></h1>
+          <p>A collection of projects featuring American Pro decking, porch flooring, and mouldings. From New England farmhouses to Southern coastal homes.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="insp-grid" data-reveal>
+            <figure class="span-7">
+              <img src="../images/hero_deck.jpg" alt="Craftsman home with composite PVC deck" />
+              <figcaption><span>Coastal Driftwood · Decking</span>Sunset Hill Residence</figcaption>
+            </figure>
+            <figure class="span-5">
+              <img src="../images/gallery_pool.jpg" alt="Pool deck with grey PVC composite" />
+              <figcaption><span>Weathered Grey · Decking</span>Pool House Project</figcaption>
+            </figure>
+            <figure class="span-5">
+              <img src="../images/product_porch.jpg" alt="White PVC porch flooring on traditional home" />
+              <figcaption><span>White · Porch Flooring</span>Heritage Front Porch</figcaption>
+            </figure>
+            <figure class="span-7">
+              <img src="../images/gallery_sunset.jpg" alt="Backyard deck with dining setup at sunset" />
+              <figcaption><span>Charcoal Slate · Decking</span>Backyard Dining Deck</figcaption>
+            </figure>
+            <figure class="span-12">
+              <img src="../images/product_moulding.jpg" alt="White PVC architectural moulding" />
+              <figcaption><span>White · Mouldings</span>Colonial Trim Restoration</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section samples" id="samples">
+        <div class="container">
+          <div class="samples-inner">
+            <div data-reveal>
+              <span class="eyebrow">Get Started</span>
+              <h2>See it in your<br /><em>own home.</em></h2>
+              <p>Order free samples or talk to our sales team about your project. We're happy to help you spec the right product for any home.</p>
+            </div>
+            <div class="form-card" data-reveal data-reveal-delay="1">
+              <form data-demo>
+                <div class="form-grid">
+                  <div class="field"><label for="first">First Name</label><input id="first" type="text" required /></div>
+                  <div class="field"><label for="last">Last Name</label><input id="last" type="text" required /></div>
+                  <div class="field form-row"><label for="email">Email</label><input id="email" type="email" required /></div>
+                  <div class="field"><label for="zip">ZIP Code</label><input id="zip" type="text" required /></div>
+                  <div class="field"><label for="role">I Am A</label>
+                    <select id="role" required><option value="">Select…</option><option>Homeowner</option><option>Builder / Contractor</option><option>Architect / Designer</option><option>Dealer</option></select>
+                  </div>
+                </div>
+                <div class="form-submit">
+                  <small>By submitting you agree to our privacy policy.</small>
+                  <button type="submit" class="btn btn--primary">Send My Samples</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+    <script src="../pages/_partials.js"></script>
+    <script src="../js/site.js" defer></script>
+  </body>
+</html>

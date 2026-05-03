@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About — American Pro Building Products</title>
+    <meta name="description" content="American Pro Building Products is a division of Patwin Plastics — a family-run American PVC extruder operating since 1972." />
+    <link href="https://api.fontshare.com/v2/css?f[]=boska@400,500,500i,700&f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+    <style>
+      .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(var(--space-8), 5vw, var(--space-16)); align-items: start; }
+      @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } }
+      .about-image { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/5; box-shadow: var(--shadow-md); position: sticky; top: 6rem; }
+      @media (max-width: 800px) { .about-image { position: static; aspect-ratio: 4/3; } }
+      .about-image img { width: 100%; height: 100%; object-fit: cover; }
+      .about-prose h2 { font-size: var(--text-2xl); margin-block: var(--space-3) var(--space-6); letter-spacing: -0.025em; }
+      .about-prose h2 em { font-style: italic; font-weight: 400; }
+      .about-prose h3 { font-family: var(--font-display); font-size: var(--text-lg); margin-block: var(--space-8) var(--space-3); }
+      .about-prose p { color: var(--color-text-muted); margin-bottom: var(--space-4); max-width: 50ch; }
+      .about-prose p strong { color: var(--color-text); font-weight: 600; }
+
+      .timeline { display: grid; gap: var(--space-6); margin-top: var(--space-8); border-left: 1.5px solid var(--color-divider); padding-left: var(--space-6); }
+      .timeline-item { position: relative; }
+      .timeline-item::before {
+        content: ""; position: absolute; left: calc(var(--space-6) * -1 - 6px); top: 8px;
+        width: 11px; height: 11px; border-radius: 50%; background: var(--color-accent);
+        box-shadow: 0 0 0 4px var(--color-bg);
+      }
+      .timeline-year { font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-primary); font-weight: 500; line-height: 1; }
+      .timeline-text { color: var(--color-text-muted); margin-top: var(--space-2); font-size: var(--text-sm); }
+    </style>
+  </head>
+  <body>
+    <div data-include="header"></div>
+
+    <main>
+      <section class="page-banner">
+        <div class="container">
+          <span class="eyebrow">Our Story</span>
+          <h1>Fifty years of<br /><em>quiet American manufacturing.</em></h1>
+          <p>American Pro is the building products line of Patwin Plastics. We've been extruding PVC profiles in the United States since 1972 — and we make every American Pro product the same way.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="about-grid">
+            <div class="about-image" data-reveal>
+              <img src="../images/manufacturing.jpg" alt="American Pro PVC extrusion manufacturing facility" />
+            </div>
+
+            <div class="about-prose" data-reveal data-reveal-delay="1">
+              <span class="eyebrow">Quality &amp; Innovation</span>
+              <h2>The standard is<br /><em>the same standard.</em></h2>
+              <p>
+                When it comes to quality and innovation in the building materials
+                industry, there's no company that can compare to <strong>Patwin Plastics</strong>.
+                For over fifty years, we've been manufacturing products that are both
+                reliable and durable.
+              </p>
+              <p>
+                Our line of American Pro Building Products is no exception. These
+                profiles are made from <strong>UV-stabilized cellular PVC</strong>,
+                which means they won't split, crack, splinter, or rot.
+              </p>
+              <p>
+                So whether you're a design engineer looking for a product that will
+                stand the test of time, or a contractor who needs a product that's
+                easy to work with, or a homeowner who wants their porch to look like
+                it did the day it was built — Patwin is your go-to source.
+              </p>
+
+              <h3>What we believe</h3>
+              <p>
+                Most of what we make never carries our name. It goes into the windows,
+                doors, decks, and porches of homes across all fifty states. American Pro
+                is what we ship under our own banner: the products we'd put on our own
+                houses.
+              </p>
+              <p>
+                We don't chase trends. We extrude precision profiles, ship them on time,
+                and stand behind every linear foot.
+              </p>
+
+              <h3>The story so far</h3>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-year">1972</div>
+                  <div class="timeline-text">Patwin Plastics founded as a family-run American PVC extruder.</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-year">1990s</div>
+                  <div class="timeline-text">Become the OEM extrusion partner for major American window and door manufacturers.</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-year">2000s</div>
+                  <div class="timeline-text">Expand into architectural moulding and decorative profiles.</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-year">Today</div>
+                  <div class="timeline-text">Over 100 profiles in stock, decking and porch flooring lines, and dealers across the United States.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section samples" id="samples">
+        <div class="container">
+          <div class="samples-inner">
+            <div data-reveal>
+              <span class="eyebrow">Free Samples</span>
+              <h2>Try the<br /><em>real thing.</em></h2>
+              <p>The best way to understand what we make is to hold it. We'll send you full-size product samples — no obligation, no follow-up calls unless you ask for them.</p>
+            </div>
+            <div class="form-card" data-reveal data-reveal-delay="1">
+              <form data-demo>
+                <div class="form-grid">
+                  <div class="field"><label for="first">First Name</label><input id="first" type="text" required /></div>
+                  <div class="field"><label for="last">Last Name</label><input id="last" type="text" required /></div>
+                  <div class="field form-row"><label for="email">Email</label><input id="email" type="email" required /></div>
+                  <div class="field"><label for="zip">ZIP Code</label><input id="zip" type="text" required /></div>
+                  <div class="field"><label for="role">I Am A</label>
+                    <select id="role" required><option value="">Select…</option><option>Homeowner</option><option>Builder / Contractor</option><option>Architect / Designer</option><option>Dealer</option></select>
+                  </div>
+                </div>
+                <div class="form-submit">
+                  <small>By submitting you agree to our privacy policy.</small>
+                  <button type="submit" class="btn btn--primary">Send My Samples</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+    <script src="../pages/_partials.js"></script>
+    <script src="../js/site.js" defer></script>
+  </body>
+</html>

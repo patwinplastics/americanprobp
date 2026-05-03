@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact &amp; Get a Quote — American Pro Building Products</title>
+    <meta name="description" content="Get a quote for your project, request product information, or talk to our sales team. American Pro Building Products." />
+    <link href="https://api.fontshare.com/v2/css?f[]=boska@400,500,500i,700&f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+    <style>
+      .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(var(--space-8), 5vw, var(--space-16)); align-items: start; }
+      @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
+
+      .contact-info-card {
+        background: var(--color-surface-2);
+        border-radius: var(--radius-lg);
+        padding: clamp(var(--space-6), 4vw, var(--space-10));
+      }
+      .contact-info-card h3 {
+        font-family: var(--font-display);
+        font-size: var(--text-lg);
+        margin-bottom: var(--space-3);
+        margin-top: var(--space-6);
+      }
+      .contact-info-card h3:first-child { margin-top: 0; }
+      .contact-info-card a {
+        font-size: var(--text-base);
+        color: var(--color-text);
+        font-weight: 500;
+        border-bottom: 1.5px solid var(--color-text);
+        padding-bottom: 1px;
+      }
+      .contact-info-card a:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+      .contact-info-card p { color: var(--color-text-muted); font-size: var(--text-sm); margin-top: var(--space-2); }
+    </style>
+  </head>
+  <body>
+    <div data-include="header"></div>
+
+    <main>
+      <section class="page-banner">
+        <div class="container">
+          <span class="eyebrow">Get In Touch</span>
+          <h1>Talk to a real<br /><em>American Pro specialist.</em></h1>
+          <p>Whether you're spec'ing a product, sourcing for a build, or just want to know which profile fits your project — we're happy to help.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="contact-grid">
+            <div class="contact-info-card" data-reveal>
+              <h3>By phone</h3>
+              <a href="tel:18774426776">1-877-442-6776</a>
+              <p>Monday–Friday, 8:00 AM – 5:00 PM ET</p>
+
+              <h3>By email</h3>
+              <a href="mailto:sales@americanprobp.com">sales@americanprobp.com</a>
+              <p>We reply within one business day.</p>
+
+              <h3>Free product samples</h3>
+              <a href="../index.html#samples">Request samples</a>
+              <p>Free shipping anywhere in the continental U.S.</p>
+
+              <h3>For dealers</h3>
+              <a href="mailto:dealers@americanprobp.com">dealers@americanprobp.com</a>
+              <p>Pricing, account setup, and dealer territory inquiries.</p>
+            </div>
+
+            <div class="form-card" data-reveal data-reveal-delay="1">
+              <h2 style="font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-2);">Get a quote</h2>
+              <p style="color: var(--color-text-muted); margin-bottom: var(--space-6); font-size: var(--text-sm);">Tell us about the project. We'll come back to you within one business day with the right product spec and pricing.</p>
+              <form data-demo>
+                <div class="form-grid">
+                  <div class="field"><label for="first">First Name</label><input id="first" type="text" required /></div>
+                  <div class="field"><label for="last">Last Name</label><input id="last" type="text" required /></div>
+                  <div class="field form-row"><label for="email">Email</label><input id="email" type="email" required /></div>
+                  <div class="field"><label for="phone">Phone</label><input id="phone" type="tel" /></div>
+                  <div class="field"><label for="zip">Project ZIP</label><input id="zip" type="text" required /></div>
+                  <div class="field form-row"><label for="role">I Am A</label>
+                    <select id="role" required>
+                      <option value="">Select…</option>
+                      <option>Homeowner</option>
+                      <option>Builder / Contractor</option>
+                      <option>Architect / Designer</option>
+                      <option>Dealer / Distributor</option>
+                    </select>
+                  </div>
+                  <div class="field form-row"><label>Product Interest</label>
+                    <div class="checkbox-row">
+                      <label class="check"><input type="checkbox" name="interest" value="decking" /><span>Decking</span></label>
+                      <label class="check"><input type="checkbox" name="interest" value="porch" /><span>Porch Flooring</span></label>
+                      <label class="check"><input type="checkbox" name="interest" value="mouldings" /><span>Mouldings</span></label>
+                    </div>
+                  </div>
+                  <div class="field form-row"><label for="message">Tell us about your project</label><textarea id="message" placeholder="Square footage, profiles, timeline, anything else helpful…"></textarea></div>
+                </div>
+                <div class="form-submit">
+                  <small>By submitting you agree to our privacy policy.</small>
+                  <button type="submit" class="btn btn--primary">Send My Request</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+    <script src="../pages/_partials.js"></script>
+    <script src="../js/site.js" defer></script>
+  </body>
+</html>

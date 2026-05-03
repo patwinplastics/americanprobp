@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PVC Mouldings — American Pro Building Products</title>
+    <meta name="description" content="Over 100 architectural moulding profiles in cellular PVC: crown, casing, baseboard, brick mould, columns, and more. American-made, paint-ready." />
+    <link href="https://api.fontshare.com/v2/css?f[]=boska@400,500,500i,700&f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+    <style>
+      .moulding-hero { position: relative; min-height: 60vh; display: flex; align-items: flex-end; color: #fff; isolation: isolate; }
+      .moulding-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; object-position: center 40%; }
+      .moulding-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,31,58,.05), rgba(14,31,58,.78)); z-index: -1; }
+      .moulding-hero-inner { padding-block: var(--space-16) var(--space-12); }
+      .moulding-hero h1 { color: #fff; font-size: var(--text-3xl); max-width: 16ch; letter-spacing: -0.025em; }
+      .moulding-hero h1 em { font-style: italic; font-weight: 400; }
+      .moulding-hero p { color: rgba(255,255,255,.85); margin-top: var(--space-5); max-width: 50ch; }
+
+      .profile-cats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: var(--space-4);
+      }
+      .profile-card {
+        background: var(--color-surface);
+        border: 1px solid var(--color-divider);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        transition: var(--transition-interactive);
+      }
+      .profile-card:hover { transform: translateY(-3px); border-color: var(--color-text-muted); box-shadow: var(--shadow-md); }
+      .profile-count { font-family: var(--font-display); font-size: var(--text-2xl); color: var(--color-accent); font-weight: 500; line-height: 1; }
+      .profile-name { font-family: var(--font-display); font-size: var(--text-lg); margin: var(--space-3) 0 var(--space-2); }
+      .profile-desc { color: var(--color-text-muted); font-size: var(--text-sm); }
+    </style>
+  </head>
+  <body>
+    <div data-include="header"></div>
+
+    <main>
+      <section class="moulding-hero">
+        <img src="../images/product_moulding.jpg" alt="White PVC architectural moulding and trim detail" />
+        <div class="container moulding-hero-inner">
+          <span class="hero-eyebrow">Architectural Detail</span>
+          <h1>Over a hundred profiles.<br /><em>One material that lasts.</em></h1>
+          <p>
+            American Pro mouldings are extruded from the same UV-stabilized cellular
+            PVC as our decking — so the trim that frames your home will look as good
+            as the day you installed it, decade after decade.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <div>
+              <span class="eyebrow">Profile Catalog</span>
+              <h2>Eight categories.<br /><em>One hundred profiles.</em></h2>
+            </div>
+            <p>
+              From classic colonial casing to ornate crown to a simple square stock —
+              if you've specified it in wood, we make it in PVC. Stocked profiles
+              ship in 16-foot lengths.
+            </p>
+          </header>
+
+          <div class="profile-cats" data-reveal>
+            <div class="profile-card"><div class="profile-count">28</div><div class="profile-name">Crown &amp; Cornice</div><div class="profile-desc">From subtle 3" coves to dramatic 8" colonial crowns.</div></div>
+            <div class="profile-card"><div class="profile-count">22</div><div class="profile-name">Casing &amp; Trim</div><div class="profile-desc">Window and door casings, including backband variants.</div></div>
+            <div class="profile-card"><div class="profile-count">14</div><div class="profile-name">Baseboard</div><div class="profile-desc">Profile heights from 3-1/4" to 7-1/4".</div></div>
+            <div class="profile-card"><div class="profile-count">9</div><div class="profile-name">Brick Mould</div><div class="profile-desc">Standard and historical brickmould profiles.</div></div>
+            <div class="profile-card"><div class="profile-count">12</div><div class="profile-name">Columns &amp; Posts</div><div class="profile-desc">Fluted columns, square posts, decorative caps.</div></div>
+            <div class="profile-card"><div class="profile-count">8</div><div class="profile-name">Dentil &amp; Detail</div><div class="profile-desc">Dentil blocks, decorative bands, ornamental trim.</div></div>
+            <div class="profile-card"><div class="profile-count">15</div><div class="profile-name">Sheet &amp; Boards</div><div class="profile-desc">Flat sheet stock, S4S boards, custom-rip widths.</div></div>
+            <div class="profile-card"><div class="profile-count">+</div><div class="profile-name">Custom Profiles</div><div class="profile-desc">We extrude custom profiles for OEM and architectural specifications. Contact our engineering team.</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section samples" id="samples">
+        <div class="container">
+          <div class="samples-inner">
+            <div data-reveal>
+              <span class="eyebrow">Profile Samples &amp; Catalog</span>
+              <h2>Get the full<br /><em>profile catalog.</em></h2>
+              <p>Request the complete profile guide and samples of any profiles you'd like to see in person. We'll mail both within two business days.</p>
+            </div>
+            <div class="form-card" data-reveal data-reveal-delay="1">
+              <form data-demo>
+                <div class="form-grid">
+                  <div class="field"><label for="first">First Name</label><input id="first" type="text" required /></div>
+                  <div class="field"><label for="last">Last Name</label><input id="last" type="text" required /></div>
+                  <div class="field form-row"><label for="email">Email</label><input id="email" type="email" required /></div>
+                  <div class="field"><label for="zip">ZIP Code</label><input id="zip" type="text" required /></div>
+                  <div class="field"><label for="role">I Am A</label>
+                    <select id="role" required><option value="">Select…</option><option>Homeowner</option><option>Builder / Contractor</option><option>Architect / Designer</option><option>Dealer</option></select>
+                  </div>
+                  <div class="field form-row"><label for="message">Profiles of Interest</label><textarea id="message" placeholder="e.g. 5-1/4 colonial baseboard, brickmould, fluted columns…"></textarea></div>
+                </div>
+                <div class="form-submit">
+                  <small>By submitting you agree to our privacy policy.</small>
+                  <button type="submit" class="btn btn--primary">Send Catalog &amp; Samples</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+    <script src="../pages/_partials.js"></script>
+    <script src="../js/site.js" defer></script>
+  </body>
+</html>
