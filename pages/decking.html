@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PVC Decking · American Pro Building Products</title>
-    <meta name="description" content="American Pro PVC Decking. Six wood-grain colors, 1 inch by 5.5 inch boards in 12, 16, and 20 foot lengths, available in Solid Edge or Grooved profiles. 25-year residential limited warranty. Made in the USA by Patwin Plastics." />
+    <title>PVC Decking · TrueGrain & Standard PVC · American Pro</title>
+    <meta name="description" content="American Pro PVC Decking. Two lines: TrueGrain wood-grained capped PVC with a 25-year foil warranty, and our original Standard PVC decking. Both made in the USA by Patwin Plastics from compound we mix in-house." />
     <link href="https://api.fontshare.com/v2/css?f[]=boska@400,500,500i,700&f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/base.css" />
     <link rel="stylesheet" href="../css/site.css" />
@@ -18,6 +18,44 @@
       .deck-hero h1 em { font-style: italic; font-weight: 400; }
       .deck-hero p { color: rgba(255,255,255,.85); margin-top: var(--space-5); max-width: 50ch; }
 
+      /* Two-line picker chips at top of hero */
+      .line-pills { display: inline-flex; gap: var(--space-2); margin-top: var(--space-6); flex-wrap: wrap; }
+      .line-pill {
+        display: inline-flex; align-items: center; gap: var(--space-2);
+        padding: 8px 14px; border-radius: 999px;
+        background: rgba(255,255,255,0.12); color: #fff; text-decoration: none;
+        border: 1px solid rgba(255,255,255,0.25);
+        font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+        transition: var(--transition-interactive);
+      }
+      .line-pill:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); }
+      .line-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); }
+
+      /* Line headers (the big anchor points) */
+      .line-header {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: var(--space-5);
+        row-gap: var(--space-3);
+        align-items: baseline;
+        padding-bottom: var(--space-5);
+        border-bottom: 1px solid var(--color-divider);
+        margin-bottom: var(--space-10);
+      }
+      .line-header .line-tag {
+        align-self: center;
+        display: inline-block; font-size: var(--text-xs); letter-spacing: 0.18em;
+        text-transform: uppercase; font-weight: 700; color: var(--color-accent);
+        padding: 4px 10px; border: 1px solid var(--color-accent); border-radius: 4px;
+        white-space: nowrap;
+      }
+      .line-header h2 { margin: 0; font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); letter-spacing: -0.02em; }
+      .line-header h2 em { font-style: italic; font-weight: 400; }
+      .line-header .line-blurb { grid-column: 1 / -1; color: var(--color-text-muted); max-width: 60ch; margin: 0; }
+      @media (max-width: 600px) {
+        .line-header { grid-template-columns: 1fr; }
+      }
+
       /* Color swatches */
       .colors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
       @media (max-width: 880px) { .colors-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -27,6 +65,27 @@
       .swatch-body { padding: var(--space-4) var(--space-5) var(--space-5); }
       .swatch-name { font-family: var(--font-display); font-size: var(--text-base); font-weight: 500; }
       .swatch-meta { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+      /* Construction stack (TrueGrain layered board) */
+      .stack {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: var(--space-4);
+        background: var(--color-surface-2);
+        border-radius: var(--radius-lg);
+        padding: clamp(var(--space-6), 4vw, var(--space-10));
+      }
+      .stack-layer {
+        background: var(--color-surface);
+        border: 1px solid var(--color-divider);
+        border-radius: var(--radius-md);
+        padding: var(--space-5);
+      }
+      .stack-layer-num {
+        display: inline-block; font-size: var(--text-xs); font-weight: 700;
+        color: var(--color-accent); letter-spacing: 0.12em; margin-bottom: var(--space-2);
+      }
+      .stack-layer h4 { font-family: var(--font-display); font-size: var(--text-base); font-weight: 500; margin-bottom: var(--space-2); }
+      .stack-layer p { font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; line-height: 1.5; }
 
       /* Specs grid */
       .specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-6); background: var(--color-surface-2); border-radius: var(--radius-lg); padding: clamp(var(--space-6), 4vw, var(--space-10)); }
@@ -92,6 +151,20 @@
       /* Sample checkbox grid */
       .swatch-checks { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-2); }
       @media (min-width: 480px) { .swatch-checks { grid-template-columns: repeat(3, 1fr); } }
+      .sample-line-label { font-size: var(--text-xs); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent); font-weight: 600; margin: var(--space-4) 0 var(--space-2); }
+
+      /* Compare bar (TrueGrain vs Standard) */
+      .compare {
+        display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6);
+        background: var(--color-surface-2); border-radius: var(--radius-lg);
+        padding: clamp(var(--space-6), 4vw, var(--space-10));
+      }
+      @media (max-width: 720px) { .compare { grid-template-columns: 1fr; } }
+      .compare-col h4 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 500; margin-bottom: var(--space-3); }
+      .compare-col ul { list-style: none; padding: 0; margin: 0; }
+      .compare-col li { font-size: var(--text-sm); color: var(--color-text); padding: var(--space-2) 0; border-bottom: 1px solid var(--color-divider); display: flex; gap: var(--space-3); }
+      .compare-col li:last-child { border-bottom: 0; }
+      .compare-col li b { font-weight: 600; min-width: 9ch; color: var(--color-text-muted); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; flex-shrink: 0; padding-top: 2px; }
     </style>
   </head>
   <body>
@@ -103,34 +176,201 @@
         <img src="../images/product_decking.jpg" alt="American Pro PVC decking on a residential outdoor deck" />
         <div class="container deck-hero-inner">
           <span class="hero-eyebrow">PVC Decking</span>
-          <h1>The backbone of<br /><em>outdoor living.</em></h1>
+          <h1>Two decks, one<br /><em>extruder.</em></h1>
           <p>
-            American Pro PVC Decking is American-made, UV-stabilized, and built
-            to outlast wood. Six wood-grain colors, two profile choices, and a
-            25-year limited residential warranty.
+            American Pro builds two lines of PVC decking under the same roof in
+            Linden, NJ. TrueGrain is our flagship wood-grained capped board, the
+            line that is rewriting what cellular PVC can look and feel like.
+            Standard PVC is the workhorse that put us on porches across the
+            country, still in production, still backed by Patwin.
           </p>
-          <div class="hero-actions" style="margin-top: var(--space-7);">
-            <a href="#samples" class="btn btn--primary btn--lg">Request Free Samples</a>
-            <a href="../pages/contact.html" class="btn btn--ghost-light btn--lg">Get a Quote</a>
+          <div class="line-pills">
+            <a class="line-pill" href="#truegrain"><span class="dot"></span> TrueGrain Decking</a>
+            <a class="line-pill" href="#standard"><span class="dot"></span> Standard PVC Decking</a>
+            <a class="line-pill" href="#samples"><span class="dot"></span> Free Samples</a>
           </div>
         </div>
       </section>
 
-      <!-- Why American Pro Decking -->
+      <!-- Compare strip -->
       <section class="section">
         <div class="container">
-          <div style="max-width: 60ch; margin-bottom: var(--space-10);" data-reveal>
-            <span class="eyebrow">Why American Pro</span>
-            <h2>Decking that doesn't<br /><em>ask much of you.</em></h2>
+          <div style="max-width: 60ch; margin-bottom: var(--space-8);" data-reveal>
+            <span class="eyebrow">Pick your line</span>
+            <h2>The flagship<br /><em>and the workhorse.</em></h2>
             <p>
-              All the look of real wood. None of the sanding, staining, or
-              splinters. American Pro PVC decking is manufactured in the United
-              States by Patwin Plastics from UV-stabilized PVC, so the colors
-              you pick today are the colors you'll still have in twenty years.
-              Clean it with a hose and walk away.
+              Same factory, same compound chemistry, two finishes. TrueGrain is
+              the upgrade if you want the hand and color depth of real hardwood
+              with none of the upkeep. Standard PVC is the field-proven board
+              that's been on American decks and porches for two decades.
+            </p>
+          </div>
+          <div class="compare" data-reveal>
+            <div class="compare-col">
+              <h4>TrueGrain Decking</h4>
+              <ul>
+                <li><b>Finish</b><span>Laminated wood-grain foil over ASA cap, ultra-realistic to the touch.</span></li>
+                <li><b>Colors</b><span>Six wood-grain options, deep variegated grain.</span></li>
+                <li><b>Tech</b><span>Cool-deck surface technology. Capped 4-sided.</span></li>
+                <li><b>Warranty</b><span>25-year limited residential foil warranty.</span></li>
+                <li><b>Best for</b><span>Homeowners who'd otherwise spec ipe, mahogany, or premium composite.</span></li>
+              </ul>
+            </div>
+            <div class="compare-col">
+              <h4>Standard PVC Decking</h4>
+              <ul>
+                <li><b>Finish</b><span>Solid-color UV-stabilized PVC with subtle grain texture.</span></li>
+                <li><b>Colors</b><span>Six classic tones, driftwood greys to warm reds.</span></li>
+                <li><b>Tech</b><span>Solid PVC, top-fasten or hidden-clip ready.</span></li>
+                <li><b>Warranty</b><span>25-year residential, 10-year commercial.</span></li>
+                <li><b>Best for</b><span>Builders and homeowners who want proven low-maintenance value.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- TRUEGRAIN LINE                                          -->
+      <!-- ====================================================== -->
+      <section class="section section--alt" id="truegrain">
+        <div class="container">
+          <div class="line-header" data-reveal>
+            <span class="line-tag">Flagship line</span>
+            <h2>TrueGrain&trade; Decking. <em>Wood to touch. PVC to last.</em></h2>
+            <p class="line-blurb">
+              Cool-deck technology and an ultra-realistic laminated wood grain over
+              a moisture-resistant capped PVC core. The look and feel of premium
+              hardwood, the strength and maintenance profile of cellular PVC.
             </p>
           </div>
 
+          <!-- TrueGrain colors -->
+          <div style="max-width: 60ch; margin-bottom: var(--space-6);" data-reveal>
+            <span class="eyebrow">Six TrueGrain colors</span>
+            <h3 style="font-family: var(--font-display); font-size: clamp(var(--text-xl), 3vw, var(--text-3xl)); font-weight: 500; letter-spacing: -0.015em;">
+              Hardwood palette,<br /><em>none of the upkeep.</em>
+            </h3>
+          </div>
+          <div class="colors-grid" data-reveal style="margin-bottom: var(--space-12);">
+            <div class="swatch">
+              <div class="swatch-color" style="background-image: url('../images/truegrain_swatches/new_england_birch.jpg');"></div>
+              <div class="swatch-body">
+                <div class="swatch-name">New England Birch</div>
+                <div class="swatch-meta">Weathered silver-grey</div>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background-image: url('../images/truegrain_swatches/coastal_driftwood.jpg');"></div>
+              <div class="swatch-body">
+                <div class="swatch-name">Coastal Driftwood</div>
+                <div class="swatch-meta">Soft warm grey</div>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background-image: url('../images/truegrain_swatches/aged_oak.jpg');"></div>
+              <div class="swatch-body">
+                <div class="swatch-name">Aged Oak</div>
+                <div class="swatch-meta">Golden tan, open grain</div>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background-image: url('../images/truegrain_swatches/embered_taupe.jpg');"></div>
+              <div class="swatch-body">
+                <div class="swatch-name">Embered Taupe</div>
+                <div class="swatch-meta">Warm smoky brown</div>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background-image: url('../images/truegrain_swatches/royal_ipe.jpg');"></div>
+              <div class="swatch-body">
+                <div class="swatch-name">Royal IPE</div>
+                <div class="swatch-meta">Deep mahogany amber</div>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background-image: url('../images/truegrain_swatches/tropical_walnut.jpg');"></div>
+              <div class="swatch-body">
+                <div class="swatch-name">Tropical Walnut</div>
+                <div class="swatch-meta">Dark walnut grain</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Construction stack -->
+          <div style="max-width: 60ch; margin-bottom: var(--space-6);" data-reveal>
+            <span class="eyebrow">Inside every TrueGrain board</span>
+            <h3 style="font-family: var(--font-display); font-size: clamp(var(--text-xl), 3vw, var(--text-3xl)); font-weight: 500; letter-spacing: -0.015em;">
+              Three layers,<br /><em>one extrusion line.</em>
+            </h3>
+          </div>
+          <div class="stack" data-reveal>
+            <div class="stack-layer">
+              <span class="stack-layer-num">Layer 01</span>
+              <h4>TrueGrain laminated surface</h4>
+              <p>Decorative exterior foil bonded to the cap. Deep variegated grain you can feel under bare feet.</p>
+            </div>
+            <div class="stack-layer">
+              <span class="stack-layer-num">Layer 02</span>
+              <h4>Protective ASA cap</h4>
+              <p>Weatherable ASA capstock seals the board on all four sides. Resists fade, stain, and the elements.</p>
+            </div>
+            <div class="stack-layer">
+              <span class="stack-layer-num">Layer 03</span>
+              <h4>Cellular PVC core</h4>
+              <p>Moisture-resistant cellular PVC with 30% repurposed polymer content. Won't rot, won't absorb water.</p>
+            </div>
+          </div>
+
+          <!-- TrueGrain warranty + samples CTA -->
+          <div style="margin-top: var(--space-10); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6);" data-reveal>
+            <div class="profile-card">
+              <span class="profile-tag">Warranty</span>
+              <h3>25-Year limited residential</h3>
+              <p>
+                The TrueGrain decorative exterior foil is warranted against
+                abnormal color change beyond 2 Delta E and against cracking. Full
+                coverage years 1 through 5, prorated thereafter. Residential
+                installations only.
+              </p>
+            </div>
+            <div class="profile-card">
+              <span class="profile-tag">Samples</span>
+              <h3>See it in your light</h3>
+              <p>
+                Free 6-inch and 12-inch samples ship to your door. Compare the
+                grain against your siding, your trim, and the way your yard
+                takes morning sun. Order below.
+              </p>
+            </div>
+          </div>
+          <style>@media (max-width: 720px){ #truegrain > .container > div[style*="grid-template-columns: 1fr 1fr"]{ grid-template-columns: 1fr !important; } }</style>
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <!-- STANDARD PVC LINE                                       -->
+      <!-- ====================================================== -->
+      <section class="section" id="standard">
+        <div class="container">
+          <div class="line-header" data-reveal>
+            <span class="line-tag">Original line</span>
+            <h2>Standard PVC Decking. <em>The workhorse.</em></h2>
+            <p class="line-blurb">
+              Solid-color UV-stabilized PVC with a subtle wood-grain texture.
+              The board that built our reputation. Same compound chemistry as
+              TrueGrain, finished in classic tones. Top-fasten or hidden-clip,
+              residential or commercial.
+            </p>
+          </div>
+
+          <!-- Profile types -->
+          <div style="max-width: 60ch; margin-bottom: var(--space-8);" data-reveal>
+            <span class="eyebrow">Two profiles</span>
+            <h3 style="font-family: var(--font-display); font-size: clamp(var(--text-xl), 3vw, var(--text-3xl)); font-weight: 500; letter-spacing: -0.015em;">
+              Solid Edge or<br /><em>Grooved.</em>
+            </h3>
+          </div>
           <div class="profile-types" data-reveal>
             <div class="profile-card">
               <span class="profile-tag">Profile</span>
@@ -146,26 +386,18 @@
               <h3>Grooved</h3>
               <p>
                 Side-grooved boards for use with hidden fastener clips. Cleaner
-                finished surface with no visible screws across the field.
-                Ideal for straight runs over standard joist framing.
+                finished surface with no visible screws across the field. Ideal
+                for straight runs over standard joist framing.
               </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- Color palette -->
-      <section class="section section--alt" id="colors">
-        <div class="container">
-          <div style="max-width: 60ch; margin-bottom: var(--space-8);" data-reveal>
-            <span class="eyebrow">Six wood-grain colors</span>
-            <h2>Pick a color you'll<br /><em>still love next decade.</em></h2>
-            <p>
-              From light driftwood greys to warm reds. Every board is
-              UV-stabilized so it lightens gently over time rather than
-              fading. Order free samples below to see the grain and tone in
-              your own light.
-            </p>
+          <!-- Standard colors -->
+          <div style="max-width: 60ch; margin: var(--space-12) 0 var(--space-6);" data-reveal>
+            <span class="eyebrow">Six classic colors</span>
+            <h3 style="font-family: var(--font-display); font-size: clamp(var(--text-xl), 3vw, var(--text-3xl)); font-weight: 500; letter-spacing: -0.015em;">
+              Driftwood greys<br /><em>to warm reds.</em>
+            </h3>
           </div>
           <div class="colors-grid" data-reveal>
             <div class="swatch">
@@ -211,24 +443,21 @@
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- Specs -->
-      <section class="section">
-        <div class="container">
-          <div style="max-width: 60ch; margin-bottom: var(--space-8);" data-reveal>
+          <!-- Standard PVC specs -->
+          <div style="max-width: 60ch; margin: var(--space-12) 0 var(--space-6);" data-reveal>
             <span class="eyebrow">Board specs</span>
-            <h2>Everything you need<br /><em>to plan your install.</em></h2>
-            <p>
-              Boards are 1 inch by 5.5 inch actual, with a recommended 3/16
-              inch gap between boards. Standard lengths: 12, 16, and 20 feet.
-              For full coverage planning use the calculator below.
+            <h3 style="font-family: var(--font-display); font-size: clamp(var(--text-xl), 3vw, var(--text-3xl)); font-weight: 500; letter-spacing: -0.015em;">
+              Everything you need<br /><em>to plan your install.</em>
+            </h3>
+            <p style="margin-top: var(--space-3); color: var(--color-text-muted);">
+              Boards are 1 inch by 5.5 inch actual, with a recommended 3/16 inch
+              gap between boards. Standard lengths: 12, 16, and 20 feet.
             </p>
           </div>
           <div class="specs" data-reveal>
             <div class="spec">
-              <strong>1 in × 5.5 in</strong>
+              <strong>1 in &times; 5.5 in</strong>
               <span>Actual board dimensions</span>
             </div>
             <div class="spec">
@@ -273,7 +502,8 @@
               <p>
                 Enter your square footage or dimensions and we'll estimate
                 board count, joist count, fasteners, and material cost. Built
-                in a 7.5% overage for waste and cuts.
+                in a 7.5% overage for waste and cuts. Works for both TrueGrain
+                and Standard PVC layouts.
               </p>
             </div>
             <a href="https://www-americanprobuilding-com.filesusr.com/html/8a6196_5a1f9459f43ece3c8418c542ed9d4d4a.html" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Open Calculator</a>
@@ -281,22 +511,24 @@
         </div>
       </section>
 
-      <!-- Warranty highlight -->
+      <!-- Warranty highlight (Standard) -->
       <section class="section section--alt">
         <div class="container">
           <div style="max-width: 70ch;" data-reveal>
-            <span class="eyebrow">Warranty</span>
+            <span class="eyebrow">Standard PVC warranty</span>
             <h2>25 years residential.<br /><em>10 years commercial.</em></h2>
             <p>
-              Patwin Plastics warrants every Patwin deck and porch board against
-              splitting, flaking, rotting, or structural defects from
+              Patwin Plastics warrants every Standard PVC deck and porch board
+              against splitting, flaking, rotting, or structural defects from
               manufacturing. Boards are designed to resist fading and will not
               fade more than 5 Delta E (CIE) units after exposure to UV and
               weathering. The stain warranty covers permanent staining from
               food and beverage when cleaned within one week of exposure.
             </p>
             <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted);">
-              Full terms, exclusions, and claim procedure on the
+              TrueGrain is covered by a separate 25-year limited residential
+              foil warranty issued through RENOLIT. Full terms, exclusions, and
+              claim procedure on the
               <a href="https://www.americanprobuilding.com/deck-porch-warranty" target="_blank" rel="noopener">warranty page</a>.
               Manufacturer: Patwin Plastics, Inc., 2300 E Linden Ave, Linden NJ 07036.
             </p>
@@ -313,7 +545,8 @@
             <p>
               We'll mail real board samples in your chosen colors so you can
               compare them against your house, your light, and your existing
-              materials. No charge, no salesperson follow-up.
+              materials. Pick TrueGrain, Standard PVC, or both. No charge, no
+              salesperson follow-up.
             </p>
           </div>
 
@@ -331,23 +564,36 @@
 
               <fieldset class="field field--full">
                 <legend>Choose Your Samples</legend>
+
+                <div class="sample-line-label">TrueGrain</div>
                 <div class="swatch-checks">
-                  <label><input type="checkbox" name="samples[]" value="Driftwood" /> Driftwood</label>
-                  <label><input type="checkbox" name="samples[]" value="Khaki" /> Khaki</label>
-                  <label><input type="checkbox" name="samples[]" value="Hazelnut" /> Hazelnut</label>
-                  <label><input type="checkbox" name="samples[]" value="Beachwood" /> Beachwood</label>
-                  <label><input type="checkbox" name="samples[]" value="Chestnut" /> Chestnut</label>
-                  <label><input type="checkbox" name="samples[]" value="Redwood" /> Redwood</label>
+                  <label><input type="checkbox" name="samples[]" value="TrueGrain · New England Birch" /> New England Birch</label>
+                  <label><input type="checkbox" name="samples[]" value="TrueGrain · Coastal Driftwood" /> Coastal Driftwood</label>
+                  <label><input type="checkbox" name="samples[]" value="TrueGrain · Aged Oak" /> Aged Oak</label>
+                  <label><input type="checkbox" name="samples[]" value="TrueGrain · Embered Taupe" /> Embered Taupe</label>
+                  <label><input type="checkbox" name="samples[]" value="TrueGrain · Royal IPE" /> Royal IPE</label>
+                  <label><input type="checkbox" name="samples[]" value="TrueGrain · Tropical Walnut" /> Tropical Walnut</label>
+                </div>
+
+                <div class="sample-line-label">Standard PVC</div>
+                <div class="swatch-checks">
+                  <label><input type="checkbox" name="samples[]" value="Standard · Driftwood" /> Driftwood</label>
+                  <label><input type="checkbox" name="samples[]" value="Standard · Khaki" /> Khaki</label>
+                  <label><input type="checkbox" name="samples[]" value="Standard · Hazelnut" /> Hazelnut</label>
+                  <label><input type="checkbox" name="samples[]" value="Standard · Beachwood" /> Beachwood</label>
+                  <label><input type="checkbox" name="samples[]" value="Standard · Chestnut" /> Chestnut</label>
+                  <label><input type="checkbox" name="samples[]" value="Standard · Redwood" /> Redwood</label>
                 </div>
               </fieldset>
 
               <label class="field field--full">
-                <span>Select Type *</span>
+                <span>Profile Preference *</span>
                 <select name="profile_type" required>
                   <option value="" disabled selected>Required</option>
-                  <option value="Solid Edge">Solid Edge</option>
-                  <option value="Grooved">Grooved</option>
-                  <option value="Other">Other (Please Specify)</option>
+                  <option value="TrueGrain (capped, hidden-fastener)">TrueGrain (capped, hidden-fastener)</option>
+                  <option value="Standard PVC · Solid Edge">Standard PVC · Solid Edge</option>
+                  <option value="Standard PVC · Grooved">Standard PVC · Grooved</option>
+                  <option value="Not sure yet">Not sure yet</option>
                 </select>
               </label>
             </div>

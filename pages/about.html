@@ -30,6 +30,34 @@
       .timeline-year { font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-primary); font-weight: 500; line-height: 1; }
       .timeline-text { color: var(--color-text-muted); margin-top: var(--space-2); font-size: var(--text-sm); line-height: 1.6; max-width: 56ch; }
       .timeline-text strong { color: var(--color-text); font-weight: 600; }
+
+      /* Capabilities (OEM / spec / architect) */
+      .capabilities {
+        background: var(--color-primary);
+        color: #fff;
+        border-radius: var(--radius-lg);
+        padding: clamp(var(--space-10), 6vw, var(--space-16));
+        position: relative;
+        overflow: hidden;
+      }
+      .capabilities::before {
+        content: ""; position: absolute; inset: 0;
+        background: radial-gradient(circle at 90% 0%, rgba(255,255,255,0.08), transparent 55%);
+        pointer-events: none;
+      }
+      .capabilities-head { max-width: 60ch; margin-bottom: var(--space-10); position: relative; }
+      .capabilities-head .eyebrow { color: var(--color-accent); }
+      .capabilities-head h2 { color: #fff; font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); letter-spacing: -0.02em; margin-bottom: var(--space-4); }
+      .capabilities-head h2 em { font-style: italic; font-weight: 400; }
+      .capabilities-head p { color: rgba(255,255,255,0.82); font-size: var(--text-base); line-height: 1.65; }
+      .cap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-6); position: relative; }
+      .cap-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius-md); padding: var(--space-7); }
+      .cap-card-num { display: inline-block; font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-accent); letter-spacing: 0.18em; font-weight: 600; margin-bottom: var(--space-3); }
+      .cap-card h3 { color: #fff; font-family: var(--font-display); font-size: var(--text-lg); font-weight: 500; margin-bottom: var(--space-3); letter-spacing: -0.01em; }
+      .cap-card p { color: rgba(255,255,255,0.78); font-size: var(--text-sm); line-height: 1.6; margin: 0; }
+      .cap-footnote { position: relative; margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid rgba(255,255,255,0.14); display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-8); }
+      .cap-footnote p { color: rgba(255,255,255,0.78); font-size: var(--text-sm); margin: 0; max-width: 60ch; }
+      .cap-footnote .btn { flex-shrink: 0; }
     </style>
   </head>
   <body>
@@ -125,6 +153,81 @@
                   <div class="timeline-text">Patwin is run by <strong>Timothy Hannen</strong> and <strong>Thomas Hannen Jr.</strong>, with the next generation of the family already in the business. Decking now ships in two lines: our original <strong>standard PVC decking</strong>, the workhorse that put us on porches across the country, and <strong>TrueGrain</strong>, the new wood-grained line that is rewriting what cellular PVC decking can look and feel like. The full portfolio also covers porch flooring, architectural mouldings, railings, and siding. Dealers run all fifty states. A product estimator and 3D visualizer carry the trade and homeowner buying experience online. Capital Fence operates as a sibling brand. Over fifty years after Thomas Hannen cut his first die, the same family-run American manufacturer is still extruding every profile in-house.</div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Capabilities (OEM / spec / architect) -->
+      <section class="section">
+        <div class="container">
+          <div class="capabilities" data-reveal>
+            <div class="capabilities-head">
+              <span class="eyebrow">Capabilities</span>
+              <h2>What we do<br /><em>in-house.</em></h2>
+              <p>
+                Patwin is a vertically integrated PVC extruder. Compound
+                chemistry, die design, tooling, extrusion, capping, and
+                lamination all happen under one roof in Linden, NJ. For OEMs,
+                architects, and spec writers, that means one phone call from
+                drawing to production sample, and a single party accountable
+                for the finished profile.
+              </p>
+            </div>
+
+            <div class="cap-grid">
+              <div class="cap-card">
+                <span class="cap-card-num">01 / Compounding</span>
+                <h3>We mix our own PVC</h3>
+                <p>
+                  Compound is formulated and mixed on-site, not bought as
+                  pellets. We control filler load, impact modifier, UV
+                  package, and color batch by lot. Same compound feeds both
+                  Standard PVC and TrueGrain decking, mouldings, porch
+                  flooring, and OEM profiles.
+                </p>
+              </div>
+              <div class="cap-card">
+                <span class="cap-card-num">02 / Custom design development</span>
+                <h3>Profiles built to spec</h3>
+                <p>
+                  Bring us a drawing, a sample, or just a problem. We engineer
+                  the profile, cut the die, run a test extrusion, and iterate
+                  until tolerances, finish, and downstream operations are
+                  right. Decades of POP display, furniture, and fence work
+                  feed back into every new development.
+                </p>
+              </div>
+              <div class="cap-card">
+                <span class="cap-card-num">03 / Tooling &amp; dies</span>
+                <h3>Tool &amp; die in-house</h3>
+                <p>
+                  The company was founded by a tool and die maker, and we
+                  never let go of the discipline. Dies are designed, cut, and
+                  maintained internally so timelines, modifications, and
+                  reorders aren't dependent on outside tool shops.
+                </p>
+              </div>
+              <div class="cap-card">
+                <span class="cap-card-num">04 / Extrusion &amp; finishing</span>
+                <h3>Extrude, cap, laminate</h3>
+                <p>
+                  Single-screw and twin-screw lines run cellular, solid, and
+                  capped PVC profiles. Capabilities include ASA capstock,
+                  decorative foil lamination (the system behind TrueGrain),
+                  embossing, and color matching. Most parts ship the same
+                  week they're cut.
+                </p>
+              </div>
+            </div>
+
+            <div class="cap-footnote">
+              <p>
+                Spec'ing a custom profile, sourcing a private-label building
+                product, or replacing an offshore extruder? Send the drawing
+                or the sample. We'll come back with feasibility and a price.
+              </p>
+              <a href="./contact.html" class="btn btn--ghost-light">Talk to engineering</a>
             </div>
           </div>
         </div>
