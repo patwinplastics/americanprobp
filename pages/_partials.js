@@ -15,15 +15,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="${B}index.html" class="logo" aria-label="American Pro Building Products, Home">
-        <svg class="logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="36" height="36" rx="7" fill="#0e1f3a"/>
-          <rect x="6" y="10" width="14" height="2" fill="#b91c2c"/>
-          <rect x="6" y="14" width="20" height="2" fill="#fbfaf7"/>
-          <rect x="6" y="18" width="14" height="2" fill="#b91c2c"/>
-          <rect x="6" y="22" width="20" height="2" fill="#fbfaf7"/>
-          <rect x="6" y="26" width="14" height="2" fill="#b91c2c"/>
-        </svg>
-        <span class="logo-text"><strong>American Pro</strong><small>Building Products</small></span>
+        <img src="${B}images/logo/americanpro-header.png" alt="American Pro Building Products" class="logo-img" width="431" height="200"/>
       </a>
       <nav class="nav" aria-label="Primary">
         <a href="${B}pages/decking.html">PVC Decking</a>
@@ -63,16 +55,8 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="${B}index.html" class="logo" style="color:#fff;">
-            <svg class="logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="36" height="36" rx="7" fill="#fff"/>
-              <rect x="6" y="10" width="14" height="2" fill="#b91c2c"/>
-              <rect x="6" y="14" width="20" height="2" fill="#0e1f3a"/>
-              <rect x="6" y="18" width="14" height="2" fill="#b91c2c"/>
-              <rect x="6" y="22" width="20" height="2" fill="#0e1f3a"/>
-              <rect x="6" y="26" width="14" height="2" fill="#b91c2c"/>
-            </svg>
-            <span class="logo-text"><strong>American Pro</strong><small style="color: rgba(255,255,255,0.55);">Building Products</small></span>
+          <a href="${B}index.html" class="logo">
+            <img src="${B}images/logo/americanpro-header-white.png" alt="American Pro Building Products" class="logo-img logo-img--footer" width="431" height="200"/>
           </a>
           <p>American-made PVC building products. A division of Patwin Plastics, manufacturing precision profiles in the USA since 1972.</p>
         </div>
