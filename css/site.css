@@ -119,8 +119,8 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-6);
-  min-height: 5.5rem;
-  padding: 0.875rem 0;
+  min-height: 6.5rem;
+  padding: 1.5rem 0 1rem;
 }
 
 .logo {
@@ -235,7 +235,7 @@
 /* Mobile menu */
 .mobile-menu {
   position: fixed;
-  inset: 5.5rem 0 auto 0;
+  inset: 6.5rem 0 auto 0;
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-divider);
   padding: var(--space-6) var(--space-6) var(--space-8);
