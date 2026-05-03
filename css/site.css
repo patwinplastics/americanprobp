@@ -226,14 +226,18 @@
   border-bottom: 1px solid var(--color-divider);
   padding: var(--space-6) var(--space-6) var(--space-8);
   z-index: 99;
-  transform: translateY(-110%);
-  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* Closed state: shift the drawer fully off-screen plus a buffer so its
+     bottom edge, border, and shadow never bleed into the header area on
+     short viewports where translateY(-110%) of a tall drawer is not enough. */
+  transform: translateY(calc(-100% - 8rem));
+  visibility: hidden;
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 280ms;
   box-shadow: var(--shadow-lg);
 }
 @media (max-width: 960px) {
   .mobile-menu { display: block; }
 }
-.mobile-menu.is-open { transform: translateY(0); }
+.mobile-menu.is-open { transform: translateY(0); visibility: visible; transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0s; }
 .mobile-menu ul { display: grid; gap: var(--space-3); }
 .mobile-menu a {
   display: block;

@@ -15,7 +15,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="${B}index.html" class="logo" aria-label="American Pro Building Products, Home">
-        <img src="${B}images/logo/americanpro-header.png" alt="American Pro Building Products" class="logo-img" width="431" height="200"/>
+        <img src="${B}images/logo/americanpro-header.png" alt="American Pro Building Products" class="logo-img" width="660" height="306"/>
       </a>
       <nav class="nav" aria-label="Primary">
         <a href="${B}pages/decking.html">PVC Decking</a>
@@ -56,7 +56,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="${B}index.html" class="logo">
-            <img src="${B}images/logo/americanpro-header-white.png" alt="American Pro Building Products" class="logo-img logo-img--footer" width="431" height="200"/>
+            <img src="${B}images/logo/americanpro-header-white.png" alt="American Pro Building Products" class="logo-img logo-img--footer" width="660" height="306"/>
           </a>
           <p>American-made PVC building products. A division of Patwin Plastics, manufacturing precision profiles in the USA since 1972.</p>
         </div>
