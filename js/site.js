@@ -164,7 +164,7 @@
     const dots = Array.from(slider.querySelectorAll('.hero-dot'));
     if (slides.length < 2 || dots.length !== slides.length) return;
 
-    const INTERVAL_MS = 7000;
+    const INTERVAL_MS = 11000;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let current = slides.findIndex((s) => s.classList.contains('is-active'));
     if (current < 0) current = 0;
