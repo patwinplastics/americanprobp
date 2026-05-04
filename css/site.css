@@ -974,3 +974,261 @@ html.reveal-ready [data-reveal].is-visible {
   margin-top: var(--space-5);
   max-width: 56ch;
 }
+
+/* ============================================================
+   TRUEGRAIN DECK FEATURE SECTION (homepage flagship moment)
+   ============================================================ */
+.truegrain-feature {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-primary);
+  color: #fff;
+  padding: clamp(var(--space-16), 12vh, var(--space-24)) 0 var(--space-16);
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+}
+
+.tg-feature-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.tg-feature-image img,
+.tg-feature-image picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Layered overlay: dark left side fading to image-visible right side */
+.tg-feature-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg,
+      rgba(14, 31, 58, 0.95) 0%,
+      rgba(14, 31, 58, 0.88) 40%,
+      rgba(14, 31, 58, 0.55) 70%,
+      rgba(14, 31, 58, 0.25) 100%
+    );
+}
+
+.tg-feature-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.tg-feature-inner > * {
+  max-width: 720px;
+}
+
+.tg-feature-inner .tg-feature-meta { max-width: 720px; }
+.tg-feature-inner .tg-feature-actions { max-width: 720px; }
+.tg-feature-inner .tg-feature-swatches { max-width: 720px; }
+
+/* Launch badge */
+.tg-feature-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--color-accent);
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  margin-bottom: var(--space-6);
+  box-shadow: 0 6px 24px -6px rgba(185, 28, 44, 0.55);
+}
+
+.tg-feature-badge-dot {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25);
+  animation: tg-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes tg-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25); }
+  50%      { opacity: 0.6; box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.10); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tg-feature-badge-dot { animation: none; }
+}
+
+.tg-feature-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-5);
+  color: #fff;
+}
+
+.tg-feature-title em {
+  font-style: italic;
+  font-weight: 500;
+  color: #fff;
+}
+
+.tg-feature-sub {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: var(--space-8);
+  max-width: 60ch;
+}
+
+/* Color swatch row */
+.tg-feature-swatches {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.tg-swatch {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease;
+}
+
+.tg-swatch:hover { transform: translateY(-3px); }
+
+.tg-swatch-color {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 14px -4px rgba(0, 0, 0, 0.45);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tg-swatch:hover .tg-swatch-color {
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 22px -6px rgba(0, 0, 0, 0.55);
+}
+
+.tg-swatch-name {
+  display: block;
+  margin-top: 0.55rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.25;
+  min-height: 2.4em;
+}
+
+/* Stat strip */
+.tg-feature-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  padding: var(--space-5) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  margin-bottom: var(--space-8);
+}
+
+.tg-feature-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.tg-feature-stat strong {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.tg-feature-stat span {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.70);
+  letter-spacing: 0.02em;
+}
+
+/* CTA row */
+.tg-feature-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.tg-feature-vis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========== Tablet ========== */
+@media (max-width: 900px) {
+  .truegrain-feature {
+    padding: var(--space-16) 0 var(--space-12);
+    min-height: auto;
+  }
+  .tg-feature-overlay {
+    background: linear-gradient(180deg,
+      rgba(14, 31, 58, 0.92) 0%,
+      rgba(14, 31, 58, 0.85) 60%,
+      rgba(14, 31, 58, 0.75) 100%
+    );
+  }
+  .tg-feature-swatches {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+/* ========== Mobile ========== */
+@media (max-width: 560px) {
+  .truegrain-feature {
+    padding: var(--space-12) 0;
+  }
+  .tg-feature-badge {
+    font-size: 0.72rem;
+    padding: 0.5rem 0.85rem;
+  }
+  .tg-feature-meta {
+    gap: var(--space-4);
+  }
+  .tg-feature-stat strong {
+    font-size: 1.25rem;
+  }
+  .tg-feature-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .tg-feature-actions .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  .tg-swatch-name {
+    font-size: 0.68rem;
+  }
+}

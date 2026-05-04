@@ -23,7 +23,6 @@
         <a href="${B}pages/mouldings.html">Mouldings</a>
         <a href="${B}pages/inspiration.html">Inspiration</a>
         <a href="${B}pages/about.html">About</a>
-        <a href="https://truegraindeck.com" target="_blank" rel="noopener" class="nav-external">TrueGrain Deck<span class="nav-external-arrow" aria-hidden="true">&#x2197;</span></a>
       </nav>
       <div class="header-actions">
         <a href="tel:18774426776" class="header-phone">
@@ -43,7 +42,6 @@
         <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
         <li><a href="${B}pages/inspiration.html">Inspiration</a></li>
         <li><a href="${B}pages/about.html">About</a></li>
-        <li><a href="https://truegraindeck.com" target="_blank" rel="noopener" class="nav-external">TrueGrain Deck<span class="nav-external-arrow" aria-hidden="true">&#x2197;</span></a></li>
       </ul>
       <div class="mobile-cta">
         <a href="${B}index.html#samples" class="btn btn--primary">Request Samples</a>
