@@ -1,72 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://americanprobp.com/</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/hero_deck.jpg</image:loc>
+      <image:title>American craftsman home with American Pro PVC deck at golden hour</image:title>
+      <image:caption>American Pro PVC decking, porch flooring, and architectural mouldings on a residential home.</image:caption>
+    </image:image>
     <image:image>
       <image:loc>https://americanprobp.com/images/og/og-default.jpg</image:loc>
-      <image:title>American Pro PVC decking</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://americanprobp.com/pages/about.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://americanprobp.com/images/og/og-about.jpg</image:loc>
-      <image:title>Patwin Plastics extrusion facility, Linden NJ</image:title>
+      <image:title>American Pro Building Products</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://americanprobp.com/pages/decking.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/decking.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/decking.html" />
     <image:image>
       <image:loc>https://americanprobp.com/images/og/og-decking.jpg</image:loc>
-      <image:title>TrueGrain Deck PVC decking boards</image:title>
+      <image:title>TrueGrain Deck PVC decking boards in six wood-grain colors</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://americanprobp.com/images/product_decking.jpg</image:loc>
+      <image:title>Close-up of warm wood-grain PVC composite decking boards</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://americanprobp.com/pages/porch.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/porch.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/porch.html" />
     <image:image>
       <image:loc>https://americanprobp.com/images/og/og-porch.jpg</image:loc>
       <image:title>PVC tongue and groove porch flooring</image:title>
     </image:image>
+    <image:image>
+      <image:loc>https://americanprobp.com/images/porch_hero.jpg</image:loc>
+      <image:title>Classic American front porch with American Pro PVC flooring at golden hour</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://americanprobp.com/pages/mouldings.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/mouldings.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/mouldings.html" />
     <image:image>
       <image:loc>https://americanprobp.com/images/og/og-mouldings.jpg</image:loc>
-      <image:title>PVC architectural mouldings and trim</image:title>
+      <image:title>PVC architectural mouldings and trim catalog</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://americanprobp.com/images/product_moulding.jpg</image:loc>
+      <image:title>Crisp white PVC architectural moulding on a traditional home</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://americanprobp.com/pages/inspiration.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/inspiration.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/inspiration.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/gallery_sunset.jpg</image:loc>
+      <image:title>Backyard PVC deck with dining setup at sunset</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://americanprobp.com/images/gallery_pool.jpg</image:loc>
+      <image:title>Pool deck with grey wood-grain PVC composite decking</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://americanprobp.com/pages/calculator.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/calculator.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/calculator.html" />
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/about.html</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/about.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/about.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/og/og-about.jpg</image:loc>
+      <image:title>Patwin Plastics PVC extrusion facility, Linden NJ</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://americanprobp.com/pages/contact.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/contact.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/contact.html" />
   </url>
 </urlset>

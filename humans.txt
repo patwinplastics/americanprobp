@@ -1,0 +1,24 @@
+/* TEAM */
+
+  Site: American Pro Building Products
+  Parent: Patwin Plastics, Inc.
+  Founded: 1971 (Patwin) / 2001 (American Pro)
+  Location: Linden, New Jersey, USA
+
+/* CONTACT */
+
+  Sales: sales@americanprobp.com
+  Phone: 1-877-442-6776
+  Address: 2300 E Linden Avenue, Linden, NJ 07036
+
+/* THANKS */
+
+  To every contractor, dealer, and homeowner who has trusted
+  American Pro PVC on their porch and deck since 2001.
+
+/* SITE */
+
+  Last update: 2026/05/04
+  Standards: HTML5, CSS3, JavaScript, JSON-LD
+  Components: Boska + Satoshi (Fontshare), schema.org structured data
+  Hosted on: GitHub Pages

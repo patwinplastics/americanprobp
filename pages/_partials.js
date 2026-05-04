@@ -83,7 +83,7 @@
           <ul>
             <li><a href="tel:18774426776">1-877-442-6776</a></li>
             <li><a href="mailto:sales@americanprobp.com">sales@americanprobp.com</a></li>
-            <li style="color:rgba(255,255,255,0.55); font-size:var(--text-xs); margin-top: var(--space-2);">Mon–Fri, 8am–5pm ET</li>
+            <li style="color:rgba(255,255,255,0.55); font-size:var(--text-xs); margin-top: var(--space-2);">Mon–Fri, 8am–4pm ET</li>
           </ul>
         </div>
       </div>
