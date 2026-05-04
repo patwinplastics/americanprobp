@@ -538,7 +538,7 @@
                       <label for="line-truegrain">TrueGrain Deck&trade;</label>
                     </div>
                   </div>
-                  <span class="hint">Both are 1&quot; &times; 5.5&quot; actual with a 3/16&quot; gap. Standard PVC defaults to $6.00/ft. TrueGrain Deck price is set by your dealer, enter it below.</span>
+                  <span class="hint">Both are 1&quot; &times; 5.5&quot; actual with a 3/16&quot; gap. Standard PVC defaults to $6.00/ft, TrueGrain Deck defaults to $8.00/ft. Override below if your dealer pricing differs.</span>
                 </div>
 
                 <!-- Orientation + spacing -->
@@ -674,7 +674,7 @@
               </div>
               <div>
                 <dt>Defaults</dt>
-                <dd>Standard PVC $6.00/ft, PT 2&times;8 joist $1.65/ft, $0.09 each on screws and plugs (works out to $36 per 100 sq ft fastener), labor $15/sq ft.</dd>
+                <dd>Standard PVC $6.00/ft, TrueGrain Deck $8.00/ft, PT 2&times;8 joist $1.65/ft, $0.09 each on screws and plugs (works out to $36 per 100 sq ft fastener), labor $15/sq ft.</dd>
                 <dt>What we don't include</dt>
                 <dd>Footings, beams, ledger flashing, railing, stairs, permits. These vary too much by jurisdiction and design to put in a generic calc, talk to your contractor.</dd>
                 <dt>Spans over 40 ft</dt>
@@ -1029,6 +1029,22 @@
         const allInputs = document.querySelectorAll('#calc-form input, #calc-form select');
         allInputs.forEach(el => el.addEventListener('input', compute));
 
+        // Auto-fill board cost based on selected decking line.
+        // Only overwrites the field if it currently holds the OTHER line's default,
+        // so a dealer-entered custom price is preserved.
+        const LINE_DEFAULTS = { standard: '6.00', truegrain: '8.00' };
+        document.querySelectorAll('input[name="line"]').forEach(radio => {
+          radio.addEventListener('change', () => {
+            const picked = els.line();
+            const current = els.boardCost.value;
+            const other = picked === 'truegrain' ? LINE_DEFAULTS.standard : LINE_DEFAULTS.truegrain;
+            if (current === '' || current === other) {
+              els.boardCost.value = LINE_DEFAULTS[picked];
+              compute();
+            }
+          });
+        });
+
         els.resetBtn.addEventListener('click', () => {
           els.lengthFt.value = '';
           els.lengthIn.value = '';
@@ -1038,6 +1054,7 @@
           els.joistSpacing.value = '16';
           document.getElementById('line-standard').checked = true;
           els.boardCost.value = '6.00';
+          // Note: defaults map lives in LINE_DEFAULTS above; reset returns to Standard PVC.
           els.joistCost.value = '1.65';
           els.screwCost.value = '0.09';
           els.plugCost.value  = '0.09';
