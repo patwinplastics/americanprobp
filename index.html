@@ -239,6 +239,34 @@
           </div>
         </article>
 
+        <!-- Prev / Next arrow controls. aria-hidden because the dots above are the
+             canonical carousel controls (already announced by screen readers).
+             These are a visual / touch affordance for sighted users. -->
+        <button
+          type="button"
+          class="hero-arrow hero-arrow--prev"
+          data-hero-arrow="prev"
+          aria-label="Previous slide"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <polyline points="15 6 9 12 15 18"></polyline>
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="hero-arrow hero-arrow--next"
+          data-hero-arrow="next"
+          aria-label="Next slide"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <polyline points="9 6 15 12 9 18"></polyline>
+          </svg>
+        </button>
+
         <!-- Dot indicators (also act as progress bar) -->
         <div class="hero-dots" role="tablist" aria-label="Hero slides">
           <button

@@ -256,6 +256,17 @@
       });
     });
 
+    // Prev / Next arrow buttons. Same lock semantics as dot click and swipe.
+    const arrows = slider.querySelectorAll('[data-hero-arrow]');
+    arrows.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation(); // don't let it count as a swipe target click
+        const dir = btn.getAttribute('data-hero-arrow');
+        setActive(dir === 'next' ? current + 1 : current - 1);
+        lockToManual();
+      });
+    });
+
     slider.addEventListener('mouseenter', pause);
     slider.addEventListener('mouseleave', resume);
     slider.addEventListener('focusin', pause);
@@ -267,34 +278,74 @@
     });
 
     // Touch swipe on mobile (and any pointer-coarse device).
-    // Only fires on horizontal intent so vertical page scroll keeps working.
+    // Pointer Events fire after iOS native gesture arbitration, bubble cleanly past links and buttons,
+    // and give us a single API that works for touch, pen, and mouse-drag. Pointer-events listeners
+    // see gestures even when the user starts on an <a>, <button>, or <img> inside the slide, which
+    // raw touchstart on the slider often does NOT reach because iOS preview/long-press/native edge
+    // gestures will swallow the touch sequence before it bubbles.
+    //
+    // We capture-phase so we win against any child <a>/<button> that calls stopPropagation.
+    // pointermove with a horizontal commit toggles touch-action to none mid-gesture so the browser
+    // stops trying to scroll once we're sure the user is swiping.
     // The first qualifying swipe locks the slider for the rest of the session, same as a dot click.
     (function attachSwipe() {
-      const SWIPE_PX = 50;            // minimum horizontal distance to count as a swipe
-      const HORIZONTAL_RATIO = 1.4;   // |dx| must beat |dy| by this factor (rules out scroll gestures)
-      let startX = 0, startY = 0, tracking = false;
+      const SWIPE_PX = 40;            // minimum horizontal distance to count as a swipe
+      const HORIZONTAL_RATIO = 1.2;   // |dx| must beat |dy| by this factor (rules out scroll gestures)
+      const COMMIT_PX = 12;           // once horizontal travel passes this, we own the gesture
+      let startX = 0, startY = 0, activeId = null, committed = false;
 
-      slider.addEventListener('touchstart', (e) => {
-        if (e.touches.length !== 1) { tracking = false; return; }
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-        tracking = true;
-      }, { passive: true });
+      const onDown = (e) => {
+        // Only primary single-pointer interactions; ignore multi-touch (pinch/zoom).
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        if (activeId !== null) return;
+        activeId = e.pointerId;
+        startX = e.clientX;
+        startY = e.clientY;
+        committed = false;
+      };
 
-      slider.addEventListener('touchend', (e) => {
-        if (!tracking) return;
-        tracking = false;
-        const t = e.changedTouches[0];
-        if (!t) return;
-        const dx = t.clientX - startX;
-        const dy = t.clientY - startY;
+      const onMove = (e) => {
+        if (e.pointerId !== activeId) return;
+        if (committed) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        if (Math.abs(dx) > COMMIT_PX && Math.abs(dx) > Math.abs(dy) * HORIZONTAL_RATIO) {
+          committed = true;
+          slider.style.touchAction = 'none'; // own the rest of the gesture
+          // capture so we still get pointerup even if finger leaves the slider bounds
+          try { slider.setPointerCapture(e.pointerId); } catch (_) {}
+        }
+      };
+
+      const finish = (e) => {
+        if (e.pointerId !== activeId) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        activeId = null;
+        committed = false;
+        slider.style.touchAction = ''; // restore CSS default for next gesture
         if (Math.abs(dx) < SWIPE_PX) return;
-        if (Math.abs(dx) < Math.abs(dy) * HORIZONTAL_RATIO) return; // user was scrolling, not swiping
+        if (Math.abs(dx) < Math.abs(dy) * HORIZONTAL_RATIO) return;
         // dx > 0 = swipe right = previous slide. dx < 0 = swipe left = next slide.
         if (dx < 0) setActive(current + 1);
         else        setActive(current - 1);
         lockToManual();
-      }, { passive: true });
+      };
+
+      const cancel = (e) => {
+        if (e.pointerId !== activeId) return;
+        activeId = null;
+        committed = false;
+        slider.style.touchAction = '';
+      };
+
+      // Capture phase so child link/button click handlers can't preempt us.
+      // setPointerCapture (called on commit) guarantees pointerup/cancel fire on the slider
+      // even if the finger leaves the slider bounds, so we don't need a window-level fallback.
+      slider.addEventListener('pointerdown', onDown, true);
+      slider.addEventListener('pointermove', onMove, true);
+      slider.addEventListener('pointerup',   finish, true);
+      slider.addEventListener('pointercancel', cancel, true);
     })();
 
     // Kick off

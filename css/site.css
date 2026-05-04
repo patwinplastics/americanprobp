@@ -1290,6 +1290,88 @@ html.reveal-ready [data-reveal].is-visible {
      keeping every slide at the same final position with no layout shift. */
   display: grid;
   grid-template-areas: "stack";
+  /* Touch behavior: allow vertical page scroll, but tell the browser we handle
+     horizontal gestures ourselves. Without this, iOS Safari may try to interpret
+     a horizontal swipe as a back-navigation edge gesture and the swipe is lost. */
+  touch-action: pan-y;
+}
+
+/* Block iOS image preview / long-press drag on hero photos so a swipe that
+   starts on the photo isn't hijacked by the OS into 'Save Image' / drag. */
+.hero-slider img {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+/* ---------- Hero prev/next arrow buttons ----------
+   Affordance for swipe and a tap fallback. Hidden from screen readers
+   because the dot tablist already exposes the controls.
+
+   Position: sits in the upper photo zone of the hero so it never overlaps
+   the headline, body copy, or CTA buttons (which fill the lower portion of
+   the hero on mobile). On desktop there is plenty of room so we anchor to
+   true vertical center. */
+.hero-arrow {
+  position: absolute;
+  /* Anchor to the bottom of the slider, vertically centered on the dot pill
+     so the arrows visually flank the dots and form one cohesive control
+     group. Bottom-anchoring is robust across both slides because the dot
+     pill is always at a constant offset from the slider's bottom edge,
+     unlike the CTA buttons which move depending on slide content height. */
+  bottom: 30px;
+  top: auto;
+  transform: none;
+  z-index: 5;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(14, 31, 58, 0.55); /* --color-primary at 55% */
+  color: var(--color-bg);
+  border: 1px solid rgba(251, 250, 247, 0.35);
+  cursor: pointer;
+  padding: 0;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: background 200ms ease, transform 200ms ease, border-color 200ms ease, opacity 200ms ease;
+  /* Don't let the swipe handler treat this tap as a swipe gesture target. */
+  touch-action: manipulation;
+}
+.hero-arrow:hover {
+  background: rgba(14, 31, 58, 0.8);
+  border-color: rgba(251, 250, 247, 0.6);
+}
+.hero-arrow:active {
+  transform: scale(0.94);
+}
+.hero-arrow:focus-visible {
+  outline: 2px solid var(--color-bg);
+  outline-offset: 3px;
+}
+.hero-arrow--prev { left: 12px; }
+.hero-arrow--next { right: 12px; }
+
+/* Desktop: same bottom-anchor pattern, slightly larger button. The dot
+   pill is the same constant offset from the slider's bottom on every
+   breakpoint, so we just need to adjust for the taller button. */
+@media (min-width: 720px) {
+  .hero-arrow {
+    width: 52px;
+    height: 52px;
+    bottom: 26px;
+  }
+  .hero-arrow--prev { left: 24px; }
+  .hero-arrow--next { right: 24px; }
+}
+
+/* On the very smallest screens, hide the arrows and rely on swipe + dots
+   so they don't crowd the headline. iPhone SE class. */
+@media (max-width: 359px) {
+  .hero-arrow { display: none; }
 }
 
 .hero-slide {
