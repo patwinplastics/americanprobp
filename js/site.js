@@ -169,6 +169,8 @@
     let current = slides.findIndex((s) => s.classList.contains('is-active'));
     if (current < 0) current = 0;
     let timer = null;
+    // Once the user manually picks a slide, stop auto-advance for the rest of the session.
+    let userTookControl = false;
 
     function setActive(idx) {
       const next = ((idx % slides.length) + slides.length) % slides.length;
@@ -199,6 +201,7 @@
 
     function startTimer() {
       if (reduceMotion) return;
+      if (userTookControl) return;
       stopTimer();
       timer = window.setInterval(advance, INTERVAL_MS);
       slider.classList.remove('is-paused');
@@ -211,14 +214,29 @@
       slider.classList.add('is-paused');
     }
 
+    function lockToManual() {
+      userTookControl = true;
+      stopTimer();
+      slider.classList.add('is-manual');
+      // Freeze the progress fill so it doesn't keep animating after lock
+      dots.forEach((d) => {
+        const fill = d.querySelector('.hero-dot-fill');
+        if (fill) {
+          fill.style.animation = 'none';
+          fill.style.width = d.classList.contains('is-active') ? '100%' : '0';
+        }
+      });
+    }
+
     dots.forEach((dot, i) => {
       dot.addEventListener('click', () => {
         setActive(i);
-        startTimer();
+        lockToManual();
       });
       dot.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') { e.preventDefault(); setActive(current + 1); startTimer(); dots[current].focus(); }
-        else if (e.key === 'ArrowLeft') { e.preventDefault(); setActive(current - 1); startTimer(); dots[current].focus(); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); setActive(current + 1); lockToManual(); dots[current].focus(); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); setActive(current - 1); lockToManual(); dots[current].focus(); }
+        else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActive(i); lockToManual(); }
       });
     });
 

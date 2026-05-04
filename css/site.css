@@ -1138,11 +1138,16 @@ html.reveal-ready [data-reveal].is-visible {
   min-height: 2.4em;
 }
 
-/* Stat strip */
+/* Stat strip — CSS grid with two synced rows so every headline shares a
+   baseline and every descriptor starts on the same y, no matter how long
+   the headline text is. */
 .tg-feature-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-6);
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) minmax(120px, 1fr) minmax(220px, 2fr);
+  grid-template-rows: auto auto;
+  column-gap: var(--space-6);
+  row-gap: 0.5rem;
+  align-items: end;
   padding: var(--space-5) 0;
   border-top: 1px solid rgba(255, 255, 255, 0.18);
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
@@ -1150,17 +1155,12 @@ html.reveal-ready [data-reveal].is-visible {
 }
 
 .tg-feature-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  flex: 1 1 0;
-  min-width: 140px;
-}
-.tg-feature-stat--wide {
-  flex: 2 1 240px;
+  display: contents;
 }
 
 .tg-feature-stat strong {
+  grid-row: 1;
+  align-self: end;
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 2.2vw, 1.75rem);
   font-weight: 500;
@@ -1175,10 +1175,44 @@ html.reveal-ready [data-reveal].is-visible {
 }
 
 .tg-feature-stat span {
+  grid-row: 2;
+  align-self: start;
   font-family: var(--font-body);
   font-size: 0.82rem;
   color: rgba(255, 255, 255, 0.70);
   letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+/* Place each stat’s strong+span into its own column when display: contents flattens them */
+.tg-feature-stat:nth-of-type(1) strong,
+.tg-feature-stat:nth-of-type(1) span { grid-column: 1; }
+.tg-feature-stat:nth-of-type(2) strong,
+.tg-feature-stat:nth-of-type(2) span { grid-column: 2; }
+.tg-feature-stat:nth-of-type(3) strong,
+.tg-feature-stat:nth-of-type(3) span { grid-column: 3; }
+
+/* Stack on narrow viewports — fall back to flex column flow */
+@media (max-width: 720px) {
+  .tg-feature-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-4);
+  }
+  .tg-feature-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  .tg-feature-stat strong,
+  .tg-feature-stat span {
+    grid-row: auto;
+    grid-column: auto;
+    align-self: auto;
+    text-align: left;
+  }
 }
 
 /* CTA row */
