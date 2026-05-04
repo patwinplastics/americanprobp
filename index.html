@@ -103,120 +103,163 @@
     </header>
 
     <main>
-      <!-- ========== HERO ========== -->
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-image">
-          <img decoding="async" src="./images/hero_deck.jpg" alt="American craftsman home with PVC composite deck at golden hour" />
-        </div>
-        <div class="container hero-inner">
-          <span class="hero-eyebrow">American-Made Since 1971</span>
-          <h1 class="hero-title" id="hero-title">
-            Built for the<br />
-            <em>life around your home.</em>
-          </h1>
-          <p class="hero-sub">
-            Decking, porch flooring, and architectural mouldings engineered from
-            UV-stabilized cellular PVC. They won't split, crack, splinter, or rot,
-            so the home you love stays the home you love.
-          </p>
-          <div class="hero-actions">
-            <a href="#samples" class="btn btn--primary btn--lg">Request Free Samples</a>
-            <a href="./pages/contact.html" class="btn btn--ghost-light btn--lg">Get a Quote</a>
+      <!-- ========== HERO SLIDER (Original ⇄ TrueGrain Deck™ launch) ========== -->
+      <section class="hero-slider" aria-roledescription="carousel" aria-label="American Pro featured highlights" data-hero-slider>
+        <!-- ========== SLIDE 1: Original brand hero ========== -->
+        <article
+          class="hero-slide hero-slide--original is-active"
+          id="hero-slide-1"
+          role="group"
+          aria-roledescription="slide"
+          aria-label="Slide 1 of 2: American-made building products"
+          data-hero-slide="0"
+        >
+          <div class="hero-image">
+            <img decoding="async" src="./images/hero_deck.jpg" alt="American craftsman home with PVC composite deck at golden hour" />
           </div>
-        </div>
-        <div class="hero-meta">
-          <strong>50+ years</strong>
-          of American manufacturing
-        </div>
-      </section>
-
-      <!-- ========== FEATURED: TRUEGRAIN DECK™ LAUNCH ========== -->
-      <section class="truegrain-feature" id="truegrain-feature" aria-labelledby="tg-feature-title">
-        <div class="tg-feature-image">
-          <picture>
-            <source media="(max-width: 700px)" srcset="./images/truegrain_hero/driftwood-800.jpg" />
-            <source media="(max-width: 1300px)" srcset="./images/truegrain_hero/driftwood-1200.jpg" />
-            <img
-              src="./images/truegrain_hero/driftwood-1600.jpg"
-              alt="TrueGrain Deck PVC decking boards in Coastal Driftwood with deep wood grain texture"
-              loading="lazy"
-              decoding="async"
-              width="1600"
-              height="900"
-            />
-          </picture>
-          <div class="tg-feature-overlay" aria-hidden="true"></div>
-        </div>
-        <div class="container tg-feature-inner">
-          <span class="tg-feature-badge">
-            <span class="tg-feature-badge-dot" aria-hidden="true"></span>
-            New from American Pro
-          </span>
-          <h2 class="tg-feature-title" id="tg-feature-title">
-            Introducing<br />
-            <em>TrueGrain Deck&trade;.</em>
-          </h2>
-          <p class="tg-feature-sub">
-            Our new flagship line. Six hardwood-inspired colors, an ASA cap that stops fade and stain,
-            and a cellular PVC core that won't rot, splinter, or warp. Wood to touch. PVC to last.
-          </p>
-
-          <div class="tg-feature-swatches" role="list" aria-label="Six TrueGrain Deck colors">
-            <a class="tg-swatch" role="listitem" href="./pages/decking.html#truegrain">
-              <span class="tg-swatch-color" style="background-image: url('./images/truegrain_swatches/new_england_birch.jpg');"></span>
-              <span class="tg-swatch-name">New England Birch</span>
-            </a>
-            <a class="tg-swatch" role="listitem" href="./pages/decking.html#truegrain">
-              <span class="tg-swatch-color" style="background-image: url('./images/truegrain_swatches/coastal_driftwood.jpg');"></span>
-              <span class="tg-swatch-name">Coastal Driftwood</span>
-            </a>
-            <a class="tg-swatch" role="listitem" href="./pages/decking.html#truegrain">
-              <span class="tg-swatch-color" style="background-image: url('./images/truegrain_swatches/aged_oak.jpg');"></span>
-              <span class="tg-swatch-name">Aged Oak</span>
-            </a>
-            <a class="tg-swatch" role="listitem" href="./pages/decking.html#truegrain">
-              <span class="tg-swatch-color" style="background-image: url('./images/truegrain_swatches/embered_taupe.jpg');"></span>
-              <span class="tg-swatch-name">Embered Taupe</span>
-            </a>
-            <a class="tg-swatch" role="listitem" href="./pages/decking.html#truegrain">
-              <span class="tg-swatch-color" style="background-image: url('./images/truegrain_swatches/royal_ipe.jpg');"></span>
-              <span class="tg-swatch-name">Royal IPE</span>
-            </a>
-            <a class="tg-swatch" role="listitem" href="./pages/decking.html#truegrain">
-              <span class="tg-swatch-color" style="background-image: url('./images/truegrain_swatches/tropical_walnut.jpg');"></span>
-              <span class="tg-swatch-name">Tropical Walnut</span>
-            </a>
-          </div>
-
-          <div class="tg-feature-meta">
-            <div class="tg-feature-stat">
-              <strong>25-yr</strong>
-              <span>limited residential warranty</span>
-            </div>
-            <div class="tg-feature-stat">
-              <strong>6 colors</strong>
-              <span>hardwood-inspired palette</span>
-            </div>
-            <div class="tg-feature-stat">
-              <strong>ASA cap</strong>
-              <span>fade, stain, and weather sealed</span>
+          <div class="container hero-inner">
+            <span class="hero-eyebrow">American-Made Since 1971</span>
+            <h1 class="hero-title" id="hero-title">
+              Built for the<br />
+              <em>life around your home.</em>
+            </h1>
+            <p class="hero-sub">
+              Decking, porch flooring, and architectural mouldings engineered from
+              UV-stabilized cellular PVC. They won't split, crack, splinter, or rot,
+              so the home you love stays the home you love.
+            </p>
+            <div class="hero-actions">
+              <a href="#samples" class="btn btn--primary btn--lg">Request Free Samples</a>
+              <a href="./pages/contact.html" class="btn btn--ghost-light btn--lg">Get a Quote</a>
             </div>
           </div>
-
-          <div class="tg-feature-actions">
-            <a href="./pages/decking.html#truegrain" class="btn btn--primary btn--lg">
-              See the TrueGrain Deck&trade; line
-            </a>
-            <a
-              href="https://deckvisualizer.truegraindeck.com/"
-              target="_blank"
-              rel="noopener"
-              class="btn btn--ghost-light btn--lg tg-feature-vis"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right:0.5rem;vertical-align:-2px;"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/></svg>
-              Try the Deck Visualizer
-            </a>
+          <div class="hero-meta">
+            <strong>50+ years</strong>
+            of American manufacturing
           </div>
+        </article>
+
+        <!-- ========== SLIDE 2: TrueGrain Deck™ launch ========== -->
+        <article
+          class="hero-slide hero-slide--truegrain truegrain-feature"
+          id="hero-slide-2"
+          role="group"
+          aria-roledescription="slide"
+          aria-label="Slide 2 of 2: Introducing TrueGrain Deck"
+          data-hero-slide="1"
+          aria-hidden="true"
+        >
+          <div class="tg-feature-image">
+            <picture>
+              <source media="(max-width: 700px)" srcset="./images/truegrain_hero/driftwood-800.jpg" />
+              <source media="(max-width: 1300px)" srcset="./images/truegrain_hero/driftwood-1200.jpg" />
+              <img
+                src="./images/truegrain_hero/driftwood-1600.jpg"
+                alt="TrueGrain Deck PVC decking boards in Coastal Driftwood with deep wood grain texture"
+                decoding="async"
+                width="1600"
+                height="900"
+              />
+            </picture>
+            <div class="tg-feature-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="container tg-feature-inner">
+            <span class="tg-feature-badge">
+              <span class="tg-feature-badge-dot" aria-hidden="true"></span>
+              New from American Pro
+            </span>
+            <h2 class="tg-feature-title" id="tg-feature-title">
+              Introducing<br />
+              <em>TrueGrain Deck&trade;.</em>
+            </h2>
+            <p class="tg-feature-sub">
+              Our new flagship line. Six hardwood-inspired colors, an ASA cap that stops fade and stain,
+              and a cellular PVC core that won't rot, splinter, or warp. Wood to touch. PVC to last.
+            </p>
+
+            <div class="tg-feature-swatches" role="list" aria-label="Six TrueGrain Deck colors">
+              <a class="tg-swatch" role="listitem" href="./pages/decking.html#truegrain">
+                <span class="tg-swatch-color" style="background-image: url('./images/truegrain_swatches/new_england_birch.jpg');"></span>
+                <span class="tg-swatch-name">New England Birch</span>
+              </a>
+              <a class="tg-swatch" role="listitem" href="./pages/decking.html#truegrain">
+                <span class="tg-swatch-color" style="background-image: url('./images/truegrain_swatches/coastal_driftwood.jpg');"></span>
+                <span class="tg-swatch-name">Coastal Driftwood</span>
+              </a>
+              <a class="tg-swatch" role="listitem" href="./pages/decking.html#truegrain">
+                <span class="tg-swatch-color" style="background-image: url('./images/truegrain_swatches/aged_oak.jpg');"></span>
+                <span class="tg-swatch-name">Aged Oak</span>
+              </a>
+              <a class="tg-swatch" role="listitem" href="./pages/decking.html#truegrain">
+                <span class="tg-swatch-color" style="background-image: url('./images/truegrain_swatches/embered_taupe.jpg');"></span>
+                <span class="tg-swatch-name">Embered Taupe</span>
+              </a>
+              <a class="tg-swatch" role="listitem" href="./pages/decking.html#truegrain">
+                <span class="tg-swatch-color" style="background-image: url('./images/truegrain_swatches/royal_ipe.jpg');"></span>
+                <span class="tg-swatch-name">Royal IPE</span>
+              </a>
+              <a class="tg-swatch" role="listitem" href="./pages/decking.html#truegrain">
+                <span class="tg-swatch-color" style="background-image: url('./images/truegrain_swatches/tropical_walnut.jpg');"></span>
+                <span class="tg-swatch-name">Tropical Walnut</span>
+              </a>
+            </div>
+
+            <div class="tg-feature-meta">
+              <div class="tg-feature-stat">
+                <strong>25-yr</strong>
+                <span>limited residential warranty</span>
+              </div>
+              <div class="tg-feature-stat">
+                <strong>6 colors</strong>
+                <span>hardwood-inspired palette</span>
+              </div>
+              <div class="tg-feature-stat">
+                <strong>ASA cap</strong>
+                <span>fade, stain, and weather sealed</span>
+              </div>
+            </div>
+
+            <div class="tg-feature-actions">
+              <a href="./pages/decking.html#truegrain" class="btn btn--primary btn--lg">
+                See the TrueGrain Deck&trade; line
+              </a>
+              <a
+                href="https://deckvisualizer.truegraindeck.com/"
+                target="_blank"
+                rel="noopener"
+                class="btn btn--ghost-light btn--lg tg-feature-vis"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right:0.5rem;vertical-align:-2px;"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/></svg>
+                Try the Deck Visualizer
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Dot indicators (also act as progress bar) -->
+        <div class="hero-dots" role="tablist" aria-label="Hero slides">
+          <button
+            class="hero-dot is-active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="hero-slide-1"
+            data-hero-dot="0"
+          >
+            <span class="hero-dot-track"><span class="hero-dot-fill"></span></span>
+            <span class="hero-dot-label">American Pro</span>
+          </button>
+          <button
+            class="hero-dot"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="hero-slide-2"
+            data-hero-dot="1"
+          >
+            <span class="hero-dot-track"><span class="hero-dot-fill"></span></span>
+            <span class="hero-dot-label">TrueGrain Deck&trade;</span>
+          </button>
         </div>
       </section>
 

@@ -155,4 +155,85 @@
     const href = a.getAttribute('href').replace(/\/+$/, '') || '/';
     if (href === path) a.classList.add('is-active');
   });
+
+  // Hero crossfade slider
+  (function initHeroSlider() {
+    const slider = document.querySelector('[data-hero-slider]');
+    if (!slider) return;
+    const slides = Array.from(slider.querySelectorAll('.hero-slide'));
+    const dots = Array.from(slider.querySelectorAll('.hero-dot'));
+    if (slides.length < 2 || dots.length !== slides.length) return;
+
+    const INTERVAL_MS = 7000;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let current = slides.findIndex((s) => s.classList.contains('is-active'));
+    if (current < 0) current = 0;
+    let timer = null;
+
+    function setActive(idx) {
+      const next = ((idx % slides.length) + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        const active = i === next;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+      });
+      dots.forEach((dot, i) => {
+        const active = i === next;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-selected', active ? 'true' : 'false');
+        dot.setAttribute('tabindex', active ? '0' : '-1');
+      });
+      // Restart progress fill animation by reflowing the active dot's fill node
+      const activeFill = dots[next].querySelector('.hero-dot-fill');
+      if (activeFill) {
+        activeFill.style.animation = 'none';
+        // force reflow
+        // eslint-disable-next-line no-unused-expressions
+        activeFill.offsetWidth;
+        activeFill.style.animation = '';
+      }
+      current = next;
+    }
+
+    function advance() { setActive(current + 1); }
+
+    function startTimer() {
+      if (reduceMotion) return;
+      stopTimer();
+      timer = window.setInterval(advance, INTERVAL_MS);
+      slider.classList.remove('is-paused');
+    }
+    function stopTimer() {
+      if (timer) { window.clearInterval(timer); timer = null; }
+    }
+    function pauseTimer() {
+      stopTimer();
+      slider.classList.add('is-paused');
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        setActive(i);
+        startTimer();
+      });
+      dot.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); setActive(current + 1); startTimer(); dots[current].focus(); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); setActive(current - 1); startTimer(); dots[current].focus(); }
+      });
+    });
+
+    slider.addEventListener('mouseenter', pauseTimer);
+    slider.addEventListener('mouseleave', startTimer);
+    slider.addEventListener('focusin', pauseTimer);
+    slider.addEventListener('focusout', (e) => {
+      if (!slider.contains(e.relatedTarget)) startTimer();
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopTimer(); else startTimer();
+    });
+
+    // Kick off
+    setActive(current);
+    startTimer();
+  })();
 })();

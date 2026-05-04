@@ -1232,3 +1232,196 @@ html.reveal-ready [data-reveal].is-visible {
     font-size: 0.68rem;
   }
 }
+
+/* ============================================================
+   Hero Slider (crossfade)
+   ============================================================ */
+.hero-slider {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  /* Stack slides in a single grid cell so the tallest slide sets the height,
+     keeping every slide at the same final position with no layout shift. */
+  display: grid;
+  grid-template-areas: "stack";
+}
+
+.hero-slide {
+  grid-area: stack;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 900ms ease, visibility 0s linear 900ms;
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 2;
+  transition: opacity 900ms ease, visibility 0s linear 0s;
+}
+
+/* Reset slide-level wrappers so heights match cleanly and dots clear content */
+.hero-slide.hero {
+  /* keep the original hero's tall footprint as a floor */
+  min-height: clamp(560px, 88vh, 880px);
+  /* leave room for the dot rail at bottom */
+  padding-bottom: clamp(var(--space-16), 14vh, var(--space-20));
+}
+.hero-slide.truegrain-feature {
+  min-height: clamp(560px, 88vh, 880px);
+  padding: clamp(var(--space-8), 6vh, var(--space-12)) 0 clamp(var(--space-16), 14vh, var(--space-20));
+  align-items: flex-start;
+}
+.hero-slide.truegrain-feature .tg-feature-inner {
+  width: 100%;
+}
+/* Compact TrueGrain hero content so it fits cleanly inside the slider on desktop */
+.hero-slide.truegrain-feature .tg-feature-title {
+  font-size: clamp(2.25rem, 4.6vw, 3.6rem);
+  margin-bottom: var(--space-4);
+}
+.hero-slide.truegrain-feature .tg-feature-badge {
+  margin-bottom: var(--space-4);
+}
+.hero-slide.truegrain-feature .tg-feature-sub {
+  margin-bottom: var(--space-5);
+}
+.hero-slide.truegrain-feature .tg-feature-swatches {
+  margin-bottom: var(--space-5);
+}
+.hero-slide.truegrain-feature .tg-feature-meta {
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-5);
+}
+/* Dot indicator UI */
+.hero-dots {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-6);
+  transform: translateX(-50%);
+  z-index: 6;
+  display: flex;
+  gap: var(--space-5);
+  padding: var(--space-2) var(--space-4);
+  background: rgba(14, 31, 58, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-dot {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: var(--space-2) 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  align-items: flex-start;
+  color: #fff;
+  opacity: 0.55;
+  transition: opacity 200ms ease;
+  min-width: 96px;
+}
+.hero-dot:hover,
+.hero-dot:focus-visible { opacity: 0.9; outline: none; }
+.hero-dot.is-active { opacity: 1; }
+
+.hero-dot-track {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+  border-radius: 2px;
+}
+.hero-dot-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  background: #fff;
+  border-radius: 2px;
+}
+.hero-dot.is-active .hero-dot-fill {
+  animation: hero-dot-progress 7s linear forwards;
+}
+.hero-slider.is-paused .hero-dot.is-active .hero-dot-fill {
+  animation-play-state: paused;
+}
+
+.hero-dot-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+}
+
+@keyframes hero-dot-progress {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* Make sure original hero meta sits well above the dot rail */
+.hero-slide.hero .hero-meta {
+  margin-bottom: var(--space-12);
+}
+
+@media (max-width: 900px) {
+  .hero-slide.hero,
+  .hero-slide.truegrain-feature {
+    min-height: clamp(640px, 92vh, 1100px);
+  }
+  .hero-slide.truegrain-feature {
+    padding-top: clamp(var(--space-8), 5vh, var(--space-12));
+  }
+  /* Compact TrueGrain elements on narrow screens */
+  .hero-slide.truegrain-feature .tg-feature-title {
+    font-size: clamp(1.9rem, 7vw, 2.6rem);
+    margin-bottom: var(--space-3);
+  }
+  .hero-slide.truegrain-feature .tg-feature-badge {
+    margin-bottom: var(--space-3);
+    font-size: 0.7rem;
+    padding: 0.4rem 0.85rem;
+  }
+  .hero-slide.truegrain-feature .tg-feature-sub {
+    margin-bottom: var(--space-4);
+    font-size: 0.95rem;
+  }
+  .hero-slide.truegrain-feature .tg-feature-swatches {
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+  .hero-slide.truegrain-feature .tg-feature-meta {
+    margin-bottom: var(--space-4);
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-dots {
+    bottom: var(--space-3);
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+  }
+  .hero-dot { min-width: 72px; }
+  .hero-dot-label { font-size: 0.62rem; letter-spacing: 0.1em; }
+  .hero-slide.hero .hero-meta { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide { transition: opacity 0s; }
+  .hero-dot.is-active .hero-dot-fill {
+    animation: none;
+    width: 100%;
+  }
+}
