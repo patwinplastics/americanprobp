@@ -364,6 +364,51 @@
         </div>
       </section>
 
+      <!-- ========== LIVE FROM FACEBOOK ========== -->
+      <section class="section social" aria-labelledby="social-title">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <div>
+              <span class="eyebrow">Latest from us</span>
+              <h2 id="social-title">News &amp; updates,<br /><em>straight from Facebook.</em></h2>
+            </div>
+            <p>
+              New product runs, project photos, and shop-floor moments.
+              Follow <a href="https://www.facebook.com/americanprobuilding/" target="_blank" rel="noopener">@americanprobuilding</a> to keep up.
+            </p>
+          </header>
+
+          <div class="social-embed" data-reveal>
+            <!-- Facebook Page Plugin: pulls timeline live from the public page. -->
+            <div id="fb-root"></div>
+            <div
+              class="fb-page"
+              data-href="https://www.facebook.com/americanprobuilding/"
+              data-tabs="timeline"
+              data-width="500"
+              data-height="600"
+              data-small-header="false"
+              data-adapt-container-width="true"
+              data-hide-cover="false"
+              data-show-facepile="false"
+            >
+              <blockquote
+                cite="https://www.facebook.com/americanprobuilding/"
+                class="fb-xfbml-parse-ignore"
+              >
+                <a href="https://www.facebook.com/americanprobuilding/" target="_blank" rel="noopener">American Pro Building Products on Facebook</a>
+              </blockquote>
+            </div>
+            <noscript>
+              <p style="text-align:center;">
+                Enable JavaScript to view our live Facebook feed, or visit
+                <a href="https://www.facebook.com/americanprobuilding/" target="_blank" rel="noopener">facebook.com/americanprobuilding</a>.
+              </p>
+            </noscript>
+          </div>
+        </div>
+      </section>
+
       <!-- ========== SAMPLES, primary CTA ========== -->
       <section class="section samples" id="samples">
         <div class="container">
@@ -500,11 +545,8 @@
         <div class="footer-bar">
           <span>© 2026 American Pro Building Products · A Patwin Plastics Brand</span>
           <div class="footer-social">
-            <a href="https://www.facebook.com/" aria-label="Facebook">
+            <a href="https://www.facebook.com/americanprobuilding/" target="_blank" rel="noopener" aria-label="American Pro on Facebook">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/" aria-label="Instagram">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </a>
           </div>
         </div>
@@ -512,5 +554,9 @@
     </footer>
 
     <script src="./js/site.js" defer></script>
+
+    <!-- Facebook Page Plugin SDK, loaded async. en_US locale, version pinned. -->
+    <script async defer crossorigin="anonymous"
+      src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
   </body>
 </html>

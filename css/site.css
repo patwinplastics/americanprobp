@@ -701,6 +701,28 @@
   .gallery-item--big, .gallery-item--small { grid-column: 1 / -1; }
 }
 
+/* ─── Social: live Facebook feed section ───────────────────────────────── */
+.social {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-divider);
+}
+.social-embed {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-10);
+}
+/* Constrain the FB iframe and prevent horizontal overflow on small screens. */
+.social-embed .fb-page,
+.social-embed .fb-page span,
+.social-embed .fb-page iframe[style] {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+.social-embed > .fb-page {
+  width: 500px;
+  max-width: 100%;
+}
+
 /* ─── CTA: sample request lead form ─────────────────────────────────────── */
 .samples {
   background: linear-gradient(180deg, var(--color-surface-2), var(--color-bg));
