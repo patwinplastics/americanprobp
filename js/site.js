@@ -266,6 +266,37 @@
       if (document.hidden) pause(); else resume();
     });
 
+    // Touch swipe on mobile (and any pointer-coarse device).
+    // Only fires on horizontal intent so vertical page scroll keeps working.
+    // The first qualifying swipe locks the slider for the rest of the session, same as a dot click.
+    (function attachSwipe() {
+      const SWIPE_PX = 50;            // minimum horizontal distance to count as a swipe
+      const HORIZONTAL_RATIO = 1.4;   // |dx| must beat |dy| by this factor (rules out scroll gestures)
+      let startX = 0, startY = 0, tracking = false;
+
+      slider.addEventListener('touchstart', (e) => {
+        if (e.touches.length !== 1) { tracking = false; return; }
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        tracking = true;
+      }, { passive: true });
+
+      slider.addEventListener('touchend', (e) => {
+        if (!tracking) return;
+        tracking = false;
+        const t = e.changedTouches[0];
+        if (!t) return;
+        const dx = t.clientX - startX;
+        const dy = t.clientY - startY;
+        if (Math.abs(dx) < SWIPE_PX) return;
+        if (Math.abs(dx) < Math.abs(dy) * HORIZONTAL_RATIO) return; // user was scrolling, not swiping
+        // dx > 0 = swipe right = previous slide. dx < 0 = swipe left = next slide.
+        if (dx < 0) setActive(current + 1);
+        else        setActive(current - 1);
+        lockToManual();
+      }, { passive: true });
+    })();
+
     // Kick off
     if (reduceMotion) {
       // No animation, no auto-advance: just show slide 0 statically.
