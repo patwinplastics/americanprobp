@@ -706,10 +706,24 @@
   background: var(--color-surface);
   border-top: 1px solid var(--color-divider);
 }
+/* Override the default 2-col section-head: a single embed below feels off-balance
+   when the heading column is short and the right column floats far away. Stack and
+   center everything in a tidy narrow column. */
+.social .section-head {
+  grid-template-columns: 1fr;
+  text-align: center;
+  justify-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  max-width: 56ch;
+  margin-inline: auto;
+}
+.social .section-head h2 { max-width: none; }
+.social .section-head p  { max-width: 52ch; margin-inline: auto; }
+
 .social-embed {
   display: flex;
   justify-content: center;
-  margin-top: var(--space-10);
 }
 /* Constrain the FB iframe and prevent horizontal overflow on small screens. */
 .social-embed .fb-page,
