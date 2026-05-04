@@ -157,6 +157,9 @@
   });
 
   // Hero crossfade slider
+  // Single clock: the CSS .hero-dot-fill animation IS the timer.
+  // animationend on the active dot's fill triggers the slide advance,
+  // so the progress bar and the slide change can never drift.
   (function initHeroSlider() {
     const slider = document.querySelector('[data-hero-slider]');
     if (!slider) return;
@@ -164,13 +167,21 @@
     const dots = Array.from(slider.querySelectorAll('.hero-dot'));
     if (slides.length < 2 || dots.length !== slides.length) return;
 
-    const INTERVAL_MS = 11000;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let current = slides.findIndex((s) => s.classList.contains('is-active'));
     if (current < 0) current = 0;
-    let timer = null;
     // Once the user manually picks a slide, stop auto-advance for the rest of the session.
     let userTookControl = false;
+
+    function restartFill(fillEl) {
+      // Clear any inline freeze from a prior pause/lock and restart the CSS animation cleanly.
+      fillEl.style.animation = 'none';
+      fillEl.style.width = '';
+      // force reflow so removing + re-adding the animation actually replays it
+      // eslint-disable-next-line no-unused-expressions
+      fillEl.offsetWidth;
+      fillEl.style.animation = '';
+    }
 
     function setActive(idx) {
       const next = ((idx % slides.length) + slides.length) % slides.length;
@@ -184,49 +195,54 @@
         dot.classList.toggle('is-active', active);
         dot.setAttribute('aria-selected', active ? 'true' : 'false');
         dot.setAttribute('tabindex', active ? '0' : '-1');
+        const fill = dot.querySelector('.hero-dot-fill');
+        if (!fill) return;
+        if (active) {
+          // Active dot: replay the progress animation from 0
+          restartFill(fill);
+        } else {
+          // Inactive dots: ensure no stale animation or width hangs around
+          fill.style.animation = 'none';
+          fill.style.width = '0';
+        }
       });
-      // Restart progress fill animation by reflowing the active dot's fill node
-      const activeFill = dots[next].querySelector('.hero-dot-fill');
-      if (activeFill) {
-        activeFill.style.animation = 'none';
-        // force reflow
-        // eslint-disable-next-line no-unused-expressions
-        activeFill.offsetWidth;
-        activeFill.style.animation = '';
-      }
       current = next;
     }
 
-    function advance() { setActive(current + 1); }
-
-    function startTimer() {
-      if (reduceMotion) return;
-      if (userTookControl) return;
-      stopTimer();
-      timer = window.setInterval(advance, INTERVAL_MS);
-      slider.classList.remove('is-paused');
-    }
-    function stopTimer() {
-      if (timer) { window.clearInterval(timer); timer = null; }
-    }
-    function pauseTimer() {
-      stopTimer();
+    function pause() {
       slider.classList.add('is-paused');
+    }
+    function resume() {
+      if (userTookControl) return;
+      slider.classList.remove('is-paused');
     }
 
     function lockToManual() {
       userTookControl = true;
-      stopTimer();
       slider.classList.add('is-manual');
-      // Freeze the progress fill so it doesn't keep animating after lock
+      // Freeze every fill: active stays full, others empty, no animation.
       dots.forEach((d) => {
         const fill = d.querySelector('.hero-dot-fill');
-        if (fill) {
-          fill.style.animation = 'none';
-          fill.style.width = d.classList.contains('is-active') ? '100%' : '0';
-        }
+        if (!fill) return;
+        fill.style.animation = 'none';
+        fill.style.width = d.classList.contains('is-active') ? '100%' : '0';
       });
     }
+
+    // The single clock: when the active dot's fill animation finishes one cycle, advance.
+    // We attach to every fill and gate on .is-active so the listener survives slide changes.
+    dots.forEach((dot) => {
+      const fill = dot.querySelector('.hero-dot-fill');
+      if (!fill) return;
+      fill.addEventListener('animationend', (e) => {
+        if (e.animationName !== 'hero-dot-progress') return;
+        if (userTookControl) return;
+        if (reduceMotion) return;
+        if (!dot.classList.contains('is-active')) return;
+        if (slider.classList.contains('is-paused')) return;
+        setActive(current + 1);
+      });
+    });
 
     dots.forEach((dot, i) => {
       dot.addEventListener('click', () => {
@@ -240,18 +256,23 @@
       });
     });
 
-    slider.addEventListener('mouseenter', pauseTimer);
-    slider.addEventListener('mouseleave', startTimer);
-    slider.addEventListener('focusin', pauseTimer);
+    slider.addEventListener('mouseenter', pause);
+    slider.addEventListener('mouseleave', resume);
+    slider.addEventListener('focusin', pause);
     slider.addEventListener('focusout', (e) => {
-      if (!slider.contains(e.relatedTarget)) startTimer();
+      if (!slider.contains(e.relatedTarget)) resume();
     });
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) stopTimer(); else startTimer();
+      if (document.hidden) pause(); else resume();
     });
 
     // Kick off
-    setActive(current);
-    startTimer();
+    if (reduceMotion) {
+      // No animation, no auto-advance: just show slide 0 statically.
+      setActive(current);
+      lockToManual();
+    } else {
+      setActive(current);
+    }
   })();
 })();
