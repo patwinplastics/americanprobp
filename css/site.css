@@ -335,9 +335,9 @@
 .hero-title {
   font-size: var(--text-3xl);
   font-weight: 500;
-  line-height: 0.98;
+  line-height: 1.06;
   letter-spacing: -0.025em;
-  max-width: 16ch;
+  max-width: 22ch;
   color: #fff;
 }
 .hero-title em {
@@ -347,9 +347,9 @@
 }
 .hero-sub {
   margin-top: var(--space-6);
-  max-width: 50ch;
+  max-width: 62ch;
   font-size: var(--text-base);
-  line-height: 1.55;
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.88);
 }
 .hero-actions {
