@@ -1286,14 +1286,24 @@ html.reveal-ready [data-reveal].is-visible {
   overflow: hidden;
   background: var(--color-primary);
   color: var(--color-text-inverse);
-  /* Stack slides in a single grid cell so the tallest slide sets the height,
-     keeping every slide at the same final position with no layout shift. */
+  /* Stack slides in a single grid cell. JS sets an explicit height on the
+     slider equal to the active slide's natural content height, and the
+     height transition makes the slider grow/shrink smoothly between the
+     short American Pro slide and the tall TrueGrain slide. */
   display: grid;
   grid-template-areas: "stack";
+  /* Floor for first paint, before JS has measured. Roughly matches the
+     compact American Pro slide on phones / a comfortable hero on desktop. */
+  min-height: clamp(540px, 70vh, 720px);
+  transition: height 600ms cubic-bezier(0.4, 0, 0.2, 1);
   /* Touch behavior: allow vertical page scroll, but tell the browser we handle
      horizontal gestures ourselves. Without this, iOS Safari may try to interpret
      a horizontal swipe as a back-navigation edge gesture and the swipe is lost. */
   touch-action: pan-y;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slider { transition: none; }
 }
 
 /* Block iOS image preview / long-press drag on hero photos so a swipe that
@@ -1391,15 +1401,14 @@ html.reveal-ready [data-reveal].is-visible {
   transition: opacity 900ms ease, visibility 0s linear 0s;
 }
 
-/* Reset slide-level wrappers so heights match cleanly and dots clear content */
+/* Slide-level wrappers. No min-height: each slide is the size of its content,
+   and the slider container animates between the two heights on slide change.
+   Each slide keeps a padding-bottom that reserves space for the dot pill rail
+   so dots never overlap the last CTA button. */
 .hero-slide.hero {
-  /* keep the original hero's tall footprint as a floor */
-  min-height: clamp(560px, 88vh, 880px);
-  /* leave room for the dot rail at bottom */
   padding-bottom: clamp(var(--space-16), 14vh, var(--space-20));
 }
 .hero-slide.truegrain-feature {
-  min-height: clamp(560px, 88vh, 880px);
   padding: clamp(var(--space-8), 6vh, var(--space-12)) 0 clamp(var(--space-16), 14vh, var(--space-20));
   align-items: flex-start;
 }

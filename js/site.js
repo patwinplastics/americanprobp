@@ -173,6 +173,47 @@
     // Once the user manually picks a slide, stop auto-advance for the rest of the session.
     let userTookControl = false;
 
+    /* ----- Adaptive height ---------------------------------------------
+       The two slides have very different natural heights: the American Pro
+       slide is short (headline + 2 CTAs), the TrueGrain slide is tall (6
+       swatches + 3 stat blocks + 2 CTAs). Without this logic the slider was
+       sized to the taller slide on both, leaving a big empty deck-photo
+       expanse below the short slide.
+
+       Strategy: measure each slide's actual content wrapper (.hero-inner /
+       .tg-feature-inner) and add the slide's own padding so the dot rail
+       still has its reserved space. Then set slider.style.height = px on
+       the active slide and let the CSS height transition animate the
+       grow/shrink. */
+    function measureSlide(slide) {
+      if (!slide) return 0;
+      // Pick the actual content container so absolutely-positioned background
+      // photos (.hero-image / .tg-feature-image) don't poison the measurement.
+      const inner = slide.querySelector('.hero-inner, .tg-feature-inner');
+      if (!inner) return slide.scrollHeight;
+      const innerStyles = window.getComputedStyle(inner);
+      const slideStyles = window.getComputedStyle(slide);
+      // inner.scrollHeight already includes the inner element's own padding,
+      // so we only add the *slide-level* padding (which reserves the dot rail).
+      const slidePadTop = parseFloat(slideStyles.paddingTop) || 0;
+      const slidePadBottom = parseFloat(slideStyles.paddingBottom) || 0;
+      // Inner's vertical margins (rare, but be safe).
+      const innerMarginTop = parseFloat(innerStyles.marginTop) || 0;
+      const innerMarginBottom = parseFloat(innerStyles.marginBottom) || 0;
+      return Math.ceil(
+        inner.scrollHeight +
+        slidePadTop + slidePadBottom +
+        innerMarginTop + innerMarginBottom
+      );
+    }
+
+    function applyHeight() {
+      const active = slides[current];
+      if (!active) return;
+      const h = measureSlide(active);
+      if (h > 0) slider.style.height = h + 'px';
+    }
+
     function restartFill(fillEl) {
       // Clear any inline freeze from a prior pause/lock and restart the CSS animation cleanly.
       fillEl.style.animation = 'none';
@@ -207,6 +248,9 @@
         }
       });
       current = next;
+      // Resize the slider to match the new active slide's content height.
+      // Runs after the active class swap so measurement uses the right slide.
+      applyHeight();
     }
 
     function pause() {
@@ -356,5 +400,29 @@
     } else {
       setActive(current);
     }
+
+    /* ----- Re-measure on layout changes -----------------------------
+       Initial measurement may be off because web fonts are still loading or
+       hero images haven't decoded yet. Re-run applyHeight when each of
+       those resolves, when the viewport resizes (debounced so a drag-resize
+       on desktop doesn't thrash), and once on the next animation frame so
+       we catch any final layout pass after first paint. */
+    requestAnimationFrame(applyHeight);
+
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(applyHeight, 150);
+    });
+
+    if (document.fonts && document.fonts.ready && typeof document.fonts.ready.then === 'function') {
+      document.fonts.ready.then(applyHeight).catch(() => {});
+    }
+
+    slider.querySelectorAll('img').forEach((img) => {
+      if (img.complete && img.naturalHeight !== 0) return;
+      img.addEventListener('load', applyHeight, { once: true });
+      img.addEventListener('error', applyHeight, { once: true });
+    });
   })();
 })();
