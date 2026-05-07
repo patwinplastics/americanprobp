@@ -19,7 +19,7 @@
       </a>
       <nav class="nav" aria-label="Primary">
         <a href="${B}pages/decking.html">PVC Decking</a>
-        <a href="${B}pages/invisiclip.html">InvisiClip</a>
+        <a href="${B}pages/invisiclip.html">InvisiClip™</a>
         <a href="${B}pages/porch.html">Porch Flooring</a>
         <a href="${B}pages/mouldings.html">Mouldings</a>
         <a href="${B}pages/inspiration.html">Inspiration</a>
@@ -39,7 +39,7 @@
     <div class="mobile-menu">
       <ul>
         <li><a href="${B}pages/decking.html">PVC Decking</a></li>
-        <li><a href="${B}pages/invisiclip.html">InvisiClip</a></li>
+        <li><a href="${B}pages/invisiclip.html">InvisiClip™</a></li>
         <li><a href="${B}pages/porch.html">Porch Flooring</a></li>
         <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
         <li><a href="${B}pages/inspiration.html">Inspiration</a></li>
@@ -66,7 +66,7 @@
           <h4>Products</h4>
           <ul>
             <li><a href="${B}pages/decking.html">PVC Decking</a></li>
-            <li><a href="${B}pages/invisiclip.html">InvisiClip Hidden Fastener</a></li>
+            <li><a href="${B}pages/invisiclip.html">InvisiClip™ Hidden Fastener</a></li>
             <li><a href="${B}pages/porch.html">Porch Flooring</a></li>
             <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
             <li><a href="${B}pages/inspiration.html">Inspiration Gallery</a></li>

@@ -1746,7 +1746,7 @@ html.reveal-ready [data-reveal].is-visible {
   .hero-slide.ic-feature {
     padding-top: clamp(var(--space-8), 5vh, var(--space-12));
   }
-  /* Compact InvisiClip elements on narrow screens */
+  /* Compact InvisiClip™ elements on narrow screens */
   .hero-slide.ic-feature .ic-feature-title {
     font-size: clamp(1.9rem, 7vw, 2.6rem);
     margin-bottom: var(--space-3);
