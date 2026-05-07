@@ -156,6 +156,64 @@
     if (href === path) a.classList.add('is-active');
   });
 
+  // Samples form preselect
+  // If the URL hash or query string asks for a specific product (e.g.
+  //   /#samples-invisiclip   or   /?sample=invisiclip#samples
+  //   or   /pages/invisiclip.html#samples-invisiclip
+  // ), pre-check the matching checkbox in the samples form so the lead
+  // arrives already attributed to that product. Checkboxes are tagged
+  // with `data-sample="<key>"`. Multiple keys can be passed comma-separated.
+  (function preselectSamples() {
+    function tokensFromHash() {
+      const h = (location.hash || '').replace(/^#/, '').toLowerCase();
+      // Accept: samples-invisiclip, samples-truegrain, etc.
+      const m = h.match(/^samples-([a-z0-9,_-]+)$/);
+      if (m) return m[1].split(',').filter(Boolean);
+      return [];
+    }
+    function tokensFromQuery() {
+      try {
+        const sp = new URLSearchParams(location.search);
+        const v = (sp.get('sample') || sp.get('samples') || '').toLowerCase();
+        return v ? v.split(',').filter(Boolean) : [];
+      } catch (_) { return []; }
+    }
+    const tokens = Array.from(new Set([].concat(tokensFromHash(), tokensFromQuery())));
+    if (!tokens.length) return;
+
+    function applyPreselect() {
+      let any = false;
+      tokens.forEach((tok) => {
+        const boxes = document.querySelectorAll('input[type="checkbox"][data-sample="' + tok + '"]');
+        boxes.forEach((cb) => { cb.checked = true; any = true; });
+      });
+      // Also try interest[] checkboxes whose value contains the token (contact.html style)
+      tokens.forEach((tok) => {
+        const boxes = document.querySelectorAll('input[type="checkbox"][name="interest[]"]');
+        boxes.forEach((cb) => {
+          const val = (cb.value || '').toLowerCase();
+          if (val.indexOf(tok) !== -1) { cb.checked = true; any = true; }
+        });
+      });
+      // If we matched anything and the hash uses the samples-<token> shorthand,
+      // scroll the samples form into view since the browser would have failed
+      // to find an element with that exact ID.
+      if (any && /^#samples-/.test(location.hash || '')) {
+        const samples = document.getElementById('samples');
+        if (samples && typeof samples.scrollIntoView === 'function') {
+          samples.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+      return any;
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', applyPreselect, { once: true });
+    } else {
+      applyPreselect();
+    }
+  })();
+
   // Hero crossfade slider
   // Single clock: the CSS .hero-dot-fill animation IS the timer.
   // animationend on the active dot's fill triggers the slide advance,

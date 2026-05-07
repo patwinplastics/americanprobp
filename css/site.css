@@ -1278,6 +1278,231 @@ html.reveal-ready [data-reveal].is-visible {
 }
 
 /* ============================================================
+   INVISICLIP FEATURE SLIDE (homepage hero, slide 3)
+   Mirrors the truegrain-feature pattern: dark navy backdrop,
+   product render bleeds in from the right, gradient overlay
+   keeps text legible. Uses our CAD-derived clip render.
+   ============================================================ */
+.ic-feature {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-primary);
+  color: #fff;
+  padding: clamp(var(--space-16), 12vh, var(--space-24)) 0 var(--space-16);
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+}
+
+.ic-feature-art {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+.ic-feature-art img {
+  width: clamp(560px, 62%, 1200px);
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  transform: translateX(8%);
+  filter: drop-shadow(0 30px 70px rgba(0, 0, 0, 0.55));
+  opacity: 0.95;
+}
+
+.ic-feature-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    100deg,
+    rgba(14, 31, 58, 0.96) 0%,
+    rgba(14, 31, 58, 0.85) 38%,
+    rgba(14, 31, 58, 0.45) 70%,
+    rgba(14, 31, 58, 0.25) 100%
+  );
+  pointer-events: none;
+}
+
+.ic-feature-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+.ic-feature-inner > * {
+  max-width: 56ch;
+}
+.ic-feature-inner .ic-feature-meta { max-width: 720px; }
+.ic-feature-inner .ic-feature-actions { max-width: 720px; }
+
+.ic-feature-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: var(--space-5);
+}
+.ic-feature-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.18);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ic-feature-badge-dot {
+    animation: ic-dot-pulse 2.4s ease-in-out infinite;
+  }
+}
+@keyframes ic-dot-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.18); }
+  50%      { box-shadow: 0 0 0 7px rgba(212, 165, 116, 0.05); }
+}
+
+.ic-feature-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5.2vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: #fff;
+  margin-bottom: var(--space-5);
+}
+.ic-feature-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent);
+}
+
+.ic-feature-sub {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.86);
+  margin-bottom: var(--space-7);
+  max-width: 56ch;
+}
+
+.ic-feature-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-6);
+  padding: var(--space-5) 0;
+  margin-bottom: var(--space-7);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+.ic-feature-stat strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+.ic-feature-stat span {
+  display: block;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 4px;
+  max-width: 22ch;
+}
+
+.ic-feature-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+/* Slider integration: same compaction tricks as truegrain-feature */
+.hero-slide.ic-feature {
+  padding: clamp(var(--space-8), 6vh, var(--space-12)) 0 clamp(var(--space-16), 14vh, var(--space-20));
+  align-items: flex-start;
+}
+.hero-slide.ic-feature .ic-feature-inner {
+  width: 100%;
+}
+.hero-slide.ic-feature .ic-feature-title {
+  font-size: clamp(2.25rem, 4.6vw, 3.6rem);
+  margin-bottom: var(--space-4);
+}
+.hero-slide.ic-feature .ic-feature-badge {
+  margin-bottom: var(--space-4);
+}
+.hero-slide.ic-feature .ic-feature-sub {
+  margin-bottom: var(--space-5);
+}
+.hero-slide.ic-feature .ic-feature-meta {
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-5);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .ic-feature {
+    padding: var(--space-16) 0 var(--space-12);
+    min-height: auto;
+  }
+  .ic-feature-art {
+    justify-content: center;
+    opacity: 0.5;
+  }
+  .ic-feature-art img {
+    width: 95%;
+    transform: translateX(15%);
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6));
+  }
+  .ic-feature-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(14, 31, 58, 0.94) 0%,
+      rgba(14, 31, 58, 0.86) 60%,
+      rgba(14, 31, 58, 0.78) 100%
+    );
+  }
+  .ic-feature-meta {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+  .ic-feature {
+    padding: var(--space-12) 0;
+  }
+  .ic-feature-badge {
+    font-size: 0.7rem;
+    padding: 0.45rem 0.85rem;
+  }
+  .ic-feature-stat strong {
+    font-size: 1.2rem;
+  }
+  .ic-feature-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ic-feature-actions .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* ============================================================
    Hero Slider (crossfade)
    ============================================================ */
 .hero-slider {
@@ -1513,11 +1738,30 @@ html.reveal-ready [data-reveal].is-visible {
 
 @media (max-width: 900px) {
   .hero-slide.hero,
-  .hero-slide.truegrain-feature {
+  .hero-slide.truegrain-feature,
+  .hero-slide.ic-feature {
     min-height: clamp(640px, 92vh, 1100px);
   }
-  .hero-slide.truegrain-feature {
+  .hero-slide.truegrain-feature,
+  .hero-slide.ic-feature {
     padding-top: clamp(var(--space-8), 5vh, var(--space-12));
+  }
+  /* Compact InvisiClip elements on narrow screens */
+  .hero-slide.ic-feature .ic-feature-title {
+    font-size: clamp(1.9rem, 7vw, 2.6rem);
+    margin-bottom: var(--space-3);
+  }
+  .hero-slide.ic-feature .ic-feature-badge {
+    margin-bottom: var(--space-3);
+    font-size: 0.7rem;
+    padding: 0.4rem 0.85rem;
+  }
+  .hero-slide.ic-feature .ic-feature-sub {
+    margin-bottom: var(--space-4);
+    font-size: 0.95rem;
+  }
+  .hero-slide.ic-feature .ic-feature-meta {
+    margin-bottom: var(--space-4);
   }
   /* Compact TrueGrain elements on narrow screens */
   .hero-slide.truegrain-feature .tg-feature-title {
