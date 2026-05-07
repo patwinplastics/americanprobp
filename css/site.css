@@ -285,10 +285,16 @@
   .header-actions .btn--primary { display: none; }
   /* Bump mobile logo and give the header more vertical room so the flag
      mark on top of the lockup reads cleanly instead of compressing into
-     a single thin red bar. */
-  .header-inner { min-height: 7.5rem; padding-block: 1.75rem 1.25rem; }
+     a single thin red bar. The drawer top must clear the full lockup
+     including the BUILDING PRODUCTS wordmark below it; otherwise the
+     drawer covers the bottom of the logo. Logo is 76px tall plus 3rem
+     of vertical padding = 7.75rem of stacked height, so we set the
+     header min-height and drawer top to 8.5rem with a small gap. */
+  .header-inner { min-height: 9rem; padding-block: 1.5rem 1.5rem; }
   .logo-img { height: 76px; }
-  .mobile-menu { inset: 7.5rem 0 auto 0; }
+  /* Drawer top override is handled in a second @media block AFTER the
+     base .mobile-menu rule below, so the base inset does not win on
+     source order. */
 }
 
 /* Mobile menu */
@@ -313,7 +319,11 @@
 }
 .mobile-menu.is-open { transform: translateY(0); visibility: visible; transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0s; }
 .mobile-menu ul { display: grid; gap: var(--space-3); }
-.mobile-menu a {
+/* Scope nav-link styling to <li> children only, so the CTA buttons in
+   .mobile-cta below are not affected by the display-font + padding
+   reset. Without this, the Request Samples + Call buttons inherit
+   serif Boska, lose their pill padding, and text falls left-flush. */
+.mobile-menu ul a {
   display: block;
   padding: var(--space-3) 0;
   font-size: var(--text-lg);
@@ -323,7 +333,28 @@
 .mobile-menu .mobile-cta {
   margin-top: var(--space-6);
   display: grid;
-  gap: var(--space-2);
+  gap: var(--space-3);
+}
+/* Keep CTA buttons full-width with centered text, in the body sans
+   font, matching the rest of the site UI. Override the .mobile-menu a
+   defaults that would otherwise leak in. */
+.mobile-menu .mobile-cta .btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-body, 'Satoshi', system-ui, sans-serif);
+  border-bottom: 0;
+}
+
+/* Small-screen drawer top must be declared AFTER the base .mobile-menu
+   rule above so that source order resolves the tie in favor of this
+   override. The drawer needs to clear the full logo lockup (flag mark
+   on top of AMERICAN PRO on top of BUILDING PRODUCTS wordmark) which
+   ends near 9rem at <= 540px. */
+@media (max-width: 540px) {
+  .mobile-menu { inset: 9.25rem 0 auto 0; }
 }
 
 /* ─── Hero ────────────────────────────────────────────────────────────────── */

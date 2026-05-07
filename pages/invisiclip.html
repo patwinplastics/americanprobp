@@ -52,7 +52,7 @@
     />
 
     <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/site.css?v=3" />
+    <link rel="stylesheet" href="../css/site.css?v=4" />
 
     <style>
       /* ==========================================================
@@ -86,6 +86,54 @@
       .ic-hero-stat { min-width: 9rem; }
       .ic-hero-stat strong { display: block; font-family: var(--font-display); font-size: var(--text-xl); color: #fff; line-height: 1.1; letter-spacing: -0.01em; }
       .ic-hero-stat span { display: block; color: rgba(255,255,255,0.65); font-size: var(--text-xs); margin-top: 6px; max-width: 22ch; line-height: 1.5; }
+
+      /* Subtle GRAD attribution under headline. Small, low contrast, never
+         competes with the InvisiClip wordmark. */
+      .ic-grad-attr {
+        display: inline-flex; align-items: center; gap: 6px;
+        margin-top: var(--space-3);
+        font-family: var(--font-body, 'Satoshi', system-ui, sans-serif);
+        font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+        font-weight: 500;
+        color: rgba(255,255,255,0.45);
+      }
+      .ic-grad-attr strong { font-weight: 600; color: rgba(255,255,255,0.62); letter-spacing: 0.06em; }
+      .ic-grad-attr .ic-grad-bar { width: 18px; height: 1px; background: rgba(255,255,255,0.25); display: inline-block; }
+
+      /* ----- Mobile hero revamp (<= 720px) -----
+         Stack image ABOVE text block instead of overlaying. Keep dark
+         background for brand continuity. Reflow CTAs and stats so
+         nothing crops or overlaps. */
+      @media (max-width: 720px) {
+        .ic-hero { min-height: 0; display: block; align-items: stretch; }
+        .ic-hero::after { display: none; }
+        .ic-hero-art {
+          position: relative; inset: auto;
+          width: 100%; height: 240px;
+          padding: 0; justify-content: center; align-items: center;
+          background: linear-gradient(180deg, #0e1f3a 0%, #14274a 100%);
+          z-index: 0;
+        }
+        .ic-hero-art img {
+          width: 100%; height: 100%;
+          max-width: none;
+          object-fit: cover; object-position: center 65%;
+          opacity: 1; filter: none;
+        }
+        .ic-hero-inner { padding-block: var(--space-8) var(--space-10); }
+        .ic-hero h1 { font-size: var(--text-2xl); max-width: none; }
+        .ic-hero p { font-size: var(--text-sm); margin-top: var(--space-4); }
+        .ic-hero-actions { gap: var(--space-3); margin-top: var(--space-6); flex-direction: column; align-items: stretch; }
+        .ic-hero-actions .btn { width: 100%; text-align: center; justify-content: center; }
+        .ic-hero-stats {
+          display: grid; grid-template-columns: 1fr 1fr;
+          gap: var(--space-5) var(--space-6);
+          margin-top: var(--space-8);
+        }
+        .ic-hero-stat { min-width: 0; }
+        .ic-hero-stat strong { font-size: var(--text-lg); }
+        .ic-grad-attr { font-size: 10px; letter-spacing: 0.12em; }
+      }
 
       /* Section heads */
       .ic-section-head { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-10); align-items: end; padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-divider); margin-bottom: var(--space-10); }
@@ -186,6 +234,10 @@
             Hidden hardware.<br />
             <em>Honest deck.</em>
           </h1>
+          <div class="ic-grad-attr" aria-label="Powered by the GRAD system">
+            <span class="ic-grad-bar" aria-hidden="true"></span>
+            <span>Powered by the <strong>GRAD&reg;</strong> system</span>
+          </div>
           <p>
             InvisiClip™ is the hidden fastener system that turns grooved PVC deck boards into a
             seamless surface. Engineered POM clips snap onto stainless rails. Boards drop in from
