@@ -196,6 +196,212 @@
 .nav a.nav-vis .nav-external-arrow { color: var(--color-accent); }
 .nav a.nav-vis:hover { color: var(--color-accent); filter: brightness(0.9); }
 
+/* ─── Products mega-menu (desktop) ────────────────────────────────────────
+   The Products button replaces four flat product links in the top nav.
+   It styles like a normal nav link, opens a panel that drops down below
+   the header on hover (200ms intent delay) or click. The panel spans the
+   full container width and shows four image-thumb cards.
+
+   Active state: when the visitor is on any of the 4 product pages, the
+   trigger gets `.is-active` from JS so the underline is visible.
+*/
+.nav-products {
+  position: static; /* the panel positions against the header, not against this */
+  display: inline-flex;
+}
+.nav-products-trigger {
+  /* Match .nav a styling */
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  background: transparent;
+  border: 0;
+  padding: var(--space-1) 0;
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+.nav-products-trigger::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%;
+  bottom: -2px;
+  height: 1.5px;
+  background: var(--color-accent);
+  transition: right 220ms ease;
+}
+.nav-products:hover .nav-products-trigger::after,
+.nav-products-trigger[aria-expanded="true"]::after,
+.nav-products-trigger.is-active::after {
+  right: 0;
+}
+.nav-products-caret {
+  color: var(--color-text-muted);
+  transition: transform 220ms ease;
+}
+.nav-products-trigger[aria-expanded="true"] .nav-products-caret,
+.nav-products:hover .nav-products-caret {
+  transform: rotate(180deg);
+  color: var(--color-text);
+}
+
+.mega-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-divider);
+  border-bottom: 1px solid var(--color-divider);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-7) 0 var(--space-8);
+  z-index: 80;
+  /* Animation: invisible by default, fade and slide down when opened.
+     We toggle the [hidden] attribute in JS for accessibility AND a
+     `is-open` class for the visual transition. */
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+.mega-panel:not([hidden]) {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.mega-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+.mega-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  background: #fff;
+  border: 1px solid var(--color-divider);
+  padding: var(--space-3);
+}
+.mega-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(14, 31, 58, 0.15);
+}
+.mega-card__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: calc(var(--radius-md) - 4px);
+  background: var(--color-surface-2, #f3eee6);
+}
+.mega-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 320ms ease;
+}
+.mega-card:hover .mega-card__media img {
+  transform: scale(1.04);
+}
+.mega-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0 0.25rem 0.25rem;
+}
+.mega-card__name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+.mega-card__tag {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+}
+
+/* Backdrop dim behind the open panel so attention focuses on the cards */
+.mega-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 31, 58, 0.18);
+  z-index: 70;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+.mega-backdrop.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Hide desktop mega-menu structures inside the mobile drawer width range */
+@media (max-width: 960px) {
+  .mega-panel,
+  .mega-backdrop { display: none !important; }
+}
+
+/* ─── Products accordion (mobile drawer) ──────────────────────────────────
+   In the drawer the Products row is a tappable button that expands a
+   nested list in place. Caret rotates 180deg when open. Nested links
+   indent and use a slightly smaller font so the hierarchy is obvious. */
+.mobile-products-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font: inherit;
+  font-size: var(--text-lg);
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--color-text);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--color-divider);
+  padding: var(--space-3) 0;
+  text-align: left;
+  cursor: pointer;
+}
+.mobile-products-caret {
+  color: var(--color-text-muted);
+  transition: transform 220ms ease;
+  flex: 0 0 auto;
+}
+.mobile-products-trigger[aria-expanded="true"] .mobile-products-caret {
+  transform: rotate(180deg);
+}
+.mobile-products-list {
+  display: grid;
+  gap: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mobile-products-list.is-open {
+  /* Generous cap that fits 4+ items without clipping. */
+  max-height: 32rem;
+}
+.mobile-menu .mobile-products-list a {
+  /* Indent and de-emphasize subitems vs. top-level drawer links */
+  padding-left: var(--space-4);
+  font-size: var(--text-base);
+  color: var(--color-text);
+}
+
 /* Homepage hero tertiary link to the Deck Visualizer */
 .hero-tertiary-link {
   display: inline-flex;

@@ -18,13 +18,154 @@
       document.body.style.overflow = open ? 'hidden' : '';
     });
     mobileMenu.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A') {
+      // Tap on a real navigation link closes the drawer. Tapping the
+      // Products accordion button or its caret should NOT close the drawer
+      // (it's just expanding the sub-list in place), so we explicitly skip
+      // anything inside the products trigger.
+      if (e.target.closest('[data-mobile-products-trigger]')) return;
+      if (e.target.tagName === 'A' || e.target.closest('a')) {
         mobileMenu.classList.remove('is-open');
         menuToggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       }
     });
   }
+
+  // Products mega-menu (desktop): hover with intent delay, click also opens.
+  // The panel is anchored under the header (position: absolute, top: 100% of
+  // .site-header), so we attach event listeners to the trigger and panel and
+  // close on outside click or Esc. A backdrop dim element is created lazily.
+  (function initMegaMenu() {
+    const wrap = document.querySelector('[data-mega]');
+    if (!wrap) return;
+    const trigger = wrap.querySelector('[data-mega-trigger]');
+    const panel = document.querySelector('[data-mega-panel]');
+    if (!trigger || !panel) return;
+
+    // Position the panel against the header so it spans full width and
+    // appears directly under the bottom of the header bar. We re-parent it
+    // out of .nav into .site-header so the absolute positioning is reliable
+    // (the .nav element is inline-flex and not a positioning context).
+    const header = document.querySelector('.site-header');
+    if (header && panel.parentElement !== header) {
+      header.appendChild(panel);
+    }
+
+    // Backdrop, lazily created on first open.
+    let backdrop = null;
+    function ensureBackdrop() {
+      if (backdrop) return backdrop;
+      backdrop = document.createElement('div');
+      backdrop.className = 'mega-backdrop';
+      document.body.appendChild(backdrop);
+      backdrop.addEventListener('click', close);
+      return backdrop;
+    }
+
+    let openTimer = null;
+    let closeTimer = null;
+    let isOpen = false;
+
+    function open() {
+      clearTimeout(closeTimer);
+      if (isOpen) return;
+      isOpen = true;
+      // Remove [hidden] first so the panel can transition from its CSS
+      // initial (opacity 0, translateY -8px). Force a reflow then let the
+      // browser apply the transition target state.
+      panel.removeAttribute('hidden');
+      // eslint-disable-next-line no-unused-expressions
+      panel.offsetWidth;
+      trigger.setAttribute('aria-expanded', 'true');
+      ensureBackdrop().classList.add('is-visible');
+    }
+    function close() {
+      clearTimeout(openTimer);
+      if (!isOpen) return;
+      isOpen = false;
+      panel.setAttribute('hidden', '');
+      trigger.setAttribute('aria-expanded', 'false');
+      if (backdrop) backdrop.classList.remove('is-visible');
+    }
+
+    // Hover with 200ms intent delay so crossing the nav doesn't fire it.
+    function scheduleOpen() {
+      clearTimeout(closeTimer);
+      if (isOpen) return;
+      openTimer = setTimeout(open, 200);
+    }
+    function scheduleClose() {
+      clearTimeout(openTimer);
+      if (!isOpen) return;
+      closeTimer = setTimeout(close, 220);
+    }
+
+    // Treat hover on either the trigger area OR the panel as "still inside"
+    // so moving from the button down into the cards doesn't blink it shut.
+    [wrap, panel].forEach((el) => {
+      el.addEventListener('mouseenter', scheduleOpen);
+      el.addEventListener('mouseleave', scheduleClose);
+    });
+
+    // Click toggles. On click we cancel any hover timer so the click
+    // intention wins immediately.
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      clearTimeout(openTimer);
+      clearTimeout(closeTimer);
+      if (isOpen) close(); else open();
+    });
+
+    // Esc closes, focus returns to trigger.
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        close();
+        trigger.focus();
+      }
+    });
+
+    // Click anywhere outside closes.
+    document.addEventListener('click', (e) => {
+      if (!isOpen) return;
+      if (wrap.contains(e.target)) return;
+      if (panel.contains(e.target)) return;
+      close();
+    });
+
+    // Close on viewport resize down into mobile breakpoint so a stale open
+    // state doesn't leave the panel visible when the layout shifts.
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= 960 && isOpen) close();
+    });
+
+    // Active state: highlight the Products trigger when on a product page.
+    const productHrefs = ['/pages/decking.html', '/pages/invisiclip.html', '/pages/porch.html', '/pages/mouldings.html'];
+    if (productHrefs.some((p) => location.pathname.endsWith(p))) {
+      trigger.classList.add('is-active');
+    }
+  })();
+
+  // Products accordion (mobile drawer): tapping the Products row toggles
+  // a nested list in place. The list animates open via max-height. The
+  // mobileMenu click handler above already skips this trigger so the
+  // drawer stays open while the accordion expands.
+  (function initMobileProducts() {
+    const trigger = document.querySelector('[data-mobile-products-trigger]');
+    const list = document.querySelector('[data-mobile-products-list]');
+    if (!trigger || !list) return;
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = list.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // If we landed on a product page, auto-expand on drawer open so the
+    // user can see where they are in the hierarchy.
+    const productHrefs = ['/pages/decking.html', '/pages/invisiclip.html', '/pages/porch.html', '/pages/mouldings.html'];
+    if (productHrefs.some((p) => location.pathname.endsWith(p))) {
+      list.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+  })();
 
   // Reveal-on-scroll. The CSS only hides items when <html> has the
   // `reveal-ready` class, so a JS/observer failure leaves content visible.

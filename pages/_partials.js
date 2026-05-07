@@ -9,14 +9,67 @@
   // (e.g. /pages/blog/posts/foo.html needs '../../../').
   function _base() {
     const path = location.pathname.replace(/\/[^/]*$/, '/');
-    // count the number of slash-delimited segments after the host root.
     const segments = path.split('/').filter(Boolean);
-    // segments here represent directories from site root to current dir.
-    // base is one ../ per segment.
     if (segments.length === 0) return './';
     return '../'.repeat(segments.length);
   }
   const B = _base();
+
+  // Single source of truth for the Products mega-menu. Used by both the
+  // desktop dropdown panel and the mobile drawer accordion so the two stay
+  // in sync. Each card has a thumb image, a name, and a one-line tagline.
+  const PRODUCTS = [
+    {
+      name: 'PVC Decking',
+      tagline: 'TrueGrain wood-grain boards and Standard PVC, six colors.',
+      href: B + 'pages/decking.html',
+      img: B + 'images/product_decking.jpg',
+      alt: 'TrueGrain Deck wood-grain PVC deck boards',
+    },
+    {
+      name: 'InvisiClip\u2122',
+      tagline: 'Hidden hardware. Honest deck.',
+      href: B + 'pages/invisiclip.html',
+      img: B + 'images/invisiclip/clip_macro_hero.png',
+      alt: 'InvisiClip hidden fastener clip on stainless rail',
+    },
+    {
+      name: 'Porch Flooring',
+      tagline: 'Tongue-and-groove cellular PVC, slip-resistant.',
+      href: B + 'pages/porch.html',
+      img: B + 'images/product_porch.jpg',
+      alt: 'PVC tongue and groove porch flooring',
+    },
+    {
+      name: 'Mouldings',
+      tagline: 'Crowns, sills, brick mould, casing, and more.',
+      href: B + 'pages/mouldings.html',
+      img: B + 'images/product_moulding.jpg',
+      alt: 'PVC architectural moulding profiles',
+    },
+  ];
+
+  function productCardsHTML() {
+    return PRODUCTS.map(function (p) {
+      return (
+        '<a class="mega-card" href="' + p.href + '" data-product-link>' +
+          '<span class="mega-card__media">' +
+            '<img src="' + p.img + '" alt="" loading="lazy" decoding="async" />' +
+          '</span>' +
+          '<span class="mega-card__body">' +
+            '<span class="mega-card__name">' + p.name + '</span>' +
+            '<span class="mega-card__tag">' + p.tagline + '</span>' +
+          '</span>' +
+        '</a>'
+      );
+    }).join('');
+  }
+
+  function mobileProductLinksHTML() {
+    return PRODUCTS.map(function (p) {
+      return '<li><a href="' + p.href + '" data-product-link>' + p.name + '</a></li>';
+    }).join('');
+  }
 
   const HEADER = `
   <header class="site-header">
@@ -25,10 +78,19 @@
         <img src="${B}images/logo/americanpro-header.png" alt="American Pro Building Products" class="logo-img" width="660" height="306"/>
       </a>
       <nav class="nav" aria-label="Primary">
-        <a href="${B}pages/decking.html">PVC Decking</a>
-        <a href="${B}pages/invisiclip.html">InvisiClip™</a>
-        <a href="${B}pages/porch.html">Porch Flooring</a>
-        <a href="${B}pages/mouldings.html">Mouldings</a>
+        <div class="nav-products" data-mega>
+          <button type="button" class="nav-products-trigger" data-mega-trigger aria-haspopup="true" aria-expanded="false" aria-controls="mega-products">
+            Products
+            <svg class="nav-products-caret" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 1 5 5 9 1"/></svg>
+          </button>
+          <div class="mega-panel" id="mega-products" data-mega-panel role="menu" aria-label="Products" hidden>
+            <div class="container">
+              <div class="mega-grid">
+                ${productCardsHTML()}
+              </div>
+            </div>
+          </div>
+        </div>
         <a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener" class="nav-external nav-vis">Deck Visualizer<span aria-hidden="true" class="nav-external-arrow">↗</span></a>
         <a href="${B}pages/inspiration.html">Inspiration</a>
         <a href="${B}pages/blog/index.html">Blog</a>
@@ -47,10 +109,15 @@
     </div>
     <div class="mobile-menu">
       <ul>
-        <li><a href="${B}pages/decking.html">PVC Decking</a></li>
-        <li><a href="${B}pages/invisiclip.html">InvisiClip™</a></li>
-        <li><a href="${B}pages/porch.html">Porch Flooring</a></li>
-        <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
+        <li class="mobile-products" data-mobile-products>
+          <button type="button" class="mobile-products-trigger" data-mobile-products-trigger aria-expanded="false">
+            Products
+            <svg class="mobile-products-caret" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 1 6 6 11 1"/></svg>
+          </button>
+          <ul class="mobile-products-list" data-mobile-products-list>
+            ${mobileProductLinksHTML()}
+          </ul>
+        </li>
         <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
         <li><a href="${B}pages/inspiration.html">Inspiration</a></li>
         <li><a href="${B}pages/blog/index.html">Blog</a></li>
@@ -77,7 +144,7 @@
           <h4>Products</h4>
           <ul>
             <li><a href="${B}pages/decking.html">PVC Decking</a></li>
-            <li><a href="${B}pages/invisiclip.html">InvisiClip™ Hidden Fastener</a></li>
+            <li><a href="${B}pages/invisiclip.html">InvisiClip\u2122 Hidden Fastener</a></li>
             <li><a href="${B}pages/porch.html">Porch Flooring</a></li>
             <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
             <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
@@ -99,12 +166,12 @@
           <ul>
             <li><a href="tel:18774426776">1-877-442-6776</a></li>
             <li><a href="mailto:sales@americanprobp.com">sales@americanprobp.com</a></li>
-            <li style="color:rgba(255,255,255,0.55); font-size:var(--text-xs); margin-top: var(--space-2);">Mon–Fri, 8am–4pm ET</li>
+            <li style="color:rgba(255,255,255,0.55); font-size:var(--text-xs); margin-top: var(--space-2);">Mon to Fri, 8am to 4pm ET</li>
           </ul>
         </div>
       </div>
       <div class="footer-bar">
-        <span>© 2026 American Pro Building Products · A Patwin Plastics Brand</span>
+        <span>\u00a9 2026 American Pro Building Products \u00b7 A Patwin Plastics Brand</span>
         <div class="footer-social">
           <a href="https://www.facebook.com/americanprobuilding/" target="_blank" rel="noopener" aria-label="American Pro on Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg></a>
         </div>

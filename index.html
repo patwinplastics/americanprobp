@@ -56,7 +56,7 @@
     <link rel="preload" as="image" href="./images/hero_deck.jpg" />
 
     <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/site.css?v=6" />
+    <link rel="stylesheet" href="./css/site.css?v=7" />
   </head>
   <body>
     <!-- ========== HEADER ========== -->
@@ -71,12 +71,49 @@
         </a>
 
         <nav class="nav" aria-label="Primary">
-          <a href="./pages/decking.html">PVC Decking</a>
-          <a href="./pages/invisiclip.html">InvisiClip™</a>
-          <a href="./pages/porch.html">Porch Flooring</a>
-          <a href="./pages/mouldings.html">Mouldings</a>
+          <div class="nav-products" data-mega>
+            <button type="button" class="nav-products-trigger" data-mega-trigger aria-haspopup="true" aria-expanded="false" aria-controls="mega-products">
+              Products
+              <svg class="nav-products-caret" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 1 5 5 9 1"/></svg>
+            </button>
+            <div class="mega-panel" id="mega-products" data-mega-panel role="menu" aria-label="Products" hidden>
+              <div class="container">
+                <div class="mega-grid">
+                  <a class="mega-card" href="./pages/decking.html" data-product-link>
+                    <span class="mega-card__media"><img src="./images/product_decking.jpg" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="mega-card__body">
+                      <span class="mega-card__name">PVC Decking</span>
+                      <span class="mega-card__tag">TrueGrain wood-grain boards and Standard PVC, six colors.</span>
+                    </span>
+                  </a>
+                  <a class="mega-card" href="./pages/invisiclip.html" data-product-link>
+                    <span class="mega-card__media"><img src="./images/invisiclip/clip_macro_hero.png" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="mega-card__body">
+                      <span class="mega-card__name">InvisiClip&trade;</span>
+                      <span class="mega-card__tag">Hidden hardware. Honest deck.</span>
+                    </span>
+                  </a>
+                  <a class="mega-card" href="./pages/porch.html" data-product-link>
+                    <span class="mega-card__media"><img src="./images/product_porch.jpg" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="mega-card__body">
+                      <span class="mega-card__name">Porch Flooring</span>
+                      <span class="mega-card__tag">Tongue-and-groove cellular PVC, slip-resistant.</span>
+                    </span>
+                  </a>
+                  <a class="mega-card" href="./pages/mouldings.html" data-product-link>
+                    <span class="mega-card__media"><img src="./images/product_moulding.jpg" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="mega-card__body">
+                      <span class="mega-card__name">Mouldings</span>
+                      <span class="mega-card__tag">Crowns, sills, brick mould, casing, and more.</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
           <a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener" class="nav-external nav-vis">Deck Visualizer<span aria-hidden="true" class="nav-external-arrow">↗</span></a>
           <a href="./pages/inspiration.html">Inspiration</a>
+          <a href="./pages/blog/index.html">Blog</a>
           <a href="./pages/about.html">About</a>
         </nav>
 
@@ -94,12 +131,21 @@
 
       <div class="mobile-menu" id="mobileMenu">
         <ul>
-          <li><a href="./pages/decking.html">PVC Decking</a></li>
-          <li><a href="./pages/invisiclip.html">InvisiClip™</a></li>
-          <li><a href="./pages/porch.html">Porch Flooring</a></li>
-          <li><a href="./pages/mouldings.html">Mouldings</a></li>
+          <li class="mobile-products" data-mobile-products>
+            <button type="button" class="mobile-products-trigger" data-mobile-products-trigger aria-expanded="false">
+              Products
+              <svg class="mobile-products-caret" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 1 6 6 11 1"/></svg>
+            </button>
+            <ul class="mobile-products-list" data-mobile-products-list>
+              <li><a href="./pages/decking.html" data-product-link>PVC Decking</a></li>
+              <li><a href="./pages/invisiclip.html" data-product-link>InvisiClip&trade;</a></li>
+              <li><a href="./pages/porch.html" data-product-link>Porch Flooring</a></li>
+              <li><a href="./pages/mouldings.html" data-product-link>Mouldings</a></li>
+            </ul>
+          </li>
           <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
           <li><a href="./pages/inspiration.html">Inspiration</a></li>
+          <li><a href="./pages/blog/index.html">Blog</a></li>
           <li><a href="./pages/about.html">About</a></li>
         </ul>
         <div class="mobile-cta">
@@ -805,7 +851,7 @@
       </div>
     </footer>
 
-    <script src="./js/site.js" defer></script>
+    <script src="./js/site.js?v=2" defer></script>
 
     <!-- Facebook Page Plugin SDK, loaded async. en_US locale, version pinned. -->
     <script async defer crossorigin="anonymous"
