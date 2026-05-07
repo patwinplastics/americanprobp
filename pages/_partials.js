@@ -4,10 +4,17 @@
   // Resolve project root relative to the including HTML page so absolute
   // paths in the injected markup also work when this site is mounted under
   // a sub-path (preview proxy, Wix Studio sub-page, GitHub Pages, etc.).
+  // Walk up the path one level for each /pages/, /blog/, /posts/ segment
+  // we are inside. This keeps the partial correct at any nesting depth
+  // (e.g. /pages/blog/posts/foo.html needs '../../../').
   function _base() {
-    const path = location.pathname;
-    // If we're inside /pages/, root is one level up.
-    return path.includes('/pages/') ? '../' : './';
+    const path = location.pathname.replace(/\/[^/]*$/, '/');
+    // count the number of slash-delimited segments after the host root.
+    const segments = path.split('/').filter(Boolean);
+    // segments here represent directories from site root to current dir.
+    // base is one ../ per segment.
+    if (segments.length === 0) return './';
+    return '../'.repeat(segments.length);
   }
   const B = _base();
 
@@ -24,6 +31,7 @@
         <a href="${B}pages/mouldings.html">Mouldings</a>
         <a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener" class="nav-external nav-vis">Deck Visualizer<span aria-hidden="true" class="nav-external-arrow">↗</span></a>
         <a href="${B}pages/inspiration.html">Inspiration</a>
+        <a href="${B}pages/blog/index.html">Blog</a>
         <a href="${B}pages/about.html">About</a>
       </nav>
       <div class="header-actions">
@@ -45,6 +53,7 @@
         <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
         <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
         <li><a href="${B}pages/inspiration.html">Inspiration</a></li>
+        <li><a href="${B}pages/blog/index.html">Blog</a></li>
         <li><a href="${B}pages/about.html">About</a></li>
       </ul>
       <div class="mobile-cta">
@@ -79,6 +88,7 @@
           <h4>Company</h4>
           <ul>
             <li><a href="${B}pages/about.html">About Us</a></li>
+            <li><a href="${B}pages/blog/index.html">Blog</a></li>
             <li><a href="${B}pages/contact.html">Contact</a></li>
             <li><a href="${B}index.html#samples">Request Samples</a></li>
             <li><a href="${B}pages/contact.html">Get a Quote</a></li>

@@ -52,7 +52,7 @@
     />
 
     <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/site.css?v=4" />
+    <link rel="stylesheet" href="../css/site.css?v=5" />
 
     <style>
       /* ==========================================================
@@ -103,7 +103,10 @@
       /* ----- Mobile hero revamp (<= 720px) -----
          Stack image ABOVE text block instead of overlaying. Keep dark
          background for brand continuity. Reflow CTAs and stats so
-         nothing crops or overlaps. */
+         nothing crops or overlaps. Spacing inside the inner stack is
+         loosened so the eyebrow chip, headline, GRAD attribution, and
+         intro paragraph each have visible breathing room and do not
+         read as one bunched-up block. */
       @media (max-width: 720px) {
         .ic-hero { min-height: 0; display: block; align-items: stretch; }
         .ic-hero::after { display: none; }
@@ -120,19 +123,40 @@
           object-fit: cover; object-position: center 65%;
           opacity: 1; filter: none;
         }
-        .ic-hero-inner { padding-block: var(--space-8) var(--space-10); }
-        .ic-hero h1 { font-size: var(--text-2xl); max-width: none; }
-        .ic-hero p { font-size: var(--text-sm); margin-top: var(--space-4); }
-        .ic-hero-actions { gap: var(--space-3); margin-top: var(--space-6); flex-direction: column; align-items: stretch; }
+        .ic-hero-inner { padding-block: var(--space-10) var(--space-10); }
+        /* Eyebrow chip stands alone with breathing room below. */
+        .ic-hero .ic-eyebrow { margin-bottom: var(--space-6); }
+        /* Headline gets its own air. Tighter line-height keeps the two
+           lines readable, but margins below push the next element away. */
+        .ic-hero h1 {
+          font-size: var(--text-2xl);
+          max-width: none;
+          line-height: 1.15;
+          margin: 0 0 var(--space-5);
+        }
+        /* GRAD attribution sits as its own line with clear space
+           above and below so it does not crowd the headline or the
+           paragraph that follows. */
+        .ic-grad-attr {
+          font-size: 10px;
+          letter-spacing: 0.12em;
+          margin-top: 0;
+          margin-bottom: var(--space-5);
+        }
+        .ic-hero p {
+          font-size: var(--text-sm);
+          margin-top: 0;
+          line-height: 1.65;
+        }
+        .ic-hero-actions { gap: var(--space-3); margin-top: var(--space-7); flex-direction: column; align-items: stretch; }
         .ic-hero-actions .btn { width: 100%; text-align: center; justify-content: center; }
         .ic-hero-stats {
           display: grid; grid-template-columns: 1fr 1fr;
           gap: var(--space-5) var(--space-6);
-          margin-top: var(--space-8);
+          margin-top: var(--space-9);
         }
         .ic-hero-stat { min-width: 0; }
         .ic-hero-stat strong { font-size: var(--text-lg); }
-        .ic-grad-attr { font-size: 10px; letter-spacing: 0.12em; }
       }
 
       /* Section heads */

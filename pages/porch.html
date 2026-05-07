@@ -52,7 +52,7 @@
 
 
     <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/site.css?v=4" />
+    <link rel="stylesheet" href="../css/site.css?v=5" />
     <style>
       /* Hero */
       .porch-hero { position: relative; min-height: 60vh; display: flex; align-items: flex-end; color: #fff; isolation: isolate; }
@@ -97,6 +97,96 @@
       /* Sample checkbox grid */
       .swatch-checks { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-2); }
       @media (min-width: 480px) { .swatch-checks { grid-template-columns: repeat(3, 1fr); } }
+
+      /* ========== Where to Buy / Distributors ========== */
+      .porch-distributors { background: var(--color-surface-2, #f4f1ea); }
+      .porch-dist-head { max-width: 60ch; margin-bottom: var(--space-10); }
+      .porch-dist-head h2 { font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); letter-spacing: -0.02em; margin: var(--space-2) 0 var(--space-4); }
+      .porch-dist-head h2 em { font-style: italic; font-weight: 400; }
+      .porch-dist-blurb { color: var(--color-text-muted); margin: 0; max-width: 56ch; }
+
+      .porch-dist-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+        gap: var(--space-6);
+        list-style: none;
+        padding: 0; margin: 0;
+      }
+      .porch-dist-card {
+        background: #fff;
+        border: 1px solid var(--color-divider);
+        border-radius: var(--radius-lg, 12px);
+        padding: clamp(var(--space-6), 3vw, var(--space-8));
+        display: flex; flex-direction: column; gap: var(--space-6);
+        transition: var(--transition-interactive);
+      }
+      .porch-dist-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+      .porch-dist-region {
+        display: inline-block;
+        font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase;
+        font-weight: 700; color: var(--color-accent);
+        margin-bottom: var(--space-3);
+      }
+      .porch-dist-card h3 {
+        margin: 0 0 var(--space-3);
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        letter-spacing: -0.01em;
+      }
+      .porch-dist-tag { color: var(--color-text-muted); font-size: var(--text-sm); margin: 0; }
+
+      .porch-dist-branches {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-5);
+        padding-top: var(--space-5);
+        border-top: 1px solid var(--color-divider);
+      }
+      @media (max-width: 540px) {
+        .porch-dist-branches { grid-template-columns: 1fr; gap: var(--space-4); }
+      }
+      .porch-dist-branch {
+        display: flex; flex-direction: column; gap: 4px;
+        font-size: var(--text-sm); line-height: 1.5;
+        color: var(--color-text);
+      }
+      .porch-dist-branch-label {
+        font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase;
+        font-weight: 700; color: var(--color-text-muted);
+        margin-bottom: 2px;
+      }
+      .porch-dist-branch address { font-style: normal; color: var(--color-text); }
+      .porch-dist-phone {
+        font-family: var(--font-display);
+        font-weight: 500;
+        margin-top: 4px;
+        color: var(--color-primary, #0e1f3a);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s ease;
+      }
+      .porch-dist-phone:hover { border-bottom-color: var(--color-accent); }
+
+      .porch-dist-actions {
+        display: flex; gap: var(--space-2); flex-wrap: wrap;
+        padding-top: var(--space-5);
+        border-top: 1px solid var(--color-divider);
+      }
+      .porch-dist-actions .btn--sm { font-size: var(--text-xs); padding: 8px 14px; }
+      .porch-dist-arrow { display: inline-block; margin-left: 4px; font-weight: 700; }
+
+      .porch-dist-fallback {
+        margin-top: var(--space-8);
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+        max-width: 60ch;
+      }
+      .porch-dist-fallback a {
+        color: var(--color-accent);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
     </style>
   </head>
   <body>
@@ -274,6 +364,77 @@
             <div class="spec"><strong>Same as Wood</strong><span>Installation Method</span></div>
             <div class="spec"><strong>25 yr</strong><span>Stain &amp; Fade Limited Warranty</span></div>
           </div>
+        </div>
+      </section>
+
+      <!-- ========== WHERE TO BUY / DISTRIBUTORS ========== -->
+      <section class="section porch-distributors" id="where-to-buy" aria-labelledby="porch-distributors-title">
+        <div class="container">
+          <div class="porch-dist-head" data-reveal>
+            <span class="eyebrow">Where to Buy</span>
+            <h2 id="porch-distributors-title">Local stock,<br /><em>local lumberyards.</em></h2>
+            <p class="porch-dist-blurb">
+              American Pro porch flooring is sold through independent lumber
+              dealers stocked by regional wholesale distributors. Find one near
+              you below, or ask your local lumberyard to source it through their
+              distributor.
+            </p>
+          </div>
+
+          <ul class="porch-dist-grid" data-reveal data-reveal-delay="1">
+            <li class="porch-dist-card" itemscope itemtype="https://schema.org/Organization">
+              <div class="porch-dist-card-head">
+                <span class="porch-dist-region">Western New York &amp; Finger Lakes</span>
+                <h3 itemprop="name">Genesee Reserve Supply, Inc.</h3>
+                <p class="porch-dist-tag">
+                  Two-step wholesale distributor of building materials,
+                  serving independent lumber dealers across Western New York
+                  and the Finger Lakes since 1952.
+                </p>
+              </div>
+              <div class="porch-dist-branches">
+                <div class="porch-dist-branch" itemprop="location" itemscope itemtype="https://schema.org/Place">
+                  <span class="porch-dist-branch-label">Rochester Branch</span>
+                  <address itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                    <span itemprop="streetAddress">200 Jefferson Rd</span><br />
+                    <span itemprop="addressLocality">Rochester</span>,
+                    <span itemprop="addressRegion">NY</span>
+                    <span itemprop="postalCode">14623</span>
+                  </address>
+                  <a href="tel:15852927040" class="porch-dist-phone">585-292-7040</a>
+                </div>
+                <div class="porch-dist-branch" itemprop="location" itemscope itemtype="https://schema.org/Place">
+                  <span class="porch-dist-branch-label">Buffalo Branch</span>
+                  <address itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                    <span itemprop="streetAddress">300 Bailey Ave</span><br />
+                    <span itemprop="addressLocality">Buffalo</span>,
+                    <span itemprop="addressRegion">NY</span>
+                    <span itemprop="postalCode">14210</span>
+                  </address>
+                  <a href="tel:17168243116" class="porch-dist-phone">716-824-3116</a>
+                </div>
+              </div>
+              <div class="porch-dist-actions">
+                <a href="tel:18007241000" class="btn btn--ghost btn--sm" aria-label="Call Genesee Reserve toll free">
+                  Toll free 1-800-724-1000
+                </a>
+                <a href="mailto:sales@geneseereserve.com" class="btn btn--ghost btn--sm">
+                  sales@geneseereserve.com
+                </a>
+                <a href="https://www.geneseereserve.com" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">
+                  Visit website
+                  <span aria-hidden="true" class="porch-dist-arrow">↗</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+
+          <p class="porch-dist-fallback">
+            Don't see your area on the list? Call us at
+            <a href="tel:18774426776">1-877-442-6776</a> or
+            <a href="./contact.html">send us a note</a> and we'll point you to
+            the closest lumber dealer that carries American Pro porch flooring.
+          </p>
         </div>
       </section>
 
