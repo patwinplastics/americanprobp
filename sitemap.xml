@@ -4,7 +4,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://americanprobp.com/</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/" />
@@ -21,7 +21,7 @@
   </url>
   <url>
     <loc>https://americanprobp.com/pages/decking.html</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/decking.html" />
@@ -33,6 +33,23 @@
     <image:image>
       <image:loc>https://americanprobp.com/images/product_decking.jpg</image:loc>
       <image:title>Close-up of warm wood-grain PVC composite decking boards</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/invisiclip.html</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/invisiclip.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/invisiclip.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/invisiclip/clip_macro_hero.png</image:loc>
+      <image:title>InvisiClip hidden fastener clip macro</image:title>
+      <image:caption>Engineered POM clip for hidden-fastener PVC decking, sits on stainless rail at 16 in. on center maximum.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://americanprobp.com/images/invisiclip/exploded_install.png</image:loc>
+      <image:title>InvisiClip install diagram, rail and clip on joist</image:title>
     </image:image>
   </url>
   <url>
