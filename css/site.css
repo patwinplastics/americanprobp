@@ -202,6 +202,11 @@
   align-items: center;
   gap: 0.6rem;
   margin-top: var(--space-5);
+  /* Reserve breathing room below this pill so the absolutely-positioned
+     hero dot rail never collides with it on mobile. The slide's own
+     padding-bottom alone isn't enough because the tertiary pill is the
+     last flow child and its visual mass sits right above the dot pill. */
+  margin-bottom: var(--space-4);
   padding: 0.65rem 1.05rem;
   font-family: var(--font-body);
   font-size: 0.95rem;
@@ -1570,8 +1575,10 @@ html.reveal-ready [data-reveal].is-visible {
   display: grid;
   grid-template-areas: "stack";
   /* Floor for first paint, before JS has measured. Roughly matches the
-     compact American Pro slide on phones / a comfortable hero on desktop. */
-  min-height: clamp(540px, 70vh, 720px);
+     compact American Pro slide on phones / a comfortable hero on desktop.
+     Once JS sets an explicit height, that wins. On phones we keep this
+     low so short slides like InvisiClip can shrink below the desktop floor. */
+  min-height: clamp(420px, 60vh, 720px);
   transition: height 600ms cubic-bezier(0.4, 0, 0.2, 1);
   /* Touch behavior: allow vertical page scroll, but tell the browser we handle
      horizontal gestures ourselves. Without this, iOS Safari may try to interpret
@@ -1682,8 +1689,11 @@ html.reveal-ready [data-reveal].is-visible {
    and the slider container animates between the two heights on slide change.
    Each slide keeps a padding-bottom that reserves space for the dot pill rail
    so dots never overlap the last CTA button. */
-.hero-slide.hero {
-  padding-bottom: clamp(var(--space-16), 14vh, var(--space-20));
+.hero-slide--original {
+  /* Extra bottom padding on slide 1 specifically because it has an additional
+     tertiary 'New tool' pill below the CTA buttons that the dot rail would
+     otherwise crowd on narrow viewports. */
+  padding-bottom: clamp(var(--space-20), 18vh, var(--space-24));
 }
 .hero-slide.truegrain-feature {
   padding: clamp(var(--space-8), 6vh, var(--space-12)) 0 clamp(var(--space-16), 14vh, var(--space-20));
@@ -1784,15 +1794,19 @@ html.reveal-ready [data-reveal].is-visible {
 }
 
 /* Make sure original hero meta sits well above the dot rail */
-.hero-slide.hero .hero-meta {
+.hero-slide--original .hero-meta {
   margin-bottom: var(--space-12);
 }
 
 @media (max-width: 900px) {
-  .hero-slide.hero,
+  /* No min-height on individual slides at narrow widths. The JS height
+     measurer sets the slider container to the active slide's natural
+     content height; a min-height here would override that measurement
+     and leave a big empty void below short slides like InvisiClip. */
+  .hero-slide--original,
   .hero-slide.truegrain-feature,
   .hero-slide.ic-feature {
-    min-height: clamp(640px, 92vh, 1100px);
+    min-height: 0;
   }
   .hero-slide.truegrain-feature,
   .hero-slide.ic-feature {
@@ -1846,7 +1860,7 @@ html.reveal-ready [data-reveal].is-visible {
   }
   .hero-dot { min-width: 72px; }
   .hero-dot-label { font-size: 0.62rem; letter-spacing: 0.1em; }
-  .hero-slide.hero .hero-meta { display: none; }
+  .hero-slide--original .hero-meta { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

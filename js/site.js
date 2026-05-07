@@ -247,7 +247,11 @@
       if (!slide) return 0;
       // Pick the actual content container so absolutely-positioned background
       // photos (.hero-image / .tg-feature-image) don't poison the measurement.
-      const inner = slide.querySelector('.hero-inner, .tg-feature-inner');
+      // Each slide type uses a different inner-content class. Add new classes
+      // here when adding new slide types so the height measurement stays
+      // accurate (otherwise scrollHeight on absolutely-positioned art / overlays
+      // returns junk and the slider doesn't shrink to fit).
+      const inner = slide.querySelector('.hero-inner, .tg-feature-inner, .ic-feature-inner');
       if (!inner) return slide.scrollHeight;
       const innerStyles = window.getComputedStyle(inner);
       const slideStyles = window.getComputedStyle(slide);
