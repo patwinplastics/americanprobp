@@ -238,6 +238,207 @@
         </div>
       </section>
 
+      <!-- ====================================================== -->
+      <!-- TRUEGRAIN DECK SITE CROSS-LINK                          -->
+      <!-- ====================================================== -->
+      <style>
+        .tg-crosslink {
+          position: relative;
+          overflow: hidden;
+          border-radius: var(--radius-lg);
+          min-height: clamp(420px, 52vw, 580px);
+          display: grid;
+          align-items: end;
+          isolation: isolate;
+          box-shadow: var(--shadow-lg);
+        }
+        .tg-crosslink-bg {
+          position: absolute; inset: 0;
+          background-size: cover;
+          background-position: center;
+          z-index: 0;
+          transform: scale(1.02);
+          transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tg-crosslink:hover .tg-crosslink-bg { transform: scale(1.06); }
+        .tg-crosslink-bg.is-active { opacity: 1; }
+        .tg-crosslink-bg.is-inactive { opacity: 0; }
+        .tg-crosslink-bg {
+          opacity: 0;
+          transition: opacity 1400ms cubic-bezier(0.4, 0, 0.2, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tg-color-tag {
+          position: absolute;
+          top: clamp(var(--space-4), 3vw, var(--space-6));
+          right: clamp(var(--space-4), 3vw, var(--space-6));
+          z-index: 3;
+          display: inline-flex;
+          align-items: center;
+          gap: var(--space-2);
+          padding: 0.4rem 0.85rem;
+          background: rgba(14,31,58,0.55);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255,255,255,0.18);
+          border-radius: var(--radius-full);
+          font-size: var(--text-xs);
+          font-weight: 600;
+          letter-spacing: 0.06em;
+          color: rgba(255,255,255,0.95);
+          text-transform: uppercase;
+        }
+        .tg-color-tag::before {
+          content: "";
+          width: 8px; height: 8px;
+          border-radius: 50%;
+          background: var(--swatch-color, #c79a6f);
+          box-shadow: 0 0 0 1px rgba(255,255,255,0.35);
+        }
+        .tg-crosslink::after {
+          content: "";
+          position: absolute; inset: 0;
+          background: linear-gradient(180deg, rgba(14,31,58,0.05) 0%, rgba(14,31,58,0.10) 40%, rgba(14,31,58,0.85) 100%);
+          z-index: 1;
+        }
+        .tg-crosslink-body {
+          position: relative;
+          z-index: 2;
+          padding: clamp(var(--space-8), 5vw, var(--space-16));
+          color: var(--color-text-inverse);
+          max-width: 760px;
+        }
+        .tg-crosslink-eyebrow {
+          display: inline-flex; align-items: center; gap: var(--space-2);
+          font-size: var(--text-xs); letter-spacing: 0.22em; text-transform: uppercase;
+          font-weight: 700; color: #f5d4d8;
+          margin-bottom: var(--space-3);
+        }
+        .tg-crosslink-eyebrow::before {
+          content: ""; display: inline-block; width: 28px; height: 2px; background: var(--color-accent);
+        }
+        .tg-crosslink h2 {
+          font-family: var(--font-display);
+          font-size: clamp(var(--text-2xl), 4.5vw, var(--text-3xl));
+          font-weight: 500;
+          line-height: 1.02;
+          letter-spacing: -0.02em;
+          color: #fff;
+          margin-bottom: var(--space-4);
+        }
+        .tg-crosslink h2 em {
+          font-style: italic;
+          font-weight: 500;
+          color: #f5d4d8;
+        }
+        .tg-crosslink p {
+          font-size: var(--text-base);
+          color: rgba(255,255,255,0.92);
+          line-height: 1.55;
+          max-width: 60ch;
+          margin-bottom: var(--space-6);
+        }
+        .tg-crosslink-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--space-3);
+          align-items: center;
+        }
+        .tg-crosslink-meta {
+          font-size: var(--text-xs);
+          color: rgba(255,255,255,0.65);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          font-weight: 600;
+        }
+        .tg-crosslink-meta::before {
+          content: "";
+          display: inline-block;
+          width: 1px;
+          height: 14px;
+          background: rgba(255,255,255,0.35);
+          vertical-align: middle;
+          margin: 0 var(--space-3) 0 var(--space-2);
+        }
+        .ext-arrow {
+          display: inline-block;
+          margin-left: 0.45em;
+          transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn:hover .ext-arrow,
+        a:hover .ext-arrow { transform: translate(2px, -2px); }
+      </style>
+      <section class="section" aria-labelledby="tg-crosslink-heading">
+        <div class="container">
+          <a class="tg-crosslink" href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener" data-reveal style="text-decoration: none;" id="tg-crosslink-card">
+            <div
+              class="tg-crosslink-bg is-active"
+              data-color="walnut"
+              data-color-name="Tropical Walnut"
+              data-swatch="#a86a3d"
+              style="background-image: image-set(url('../images/truegrain_hero/walnut-800.jpg') 1x, url('../images/truegrain_hero/walnut-1200.jpg') 1.5x, url('../images/truegrain_hero/walnut-1600.jpg') 2x); background-image: -webkit-image-set(url('../images/truegrain_hero/walnut-800.jpg') 1x, url('../images/truegrain_hero/walnut-1200.jpg') 1.5x, url('../images/truegrain_hero/walnut-1600.jpg') 2x);"
+              role="img"
+              aria-label="TrueGrain Deck boards in Tropical Walnut, raking light revealing the cathedral grain"
+            ></div>
+            <div
+              class="tg-crosslink-bg is-inactive"
+              data-color="driftwood"
+              data-color-name="Coastal Driftwood"
+              data-swatch="#9b9690"
+              style="background-image: image-set(url('../images/truegrain_hero/driftwood-800.jpg') 1x, url('../images/truegrain_hero/driftwood-1200.jpg') 1.5x, url('../images/truegrain_hero/driftwood-1600.jpg') 2x); background-image: -webkit-image-set(url('../images/truegrain_hero/driftwood-800.jpg') 1x, url('../images/truegrain_hero/driftwood-1200.jpg') 1.5x, url('../images/truegrain_hero/driftwood-1600.jpg') 2x);"
+              aria-hidden="true"
+            ></div>
+            <span class="tg-color-tag" id="tg-color-tag" style="--swatch-color: #a86a3d;">Tropical Walnut</span>
+            <div class="tg-crosslink-body">
+              <span class="tg-crosslink-eyebrow">Try it on your home</span>
+              <h2 id="tg-crosslink-heading">See your deck<br /><em>before you build it.</em></h2>
+              <p>
+                Upload a photo of your house and drop TrueGrain Deck&trade; right onto the
+                deck in any of the six colors. Free, no signup, runs in the browser. The
+                fastest way to know which color is yours.
+              </p>
+              <div class="tg-crosslink-actions">
+                <span class="btn btn--primary btn--lg">
+                  Open the Deck Visualizer<span class="ext-arrow" aria-hidden="true">&#x2197;</span>
+                </span>
+                <span class="tg-crosslink-meta">Opens in a new tab</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+      <script>
+        // TrueGrain Deck cross-link card: rotate hero between colors with crossfade
+        (function() {
+          const card = document.getElementById('tg-crosslink-card');
+          if (!card) return;
+          const slides = card.querySelectorAll('.tg-crosslink-bg');
+          const tag = document.getElementById('tg-color-tag');
+          if (slides.length < 2 || !tag) return;
+          let active = 0;
+          const advance = () => {
+            slides[active].classList.remove('is-active');
+            slides[active].classList.add('is-inactive');
+            active = (active + 1) % slides.length;
+            slides[active].classList.remove('is-inactive');
+            slides[active].classList.add('is-active');
+            const next = slides[active];
+            tag.textContent = next.dataset.colorName;
+            tag.style.setProperty('--swatch-color', next.dataset.swatch);
+          };
+          const interval = 6000;
+          let timer = setInterval(advance, interval);
+          // Pause on hover for accessibility
+          card.addEventListener('mouseenter', () => clearInterval(timer));
+          card.addEventListener('mouseleave', () => { timer = setInterval(advance, interval); });
+          // Respect prefers-reduced-motion
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            clearInterval(timer);
+          }
+        })();
+      </script>
+
+
+
       <!-- Compare strip -->
       <section class="section">
         <div class="container">
@@ -393,205 +594,6 @@
           <style>@media (max-width: 720px){ #truegrain > .container > div[style*="grid-template-columns: 1fr 1fr"]{ grid-template-columns: 1fr !important; } }</style>
         </div>
       </section>
-
-      <!-- ====================================================== -->
-      <!-- TRUEGRAIN DECK SITE CROSS-LINK                          -->
-      <!-- ====================================================== -->
-      <style>
-        .tg-crosslink {
-          position: relative;
-          overflow: hidden;
-          border-radius: var(--radius-lg);
-          min-height: clamp(420px, 52vw, 580px);
-          display: grid;
-          align-items: end;
-          isolation: isolate;
-          box-shadow: var(--shadow-lg);
-        }
-        .tg-crosslink-bg {
-          position: absolute; inset: 0;
-          background-size: cover;
-          background-position: center;
-          z-index: 0;
-          transform: scale(1.02);
-          transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .tg-crosslink:hover .tg-crosslink-bg { transform: scale(1.06); }
-        .tg-crosslink-bg.is-active { opacity: 1; }
-        .tg-crosslink-bg.is-inactive { opacity: 0; }
-        .tg-crosslink-bg {
-          opacity: 0;
-          transition: opacity 1400ms cubic-bezier(0.4, 0, 0.2, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .tg-color-tag {
-          position: absolute;
-          top: clamp(var(--space-4), 3vw, var(--space-6));
-          right: clamp(var(--space-4), 3vw, var(--space-6));
-          z-index: 3;
-          display: inline-flex;
-          align-items: center;
-          gap: var(--space-2);
-          padding: 0.4rem 0.85rem;
-          background: rgba(14,31,58,0.55);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          border: 1px solid rgba(255,255,255,0.18);
-          border-radius: var(--radius-full);
-          font-size: var(--text-xs);
-          font-weight: 600;
-          letter-spacing: 0.06em;
-          color: rgba(255,255,255,0.95);
-          text-transform: uppercase;
-        }
-        .tg-color-tag::before {
-          content: "";
-          width: 8px; height: 8px;
-          border-radius: 50%;
-          background: var(--swatch-color, #c79a6f);
-          box-shadow: 0 0 0 1px rgba(255,255,255,0.35);
-        }
-        .tg-crosslink::after {
-          content: "";
-          position: absolute; inset: 0;
-          background: linear-gradient(180deg, rgba(14,31,58,0.05) 0%, rgba(14,31,58,0.10) 40%, rgba(14,31,58,0.85) 100%);
-          z-index: 1;
-        }
-        .tg-crosslink-body {
-          position: relative;
-          z-index: 2;
-          padding: clamp(var(--space-8), 5vw, var(--space-16));
-          color: var(--color-text-inverse);
-          max-width: 760px;
-        }
-        .tg-crosslink-eyebrow {
-          display: inline-flex; align-items: center; gap: var(--space-2);
-          font-size: var(--text-xs); letter-spacing: 0.22em; text-transform: uppercase;
-          font-weight: 700; color: #f5d4d8;
-          margin-bottom: var(--space-3);
-        }
-        .tg-crosslink-eyebrow::before {
-          content: ""; display: inline-block; width: 28px; height: 2px; background: var(--color-accent);
-        }
-        .tg-crosslink h2 {
-          font-family: var(--font-display);
-          font-size: clamp(var(--text-2xl), 4.5vw, var(--text-3xl));
-          font-weight: 500;
-          line-height: 1.02;
-          letter-spacing: -0.02em;
-          color: #fff;
-          margin-bottom: var(--space-4);
-        }
-        .tg-crosslink h2 em {
-          font-style: italic;
-          font-weight: 500;
-          color: #f5d4d8;
-        }
-        .tg-crosslink p {
-          font-size: var(--text-base);
-          color: rgba(255,255,255,0.92);
-          line-height: 1.55;
-          max-width: 60ch;
-          margin-bottom: var(--space-6);
-        }
-        .tg-crosslink-actions {
-          display: flex;
-          flex-wrap: wrap;
-          gap: var(--space-3);
-          align-items: center;
-        }
-        .tg-crosslink-meta {
-          font-size: var(--text-xs);
-          color: rgba(255,255,255,0.65);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          font-weight: 600;
-        }
-        .tg-crosslink-meta::before {
-          content: "";
-          display: inline-block;
-          width: 1px;
-          height: 14px;
-          background: rgba(255,255,255,0.35);
-          vertical-align: middle;
-          margin: 0 var(--space-3) 0 var(--space-2);
-        }
-        .ext-arrow {
-          display: inline-block;
-          margin-left: 0.45em;
-          transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .btn:hover .ext-arrow,
-        a:hover .ext-arrow { transform: translate(2px, -2px); }
-      </style>
-      <section class="section" style="padding-top:0;" aria-labelledby="tg-crosslink-heading">
-        <div class="container">
-          <a class="tg-crosslink" href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener" data-reveal style="text-decoration: none;" id="tg-crosslink-card">
-            <div
-              class="tg-crosslink-bg is-active"
-              data-color="walnut"
-              data-color-name="Tropical Walnut"
-              data-swatch="#a86a3d"
-              style="background-image: image-set(url('../images/truegrain_hero/walnut-800.jpg') 1x, url('../images/truegrain_hero/walnut-1200.jpg') 1.5x, url('../images/truegrain_hero/walnut-1600.jpg') 2x); background-image: -webkit-image-set(url('../images/truegrain_hero/walnut-800.jpg') 1x, url('../images/truegrain_hero/walnut-1200.jpg') 1.5x, url('../images/truegrain_hero/walnut-1600.jpg') 2x);"
-              role="img"
-              aria-label="TrueGrain Deck boards in Tropical Walnut, raking light revealing the cathedral grain"
-            ></div>
-            <div
-              class="tg-crosslink-bg is-inactive"
-              data-color="driftwood"
-              data-color-name="Coastal Driftwood"
-              data-swatch="#9b9690"
-              style="background-image: image-set(url('../images/truegrain_hero/driftwood-800.jpg') 1x, url('../images/truegrain_hero/driftwood-1200.jpg') 1.5x, url('../images/truegrain_hero/driftwood-1600.jpg') 2x); background-image: -webkit-image-set(url('../images/truegrain_hero/driftwood-800.jpg') 1x, url('../images/truegrain_hero/driftwood-1200.jpg') 1.5x, url('../images/truegrain_hero/driftwood-1600.jpg') 2x);"
-              aria-hidden="true"
-            ></div>
-            <span class="tg-color-tag" id="tg-color-tag" style="--swatch-color: #a86a3d;">Tropical Walnut</span>
-            <div class="tg-crosslink-body">
-              <span class="tg-crosslink-eyebrow">Try it on your home</span>
-              <h2 id="tg-crosslink-heading">See your deck<br /><em>before you build it.</em></h2>
-              <p>
-                Upload a photo of your house and drop TrueGrain Deck&trade; right onto the
-                deck in any of the six colors. Free, no signup, runs in the browser. The
-                fastest way to know which color is yours.
-              </p>
-              <div class="tg-crosslink-actions">
-                <span class="btn btn--primary btn--lg">
-                  Open the Deck Visualizer<span class="ext-arrow" aria-hidden="true">&#x2197;</span>
-                </span>
-                <span class="tg-crosslink-meta">Opens in a new tab</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </section>
-      <script>
-        // TrueGrain Deck cross-link card: rotate hero between colors with crossfade
-        (function() {
-          const card = document.getElementById('tg-crosslink-card');
-          if (!card) return;
-          const slides = card.querySelectorAll('.tg-crosslink-bg');
-          const tag = document.getElementById('tg-color-tag');
-          if (slides.length < 2 || !tag) return;
-          let active = 0;
-          const advance = () => {
-            slides[active].classList.remove('is-active');
-            slides[active].classList.add('is-inactive');
-            active = (active + 1) % slides.length;
-            slides[active].classList.remove('is-inactive');
-            slides[active].classList.add('is-active');
-            const next = slides[active];
-            tag.textContent = next.dataset.colorName;
-            tag.style.setProperty('--swatch-color', next.dataset.swatch);
-          };
-          const interval = 6000;
-          let timer = setInterval(advance, interval);
-          // Pause on hover for accessibility
-          card.addEventListener('mouseenter', () => clearInterval(timer));
-          card.addEventListener('mouseleave', () => { timer = setInterval(advance, interval); });
-          // Respect prefers-reduced-motion
-          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            clearInterval(timer);
-          }
-        })();
-      </script>
 
       <!-- ====================================================== -->
       <!-- STANDARD PVC LINE                                       -->

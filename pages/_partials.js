@@ -22,6 +22,7 @@
         <a href="${B}pages/invisiclip.html">InvisiClip™</a>
         <a href="${B}pages/porch.html">Porch Flooring</a>
         <a href="${B}pages/mouldings.html">Mouldings</a>
+        <a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener" class="nav-external nav-vis">Deck Visualizer<span aria-hidden="true" class="nav-external-arrow">↗</span></a>
         <a href="${B}pages/inspiration.html">Inspiration</a>
         <a href="${B}pages/about.html">About</a>
       </nav>
@@ -42,6 +43,7 @@
         <li><a href="${B}pages/invisiclip.html">InvisiClip™</a></li>
         <li><a href="${B}pages/porch.html">Porch Flooring</a></li>
         <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
+        <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
         <li><a href="${B}pages/inspiration.html">Inspiration</a></li>
         <li><a href="${B}pages/about.html">About</a></li>
       </ul>
@@ -69,6 +71,7 @@
             <li><a href="${B}pages/invisiclip.html">InvisiClip™ Hidden Fastener</a></li>
             <li><a href="${B}pages/porch.html">Porch Flooring</a></li>
             <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
+            <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
             <li><a href="${B}pages/inspiration.html">Inspiration Gallery</a></li>
           </ul>
         </div>

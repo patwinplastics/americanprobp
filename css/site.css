@@ -147,7 +147,7 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: var(--space-8);
+  gap: var(--space-6);
 }
 .nav a {
   font-size: var(--text-sm);
@@ -155,6 +155,7 @@
   color: var(--color-text);
   position: relative;
   padding: var(--space-1) 0;
+  white-space: nowrap;
 }
 .nav a::after {
   content: "";
@@ -187,6 +188,56 @@
   transform: translate(2px, -2px);
 }
 
+/* Deck Visualizer nav link: subtle accent so users notice the interactive tool */
+.nav a.nav-vis {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+.nav a.nav-vis .nav-external-arrow { color: var(--color-accent); }
+.nav a.nav-vis:hover { color: var(--color-accent); filter: brightness(0.9); }
+
+/* Homepage hero tertiary link to the Deck Visualizer */
+.hero-tertiary-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: var(--space-5);
+  padding: 0.65rem 1.05rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 220ms ease, border-color 220ms ease, transform 220ms ease;
+}
+.hero-tertiary-link:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.4);
+}
+.hero-tertiary-link:hover .hero-tertiary-arrow { transform: translate(2px, -2px); }
+.hero-tertiary-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: rgba(255,255,255,0.92);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+}
+.hero-tertiary-arrow {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--color-accent);
+  transition: transform 220ms ease;
+}
+
 .header-actions {
   display: flex;
   align-items: center;
@@ -200,6 +251,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  white-space: nowrap;
 }
 .header-actions .btn {
   padding: 0.625rem 1.125rem;
