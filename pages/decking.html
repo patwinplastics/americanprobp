@@ -102,6 +102,22 @@
         .line-header { grid-template-columns: 1fr; }
       }
 
+      /* TrueGrain brandmark above the line header */
+      .tg-brandmark {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: var(--space-6);
+      }
+      .tg-brandmark img {
+        display: block;
+        width: auto;
+        height: clamp(72px, 10vw, 128px);
+        max-width: 100%;
+      }
+      @media (max-width: 600px) {
+        .tg-brandmark { justify-content: center; }
+      }
+
       /* Color swatches */
       .colors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
       @media (max-width: 880px) { .colors-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -482,6 +498,16 @@
       <!-- ====================================================== -->
       <section class="section section--alt" id="truegrain">
         <div class="container">
+          <div class="tg-brandmark" data-reveal>
+            <img
+              src="../images/logo/truegrain-decking-horizontal.png"
+              alt="TrueGrain Decking by American Pro - Feels Real. Lasts Longer."
+              width="824"
+              height="184"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
           <div class="line-header" data-reveal>
             <span class="line-tag">Flagship line</span>
             <h2>TrueGrain Deck&trade;. <em>Wood to touch. PVC to last.</em></h2>
