@@ -1112,6 +1112,23 @@
   .home-dist-media { aspect-ratio: 16 / 10; }
 }
 
+/* Reversed layout: photo left, copy right (used for second distributor) */
+.home-dist--alt {
+  background: var(--color-surface-3, #efeae0);
+  border-top: 1px solid rgba(14, 31, 58, 0.08);
+}
+@media (min-width: 880px) {
+  .home-dist--alt .home-dist-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  }
+  .home-dist--alt .home-dist-media { order: 1; }
+  .home-dist--alt .home-dist-copy  { order: 2; }
+}
+.home-dist--alt .home-dist-media-region {
+  left: auto;
+  right: var(--space-4);
+}
+
 /* ─── Gallery (inspiration) ──────────────────────────────────────────────── */
 .gallery {
   background: var(--color-surface-dark);
