@@ -227,6 +227,99 @@
       .compare-col li { font-size: var(--text-sm); color: var(--color-text); padding: var(--space-2) 0; border-bottom: 1px solid var(--color-divider); display: flex; gap: var(--space-3); }
       .compare-col li:last-child { border-bottom: 0; }
       .compare-col li b { font-weight: 600; min-width: 9ch; color: var(--color-text-muted); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; flex-shrink: 0; padding-top: 2px; }
+
+      /* ========== Where to Buy / Dealers (mirrors porch.html) ========== */
+      .deck-dealers { background: var(--color-surface-2, #f4f1ea); }
+      .deck-dealer-head { max-width: 60ch; margin-bottom: var(--space-10); }
+      .deck-dealer-head h2 { font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); letter-spacing: -0.02em; margin: var(--space-2) 0 var(--space-4); }
+      .deck-dealer-head h2 em { font-style: italic; font-weight: 400; }
+      .deck-dealer-blurb { color: var(--color-text-muted); margin: 0; max-width: 56ch; }
+
+      .deck-dealer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+        gap: var(--space-6);
+        list-style: none;
+        padding: 0; margin: 0;
+      }
+      .deck-dealer-card {
+        background: #fff;
+        border: 1px solid var(--color-divider);
+        border-radius: var(--radius-lg, 12px);
+        padding: clamp(var(--space-6), 3vw, var(--space-8));
+        display: flex; flex-direction: column; gap: var(--space-6);
+        transition: var(--transition-interactive);
+      }
+      .deck-dealer-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+      .deck-dealer-region {
+        display: inline-block;
+        font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase;
+        font-weight: 700; color: var(--color-accent);
+        margin-bottom: var(--space-3);
+      }
+      .deck-dealer-card h3 {
+        margin: 0 0 var(--space-3);
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        letter-spacing: -0.01em;
+      }
+      .deck-dealer-tag { color: var(--color-text-muted); font-size: var(--text-sm); margin: 0; }
+
+      .deck-dealer-branches {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: var(--space-5);
+        padding-top: var(--space-5);
+        border-top: 1px solid var(--color-divider);
+      }
+      @media (max-width: 720px) {
+        .deck-dealer-branches { grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+      }
+      @media (max-width: 480px) {
+        .deck-dealer-branches { grid-template-columns: 1fr; gap: var(--space-4); }
+      }
+      .deck-dealer-branch {
+        display: flex; flex-direction: column; gap: 4px;
+        font-size: var(--text-sm); line-height: 1.5;
+        color: var(--color-text);
+      }
+      .deck-dealer-branch-label {
+        font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase;
+        font-weight: 700; color: var(--color-text-muted);
+        margin-bottom: 2px;
+      }
+      .deck-dealer-branch address { font-style: normal; color: var(--color-text); }
+      .deck-dealer-phone {
+        font-family: var(--font-display);
+        font-weight: 500;
+        margin-top: 4px;
+        color: var(--color-primary, #0e1f3a);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s ease;
+      }
+      .deck-dealer-phone:hover { border-bottom-color: var(--color-accent); }
+
+      .deck-dealer-actions {
+        display: flex; gap: var(--space-2); flex-wrap: wrap;
+        padding-top: var(--space-5);
+        border-top: 1px solid var(--color-divider);
+      }
+      .deck-dealer-actions .btn--sm { font-size: var(--text-xs); padding: 8px 14px; }
+      .deck-dealer-arrow { display: inline-block; margin-left: 4px; font-weight: 700; }
+
+      .deck-dealer-fallback {
+        margin-top: var(--space-8);
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+        max-width: 60ch;
+      }
+      .deck-dealer-fallback a {
+        color: var(--color-accent);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
     </style>
   </head>
   <body>
@@ -855,6 +948,85 @@
               Manufacturer: Patwin Plastics, Inc., 2300 E Linden Ave, Linden NJ 07036.
             </p>
           </div>
+        </div>
+      </section>
+
+      <!-- ========== WHERE TO BUY / DEALERS ========== -->
+      <section class="section deck-dealers" id="where-to-buy" aria-labelledby="deck-dealers-title">
+        <div class="container">
+          <div class="deck-dealer-head" data-reveal>
+            <span class="eyebrow">Where to Buy</span>
+            <h2 id="deck-dealers-title">Authorized decking dealers,<br /><em>one phone call away.</em></h2>
+            <p class="deck-dealer-blurb">
+              American Pro PVC decking is sold through authorized regional
+              dealers who stock real boards on real lumberyards. Find one
+              below, or ask your local lumberyard to source American Pro
+              through their distributor.
+            </p>
+          </div>
+
+          <ul class="deck-dealer-grid" data-reveal data-reveal-delay="1">
+            <li class="deck-dealer-card" itemscope itemtype="https://schema.org/Organization">
+              <div class="deck-dealer-card-head">
+                <span class="deck-dealer-region">Cape Cod &amp; Southeastern Massachusetts</span>
+                <h3 itemprop="name">Stonewood Products</h3>
+                <p class="deck-dealer-tag">
+                  Harwich-based wholesale building materials supplier serving
+                  homeowners, builders, and landscapers since 1997. Stocking
+                  American Pro PVC decking at the Harwich flagship and the
+                  Mashpee store, with national online fulfillment for jobs
+                  outside the Cape.
+                </p>
+              </div>
+              <div class="deck-dealer-branches">
+                <div class="deck-dealer-branch" itemprop="location" itemscope itemtype="https://schema.org/Place">
+                  <span class="deck-dealer-branch-label">Harwich Flagship</span>
+                  <address itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                    <span itemprop="streetAddress">15 Great Western Rd</span><br />
+                    <span itemprop="addressLocality">Harwich</span>,
+                    <span itemprop="addressRegion">MA</span>
+                    <span itemprop="postalCode">02645</span>
+                  </address>
+                  <a href="tel:15084305020" class="deck-dealer-phone">508-430-5020</a>
+                </div>
+                <div class="deck-dealer-branch" itemprop="location" itemscope itemtype="https://schema.org/Place">
+                  <span class="deck-dealer-branch-label">Mashpee Store</span>
+                  <address itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                    <span itemprop="streetAddress">544 Route 130</span><br />
+                    <span itemprop="addressLocality">Mashpee</span>,
+                    <span itemprop="addressRegion">MA</span>
+                    <span itemprop="postalCode">02649</span>
+                  </address>
+                  <a href="tel:15084779950" class="deck-dealer-phone">508-477-9950</a>
+                </div>
+                <div class="deck-dealer-branch">
+                  <span class="deck-dealer-branch-label">National &middot; Online</span>
+                  <address>
+                    Mon-Fri<br />
+                    8 AM to 6 PM EST
+                  </address>
+                  <a href="tel:18557869663" class="deck-dealer-phone">1-855-786-9663</a>
+                </div>
+              </div>
+              <div class="deck-dealer-actions">
+                <a href="https://www.stonewoodproducts.com" target="_blank" rel="noopener" class="btn btn--primary btn--sm" aria-label="Visit Stonewood Products">
+                  Visit Stonewood Products
+                  <span aria-hidden="true" class="deck-dealer-arrow">&#8599;</span>
+                </a>
+                <a href="tel:15084305020" class="btn btn--ghost btn--sm" aria-label="Call Stonewood Harwich flagship">
+                  Call Harwich flagship 508-430-5020
+                </a>
+              </div>
+            </li>
+          </ul>
+
+          <p class="deck-dealer-fallback">
+            Outside Cape Cod or Southeastern Massachusetts? Call us at
+            <a href="tel:18774426776">1-877-442-6776</a>,
+            <a href="./contact.html">send us a note</a>, or read
+            <a href="./blog/posts/where-to-buy-east-coast.html">our full East Coast dealer guide</a>
+            and we'll point you to the closest authorized partner.
+          </p>
         </div>
       </section>
 
