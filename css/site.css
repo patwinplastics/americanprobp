@@ -2880,3 +2880,106 @@ html.reveal-ready [data-reveal].is-visible {
   .hero-slide.truegrain-feature .tg-feature-actions { gap: 0.5rem; }
   .hero-slide.truegrain-feature .tg-feature-actions .btn { width: 100%; }
 }
+
+/* ============================================================
+   SAMPLES FORM COLOR PICKER
+   Used on TrueGrain and Legacy PVC PDPs. Color blocks reveal
+   when a matching product line checkbox is checked. JS in
+   js/site.js wires the show/hide and submit-button label.
+   ============================================================ */
+.sample-color-label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.sample-color-block {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--color-divider);
+}
+.sample-color-block:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+.sample-color-heading {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #5b6478);
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+}
+.sample-color-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+}
+.sample-color {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid var(--color-divider, #d8dbe2);
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+.sample-color:hover {
+  border-color: rgba(14, 31, 58, 0.45);
+  transform: translateY(-1px);
+}
+.sample-color input[type="checkbox"] {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+.sample-color-media {
+  display: block;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  background-color: #eeefef;
+}
+.sample-color-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0.55rem 0.7rem 0.7rem;
+  border-top: 1px solid var(--color-divider, #e3e5ea);
+}
+.sample-color-name {
+  font-family: var(--font-display, Boska, Georgia, serif);
+  font-size: 0.92rem;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  color: var(--color-heading, #0e1f3a);
+  font-weight: 600;
+}
+.sample-color-meta {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #5b6478);
+  font-weight: 600;
+}
+.sample-color:has(input:checked) {
+  border-color: var(--color-accent, #b81a31);
+  box-shadow: 0 0 0 2px rgba(184, 26, 49, 0.18);
+}
+@media (max-width: 720px) {
+  .sample-color-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  .sample-color-name { font-size: 0.85rem; }
+}
+@media (max-width: 420px) {
+  .sample-color-grid { grid-template-columns: repeat(2, 1fr); }
+}

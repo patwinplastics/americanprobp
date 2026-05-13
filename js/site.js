@@ -629,3 +629,88 @@
     });
   })();
 })();
+
+/* ============================================================
+   SAMPLES FORM COLOR PICKER
+   Wires the Pick Your Colors block on TrueGrain and Legacy PVC
+   PDPs. When a product-line checkbox is checked, the matching
+   color block reveals. Unchecking clears that block's color
+   selections. Submit button label updates based on which
+   product lines are active.
+   ============================================================ */
+(function initColorPickerForms() {
+  function lineLabel(line) {
+    if (line === 'truegrain') return 'TrueGrain';
+    if (line === 'legacy') return 'Legacy PVC';
+    if (line === 'invisiclip') return 'InvisiClip';
+    return null;
+  }
+
+  function updateSubmitLabel(form) {
+    var btn = form.querySelector('button[type="submit"][data-submit-default]');
+    if (!btn) return;
+    var checked = Array.from(form.querySelectorAll('input[name="samples[]"]:checked'))
+      .map(function (i) { return i.getAttribute('data-line'); })
+      .filter(Boolean);
+    // Color-bearing lines decide the label. InvisiClip alone falls back to its own.
+    var deckingLines = checked.filter(function (l) { return l === 'truegrain' || l === 'legacy'; });
+    var label;
+    if (deckingLines.length === 0 && checked.indexOf('invisiclip') !== -1) {
+      label = 'Send My InvisiClip Samples';
+    } else if (deckingLines.length === 1 && deckingLines[0] === 'truegrain') {
+      label = 'Send My TrueGrain Samples';
+    } else if (deckingLines.length === 1 && deckingLines[0] === 'legacy') {
+      label = 'Send My Legacy PVC Samples';
+    } else if (deckingLines.length >= 2) {
+      label = 'Send My Free Samples';
+    } else {
+      // Nothing checked. Use the page default so the button is never blank.
+      label = btn.getAttribute('data-submit-default') || 'Send My Free Samples';
+    }
+    btn.textContent = label;
+  }
+
+  function syncBlocksForForm(form) {
+    var checkedLines = {};
+    form.querySelectorAll('input[name="samples[]"]:checked').forEach(function (i) {
+      var l = i.getAttribute('data-line');
+      if (l) checkedLines[l] = true;
+    });
+    form.querySelectorAll('.sample-color-block').forEach(function (block) {
+      var line = block.getAttribute('data-product-line');
+      var show = !!checkedLines[line];
+      if (show) {
+        block.removeAttribute('hidden');
+      } else {
+        block.setAttribute('hidden', '');
+        // Clear color picks in hidden blocks so we never submit stale colors.
+        block.querySelectorAll('input[type="checkbox"]:checked').forEach(function (c) {
+          c.checked = false;
+        });
+      }
+    });
+    updateSubmitLabel(form);
+  }
+
+  function init() {
+    var forms = document.querySelectorAll('form[data-color-picker-form]');
+    if (!forms.length) return;
+    forms.forEach(function (form) {
+      form.addEventListener('change', function (e) {
+        if (!e.target || e.target.tagName !== 'INPUT' || e.target.type !== 'checkbox') return;
+        // Re-sync when a product-line checkbox or any color checkbox flips.
+        if (e.target.name === 'samples[]' || /^colors_/.test(e.target.name || '')) {
+          syncBlocksForForm(form);
+        }
+      });
+      // Initial pass to match the prechecked state.
+      syncBlocksForForm(form);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
