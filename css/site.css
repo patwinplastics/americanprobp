@@ -2694,6 +2694,35 @@ html.reveal-ready [data-reveal].is-visible {
   .product-grid.product-grid--4 { grid-template-columns: 1fr; }
 }
 
+/* ---- InvisiClip hero compat callout ---- */
+.ic-feature-compat {
+  display: block;
+  margin-top: 0.85rem;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  font-size: 0.95em;
+  border-left: 2px solid var(--color-accent);
+  padding-left: 0.7rem;
+}
+
+/* ---- 5-column product grid (two flagships + three workhorses) ---- */
+/* On widest screens, all five sit in one row. At narrower desktops, drop to
+   three across so the two flagships stay paired visually with one workhorse,
+   then to two on tablets and one on phones. */
+.product-grid.product-grid--5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+@media (max-width: 1400px) {
+  .product-grid.product-grid--5 { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 1000px) {
+  .product-grid.product-grid--5 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .product-grid.product-grid--5 { grid-template-columns: 1fr; }
+}
+
 .product-card--flagship {
   outline: 2px solid var(--color-accent);
   outline-offset: -2px;

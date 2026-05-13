@@ -34,8 +34,15 @@
       alt: 'InvisiClip hidden fastener clip on stainless rail',
     },
     {
+      name: 'Standard PVC Decking',
+      tagline: 'The workhorse. Same chemistry as TrueGrain, classic solid colors.',
+      href: B + 'pages/standard-pvc-decking.html',
+      img: B + 'images/deck_swatches/driftwood.jpg',
+      alt: 'American Pro Standard PVC decking, Driftwood color',
+    },
+    {
       name: 'PVC Decking',
-      tagline: 'Full decking line: TrueGrain, Standard PVC, profiles, specs.',
+      tagline: 'Full line overview: TrueGrain, Standard PVC, profiles, specs.',
       href: B + 'pages/decking.html',
       img: B + 'images/product_decking.jpg',
       alt: 'American Pro PVC decking line',
@@ -152,6 +159,7 @@
           <ul>
             <li><a href="${B}pages/truegrain-deck.html">TrueGrain Deck\u2122</a></li>
             <li><a href="${B}pages/invisiclip.html">InvisiClip\u2122 Hidden Fastener</a></li>
+            <li><a href="${B}pages/standard-pvc-decking.html">Standard PVC Decking</a></li>
             <li><a href="${B}pages/decking.html">PVC Decking (full line)</a></li>
             <li><a href="${B}pages/porch.html">Porch Flooring</a></li>
             <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
