@@ -4,10 +4,22 @@
   // Resolve project root relative to the including HTML page so absolute
   // paths in the injected markup also work when this site is mounted under
   // a sub-path (preview proxy, Wix Studio sub-page, GitHub Pages, etc.).
-  // Walk up the path one level for each /pages/, /blog/, /posts/ segment
-  // we are inside. This keeps the partial correct at any nesting depth
-  // (e.g. /pages/blog/posts/foo.html needs '../../../').
+  //
+  // Strategy: locate this script's own <script src="..."> URL and trim
+  // the trailing 'pages/_partials.js...' from it to derive the project
+  // root. This is robust to arbitrary proxy depth (the deploy preview
+  // serves the site under /sites/proxy/<token>/web/.../americanprobp/),
+  // unlike counting location.pathname segments which over-walks on the
+  // preview proxy and breaks logo + thumb image paths.
   function _base() {
+    try {
+      const cs = document.currentScript;
+      const src = cs && cs.src ? cs.src : '';
+      // src looks like .../americanprobp/pages/_partials.js?v=5-staging
+      const m = src.match(/^(.*\/)pages\/_partials\.js(?:\?.*)?$/);
+      if (m) return m[1];
+    } catch (e) { /* fall through */ }
+    // Fallback: walk up from location.pathname (works on real domain root).
     const path = location.pathname.replace(/\/[^/]*$/, '/');
     const segments = path.split('/').filter(Boolean);
     if (segments.length === 0) return './';
@@ -20,11 +32,11 @@
   // in sync. Each card has a thumb image, a name, and a one-line tagline.
   const PRODUCTS = [
     {
-      name: 'PVC Decking',
-      tagline: 'TrueGrain wood-grain boards and Standard PVC, six colors.',
-      href: B + 'pages/decking.html',
-      img: B + 'images/product_decking.jpg',
-      alt: 'TrueGrain Deck wood-grain PVC deck boards',
+      name: 'TrueGrain Deck\u2122',
+      tagline: 'Wood to touch, PVC to last. Six hardwood-inspired colors.',
+      href: B + 'pages/truegrain-deck.html',
+      img: B + 'images/truegrain_swatches/tropical_walnut.jpg',
+      alt: 'TrueGrain Deck wood-grain PVC deck board, Tropical Walnut',
     },
     {
       name: 'InvisiClip\u2122',
@@ -32,6 +44,13 @@
       href: B + 'pages/invisiclip.html',
       img: B + 'images/invisiclip/clip_macro_hero.png',
       alt: 'InvisiClip hidden fastener clip on stainless rail',
+    },
+    {
+      name: 'Legacy PVC Decking',
+      tagline: 'The workhorse. Same chemistry as TrueGrain, classic solid colors.',
+      href: B + 'pages/legacy-pvc-decking.html',
+      img: B + 'images/deck_swatches/driftwood.jpg',
+      alt: 'American Pro Legacy PVC decking, Driftwood color',
     },
     {
       name: 'Porch Flooring',
@@ -143,8 +162,9 @@
         <div class="footer-col">
           <h4>Products</h4>
           <ul>
-            <li><a href="${B}pages/decking.html">PVC Decking</a></li>
+            <li><a href="${B}pages/truegrain-deck.html">TrueGrain Deck\u2122</a></li>
             <li><a href="${B}pages/invisiclip.html">InvisiClip\u2122 Hidden Fastener</a></li>
+            <li><a href="${B}pages/legacy-pvc-decking.html">Legacy PVC Decking</a></li>
             <li><a href="${B}pages/porch.html">Porch Flooring</a></li>
             <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
             <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
