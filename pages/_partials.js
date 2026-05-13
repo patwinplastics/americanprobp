@@ -20,11 +20,11 @@
   // in sync. Each card has a thumb image, a name, and a one-line tagline.
   const PRODUCTS = [
     {
-      name: 'PVC Decking',
-      tagline: 'TrueGrain wood-grain boards and Standard PVC, six colors.',
-      href: B + 'pages/decking.html',
-      img: B + 'images/product_decking.jpg',
-      alt: 'TrueGrain Deck wood-grain PVC deck boards',
+      name: 'TrueGrain Deck\u2122',
+      tagline: 'Wood to touch, PVC to last. Six hardwood-inspired colors.',
+      href: B + 'pages/truegrain-deck.html',
+      img: B + 'images/truegrain_swatches/tropical_walnut.jpg',
+      alt: 'TrueGrain Deck wood-grain PVC deck board, Tropical Walnut',
     },
     {
       name: 'InvisiClip\u2122',
@@ -32,6 +32,13 @@
       href: B + 'pages/invisiclip.html',
       img: B + 'images/invisiclip/clip_macro_hero.png',
       alt: 'InvisiClip hidden fastener clip on stainless rail',
+    },
+    {
+      name: 'PVC Decking',
+      tagline: 'Full decking line: TrueGrain, Standard PVC, profiles, specs.',
+      href: B + 'pages/decking.html',
+      img: B + 'images/product_decking.jpg',
+      alt: 'American Pro PVC decking line',
     },
     {
       name: 'Porch Flooring',
@@ -143,8 +150,9 @@
         <div class="footer-col">
           <h4>Products</h4>
           <ul>
-            <li><a href="${B}pages/decking.html">PVC Decking</a></li>
+            <li><a href="${B}pages/truegrain-deck.html">TrueGrain Deck\u2122</a></li>
             <li><a href="${B}pages/invisiclip.html">InvisiClip\u2122 Hidden Fastener</a></li>
+            <li><a href="${B}pages/decking.html">PVC Decking (full line)</a></li>
             <li><a href="${B}pages/porch.html">Porch Flooring</a></li>
             <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
             <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
