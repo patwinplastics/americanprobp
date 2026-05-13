@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Deck Estimator | Calculate Boards, Joists & Cost | American Pro</title>
-    <meta name="description" content="Free online deck calculator for American Pro PVC decking. Enter dimensions and get an itemized estimate of boards, joists, fasteners, plugs, and labor for TrueGrain Deck and Standard PVC." />
+    <meta name="description" content="Free online deck calculator for American Pro PVC decking. Enter dimensions and get an itemized estimate of boards, joists, fasteners, plugs, and labor for TrueGrain Deck and Legacy PVC." />
     <meta name="keywords" content="deck calculator, deck cost estimator, PVC deck calculator, deck board calculator, deck joist calculator, American Pro estimator" />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="author" content="American Pro Building Products" />
@@ -19,7 +19,7 @@
     <meta property="og:site_name" content="American Pro Building Products" />
     <meta property="og:url" content="https://americanprobp.com/pages/calculator.html" />
     <meta property="og:title" content="Deck Estimator | Calculate Boards, Joists & Cost | American Pro" />
-    <meta property="og:description" content="Free online deck calculator for American Pro PVC decking. Enter dimensions and get an itemized estimate of boards, joists, fasteners, plugs, and labor for TrueGrain Deck and Standard PVC." />
+    <meta property="og:description" content="Free online deck calculator for American Pro PVC decking. Enter dimensions and get an itemized estimate of boards, joists, fasteners, plugs, and labor for TrueGrain Deck and Legacy PVC." />
     <meta property="og:image" content="https://americanprobp.com/images/og/og-decking.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -29,7 +29,7 @@
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Deck Estimator | Calculate Boards, Joists & Cost | American Pro" />
-    <meta name="twitter:description" content="Free online deck calculator for American Pro PVC decking. Enter dimensions and get an itemized estimate of boards, joists, fasteners, plugs, and labor for TrueGrain Deck and Standard PVC." />
+    <meta name="twitter:description" content="Free online deck calculator for American Pro PVC decking. Enter dimensions and get an itemized estimate of boards, joists, fasteners, plugs, and labor for TrueGrain Deck and Legacy PVC." />
     <meta name="twitter:image" content="https://americanprobp.com/images/og/og-decking.jpg" />
     <meta name="twitter:image:alt" content="American Pro deck calculator estimator" />
 
@@ -49,7 +49,7 @@
 
 
     <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/site.css?v=12-staging" />
+    <link rel="stylesheet" href="../css/site.css?v=13-staging" />
     <style>
       /* ───────── Calculator layout ───────── */
       .calc-shell {
@@ -533,14 +533,14 @@
                   <div class="toggle-row" role="radiogroup" aria-label="Decking line">
                     <div class="toggle-pill">
                       <input type="radio" name="line" id="line-standard" value="standard" checked />
-                      <label for="line-standard">Standard PVC</label>
+                      <label for="line-standard">Legacy PVC</label>
                     </div>
                     <div class="toggle-pill">
                       <input type="radio" name="line" id="line-truegrain" value="truegrain" />
                       <label for="line-truegrain">TrueGrain Deck&trade;</label>
                     </div>
                   </div>
-                  <span class="hint">Both are 1&quot; &times; 5.5&quot; actual with a 3/16&quot; gap. Standard PVC defaults to $6.00/ft, TrueGrain Deck defaults to $8.00/ft. Override below if your dealer pricing differs.</span>
+                  <span class="hint">Both are 1&quot; &times; 5.5&quot; actual with a 3/16&quot; gap. Legacy PVC defaults to $6.00/ft, TrueGrain Deck defaults to $8.00/ft. Override below if your dealer pricing differs.</span>
                 </div>
 
                 <!-- Orientation + spacing -->
@@ -676,7 +676,7 @@
               </div>
               <div>
                 <dt>Defaults</dt>
-                <dd>Standard PVC $6.00/ft, TrueGrain Deck $8.00/ft, PT 2&times;8 joist $1.65/ft, $0.09 each on screws and plugs (works out to $36 per 100 sq ft fastener), labor $15/sq ft.</dd>
+                <dd>Legacy PVC $6.00/ft, TrueGrain Deck $8.00/ft, PT 2&times;8 joist $1.65/ft, $0.09 each on screws and plugs (works out to $36 per 100 sq ft fastener), labor $15/sq ft.</dd>
                 <dt>What we don't include</dt>
                 <dd>Footings, beams, ledger flashing, railing, stairs, permits. These vary too much by jurisdiction and design to put in a generic calc, talk to your contractor.</dd>
                 <dt>Spans over 40 ft</dt>
@@ -689,7 +689,7 @@
     </main>
 
     <div data-include="footer"></div>
-    <script src="_partials.js?v=4-staging"></script>
+    <script src="_partials.js?v=5-staging"></script>
     <script>
       (function() {
         'use strict';
@@ -914,7 +914,7 @@
 
         // ───────── Render ─────────
         function render(r) {
-          const lineLabel = els.line() === 'truegrain' ? 'TrueGrain Deck&trade;' : 'Standard PVC';
+          const lineLabel = els.line() === 'truegrain' ? 'TrueGrain Deck&trade;' : 'Legacy PVC';
 
           let boardSection = '';
           if (r.isSpliced) {
@@ -1056,7 +1056,7 @@
           els.joistSpacing.value = '16';
           document.getElementById('line-standard').checked = true;
           els.boardCost.value = '6.00';
-          // Note: defaults map lives in LINE_DEFAULTS above; reset returns to Standard PVC.
+          // Note: defaults map lives in LINE_DEFAULTS above; reset returns to Legacy PVC.
           els.joistCost.value = '1.65';
           els.screwCost.value = '0.09';
           els.plugCost.value  = '0.09';
