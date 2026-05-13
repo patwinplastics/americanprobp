@@ -1586,7 +1586,7 @@ html.reveal-ready [data-reveal].is-visible {
   box-shadow: 0 8px 22px -6px rgba(0, 0, 0, 0.55);
 }
 
-.tg-swatch-name {
+.tg-feature-swatches .tg-swatch-name {
   display: block;
   margin-top: 0.55rem;
   font-family: var(--font-body);
@@ -1732,7 +1732,7 @@ html.reveal-ready [data-reveal].is-visible {
     justify-content: center;
     text-align: center;
   }
-  .tg-swatch-name {
+  .tg-feature-swatches .tg-swatch-name {
     font-size: 0.68rem;
   }
 }
