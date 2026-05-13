@@ -56,7 +56,7 @@
     <link rel="preload" as="image" href="./images/hero_deck.jpg" />
 
     <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/site.css?v=10" />
+    <link rel="stylesheet" href="./css/site.css?v=11-staging" />
   </head>
   <body>
     <!-- ========== HEADER ========== -->
@@ -453,43 +453,78 @@
       </section>
 
       <!-- ========== PRODUCTS ========== -->
+      <!-- STAGING: Product grid restructured. TrueGrain Deck and InvisiClip
+           are now the first two cards as flagship products, with Porch and
+           Mouldings following. Grid expands from 3 to 4 columns at desktop,
+           still single column on mobile. TrueGrain card carries the six color
+           dots so the line is immediately scannable. -->
       <section class="section" id="products">
         <div class="container">
           <header class="section-head" data-reveal>
             <div>
               <span class="eyebrow">The Collection</span>
-              <h2>Three product families.<br /><em>One standard.</em></h2>
+              <h2>Two flagships.<br /><em>Two workhorses.</em></h2>
             </div>
             <p>
-              Every American Pro profile is extruded from UV-stabilized cellular PVC,
-              the same material trusted on coastal homes, mountain cabins, and
-              everything in between. Choose the one that fits the project. The
-              quality is the same.
+              TrueGrain Deck&trade; and the InvisiClip&trade; system are our
+              new flagships. Porch flooring and architectural mouldings are the
+              workhorses that put us on porches across the country. Every
+              profile is extruded in Linden, NJ from UV-stabilized cellular PVC.
             </p>
           </header>
 
-          <div class="product-grid">
-            <article class="product-card" data-reveal>
-              <a href="./pages/decking.html">
+          <div class="product-grid product-grid--4">
+            <article class="product-card product-card--flagship" data-reveal>
+              <a href="./pages/truegrain-deck.html">
                 <div class="product-image">
-                  <img width="2000" height="1493" loading="lazy" decoding="async" src="./images/product_decking.jpg" alt="Close-up of warm wood-grain PVC composite decking boards"  />
+                  <img width="2000" height="1493" loading="lazy" decoding="async" src="./images/truegrain_hero/driftwood-1200.jpg" alt="TrueGrain Deck PVC decking boards in Coastal Driftwood with deep wood-grain texture"  />
+                  <span class="product-flag">Flagship</span>
                 </div>
                 <div class="product-body">
                   <div class="product-tag">Outdoor Living</div>
-                  <h3 class="product-title">PVC Decking</h3>
+                  <h3 class="product-title">TrueGrain Deck&trade;</h3>
                   <p class="product-desc">
-                    Six embossed wood-grain finishes from Driftwood to Redwood.
-                    Solid Edge or Grooved profile, 1×5.5 actual, in 12, 16, and 20 ft lengths.
+                    Wood-grained capped PVC in six hardwood-inspired colors. ASA
+                    cap, cellular PVC core, 25-year limited residential warranty.
                   </p>
+                  <ul class="product-swatches" aria-label="Six TrueGrain Deck colors">
+                    <li style="background-image:url('./images/truegrain_swatches/new_england_birch.jpg');" title="New England Birch"></li>
+                    <li style="background-image:url('./images/truegrain_swatches/coastal_driftwood.jpg');" title="Coastal Driftwood"></li>
+                    <li style="background-image:url('./images/truegrain_swatches/aged_oak.jpg');" title="Aged Oak"></li>
+                    <li style="background-image:url('./images/truegrain_swatches/embered_taupe.jpg');" title="Embered Taupe"></li>
+                    <li style="background-image:url('./images/truegrain_swatches/royal_ipe.jpg');" title="Royal IPE"></li>
+                    <li style="background-image:url('./images/truegrain_swatches/tropical_walnut.jpg');" title="Tropical Walnut"></li>
+                  </ul>
                   <span class="product-link">
-                    Explore Decking
+                    Explore TrueGrain Deck&trade;
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                   </span>
                 </div>
               </a>
             </article>
 
-            <article class="product-card" data-reveal data-reveal-delay="1">
+            <article class="product-card product-card--flagship" data-reveal data-reveal-delay="1">
+              <a href="./pages/invisiclip.html">
+                <div class="product-image">
+                  <img width="1600" height="1200" loading="lazy" decoding="async" src="./images/invisiclip/clip_macro_hero.png?v=4" alt="Walnut PVC deck board hovering above two InvisiClip hidden fasteners on an aluminum rail"  />
+                  <span class="product-flag product-flag--ic">Hidden Fastener System</span>
+                </div>
+                <div class="product-body">
+                  <div class="product-tag">Outdoor Living</div>
+                  <h3 class="product-title">InvisiClip&trade;</h3>
+                  <p class="product-desc">
+                    POM clips on aluminum rails. Boards drop in from above. Zero
+                    screws on the walking surface. Powered by the GRAD&reg; system.
+                  </p>
+                  <span class="product-link">
+                    Explore InvisiClip&trade;
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </span>
+                </div>
+              </a>
+            </article>
+
+            <article class="product-card" data-reveal data-reveal-delay="2">
               <a href="./pages/porch.html">
                 <div class="product-image">
                   <img width="1376" height="768" loading="lazy" decoding="async" src="./images/porch_hero.jpg" alt="Classic American front porch with white tongue-and-groove PVC flooring at golden hour"  />
@@ -509,7 +544,7 @@
               </a>
             </article>
 
-            <article class="product-card" data-reveal data-reveal-delay="2">
+            <article class="product-card" data-reveal data-reveal-delay="3">
               <a href="./pages/mouldings.html">
                 <div class="product-image">
                   <img width="2000" height="1493" loading="lazy" decoding="async" src="./images/product_moulding.jpg" alt="Crisp white PVC architectural moulding and trim on a traditional home"  />
@@ -519,8 +554,7 @@
                   <h3 class="product-title">PVC Mouldings</h3>
                   <p class="product-desc">
                     Crown in five sizes, casing, sills, brick mould, base cap,
-                    quarter round, and more. Standard and special profiles that
-                    cut, route, and paint like premium millwork.
+                    quarter round, and more. Cut, route, and paint like premium millwork.
                   </p>
                   <span class="product-link">
                     Explore Mouldings
@@ -640,17 +674,18 @@
         <div class="container">
           <div class="home-dist-inner" data-reveal>
             <div class="home-dist-copy">
-              <span class="home-dist-eyebrow">Where to Buy Porch Flooring</span>
+              <span class="home-dist-eyebrow">Where to Buy Porch Flooring &amp; TrueGrain Deck</span>
               <h2 id="home-dist-title">
                 Looking for porch?<br />
-                <em>Western New York, this is your stop.</em>
+                <em>Western New York, Genesee is your stop.</em>
               </h2>
               <p class="home-dist-blurb">
                 Across Western New York and the Finger Lakes, our authorized
                 distributor is <span class="home-dist-name">Genesee Reserve
                 Supply</span>, a two-step wholesale building-products
                 distributor serving independent lumber dealers since 1952.
-                They stock American Pro porch flooring at both branches.
+                They stock American Pro porch flooring at both branches and
+                quote <strong>TrueGrain Deck&trade;</strong> on request.
               </p>
               <div class="home-dist-cta">
                 <a href="tel:18007241000" class="home-dist-call" aria-label="Call Genesee Reserve Supply toll free at 1-800-724-1000">
@@ -691,18 +726,20 @@
               <span class="home-dist-media-region" aria-hidden="true">Cape Cod &amp; SE Massachusetts</span>
             </div>
             <div class="home-dist-copy">
-              <span class="home-dist-eyebrow">Where to Buy PVC Decking</span>
+              <span class="home-dist-eyebrow">Where to Buy TrueGrain Deck &amp; InvisiClip</span>
               <h2 id="home-dealer-title">
-                Looking for decking?<br />
-                <em>Cape Cod, Stonewood is your stop.</em>
+                Want TrueGrain Deck&trade;?<br />
+                <em>Cape Cod, Stonewood stocks it.</em>
               </h2>
               <p class="home-dist-blurb">
                 Across Cape Cod and Southeastern Massachusetts, our authorized
                 dealer is <span class="home-dist-name">Stonewood Products</span>,
                 a Harwich-based wholesale building materials supplier serving
                 homeowners, builders, and landscapers since 1997. They stock
-                American Pro PVC decking at the Harwich flagship and the
-                Mashpee store, and ship nationally through their online team.
+                <strong>TrueGrain Deck&trade;</strong> in all six colors and the
+                <strong>InvisiClip&trade;</strong> hidden fastener system at the
+                Harwich flagship and the Mashpee store, and ship nationally through
+                their online team.
               </p>
               <div class="home-dist-cta">
                 <a href="tel:15084305020" class="home-dist-call" aria-label="Call Stonewood Products Harwich flagship at 508-430-5020">
@@ -728,6 +765,39 @@
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- ========== VISUALIZER BAND ==========
+           STAGING: a dedicated visualizer entry on the homepage between the
+           dealer callouts and the inspiration gallery. Pairs the TrueGrain
+           swatches with the launcher so the visitor can decide on a color
+           and tap into the visualizer in one motion. -->
+      <section class="viz-band" aria-labelledby="viz-band-title">
+        <div class="container viz-band-inner" data-reveal>
+          <div class="viz-band-copy">
+            <span class="eyebrow viz-band-eyebrow">Deck Visualizer</span>
+            <h2 id="viz-band-title">See TrueGrain Deck&trade;<br /><em>on your own house.</em></h2>
+            <p class="viz-band-blurb">
+              Upload a photo of your home, drop in a TrueGrain color, and walk around it
+              before you order. No login. No download. Works on your phone.
+            </p>
+            <div class="viz-band-actions">
+              <a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
+                Open the Deck Visualizer
+                <span aria-hidden="true" style="margin-left:.4rem;">↗</span>
+              </a>
+              <a href="./pages/truegrain-deck.html" class="btn btn--ghost btn--lg">See the TrueGrain Deck&trade; line</a>
+            </div>
+          </div>
+          <ul class="viz-band-swatches" aria-label="Six TrueGrain Deck colors, click to open the visualizer">
+            <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener"><span style="background-image:url('./images/truegrain_swatches/new_england_birch.jpg');"></span><b>New England Birch</b></a></li>
+            <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener"><span style="background-image:url('./images/truegrain_swatches/coastal_driftwood.jpg');"></span><b>Coastal Driftwood</b></a></li>
+            <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener"><span style="background-image:url('./images/truegrain_swatches/aged_oak.jpg');"></span><b>Aged Oak</b></a></li>
+            <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener"><span style="background-image:url('./images/truegrain_swatches/embered_taupe.jpg');"></span><b>Embered Taupe</b></a></li>
+            <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener"><span style="background-image:url('./images/truegrain_swatches/royal_ipe.jpg');"></span><b>Royal IPE</b></a></li>
+            <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener"><span style="background-image:url('./images/truegrain_swatches/tropical_walnut.jpg');"></span><b>Tropical Walnut</b></a></li>
+          </ul>
         </div>
       </section>
 
@@ -1023,6 +1093,13 @@
         </div>
       </div>
     </footer>
+
+    <!-- Sticky mobile visualizer launcher: appears only at ≤720px, sits above
+         thumb on the bottom-right, hidden when the on-page viz band is in view. -->
+    <a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener" class="viz-launcher" data-viz-launcher aria-label="Open the Deck Visualizer in a new tab">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/></svg>
+      <span><b>See it on your house</b><small>Deck Visualizer</small></span>
+    </a>
 
     <script src="./js/site.js?v=2" defer></script>
 

@@ -2674,3 +2674,180 @@ html.reveal-ready [data-reveal].is-visible {
   color: var(--color-text-faint);
   margin-top: var(--space-1);
 }
+
+/* ============================================================
+   STAGING: TrueGrain & InvisiClip hierarchy rebuild
+   - 4-column product grid with flagship product cards
+   - Visualizer band on homepage
+   - Sticky mobile visualizer launcher
+   - Mobile hero CTA refinements
+   ============================================================ */
+
+/* ---- 4-column product grid + flagship variant ---- */
+.product-grid.product-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 1100px) {
+  .product-grid.product-grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .product-grid.product-grid--4 { grid-template-columns: 1fr; }
+}
+
+.product-card--flagship {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+.product-card--flagship:hover { outline-color: var(--color-accent-hover, #9b1729); }
+
+.product-image { position: relative; }
+.product-flag {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  background: var(--color-accent);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  z-index: 2;
+}
+.product-flag--ic {
+  background: var(--color-surface-dark, #0e1f3a);
+  color: #fff;
+}
+
+.product-swatches {
+  list-style: none;
+  display: flex;
+  gap: 6px;
+  padding: 0;
+  margin: 0 0 var(--space-4);
+}
+.product-swatches li {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 0 1.5px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(255,255,255,0.6);
+}
+
+/* ---- Visualizer band ---- */
+.viz-band {
+  background: linear-gradient(180deg, #f6f1ea 0%, #efe7da 100%);
+  padding-block: var(--space-12);
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+.viz-band-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: var(--space-10);
+  align-items: center;
+}
+@media (max-width: 880px) {
+  .viz-band-inner { grid-template-columns: 1fr; gap: var(--space-8); }
+}
+.viz-band-copy h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: var(--space-2) 0 var(--space-4);
+}
+.viz-band-copy h2 em { font-style: italic; font-weight: 400; color: var(--color-accent); }
+.viz-band-eyebrow { color: var(--color-accent); }
+.viz-band-blurb {
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  max-width: 52ch;
+  margin-bottom: var(--space-6);
+}
+.viz-band-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+
+.viz-band-swatches {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+@media (max-width: 520px) {
+  .viz-band-swatches { grid-template-columns: repeat(2, 1fr); }
+}
+.viz-band-swatches li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--color-text);
+  padding: var(--space-3);
+  background: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 4px 14px rgba(0,0,0,0.06);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.viz-band-swatches li a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.08);
+}
+.viz-band-swatches li a span {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.6 / 1;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+}
+.viz-band-swatches li a b {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--color-text);
+}
+
+/* ---- Sticky mobile visualizer launcher ---- */
+.viz-launcher {
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 50;
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.7rem 0.95rem;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(184, 26, 49, 0.35);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.viz-launcher:hover { transform: translateY(-2px); }
+.viz-launcher span { display: flex; flex-direction: column; line-height: 1.05; }
+.viz-launcher span b { font-family: var(--font-body); font-size: 0.85rem; font-weight: 700; }
+.viz-launcher span small { font-family: var(--font-body); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; }
+@media (max-width: 720px) {
+  .viz-launcher { display: inline-flex; }
+}
+
+/* ---- Mobile hero refinements ---- */
+@media (max-width: 720px) {
+  /* The TrueGrain slide has a lot of content. Tighten the hero on mobile so
+     the title and primary CTA land above the fold at ~390x844 viewport. */
+  .hero-slide.truegrain-feature .tg-feature-title { font-size: clamp(2.2rem, 9vw, 3.2rem); line-height: 1.02; margin-bottom: 0.5rem; }
+  .hero-slide.truegrain-feature .tg-feature-sub   { font-size: 0.95rem; line-height: 1.45; margin-bottom: 0.9rem; }
+  .hero-slide.truegrain-feature .tg-feature-swatches { gap: 0.4rem; margin-bottom: 0.9rem; }
+  .hero-slide.truegrain-feature .tg-feature-meta  { gap: 0.6rem; margin-bottom: 0.9rem; }
+  .hero-slide.truegrain-feature .tg-feature-actions { gap: 0.5rem; }
+  .hero-slide.truegrain-feature .tg-feature-actions .btn { width: 100%; }
+}
