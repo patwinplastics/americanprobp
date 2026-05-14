@@ -156,4 +156,15 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/contact.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/contact.html" />
   </url>
+  <url>
+    <loc>https://deckvisualizer.truegraindeck.com/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://deckvisualizer.truegraindeck.com/images/share-preview.jpg</image:loc>
+      <image:title>American Pro Deck Builder - TrueGrain 3D Deck Visualizer</image:title>
+      <image:caption>Free 3D deck design tool with instant material estimates</image:caption>
+    </image:image>
+  </url>
 </urlset>
