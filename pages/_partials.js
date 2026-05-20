@@ -112,6 +112,7 @@
         </div>
         <a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener" class="nav-external nav-vis">Deck Visualizer<span aria-hidden="true" class="nav-external-arrow">↗</span></a>
         <a href="${B}pages/inspiration.html">Inspiration</a>
+        <a href="${B}pages/dealers.html">Dealers</a>
         <a href="${B}pages/blog/index.html">Blog</a>
         <a href="${B}pages/about.html">About</a>
       </nav>
@@ -139,6 +140,7 @@
         </li>
         <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
         <li><a href="${B}pages/inspiration.html">Inspiration</a></li>
+        <li><a href="${B}pages/dealers.html">Dealers</a></li>
         <li><a href="${B}pages/blog/index.html">Blog</a></li>
         <li><a href="${B}pages/about.html">About</a></li>
       </ul>
@@ -169,6 +171,7 @@
             <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
             <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
             <li><a href="${B}pages/inspiration.html">Inspiration Gallery</a></li>
+            <li><a href="${B}pages/dealers.html">Dealers &amp; Where to Buy</a></li>
           </ul>
         </div>
         <div class="footer-col">
