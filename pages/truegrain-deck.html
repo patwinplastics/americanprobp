@@ -111,6 +111,33 @@
       .tg-stack-layer p { color: var(--color-text-muted); font-size: var(--text-sm); margin: 0; }
       @media (max-width: 900px) { .tg-stack { grid-template-columns: 1fr; } }
 
+      /* ==========================================================
+         Laminate construction (RENOLIT 5-layer breakdown)
+         Faithful, undistorted reproduction of the supplied diagram.
+         ========================================================== */
+      .tg-laminate { display: grid; grid-template-columns: 1.05fr 1fr; gap: var(--space-9); align-items: start; }
+      @media (max-width: 980px) { .tg-laminate { grid-template-columns: 1fr; gap: var(--space-7); } }
+
+      .tg-laminate-figure { background: #fff; border: 1px solid var(--color-divider); border-radius: 12px; padding: var(--space-5) var(--space-5) var(--space-4); box-shadow: 0 1px 2px rgba(14,31,58,0.04); }
+      .tg-laminate-figure img { display: block; width: 100%; height: auto; border-radius: 6px; }
+      .tg-laminate-figcap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--color-divider); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: var(--color-text-muted); }
+      .tg-laminate-figcap .tg-laminate-figcap-label { color: var(--color-heading, #0e1f3a); }
+
+      .tg-renolit { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 999px; background: rgba(14,31,58,0.06); border: 1px solid var(--color-divider); font-size: var(--text-xs); letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--color-heading, #0e1f3a); white-space: nowrap; flex-shrink: 0; }
+      .tg-renolit::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); display: inline-block; }
+      .tg-renolit b { font-weight: 800; letter-spacing: 0.18em; }
+
+      .tg-layers { display: grid; gap: var(--space-3); }
+      .tg-layer-row { display: grid; grid-template-columns: 44px 1fr; gap: var(--space-4); align-items: start; background: #fff; border: 1px solid var(--color-divider); border-left: 3px solid var(--color-accent); border-radius: 8px; padding: var(--space-5) var(--space-5); }
+      .tg-layer-num { font-family: var(--font-display); font-size: var(--text-xl); line-height: 1; color: var(--color-accent); font-weight: 700; padding-top: 2px; }
+      .tg-layer-body h4 { font-family: var(--font-display); font-size: var(--text-lg); margin: 0 0 4px; letter-spacing: -0.015em; }
+      .tg-layer-body p { color: var(--color-text-muted); font-size: var(--text-sm); margin: 0; line-height: 1.55; }
+      .tg-layer-body .tg-layer-spec { display: inline-block; font-size: var(--text-xs); letter-spacing: 0.10em; text-transform: uppercase; color: var(--color-text-muted); font-weight: 700; margin-top: 8px; padding: 4px 8px; border: 1px solid var(--color-divider); border-radius: 4px; }
+
+      .tg-laminate-foot { margin-top: var(--space-7); padding: var(--space-5) var(--space-6); background: #fff; border: 1px solid var(--color-divider); border-radius: 10px; display: grid; grid-template-columns: auto 1fr; gap: var(--space-5); align-items: center; }
+      .tg-laminate-foot p { margin: 0; color: var(--color-text-muted); font-size: var(--text-sm); line-height: 1.6; }
+      @media (max-width: 720px) { .tg-laminate-foot { grid-template-columns: 1fr; } }
+
       /* Swatch grid */
       .tg-swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
       .tg-swatch { background: #fff; border: 1px solid var(--color-divider); border-radius: 10px; overflow: hidden; }
@@ -252,36 +279,95 @@
       </section>
 
       <!-- ========== CONSTRUCTION STACK ========== -->
-      <section class="section" style="background: var(--color-surface-alt);">
+      <section class="section" id="laminate-technology" style="background: var(--color-surface-alt);" aria-labelledby="tg-laminate-title">
         <div class="container">
           <header class="tg-section-head" data-reveal>
             <div>
-              <span class="eyebrow">Inside every TrueGrain board</span>
-              <h2>Three layers,<br /><em>one extrusion line.</em></h2>
+              <span class="eyebrow">Laminate construction</span>
+              <h2 id="tg-laminate-title">Five bonded layers,<br /><em>engineered to outlast the deck under them.</em></h2>
             </div>
             <p class="tg-blurb">
-              TrueGrain Deck is built on the same Patwin Plastics extrusion line that supplies our
-              standard PVC decking. The chemistry is the same. The difference is the laminated
-              decorative surface bonded to the cap.
+              The TrueGrain decorative surface is a precision-laminated film stack co-developed with
+              RENOLIT, the German polymer specialist whose exterior foils are written into
+              architectural specifications across Europe and North America. The diagram below is the
+              actual layer schedule bonded to every TrueGrain board, reproduced without alteration.
             </p>
           </header>
 
-          <div class="tg-stack" data-reveal>
-            <div class="tg-stack-layer">
-              <span class="tg-stack-layer-num">Layer 01</span>
-              <h4>TrueGrain laminated surface</h4>
-              <p>Decorative exterior foil bonded to the cap. Deep variegated grain you can feel under bare feet.</p>
+          <div class="tg-laminate" data-reveal>
+            <figure class="tg-laminate-figure">
+              <img
+                src="../images/truegrain_tech/laminate-construction.jpg"
+                alt="Cross-section diagram of the TrueGrain laminate showing five labeled layers from top to bottom: Highly scratch-resistant top layer, Wear-resistant UV-protection layer, Printing ink, Pigmented PMMA base layer with SST, and Primer."
+                width="1500"
+                height="830"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption class="tg-laminate-figcap">
+                <span class="tg-laminate-figcap-label">TrueGrain laminate, layer-by-layer</span>
+                <span class="tg-renolit">Engineered by <b>RENOLIT</b></span>
+              </figcaption>
+            </figure>
+
+            <div class="tg-layers" role="list">
+              <div class="tg-layer-row" role="listitem">
+                <div class="tg-layer-num">01</div>
+                <div class="tg-layer-body">
+                  <h4>Highly scratch-resistant top layer</h4>
+                  <p>A clear, high-hardness surface film engineered to resist abrasion from foot traffic, patio furniture, pet claws, and grit. It is the wear face of the board and the first line of defense in everyday service.</p>
+                  <span class="tg-layer-spec">Function: surface durability</span>
+                </div>
+              </div>
+
+              <div class="tg-layer-row" role="listitem">
+                <div class="tg-layer-num">02</div>
+                <div class="tg-layer-body">
+                  <h4>Wear-resistant UV-protection layer</h4>
+                  <p>A dedicated UV stabilizer layer formulated to absorb solar radiation before it can reach the print or the substrate. It is what keeps the printed wood-grain from fading and what protects the polymer chemistry underneath from photo-degradation.</p>
+                  <span class="tg-layer-spec">Function: weathering and color hold</span>
+                </div>
+              </div>
+
+              <div class="tg-layer-row" role="listitem">
+                <div class="tg-layer-num">03</div>
+                <div class="tg-layer-body">
+                  <h4>Printing ink</h4>
+                  <p>High-resolution rotogravure decor print laid down between the protective films above and the pigmented base below. Captures the variegated grain, pore structure, and tonal depth of real hardwood with edge-to-edge registration on every board.</p>
+                  <span class="tg-layer-spec">Function: photorealistic wood-grain decor</span>
+                </div>
+              </div>
+
+              <div class="tg-layer-row" role="listitem">
+                <div class="tg-layer-num">04</div>
+                <div class="tg-layer-body">
+                  <h4>Pigmented PMMA base layer with SST</h4>
+                  <p>An acrylic (PMMA) base layer carrying RENOLIT's Solar Shield Technology (SST). SST reflects the near-infrared portion of the solar spectrum so the board runs measurably cooler under direct sun, while the PMMA chemistry delivers the dimensional stability and weatherability acrylic is specified for in exterior cladding.</p>
+                  <span class="tg-layer-spec">Function: heat reflection, structural backbone of the film</span>
+                </div>
+              </div>
+
+              <div class="tg-layer-row" role="listitem">
+                <div class="tg-layer-num">05</div>
+                <div class="tg-layer-body">
+                  <h4>Primer</h4>
+                  <p>An engineered tie-coat applied to the underside of the film stack. It is the chemical handshake that locks the laminate to the capped cellular PVC substrate, producing a permanent bond rather than a surface-applied coating.</p>
+                  <span class="tg-layer-spec">Function: substrate adhesion</span>
+                </div>
+              </div>
             </div>
-            <div class="tg-stack-layer">
-              <span class="tg-stack-layer-num">Layer 02</span>
-              <h4>Protective ASA cap</h4>
-              <p>Weatherable ASA capstock seals the board on all four sides. Resists fade, stain, and the elements.</p>
-            </div>
-            <div class="tg-stack-layer">
-              <span class="tg-stack-layer-num">Layer 03</span>
-              <h4>Cellular PVC core</h4>
-              <p>Moisture-resistant cellular PVC with 30% repurposed polymer content. Won't rot, won't absorb water.</p>
-            </div>
+          </div>
+
+          <div class="tg-laminate-foot" data-reveal>
+            <span class="tg-renolit">Engineered by <b>RENOLIT</b></span>
+            <p>
+              RENOLIT is a leading global manufacturer of high-performance polymer films. Their
+              exterior foils, including the SST acrylic technology shown above, are used in
+              specification-grade window, door, and cladding products worldwide. American Pro
+              Building Products laminates the RENOLIT TrueGrain film to a domestically extruded
+              cellular PVC substrate in Linden, New Jersey, marrying European film science to an
+              American-made board.
+            </p>
           </div>
         </div>
       </section>
