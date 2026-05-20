@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>TrueGrain Deck&trade; Laminate Construction | Technical Data Sheet</title>
-    <meta name="description" content="One-page technical data sheet for the TrueGrain Deck five-layer PMMA laminate engineered by RENOLIT. Layer-by-layer construction, materials, and functional purpose for architects, specifiers, and trade partners." />
+    <title>TrueGrain Deck&trade; Construction | Technical Data Sheet</title>
+    <meta name="description" content="One-page technical data sheet for the TrueGrain Deck board: a five-layer PMMA laminate engineered by RENOLIT bonded to a Patwin-extruded cellular PVC substrate with a proprietary ASA capstock. For architects, specifiers, and trade partners." />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="author" content="American Pro Building Products" />
     <meta name="theme-color" content="#0e1f3a" />
@@ -62,8 +62,8 @@
         font-family: var(--font-sans);
         color: var(--ink);
         background: #ddd;
-        font-size: 10pt;
-        line-height: 1.45;
+        font-size: 9.5pt;
+        line-height: 1.4;
         -webkit-font-smoothing: antialiased;
       }
 
@@ -74,7 +74,7 @@
         margin: 24px auto;
         background: var(--paper);
         box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-        padding: 0.45in 0.55in 0.4in;
+        padding: 0.4in 0.5in 0.35in;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -83,7 +83,7 @@
       /* ---------- Print rules ---------- */
       @page {
         size: Letter;
-        margin: 0.45in 0.55in 0.4in;
+        margin: 0.4in 0.5in 0.35in;
       }
       @media print {
         body { background: #fff; }
@@ -142,11 +142,11 @@
         display: grid;
         grid-template-columns: auto 1fr auto;
         align-items: center;
-        gap: 18px;
-        padding-bottom: 10px;
+        gap: 16px;
+        padding-bottom: 7px;
         border-bottom: 2px solid var(--navy);
       }
-      .ds-head-logo img { height: 36px; width: auto; display: block; }
+      .ds-head-logo img { height: 32px; width: auto; display: block; }
       .ds-head-title {
         text-align: center;
       }
@@ -160,7 +160,7 @@
       }
       .ds-head h1 {
         font-family: var(--font-display);
-        font-size: 17pt;
+        font-size: 15pt;
         line-height: 1.1;
         letter-spacing: -0.01em;
         margin: 2px 0 0;
@@ -183,15 +183,15 @@
       .ds-intro {
         display: grid;
         grid-template-columns: 1fr auto;
-        gap: 18px;
+        gap: 16px;
         align-items: center;
-        padding: 10px 0 8px;
+        padding: 7px 0 6px;
         border-bottom: 1px solid var(--divider);
       }
       .ds-intro p {
         margin: 0;
-        font-size: 9.5pt;
-        line-height: 1.5;
+        font-size: 8.5pt;
+        line-height: 1.42;
         color: var(--ink);
         max-width: 62ch;
       }
@@ -221,9 +221,9 @@
       /* ---------- Body grid ---------- */
       .ds-body {
         display: grid;
-        grid-template-columns: 2.9in 1fr;
-        gap: 18px;
-        padding-top: 10px;
+        grid-template-columns: 2.7in 1fr;
+        gap: 14px;
+        padding-top: 8px;
         flex: 1;
       }
 
@@ -232,7 +232,7 @@
         background: var(--cream);
         border: 1px solid var(--divider);
         border-radius: 6px;
-        padding: 10px 10px 8px;
+        padding: 7px 8px 6px;
       }
       .ds-figure img {
         width: 100%;
@@ -241,81 +241,107 @@
         border-radius: 4px;
       }
       .ds-figure-cap {
-        margin-top: 8px;
-        padding-top: 8px;
+        margin-top: 6px;
+        padding-top: 6px;
         border-top: 1px solid var(--divider);
-        font-size: 7.5pt;
+        font-size: 7pt;
         letter-spacing: 0.10em;
         text-transform: uppercase;
         color: var(--muted);
         font-weight: 700;
-        line-height: 1.4;
+        line-height: 1.35;
       }
       .ds-figure-cap strong { color: var(--navy); display: block; margin-bottom: 2px; }
 
       .ds-figure-meta {
-        margin-top: 10px;
+        margin-top: 6px;
         background: #fff;
         border: 1px solid var(--divider);
         border-radius: 6px;
-        padding: 10px 12px;
-        font-size: 8.5pt;
+        padding: 7px 9px;
+        font-size: 7.5pt;
       }
       .ds-figure-meta dl {
         margin: 0;
         display: grid;
         grid-template-columns: auto 1fr;
-        column-gap: 12px;
-        row-gap: 5px;
+        column-gap: 8px;
+        row-gap: 3px;
       }
       .ds-figure-meta dt {
         color: var(--muted);
         text-transform: uppercase;
-        letter-spacing: 0.10em;
-        font-size: 7.5pt;
+        letter-spacing: 0.08em;
+        font-size: 6.5pt;
         font-weight: 700;
       }
       .ds-figure-meta dd {
         margin: 0;
         color: var(--navy);
         font-weight: 600;
+        font-size: 7.5pt;
+        line-height: 1.3;
       }
+
+      /* Patwin substrate panel under the spec table */
+      .ds-patwin {
+        margin-top: 6px;
+        background: var(--navy);
+        color: #fff;
+        border-radius: 6px;
+        padding: 8px 9px;
+      }
+      .ds-patwin h4 {
+        margin: 0 0 5px;
+        font-family: var(--font-sans);
+        font-size: 8pt;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 800;
+        color: #fff;
+      }
+      .ds-patwin h4 small { display: block; font-size: 6pt; letter-spacing: 0.16em; color: rgba(255,255,255,0.65); margin-bottom: 2px; font-weight: 700; }
+      .ds-patwin-rows { display: grid; gap: 4px; }
+      .ds-patwin-row { display: grid; grid-template-columns: 48px 1fr; gap: 7px; }
+      .ds-patwin-row dt { font-size: 6pt; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 800; color: var(--red); padding-top: 1px; }
+      .ds-patwin-row dd { margin: 0; font-size: 7pt; line-height: 1.32; color: rgba(255,255,255,0.92); }
+      .ds-patwin-row dd b { color: #fff; }
 
       /* Layers column */
       .ds-layers {
         display: grid;
-        gap: 6px;
+        gap: 5px;
       }
       .ds-layer {
         display: grid;
-        grid-template-columns: 26px 1fr;
-        column-gap: 10px;
+        grid-template-columns: 22px 1fr;
+        column-gap: 9px;
         align-items: start;
         background: #fff;
         border: 1px solid var(--divider);
         border-left: 3px solid var(--red);
         border-radius: 5px;
-        padding: 8px 11px 8px 10px;
+        padding: 6px 10px 6px 9px;
         break-inside: avoid;
       }
       .ds-layer-num {
         font-family: var(--font-display);
-        font-size: 13pt;
+        font-size: 12pt;
         color: var(--red);
         font-weight: 700;
         line-height: 1;
-        padding-top: 2px;
+        padding-top: 1px;
       }
       .ds-layer-head {
         display: flex;
         align-items: baseline;
-        gap: 10px;
+        gap: 8px;
         flex-wrap: wrap;
-        margin-bottom: 2px;
+        margin-bottom: 1px;
       }
       .ds-layer-body h3 {
         font-family: var(--font-sans);
-        font-size: 9.5pt;
+        font-size: 9pt;
         margin: 0;
         color: var(--navy);
         font-weight: 700;
@@ -324,26 +350,26 @@
       }
       .ds-layer-body p {
         margin: 0;
-        font-size: 8.5pt;
+        font-size: 8pt;
         color: #2a2f3a;
-        line-height: 1.42;
+        line-height: 1.38;
       }
       .ds-layer-fn {
-        font-size: 6.5pt;
-        letter-spacing: 0.10em;
+        font-size: 6pt;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
         font-weight: 800;
         color: var(--muted);
         border: 1px solid var(--divider);
         border-radius: 3px;
-        padding: 2px 6px;
+        padding: 1px 5px;
         white-space: nowrap;
       }
 
       /* ---------- Footer ---------- */
       .ds-foot {
-        margin-top: 10px;
-        padding-top: 10px;
+        margin-top: 8px;
+        padding-top: 7px;
         border-top: 2px solid var(--navy);
         display: grid;
         grid-template-columns: 1fr auto;
@@ -351,22 +377,22 @@
         gap: 12px;
       }
       .ds-foot-credit {
-        font-size: 8pt;
+        font-size: 7.5pt;
         color: var(--muted);
-        line-height: 1.5;
+        line-height: 1.42;
         max-width: 4.6in;
       }
       .ds-foot-credit strong { color: var(--navy); }
       .ds-foot-id {
         text-align: right;
-        font-size: 7.5pt;
+        font-size: 7pt;
         letter-spacing: 0.10em;
         text-transform: uppercase;
         color: var(--muted);
         font-weight: 700;
-        line-height: 1.5;
+        line-height: 1.42;
       }
-      .ds-foot-id strong { color: var(--navy); display: block; font-size: 8pt; }
+      .ds-foot-id strong { color: var(--navy); display: block; font-size: 7.5pt; }
       .ds-foot-id a { color: var(--navy); text-decoration: none; }
     </style>
   </head>
@@ -386,7 +412,7 @@
         </div>
         <div class="ds-head-title">
           <span class="ds-eyebrow">Technical Data Sheet</span>
-          <h1>TrueGrain Deck&trade; Laminate Construction<br /><em>Five-Layer PMMA Film, Engineered by RENOLIT</em></h1>
+          <h1>TrueGrain Deck&trade; Construction<br /><em>RENOLIT laminate. Patwin cellular PVC.&nbsp;American&#8209;extruded.</em></h1>
         </div>
         <div class="ds-head-meta">
           <strong>Document</strong>
@@ -399,13 +425,13 @@
       <!-- ====================== INTRO ====================== -->
       <section class="ds-intro">
         <p>
-          The TrueGrain decorative surface is a precision-laminated, five-layer PMMA film
-          stack engineered by RENOLIT and bonded to a domestically extruded cellular PVC
-          substrate at Patwin Plastics in Linden, New Jersey. Each layer performs a distinct
-          functional role, from abrasion resistance on the wear face to chemical adhesion at
-          the substrate interface. The diagram and descriptions below are reproduced without
-          alteration and are intended for use by architects, specifiers, dealers, and
-          distributor partners.
+          The TrueGrain deck board is a precision-laminated, five-layer PMMA film stack
+          engineered by RENOLIT, permanently bonded to a Patwin-extruded cellular PVC profile
+          with a proprietary ASA capstock. Each layer of the film performs a distinct
+          functional role from abrasion resistance to chemical adhesion. The substrate
+          beneath it is American-extruded under one roof in Linden, New Jersey. This data
+          sheet documents both halves of the assembly for architects, specifiers, dealers,
+          and distributor partners.
         </p>
         <span class="ds-renolit-chip">Engineered by <b>RENOLIT</b></span>
       </section>
@@ -433,14 +459,30 @@
               <dd>RENOLIT exterior PMMA laminate</dd>
               <dt>Film Chemistry</dt>
               <dd>PMMA (acrylic) with SST</dd>
-              <dt>Substrate</dt>
-              <dd>Cellular PVC with ASA capstock</dd>
               <dt>Bonding</dt>
               <dd>Primer-assisted permanent lamination</dd>
               <dt>Origin</dt>
               <dd>Laminated and extruded in Linden, NJ, USA</dd>
               <dt>Warranty</dt>
               <dd>25-year limited residential</dd>
+            </dl>
+          </div>
+
+          <div class="ds-patwin">
+            <h4><small>The board beneath the film</small>Extruded by Patwin Plastics</h4>
+            <dl class="ds-patwin-rows">
+              <div class="ds-patwin-row">
+                <dt>Capstock</dt>
+                <dd><b>Patwin proprietary ASA</b>, formulated and co-extruded in-house. Caps all four sides of the profile.</dd>
+              </div>
+              <div class="ds-patwin-row">
+                <dt>Core</dt>
+                <dd><b>Cellular PVC with 30% in-house regrind.</b> Closed-loop American material, single facility.</dd>
+              </div>
+              <div class="ds-patwin-row">
+                <dt>Process</dt>
+                <dd><b>PVC compound mixed in-house. Dies designed and machined in-house.</b> Cellular PVC decking under one roof since 2001.</dd>
+              </div>
             </dl>
           </div>
         </aside>
@@ -531,12 +573,11 @@
       <!-- ====================== FOOTER ====================== -->
       <footer class="ds-foot">
         <p class="ds-foot-credit">
-          <strong>RENOLIT</strong> is a leading global manufacturer of high-performance polymer
-          films. Their exterior PMMA foils, including the Solar Shield Technology shown above,
-          are specified in window, door, and architectural cladding products worldwide.
-          American Pro Building Products laminates the RENOLIT TrueGrain film to a
-          domestically extruded cellular PVC substrate, marrying European film science to an
-          American-made deck board.
+          <strong>RENOLIT</strong> engineers the film. <strong>Patwin Plastics</strong>
+          extrudes the board. Patwin laminates the RENOLIT TrueGrain PMMA foil to its own
+          proprietary ASA-capped cellular PVC substrate in Linden, New Jersey, marrying
+          European film science to an American-extruded profile. The result is the
+          twenty-five-year board specified by American Pro Building Products.
         </p>
         <div class="ds-foot-id">
           <strong>American Pro Building Products</strong>

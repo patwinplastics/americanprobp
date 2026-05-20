@@ -138,6 +138,36 @@
       .tg-laminate-foot p { margin: 0; color: var(--color-text-muted); font-size: var(--text-sm); line-height: 1.6; }
       @media (max-width: 720px) { .tg-laminate-foot { grid-template-columns: 1fr; } }
 
+      /* ==========================================================
+         Patwin substrate pillars (the board under the film)
+         ========================================================== */
+      .tg-substrate { margin-top: var(--space-10); padding-top: var(--space-9); border-top: 1px solid var(--color-divider); }
+      .tg-substrate-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--space-8); align-items: end; margin-bottom: var(--space-7); }
+      .tg-substrate-head h3 { font-family: var(--font-display); margin: var(--space-3) 0 0; font-size: clamp(var(--text-xl), 3vw, var(--text-2xl)); letter-spacing: -0.02em; color: var(--color-heading, #0e1f3a); }
+      .tg-substrate-head h3 em { font-style: italic; font-weight: 400; }
+      .tg-substrate-head p { color: var(--color-text-muted); margin: 0; max-width: 52ch; line-height: 1.6; }
+      @media (max-width: 900px) { .tg-substrate-head { grid-template-columns: 1fr; gap: var(--space-4); } }
+
+      .tg-pat-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+      .tg-pat-pillar { background: #fff; border: 1px solid var(--color-divider); border-top: 3px solid var(--color-primary, #0e1f3a); border-radius: 8px; padding: var(--space-6); }
+      .tg-pat-pillar-eye { display: block; font-size: var(--text-xs); letter-spacing: 0.16em; text-transform: uppercase; font-weight: 800; color: var(--color-primary, #0e1f3a); margin-bottom: var(--space-3); }
+      .tg-pat-pillar h4 { font-family: var(--font-display); font-size: var(--text-lg); margin: 0 0 8px; letter-spacing: -0.015em; color: var(--color-heading, #0e1f3a); }
+      .tg-pat-pillar p { color: var(--color-text-muted); font-size: var(--text-sm); margin: 0 0 var(--space-3); line-height: 1.55; }
+      .tg-pat-pillar ul { margin: var(--space-3) 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+      .tg-pat-pillar li { font-size: var(--text-xs); color: var(--color-text-muted); letter-spacing: 0.04em; padding-left: 14px; position: relative; line-height: 1.45; }
+      .tg-pat-pillar li::before { content: ""; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); }
+      @media (max-width: 900px) { .tg-pat-pillars { grid-template-columns: 1fr; } }
+
+      .tg-partnership { margin-top: var(--space-7); padding: var(--space-6) var(--space-6); background: var(--color-surface-dark, #0e1f3a); color: #fff; border-radius: 10px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--space-5); }
+      .tg-partnership .tg-part-cell { font-family: var(--font-display); font-size: var(--text-lg); letter-spacing: -0.005em; line-height: 1.3; }
+      .tg-partnership .tg-part-cell small { display: block; font-family: var(--font-sans); font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: rgba(255,255,255,0.7); margin-bottom: 6px; }
+      .tg-partnership .tg-part-x { font-family: var(--font-display); font-size: var(--text-2xl); color: var(--color-accent); font-weight: 700; }
+      .tg-partnership .tg-part-right { text-align: right; }
+      @media (max-width: 720px) {
+        .tg-partnership { grid-template-columns: 1fr; text-align: center; gap: var(--space-3); }
+        .tg-partnership .tg-part-right { text-align: center; }
+      }
+
       /* Swatch grid */
       .tg-swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
       .tg-swatch { background: #fff; border: 1px solid var(--color-divider); border-radius: 10px; overflow: hidden; }
@@ -363,12 +393,93 @@
             <p>
               RENOLIT is a leading global manufacturer of high-performance polymer films. Their
               exterior foils, including the SST acrylic technology shown above, are used in
-              specification-grade window, door, and cladding products worldwide. American Pro
-              Building Products laminates the RENOLIT TrueGrain film to a domestically extruded
-              cellular PVC substrate in Linden, New Jersey, marrying European film science to an
-              American-made board.
-              <br /><br />
-              <a href="truegrain-laminate-data-sheet.html" style="color: var(--color-accent); font-weight: 700; text-decoration: none; border-bottom: 1px solid currentColor;">View the one-page technical data sheet &rarr;</a>
+              specification-grade window, door, and cladding products worldwide. The film alone
+              is not the board. What sits beneath it determines how the laminate behaves over
+              twenty-five years in the sun.
+            </p>
+          </div>
+
+          <!-- ========== PATWIN SUBSTRATE + CAPSTOCK ========== -->
+          <div class="tg-substrate" data-reveal>
+            <header class="tg-substrate-head">
+              <div>
+                <span class="eyebrow">The board underneath the film</span>
+                <h3>Patwin Plastics extrudes the substrate.<br /><em>Where the laminate earns its life.</em></h3>
+              </div>
+              <p>
+                A premium laminate bonded to a marginal board is a marginal board. The TrueGrain
+                film is laminated to a Patwin-extruded cellular PVC profile with a proprietary
+                ASA capstock formulated and produced in-house. Three things separate it from
+                the imported and toll-extruded boards that compete on price.
+              </p>
+            </header>
+
+            <div class="tg-pat-pillars">
+              <div class="tg-pat-pillar">
+                <span class="tg-pat-pillar-eye">Capstock</span>
+                <h4>Patwin proprietary ASA</h4>
+                <p>
+                  An ASA (acrylonitrile styrene acrylate) capstock formulated by Patwin and
+                  co-extruded on every board. ASA is the chemistry specified for long-term
+                  exterior color and gloss retention, and ours is tuned to bond mechanically
+                  with the RENOLIT primer above and the cellular core below.
+                </p>
+                <ul>
+                  <li>UV-stable acrylic chemistry, not a PVC overlay</li>
+                  <li>Caps all four sides of the profile</li>
+                  <li>Formulated in-house, not sourced as a generic pellet</li>
+                </ul>
+              </div>
+
+              <div class="tg-pat-pillar">
+                <span class="tg-pat-pillar-eye">Core</span>
+                <h4>Cellular PVC with 30% in-house regrind</h4>
+                <p>
+                  A closed-cell PVC core engineered for stiffness, screw-hold, and moisture
+                  resistance. Thirty percent of the compound is reclaimed in-house regrind from
+                  our own extrusion line, an American closed-loop input that keeps the chemistry
+                  consistent and the carbon footprint honest.
+                </p>
+                <ul>
+                  <li>Won't rot, won't absorb water, won't host mold</li>
+                  <li>30% repurposed polymer, closed-loop, single facility</li>
+                  <li>Same cellular density across every TrueGrain color</li>
+                </ul>
+              </div>
+
+              <div class="tg-pat-pillar">
+                <span class="tg-pat-pillar-eye">Process</span>
+                <h4>Compound and tooling, in-house</h4>
+                <p>
+                  Patwin mixes its own PVC compound on site and designs and cuts its own
+                  extrusion dies. Most domestic decking shops do one or the other. Doing both
+                  is what lets us control cell structure, wall thickness, and the cap-to-core
+                  bond profile, the variables that decide how a laminated board ages.
+                </p>
+                <ul>
+                  <li>PVC compound mixed in Linden, NJ, no pre-mixed pellets</li>
+                  <li>Dies designed and machined in-house</li>
+                  <li>Cellular PVC decking extruded under one roof since 2001</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="tg-partnership" aria-label="RENOLIT and Patwin partnership">
+              <div class="tg-part-cell">
+                <small>The film</small>
+                Engineered by RENOLIT.<br />Specified worldwide.
+              </div>
+              <div class="tg-part-x" aria-hidden="true">+</div>
+              <div class="tg-part-cell tg-part-right">
+                <small>The board</small>
+                Extruded by Patwin.<br />Made in Linden, New Jersey.
+              </div>
+            </div>
+
+            <p style="margin: var(--space-6) 0 0; color: var(--color-text-muted); font-size: var(--text-sm); line-height: 1.6;">
+              The full technical breakdown, including the substrate spec, is published as a
+              one-page sheet you can send to specifiers, dealers, and partners.
+              <a href="truegrain-laminate-data-sheet.html" style="color: var(--color-accent); font-weight: 700; text-decoration: none; border-bottom: 1px solid currentColor;">View the data sheet &rarr;</a>
               &nbsp;&middot;&nbsp;
               <a href="../downloads/truegrain-laminate-data-sheet.pdf" download style="color: var(--color-accent); font-weight: 700; text-decoration: none; border-bottom: 1px solid currentColor;">Download PDF</a>
             </p>
