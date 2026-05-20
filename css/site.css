@@ -333,6 +333,48 @@
   line-height: 1.45;
 }
 
+/*
+  Homepage sample-request chooser: 5 product lines fit in one row on wide
+  screens, collapse to 3 then 2 then 1 as the viewport narrows. Scoped to the
+  chooser so the products mega-grid (4 cards) above keeps its layout.
+*/
+.samples-chooser-grid { grid-template-columns: repeat(5, 1fr); }
+@media (max-width: 1200px) { .samples-chooser-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 880px)  { .samples-chooser-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px)  { .samples-chooser-grid { grid-template-columns: 1fr; } }
+
+.samples-chooser-intro {
+  max-width: 62ch;
+  margin: 0 auto var(--space-9);
+  text-align: center;
+}
+.samples-chooser-intro .eyebrow { display: inline-block; }
+.samples-chooser-intro h2 {
+  font-size: var(--text-2xl);
+  letter-spacing: -0.025em;
+  margin: var(--space-3) 0 var(--space-4);
+}
+.samples-chooser-intro h2 em { font-style: italic; font-weight: 400; }
+.samples-chooser-intro p {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+.samples-chooser-bullets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-5);
+}
+.samples-chooser-bullets li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+
 /* Backdrop dim behind the open panel so attention focuses on the cards */
 .mega-backdrop {
   position: fixed;

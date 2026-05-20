@@ -987,87 +987,77 @@
         </div>
       </section>
 
-      <!-- ========== SAMPLES, primary CTA ========== -->
+      <!-- ========== SAMPLES, primary CTA — product-line chooser ========== -->
+      <!--
+           The homepage no longer hosts a generic sample form. Generic submissions
+           lacked the line, color, profile, and shipping detail required to fulfill
+           an order, so visitors are routed to the per-product #samples form on
+           the line they actually want. Each downstream form captures address,
+           phone, colors, and (where relevant) profile preference.
+      -->
       <section class="section samples" id="samples">
         <div class="container">
-          <div class="samples-inner">
-            <div data-reveal>
-              <span class="eyebrow">Free Samples</span>
-              <h2>Touch the difference<br /><em>before you commit.</em></h2>
-              <p>
-                We'll mail you full-size product samples so you can see the grain,
-                feel the surface, and compare colors against your home, all on us.
-                No salesperson follow-up. No obligation.
-              </p>
-              <ul class="samples-list">
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                  Free shipping anywhere in the continental U.S.
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                  Real product, not a brochure swatch
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                  Ships within two business days
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                  Optional: a quote for your project, no pressure
-                </li>
-              </ul>
-            </div>
+          <div class="samples-chooser-intro" data-reveal>
+            <span class="eyebrow">Free Samples</span>
+            <h2>Touch the difference <em>before you commit.</em></h2>
+            <p>
+              Tell us which line you want to see and we'll mail real product
+              samples, free, anywhere in the continental U.S. Pick the product
+              below to open the right request form, so we can capture the colors
+              and profile you need without back-and-forth.
+            </p>
+            <ul class="samples-list samples-chooser-bullets">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Free shipping anywhere in the continental U.S.
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Real product, not a brochure swatch
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Ships within two business days
+              </li>
+            </ul>
+          </div>
 
-            <div class="form-card" data-reveal data-reveal-delay="1">
-              <form data-formspree="mlgzgqnn" action="https://formspree.io/f/mlgzgqnn" method="POST">
-                <input type="hidden" name="_subject" value="Sample request from Home page" />
-                <input type="hidden" name="_next" value="./pages/thanks.html" />
-                <input type="hidden" name="_form_source" value="home" />
-                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-10000px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
-                <div class="form-grid">
-                  <div class="field">
-                    <label for="first">First Name</label>
-                    <input id="first" name="first_name" type="text" required autocomplete="given-name" />
-                  </div>
-                  <div class="field">
-                    <label for="last">Last Name</label>
-                    <input id="last" name="last_name" type="text" required autocomplete="family-name" />
-                  </div>
-                  <div class="field form-row">
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" required autocomplete="email" />
-                  </div>
-                  <div class="field">
-                    <label for="zip">ZIP Code</label>
-                    <input id="zip" name="zip" type="text" inputmode="numeric" required autocomplete="postal-code" />
-                  </div>
-                  <div class="field">
-                    <label for="role">I Am A</label>
-                    <select id="role" name="role" required>
-                      <option value="">Select…</option>
-                      <option>Homeowner</option>
-                      <option>Builder / Contractor</option>
-                      <option>Architect / Designer</option>
-                      <option>Dealer</option>
-                    </select>
-                  </div>
-                  <div class="field form-row">
-                    <label>Send Samples Of</label>
-                    <div class="checkbox-row">
-                      <label class="check"><input type="checkbox" name="samples[]" value="Decking" /><span>Decking</span></label>
-                      <label class="check"><input type="checkbox" name="samples[]" value="InvisiClip Hidden Fastener System" data-sample="invisiclip" /><span>InvisiClip™ System</span></label>
-                      <label class="check"><input type="checkbox" name="samples[]" value="Porch Flooring" /><span>Porch Flooring</span></label>
-                      <label class="check"><input type="checkbox" name="samples[]" value="Mouldings" /><span>Mouldings</span></label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-submit">
-                  <small>By submitting you agree to our privacy policy.</small>
-                  <button type="submit" class="btn btn--primary">Send My Samples</button>
-                </div>
-              </form>
-            </div>
+          <div class="mega-grid samples-chooser-grid" data-reveal data-reveal-delay="1">
+            <a class="mega-card" href="./pages/truegrain-deck.html#samples" data-product-link>
+              <span class="mega-card__media"><img src="./images/truegrain_swatches/tropical_walnut.jpg" alt="" loading="lazy" decoding="async" /></span>
+              <span class="mega-card__body">
+                <span class="mega-card__name">TrueGrain Deck&trade; samples</span>
+                <span class="mega-card__tag">Six hardwood-inspired colors. Pick the ones you want to see.</span>
+              </span>
+            </a>
+            <a class="mega-card" href="./pages/legacy-pvc-decking.html#samples" data-product-link>
+              <span class="mega-card__media"><img src="./images/deck_swatches/driftwood.jpg" alt="" loading="lazy" decoding="async" /></span>
+              <span class="mega-card__body">
+                <span class="mega-card__name">Legacy PVC Decking samples</span>
+                <span class="mega-card__tag">Six classic solid colors. Solid edge or grooved profile.</span>
+              </span>
+            </a>
+            <a class="mega-card" href="./pages/invisiclip.html#samples" data-product-link>
+              <span class="mega-card__media"><img src="./images/invisiclip/clip_macro_hero.png" alt="" loading="lazy" decoding="async" /></span>
+              <span class="mega-card__body">
+                <span class="mega-card__name">InvisiClip&trade; System samples</span>
+                <span class="mega-card__tag">Real engineered clip plus a rail section to test the snap.</span>
+              </span>
+            </a>
+            <a class="mega-card" href="./pages/porch.html#samples" data-product-link>
+              <span class="mega-card__media"><img src="./images/product_porch.jpg" alt="" loading="lazy" decoding="async" /></span>
+              <span class="mega-card__body">
+                <span class="mega-card__name">Porch Flooring samples</span>
+                <span class="mega-card__tag">Tongue-and-groove cellular PVC, slip-resistant, six finishes.</span>
+              </span>
+            </a>
+            <a class="mega-card" href="./pages/mouldings.html#samples" data-product-link>
+              <span class="mega-card__media"><img src="./images/product_moulding.jpg" alt="" loading="lazy" decoding="async" /></span>
+              <span class="mega-card__body">
+                <span class="mega-card__name">Moulding samples</span>
+                <span class="mega-card__tag">Crowns, sills, brick mould, casing. Short cut sections of any profile.</span>
+              </span>
+            </a>
           </div>
         </div>
       </section>
