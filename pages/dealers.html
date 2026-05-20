@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dealers &amp; Where to Buy | American Pro Building Products</title>
+    <meta name="description" content="Authorized American Pro dealers and distributors. Stonewood Products stocks Legacy PVC decking across Cape Cod and SE Massachusetts. Genesee Reserve Supply stocks porch flooring across Western New York and the Finger Lakes. Become an American Pro dealer." />
+    <meta name="keywords" content="American Pro dealers, where to buy American Pro decking, Stonewood Products, Genesee Reserve Supply, PVC decking dealer, porch flooring dealer, become a dealer, Patwin Plastics distributor" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="author" content="American Pro Building Products" />
+    <meta name="theme-color" content="#0e1f3a" />
+    <link rel="canonical" href="https://americanprobp.com/pages/dealers.html" />
+    <link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/dealers.html" />
+    <link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/dealers.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="American Pro Building Products" />
+    <meta property="og:url" content="https://americanprobp.com/pages/dealers.html" />
+    <meta property="og:title" content="Dealers &amp; Where to Buy | American Pro Building Products" />
+    <meta property="og:description" content="Find an authorized American Pro dealer. Stonewood Products on Cape Cod. Genesee Reserve Supply in Western New York. Become a dealer." />
+    <meta property="og:image" content="https://americanprobp.com/images/og/og-default.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="American Pro PVC decking and porch flooring on an East Coast home" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dealers &amp; Where to Buy | American Pro Building Products" />
+    <meta name="twitter:description" content="Find an authorized American Pro dealer. Stonewood Products on Cape Cod. Genesee Reserve Supply in Western New York." />
+    <meta name="twitter:image" content="https://americanprobp.com/images/og/og-default.jpg" />
+    <meta name="twitter:image:alt" content="American Pro PVC decking and porch flooring on an East Coast home" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg?v=2" />
+    <link rel="alternate icon" href="../favicon.ico?v=2" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2" />
+    <link rel="manifest" href="../site.webmanifest" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://americanprobp.com/"},{"@type":"ListItem","position":2,"name":"Dealers","item":"https://americanprobp.com/pages/dealers.html"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Authorized American Pro Dealers and Distributors","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"LocalBusiness","name":"Stonewood Products","url":"https://stonewoodproducts.com","telephone":"+1-508-430-5020","areaServed":"Cape Cod and Southeastern Massachusetts","description":"Authorized American Pro dealer stocking Legacy PVC decking at the Harwich flagship and Mashpee store, with nationwide online shipping."}},{"@type":"ListItem","position":2,"item":{"@type":"LocalBusiness","name":"Genesee Reserve Supply","telephone":"+1-800-724-1000","areaServed":"Western New York and the Finger Lakes","description":"Authorized American Pro distributor stocking porch flooring at the Rochester and Buffalo branches and routing through independent lumberyards across the region."}}]}</script>
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=boska@400,500,500i,700&f[]=satoshi@400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/site.css?v=15-staging" />
+    <style>
+      /* ============================================================
+         Dealers page
+         Two customer blocks (Stonewood, Genesee) plus a
+         "Become a Dealer" application section. Visual language
+         mirrors the existing .home-dist blocks on index.html so the
+         dealer treatment feels native to the rest of the site.
+         ============================================================ */
+      .dealers-intro { padding-top: var(--space-10); }
+      .dealers-intro p {
+        max-width: 64ch;
+        color: var(--color-text-muted);
+        font-size: var(--text-base);
+        line-height: 1.75;
+      }
+      .dealers-intro p + p { margin-top: var(--space-4); }
+
+      .dealer-stack { display: grid; gap: clamp(var(--space-10), 7vw, var(--space-16)); }
+
+      .dealer-card { position: relative; }
+      .dealer-card-inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: clamp(var(--space-8), 5vw, var(--space-14));
+        align-items: center;
+      }
+      @media (min-width: 880px) {
+        .dealer-card-inner { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
+        .dealer-card--flip .dealer-card-inner > .dealer-card-copy { order: 2; }
+        .dealer-card--flip .dealer-card-inner > .dealer-card-media { order: 1; }
+      }
+      .dealer-card-copy { max-width: 58ch; }
+      .dealer-card-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-body);
+        font-size: 0.6875rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--color-accent);
+        margin-bottom: var(--space-4);
+      }
+      .dealer-card-rank {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 1.5rem;
+        height: 1.5rem;
+        padding: 0 0.45rem;
+        border-radius: var(--radius-full);
+        background: var(--color-accent);
+        color: #fff;
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+      .dealer-card h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-3xl);
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        color: var(--color-text);
+        margin-bottom: var(--space-5);
+      }
+      .dealer-card h2 em { font-style: italic; font-weight: 400; }
+      .dealer-card .dealer-card-blurb {
+        color: var(--color-text-muted);
+        font-size: var(--text-base);
+        line-height: 1.75;
+        margin-bottom: var(--space-6);
+      }
+      .dealer-card-blurb strong { color: var(--color-text); font-weight: 600; }
+
+      .dealer-card-facts {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-3) var(--space-6);
+        padding: var(--space-5) 0;
+        margin-bottom: var(--space-6);
+        border-top: 1px solid var(--color-divider);
+        border-bottom: 1px solid var(--color-divider);
+      }
+      @media (min-width: 520px) {
+        .dealer-card-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      .dealer-card-fact {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+      .dealer-card-fact-label {
+        font-family: var(--font-body);
+        font-size: 0.6875rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--color-text-muted);
+      }
+      .dealer-card-fact-value {
+        font-size: var(--text-sm);
+        line-height: 1.55;
+        color: var(--color-text);
+        font-weight: 500;
+      }
+
+      .dealer-card-cta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-3) var(--space-4);
+        margin-bottom: var(--space-5);
+      }
+      .dealer-card-call {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1.1rem;
+        border-radius: var(--radius-md);
+        background: var(--color-accent);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+      }
+      .dealer-card-call:hover { background: var(--color-accent-hover, #9b1729); transform: translateY(-1px); }
+      .dealer-card-call svg { width: 18px; height: 18px; flex: none; }
+      .dealer-card-call-label { display: flex; flex-direction: column; line-height: 1.15; }
+      .dealer-card-call-tag {
+        font-family: var(--font-body);
+        font-size: 0.6875rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.85);
+        font-weight: 600;
+      }
+      .dealer-card-call-num { font-size: var(--text-base); font-weight: 700; }
+
+      .dealer-card-branches {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2) var(--space-5);
+        list-style: none;
+        padding: 0;
+        margin: 0 0 var(--space-5) 0;
+      }
+      .dealer-card-branches li {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+      }
+      .dealer-card-branches strong { color: var(--color-text); font-weight: 600; }
+      .dealer-card-branches a {
+        color: var(--color-accent);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+      .dealer-card-branches a:hover { color: var(--color-accent-hover, #9b1729); }
+
+      .dealer-card-foot {
+        font-size: var(--text-sm);
+        line-height: 1.7;
+        color: var(--color-text-muted);
+        margin: 0;
+      }
+      .dealer-card-foot a {
+        color: var(--color-accent);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+      .dealer-card-foot a:hover { color: var(--color-accent-hover, #9b1729); }
+
+      .dealer-card-media {
+        position: relative;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        box-shadow: var(--shadow-md);
+      }
+      .dealer-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .dealer-card-media-region {
+        position: absolute;
+        left: var(--space-4);
+        bottom: var(--space-4);
+        padding: 0.4rem 0.75rem;
+        background: rgba(14, 31, 58, 0.85);
+        color: #fff;
+        font-size: 0.75rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        border-radius: var(--radius-full);
+        backdrop-filter: blur(6px);
+      }
+
+      .dealer-card-media--svg {
+        background: var(--color-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(var(--space-8), 5vw, var(--space-12));
+      }
+      .dealer-card-media--svg svg { width: 100%; height: 100%; max-width: 360px; }
+
+      /* Become a dealer section */
+      .dealer-apply {
+        background: var(--color-primary);
+        color: #fff;
+        border-radius: var(--radius-lg);
+        padding: clamp(var(--space-10), 6vw, var(--space-16));
+        position: relative;
+        overflow: hidden;
+      }
+      .dealer-apply::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 10% 0%, rgba(255,255,255,0.08), transparent 55%);
+        pointer-events: none;
+      }
+      .dealer-apply-inner {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: clamp(var(--space-8), 5vw, var(--space-12));
+        align-items: start;
+      }
+      @media (min-width: 960px) {
+        .dealer-apply-inner { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
+      }
+      .dealer-apply-copy .eyebrow { color: var(--color-accent); }
+      .dealer-apply-copy h2 {
+        color: #fff;
+        font-family: var(--font-display);
+        font-size: var(--text-3xl);
+        letter-spacing: -0.02em;
+        margin-bottom: var(--space-5);
+        line-height: 1.1;
+      }
+      .dealer-apply-copy h2 em { font-style: italic; font-weight: 400; }
+      .dealer-apply-copy p {
+        color: rgba(255,255,255,0.82);
+        font-size: var(--text-base);
+        line-height: 1.75;
+        margin-bottom: var(--space-5);
+        max-width: 52ch;
+      }
+      .dealer-apply-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: var(--space-3);
+      }
+      .dealer-apply-list li {
+        position: relative;
+        padding-left: 1.75rem;
+        color: rgba(255,255,255,0.85);
+        font-size: var(--text-sm);
+        line-height: 1.6;
+      }
+      .dealer-apply-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.55rem;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--color-accent);
+      }
+      .dealer-apply-list li strong { color: #fff; font-weight: 600; }
+
+      .dealer-apply-form-card {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: var(--radius-lg);
+        padding: clamp(var(--space-6), 4vw, var(--space-9));
+      }
+      .dealer-apply-form-card h3 {
+        color: #fff;
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        margin-bottom: var(--space-2);
+      }
+      .dealer-apply-form-card .form-lede {
+        color: rgba(255,255,255,0.75);
+        font-size: var(--text-sm);
+        line-height: 1.6;
+        margin-bottom: var(--space-6);
+      }
+      .dealer-apply-form-card form {
+        display: grid;
+        gap: var(--space-4);
+      }
+      .dealer-apply-form-card .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .dealer-apply-form-card .field-row {
+        display: grid;
+        gap: var(--space-3);
+      }
+      @media (min-width: 560px) {
+        .dealer-apply-form-card .field-row { grid-template-columns: 1fr 1fr; }
+      }
+      .dealer-apply-form-card label {
+        font-family: var(--font-body);
+        font-size: 0.6875rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: rgba(255,255,255,0.78);
+      }
+      .dealer-apply-form-card input,
+      .dealer-apply-form-card select,
+      .dealer-apply-form-card textarea {
+        width: 100%;
+        padding: 0.75rem 0.9rem;
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.16);
+        border-radius: var(--radius-md);
+        color: #fff;
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        line-height: 1.4;
+        transition: border-color 0.15s ease, background-color 0.15s ease;
+      }
+      .dealer-apply-form-card select {
+        appearance: none;
+        background-image: linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.78) 50%),
+                          linear-gradient(135deg, rgba(255,255,255,0.78) 50%, transparent 50%);
+        background-position: calc(100% - 18px) center, calc(100% - 13px) center;
+        background-size: 5px 5px, 5px 5px;
+        background-repeat: no-repeat;
+        padding-right: 2.25rem;
+      }
+      .dealer-apply-form-card select option { color: var(--color-text); background: #fff; }
+      .dealer-apply-form-card textarea { min-height: 110px; resize: vertical; }
+      .dealer-apply-form-card input:focus,
+      .dealer-apply-form-card select:focus,
+      .dealer-apply-form-card textarea:focus {
+        outline: none;
+        border-color: var(--color-accent);
+        background: rgba(255,255,255,0.10);
+      }
+      .dealer-apply-form-card .form-submit {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        margin-top: var(--space-2);
+      }
+      .dealer-apply-form-card .form-submit small {
+        color: rgba(255,255,255,0.6);
+        font-size: 0.75rem;
+        line-height: 1.5;
+      }
+      .dealer-apply-form-card .form-submit .btn { align-self: flex-start; }
+      /* ===== Open Territory band =====
+         Sits between the active dealer cards and the Become a Dealer form.
+         Frames the gaps in our regional coverage as the opportunity for an
+         incoming dealer to stake first-mover position in a major market. */
+      .dealer-open {
+        background: var(--color-surface-2, #f5f1e7);
+        padding-top: var(--space-12);
+        padding-bottom: var(--space-12);
+        border-top: 1px solid rgba(14, 31, 58, 0.08);
+        border-bottom: 1px solid rgba(14, 31, 58, 0.08);
+      }
+      .dealer-open-head { max-width: 720px; }
+      .dealer-open-head .eyebrow { color: var(--color-accent); }
+      .dealer-open-head h2 {
+        font-family: 'Boska', serif;
+        font-weight: 500;
+        font-size: var(--text-3xl);
+        line-height: 1.08;
+        letter-spacing: -0.01em;
+        color: var(--color-text);
+        margin: var(--space-3) 0 var(--space-4) 0;
+      }
+      .dealer-open-head h2 em { font-style: italic; font-weight: 400; }
+      .dealer-open-head p {
+        font-size: var(--text-lg);
+        line-height: 1.55;
+        color: var(--color-text);
+        max-width: 60ch;
+      }
+      .dealer-open-grid {
+        margin-top: var(--space-8);
+        display: grid;
+        gap: var(--space-4);
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 700px) {
+        .dealer-open-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (min-width: 1024px) {
+        .dealer-open-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      }
+      .dealer-open-region {
+        background: #ffffff;
+        border: 1px solid rgba(14, 31, 58, 0.10);
+        border-radius: var(--radius-md, 10px);
+        padding: var(--space-5);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        position: relative;
+        transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .dealer-open-region:hover {
+        border-color: var(--color-accent);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(14, 31, 58, 0.06);
+      }
+      .dealer-open-tag {
+        align-self: flex-start;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: 'Satoshi', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--color-accent);
+        background: rgba(199, 32, 50, 0.08);
+        padding: 4px 10px;
+        border-radius: 999px;
+      }
+      .dealer-open-tag::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--color-accent);
+        box-shadow: 0 0 0 0 rgba(199, 32, 50, 0.6);
+        animation: dealerOpenPulse 2.2s ease-out infinite;
+      }
+      @keyframes dealerOpenPulse {
+        0%   { box-shadow: 0 0 0 0 rgba(199, 32, 50, 0.45); }
+        70%  { box-shadow: 0 0 0 8px rgba(199, 32, 50, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(199, 32, 50, 0); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .dealer-open-tag::before { animation: none; }
+      }
+      .dealer-open-region h3 {
+        font-family: 'Boska', serif;
+        font-weight: 500;
+        font-size: var(--text-xl);
+        line-height: 1.15;
+        color: var(--color-text);
+        margin: 0;
+      }
+      .dealer-open-region p {
+        font-size: var(--text-sm);
+        line-height: 1.55;
+        color: rgba(14, 31, 58, 0.72);
+        margin: 0;
+      }
+      .dealer-open-region-fit {
+        margin-top: auto;
+        padding-top: var(--space-3);
+        border-top: 1px dashed rgba(14, 31, 58, 0.12);
+        font-family: 'Satoshi', sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: rgba(14, 31, 58, 0.55);
+        font-weight: 600;
+      }
+      .dealer-open-foot {
+        margin-top: var(--space-8);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-4);
+        justify-content: space-between;
+      }
+      .dealer-open-foot p {
+        font-size: var(--text-base);
+        color: var(--color-text);
+        margin: 0;
+        max-width: 52ch;
+      }
+      .dealer-open-foot p strong { font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <div data-include="header"></div>
+
+    <main>
+      <section class="page-banner">
+        <div class="container">
+          <span class="eyebrow">Where to Buy</span>
+          <h1>The dealers who carry<br /><em>American Pro.</em></h1>
+          <p>American Pro doesn't sell direct. Every board, profile, and clip ships through dealers and distributors who know their customers, stock the right SKUs, and stand behind the product. Here are the names putting our material on porches and decks today.</p>
+        </div>
+      </section>
+
+      <section class="section dealers-intro">
+        <div class="container">
+          <p>If you are a builder, contractor, or homeowner looking for stock today, start with the regional dealer below who covers your area. If you are a lumberyard or building products dealer interested in carrying American Pro, jump down to <a href="#become-a-dealer">become a dealer</a> and tell us about your business.</p>
+        </div>
+      </section>
+
+      <section class="section" id="dealers" aria-labelledby="dealers-title">
+        <div class="container">
+          <h2 id="dealers-title" class="sr-only">Authorized American Pro dealers</h2>
+          <div class="dealer-stack">
+
+            <!-- ========== 1. STONEWOOD PRODUCTS ========== -->
+            <article class="dealer-card" id="stonewood" aria-labelledby="stonewood-name">
+              <div class="dealer-card-inner" data-reveal>
+                <div class="dealer-card-copy">
+                  <span class="dealer-card-eyebrow"><span class="dealer-card-rank">01</span> Cape Cod &amp; SE Massachusetts &middot; Legacy PVC decking</span>
+                  <h2 id="stonewood-name">Stonewood Products<br /><em>stocks Legacy PVC decking.</em></h2>
+                  <p class="dealer-card-blurb">
+                    Across Cape Cod and Southeastern Massachusetts, our authorized dealer is <strong>Stonewood Products</strong>, a Harwich-based wholesale building materials supplier serving homeowners, builders, and landscapers since 1997. They stock <strong>American Pro Legacy PVC decking</strong> at the Harwich flagship and the Mashpee store, and ship nationally through their online team.
+                  </p>
+                  <div class="dealer-card-facts" role="list">
+                    <div class="dealer-card-fact" role="listitem">
+                      <span class="dealer-card-fact-label">Territory</span>
+                      <span class="dealer-card-fact-value">Cape Cod, SE Mass &middot; nationwide online</span>
+                    </div>
+                    <div class="dealer-card-fact" role="listitem">
+                      <span class="dealer-card-fact-label">Stocks</span>
+                      <span class="dealer-card-fact-value">Legacy PVC decking</span>
+                    </div>
+                    <div class="dealer-card-fact" role="listitem">
+                      <span class="dealer-card-fact-label">Serves</span>
+                      <span class="dealer-card-fact-value">Homeowners, builders, landscapers</span>
+                    </div>
+                    <div class="dealer-card-fact" role="listitem">
+                      <span class="dealer-card-fact-label">Since</span>
+                      <span class="dealer-card-fact-value">1997</span>
+                    </div>
+                  </div>
+                  <div class="dealer-card-cta">
+                    <a href="tel:15084305020" class="dealer-card-call" aria-label="Call Stonewood Products Harwich flagship at 508-430-5020">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z"/>
+                      </svg>
+                      <span class="dealer-card-call-label">
+                        <span class="dealer-card-call-tag">Call Stonewood, Harwich flagship</span>
+                        <span class="dealer-card-call-num">508-430-5020</span>
+                      </span>
+                    </a>
+                  </div>
+                  <ul class="dealer-card-branches" aria-label="Other ways to reach Stonewood">
+                    <li><strong>Mashpee</strong><a href="tel:15084779950">508-477-9950</a></li>
+                    <li><strong>National &middot; Online</strong><a href="tel:18557869663">1-855-786-9663</a></li>
+                  </ul>
+                  <p class="dealer-card-foot">
+                    Visit <a href="https://stonewoodproducts.com" target="_blank" rel="noopener">stonewoodproducts.com</a> for nationwide online orders, or see <a href="./legacy-pvc-decking.html">Legacy PVC Decking</a> for product specs.
+                  </p>
+                </div>
+                <div class="dealer-card-media" data-reveal data-reveal-delay="1">
+                  <img src="../images/gallery_sunset.jpg" alt="Herringbone American Pro PVC deck at sunset, with string lights, a fire pit, lounge seating and an outdoor dining table set for evening on a Cape Cod-style home" width="1200" height="896" loading="lazy" decoding="async" />
+                  <span class="dealer-card-media-region" aria-hidden="true">Cape Cod &amp; SE Massachusetts</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- ========== 2. GENESEE RESERVE SUPPLY ========== -->
+            <article class="dealer-card dealer-card--flip" id="genesee" aria-labelledby="genesee-name">
+              <div class="dealer-card-inner" data-reveal>
+                <div class="dealer-card-copy">
+                  <span class="dealer-card-eyebrow"><span class="dealer-card-rank">02</span> Western New York &amp; Finger Lakes &middot; Porch flooring</span>
+                  <h2 id="genesee-name">Genesee Reserve Supply<br /><em>stocks porch flooring.</em></h2>
+                  <p class="dealer-card-blurb">
+                    Across Western New York and the Finger Lakes, our authorized distributor is <strong>Genesee Reserve Supply</strong>, a two-step wholesale building-products distributor serving independent lumber dealers since 1952. They stock <strong>American Pro porch flooring</strong> at both Rochester and Buffalo branches, and route product through their network of independent lumberyards across the region.
+                  </p>
+                  <div class="dealer-card-facts" role="list">
+                    <div class="dealer-card-fact" role="listitem">
+                      <span class="dealer-card-fact-label">Territory</span>
+                      <span class="dealer-card-fact-value">Western NY, Finger Lakes</span>
+                    </div>
+                    <div class="dealer-card-fact" role="listitem">
+                      <span class="dealer-card-fact-label">Stocks</span>
+                      <span class="dealer-card-fact-value">Porch flooring</span>
+                    </div>
+                    <div class="dealer-card-fact" role="listitem">
+                      <span class="dealer-card-fact-label">Serves</span>
+                      <span class="dealer-card-fact-value">Independent lumber dealers (two-step)</span>
+                    </div>
+                    <div class="dealer-card-fact" role="listitem">
+                      <span class="dealer-card-fact-label">Since</span>
+                      <span class="dealer-card-fact-value">1952</span>
+                    </div>
+                  </div>
+                  <div class="dealer-card-cta">
+                    <a href="tel:18007241000" class="dealer-card-call" aria-label="Call Genesee Reserve Supply toll free at 1-800-724-1000">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z"/>
+                      </svg>
+                      <span class="dealer-card-call-label">
+                        <span class="dealer-card-call-tag">Call Genesee, toll free</span>
+                        <span class="dealer-card-call-num">1-800-724-1000</span>
+                      </span>
+                    </a>
+                  </div>
+                  <ul class="dealer-card-branches" aria-label="Genesee Reserve Supply branches">
+                    <li><strong>Rochester</strong><a href="tel:15852927040">585-292-7040</a></li>
+                    <li><strong>Buffalo</strong><a href="tel:17168243116">716-824-3116</a></li>
+                  </ul>
+                  <p class="dealer-card-foot">
+                    Outside Western New York? See <a href="./porch.html#where-to-buy">where to buy porch flooring</a> or <a href="./contact.html">contact us</a> and we will point you to the right dealer.
+                  </p>
+                </div>
+                <div class="dealer-card-media" data-reveal data-reveal-delay="1">
+                  <img src="../images/porch_lifestyle.jpg" alt="Gray tongue-and-groove PVC porch with Adirondack chairs, autumn leaves, and a plaid throw on a Finger Lakes-style cottage" width="1200" height="896" loading="lazy" decoding="async" />
+                  <span class="dealer-card-media-region" aria-hidden="true">Western NY &amp; Finger Lakes</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== OPEN TERRITORY ==========
+           Sits between the active dealer cards and the dealer application
+           form. Frames the regions where we have no stocking dealer yet as
+           a first-mover opportunity. Every region links to #become-a-dealer
+           so the path from interest to application is one tap. -->
+      <section class="dealer-open" aria-labelledby="open-territory-title">
+        <div class="container">
+          <div class="dealer-open-head" data-reveal>
+            <span class="eyebrow">Open Territory</span>
+            <h2 id="open-territory-title">Regions where we are<br /><em>looking for our next dealer.</em></h2>
+            <p>American Pro is family-run and we don't stack dealers on top of each other. The regions below are open. If your yard or distribution book covers one of them, you are the conversation we want to have.</p>
+          </div>
+
+          <ul class="dealer-open-grid" role="list" data-reveal data-reveal-delay="1">
+            <li class="dealer-open-region">
+              <span class="dealer-open-tag" aria-label="Territory open">Territory open</span>
+              <h3>Mid-Atlantic</h3>
+              <p>NJ, PA, DE, MD, Northern VA. High coastal porch demand, dense lumberyard footprint, fast turn on Legacy PVC and TrueGrain.</p>
+              <span class="dealer-open-region-fit">Best fit: lumberyard chain or regional distributor</span>
+            </li>
+            <li class="dealer-open-region">
+              <span class="dealer-open-tag" aria-label="Territory open">Territory open</span>
+              <h3>Carolinas</h3>
+              <p>NC and SC coast through the Piedmont. Year-round build season, strong custom porch market, and a builder base actively pulling away from composites.</p>
+              <span class="dealer-open-region-fit">Best fit: building products dealer with builder accounts</span>
+            </li>
+            <li class="dealer-open-region">
+              <span class="dealer-open-tag" aria-label="Territory open">Territory open</span>
+              <h3>Florida &amp; Gulf Coast</h3>
+              <p>Coastal FL, AL, MS, LA. Salt, sun, hurricane-cycle rebuilds. Cellular PVC outperforms wood and composite in exactly this climate and the channel is wide open for a real American-made line.</p>
+              <span class="dealer-open-region-fit">Best fit: marine and coastal building supply</span>
+            </li>
+            <li class="dealer-open-region">
+              <span class="dealer-open-tag" aria-label="Territory open">Territory open</span>
+              <h3>Great Lakes &amp; Midwest</h3>
+              <p>OH, MI, IN, IL, WI. Freeze-thaw country where PVC's dimensional stability matters most. Strong porch and screened-room culture across older housing stock.</p>
+              <span class="dealer-open-region-fit">Best fit: independent lumberyard with porch business</span>
+            </li>
+          </ul>
+
+          <div class="dealer-open-foot" data-reveal data-reveal-delay="2">
+            <p>Don't see your region? <strong>Tell us where you are anyway.</strong> We add dealers as the right partners surface, not on a schedule.</p>
+            <a href="#become-a-dealer" class="btn btn--primary">Stake your territory</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== BECOME A DEALER ========== -->
+      <section class="section" id="become-a-dealer" aria-labelledby="apply-title">
+        <div class="container">
+          <div class="dealer-apply" data-reveal>
+            <div class="dealer-apply-inner">
+              <div class="dealer-apply-copy">
+                <span class="eyebrow">Become a Dealer</span>
+                <h2 id="apply-title">Carry American Pro<br /><em>in your yard.</em></h2>
+                <p>We work with independent lumberyards, building products dealers, and regional distributors who want a real American-made cellular PVC line in their racks. Family-run since 1971. Every profile extruded in Linden, NJ. Margins that respect the channel.</p>
+                <ul class="dealer-apply-list">
+                  <li><strong>Real product, real factory.</strong> Vertically integrated polymer extruder with in-house tooling. No reseller in the middle.</li>
+                  <li><strong>Two finished lines plus OEM.</strong> Legacy PVC decking, TrueGrain Deck&trade;, porch flooring, mouldings, and custom extrusion work.</li>
+                  <li><strong>Protected territory.</strong> We don't stack dealers on top of each other. Tell us your footprint and we'll talk straight.</li>
+                  <li><strong>One business-day response.</strong> A real person at Patwin reads every application.</li>
+                </ul>
+              </div>
+              <div class="dealer-apply-form-card">
+                <h3>Tell us about your business</h3>
+                <p class="form-lede">Submit the form and our team will follow up to discuss territory, pricing, and stocking program. Already an existing dealer? Email <a href="mailto:sales@americanprobp.com" style="color:#fff;text-decoration:underline;">sales@americanprobp.com</a>.</p>
+                <form data-formspree="mlgzgqnn" action="https://formspree.io/f/mlgzgqnn" method="POST">
+                  <input type="hidden" name="_subject" value="Dealer application from americanprobp.com/dealers" />
+                  <input type="hidden" name="_next" value="./thanks.html" />
+                  <input type="hidden" name="_form_source" value="dealer-application" />
+                  <input type="hidden" name="role" value="dealer-application" />
+                  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-10000px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
+
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="apply-first">First Name</label>
+                      <input id="apply-first" name="first_name" type="text" required autocomplete="given-name" />
+                    </div>
+                    <div class="field">
+                      <label for="apply-last">Last Name</label>
+                      <input id="apply-last" name="last_name" type="text" required autocomplete="family-name" />
+                    </div>
+                  </div>
+
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="apply-company">Company</label>
+                      <input id="apply-company" name="company" type="text" required autocomplete="organization" />
+                    </div>
+                    <div class="field">
+                      <label for="apply-title-input">Title / Role</label>
+                      <input id="apply-title-input" name="title" type="text" autocomplete="organization-title" />
+                    </div>
+                  </div>
+
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="apply-email">Email</label>
+                      <input id="apply-email" name="email" type="email" required autocomplete="email" />
+                    </div>
+                    <div class="field">
+                      <label for="apply-phone">Phone</label>
+                      <input id="apply-phone" name="phone" type="tel" autocomplete="tel" />
+                    </div>
+                  </div>
+
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="apply-territory">Territory / Region</label>
+                      <input id="apply-territory" name="territory" type="text" placeholder="Eastern PA, Central Florida, etc." required />
+                    </div>
+                    <div class="field">
+                      <label for="apply-type">Business Type</label>
+                      <select id="apply-type" name="business_type" required>
+                        <option value="">Select…</option>
+                        <option>Independent lumberyard</option>
+                        <option>Building products dealer</option>
+                        <option>Two-step distributor</option>
+                        <option>Online retailer</option>
+                        <option>Millwork / OEM shop</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label for="apply-lines">Lines you carry today</label>
+                    <input id="apply-lines" name="lines_carried" type="text" placeholder="Trex, Azek, TimberTech, Boral, etc." />
+                  </div>
+
+                  <div class="field">
+                    <label for="apply-message">Anything else helpful?</label>
+                    <textarea id="apply-message" name="message" placeholder="Locations, branches, existing PVC business, expected volume, timeline."></textarea>
+                  </div>
+
+                  <div class="form-submit">
+                    <small>By submitting you agree to our privacy policy. We respond within one business day.</small>
+                    <button type="submit" class="btn btn--primary">Submit Dealer Application</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+    <script src="../pages/_partials.js?v=7-staging"></script>
+    <script src="../js/site.js?v=3" defer></script>
+  </body>
+</html>

@@ -1129,6 +1129,127 @@
   right: var(--space-4);
 }
 
+/* ─── Home stocked-at strip (Stonewood, Genesee) ──────────────
+   Compact dealer band that replaced the two .home-dist call-outs on
+   index.html. Links each name to its anchor on /pages/dealers.html. */
+.home-stocked {
+  background: var(--color-surface-2, #f5f1e7);
+  padding: clamp(var(--space-12), 8vw, var(--space-20)) 0;
+  border-top: 1px solid rgba(14, 31, 58, 0.06);
+  border-bottom: 1px solid rgba(14, 31, 58, 0.06);
+}
+.home-stocked-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(var(--space-8), 5vw, var(--space-12));
+  align-items: start;
+}
+@media (min-width: 960px) {
+  .home-stocked-inner { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
+}
+.home-stocked-head { max-width: 48ch; }
+.home-stocked-head .eyebrow { color: var(--color-accent); }
+.home-stocked-head h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--color-text);
+  margin-bottom: var(--space-5);
+}
+.home-stocked-head h2 em { font-style: italic; font-weight: 400; }
+.home-stocked-lede {
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  line-height: 1.75;
+  margin-bottom: var(--space-6);
+}
+.home-stocked-cta { display: inline-flex; }
+
+.home-stocked-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-3);
+}
+.home-stocked-item a {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "rank name"
+    "rank region"
+    "rank product";
+  column-gap: var(--space-5);
+  row-gap: 0.2rem;
+  align-items: center;
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  border: 1px solid rgba(14, 31, 58, 0.08);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.home-stocked-item a:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm, 0 4px 12px rgba(14, 31, 58, 0.06));
+}
+.home-stocked-rank {
+  grid-area: rank;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.home-stocked-name {
+  grid-area: name;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+.home-stocked-region {
+  grid-area: region;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+.home-stocked-product {
+  grid-area: product;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+.home-stocked-foot {
+  grid-column: 1 / -1;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: var(--space-4) 0 0 0;
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(14, 31, 58, 0.08);
+}
+.home-stocked-foot a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+.home-stocked-foot a:hover { color: var(--color-accent-hover, #9b1729); }
+
 /* ─── Gallery (inspiration) ──────────────────────────────────────────────── */
 .gallery {
   background: var(--color-surface-dark);
