@@ -1,0 +1,100 @@
+name: IndexNow submit changed URLs
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "indexnow"
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (with prior commit for diff)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Build changed URL list and submit to IndexNow
+        env:
+          HOST: americanprobp.com
+          KEY: 5116aa228149056e6cb73811def39cea9ec51403ebedc4de9e0f5f1396e6a13c
+        run: |
+          set -euo pipefail
+
+          # Determine previous SHA. On the first push to a fresh repo there is
+          # no parent; fall back to comparing against an empty tree.
+          if git rev-parse --verify HEAD~1 >/dev/null 2>&1; then
+            BASE="HEAD~1"
+          else
+            BASE=$(git hash-object -t tree /dev/null)
+          fi
+
+          # Added or modified HTML files in this push, repo-relative paths.
+          mapfile -t CHANGED < <(git diff --name-only --diff-filter=AM "$BASE" HEAD -- '*.html')
+
+          if [ "${#CHANGED[@]}" -eq 0 ]; then
+            echo "No HTML changes in this push. Nothing to submit."
+            exit 0
+          fi
+
+          # Map repo paths to public URLs:
+          #   index.html       -> https://HOST/
+          #   path/index.html  -> https://HOST/path/
+          #   path/page.html   -> https://HOST/path/page.html
+          # Skip files that exist in repo but are not publicly served
+          # (anything whose final segment starts with an underscore is treated
+          # as a build-only template, e.g. _post-template.html).
+          : > urls.txt
+          for f in "${CHANGED[@]}"; do
+            base=$(basename "$f")
+            case "$base" in
+              _*) continue ;;
+            esac
+            if [ "$f" = "index.html" ]; then
+              echo "https://${HOST}/" >> urls.txt
+            elif [[ "$f" == */index.html ]]; then
+              echo "https://${HOST}/${f%index.html}" >> urls.txt
+            else
+              echo "https://${HOST}/${f}" >> urls.txt
+            fi
+          done
+
+          if [ ! -s urls.txt ]; then
+            echo "No publishable HTML URLs after filtering. Nothing to submit."
+            exit 0
+          fi
+
+          echo "Submitting $(wc -l < urls.txt) URL(s) to IndexNow:"
+          sed 's/^/  /' urls.txt
+
+          # Build JSON payload per https://www.indexnow.org/documentation
+          jq -n \
+            --arg host "$HOST" \
+            --arg key "$KEY" \
+            --arg keyLocation "https://${HOST}/${KEY}.txt" \
+            --rawfile urls urls.txt \
+            '{host: $host, key: $key, keyLocation: $keyLocation, urlList: ($urls | split("\n") | map(select(length>0)))}' \
+            > payload.json
+
+          HTTP_CODE=$(curl -sS -o response.txt -w "%{http_code}" \
+            -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            --data-binary @payload.json)
+
+          echo "IndexNow HTTP $HTTP_CODE"
+          cat response.txt || true
+          echo
+
+          # 200 = accepted, 202 = accepted with pending validation.
+          # Treat anything else as a failure so the workflow surfaces it.
+          case "$HTTP_CODE" in
+            200|202) exit 0 ;;
+            *) exit 1 ;;
+          esac

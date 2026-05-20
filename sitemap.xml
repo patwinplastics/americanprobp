@@ -163,6 +163,46 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/contact.html" />
   </url>
   <url>
+    <loc>https://americanprobp.com/pages/blog/index.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/blog/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/blog/index.html" />
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/blog/posts/invisiclip-launch.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/blog/posts/invisiclip-launch.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/blog/posts/invisiclip-launch.html" />
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/blog/posts/made-in-linden-nj.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/blog/posts/made-in-linden-nj.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/blog/posts/made-in-linden-nj.html" />
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/blog/posts/spring-deck-planning-checklist.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/blog/posts/spring-deck-planning-checklist.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/blog/posts/spring-deck-planning-checklist.html" />
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/blog/posts/where-to-buy-east-coast.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/blog/posts/where-to-buy-east-coast.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/blog/posts/where-to-buy-east-coast.html" />
+  </url>
+  <url>
     <loc>https://deckvisualizer.truegraindeck.com/</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>weekly</changefreq>
