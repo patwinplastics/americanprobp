@@ -412,6 +412,135 @@
         line-height: 1.5;
       }
       .dealer-apply-form-card .form-submit .btn { align-self: flex-start; }
+      /* ===== Open Territory band =====
+         Sits between the active dealer cards and the Become a Dealer form.
+         Frames the gaps in our regional coverage as the opportunity for an
+         incoming dealer to stake first-mover position in a major market. */
+      .dealer-open {
+        background: var(--color-surface-2, #f5f1e7);
+        padding-top: var(--space-12);
+        padding-bottom: var(--space-12);
+        border-top: 1px solid rgba(14, 31, 58, 0.08);
+        border-bottom: 1px solid rgba(14, 31, 58, 0.08);
+      }
+      .dealer-open-head { max-width: 720px; }
+      .dealer-open-head .eyebrow { color: var(--color-accent); }
+      .dealer-open-head h2 {
+        font-family: 'Boska', serif;
+        font-weight: 500;
+        font-size: var(--text-3xl);
+        line-height: 1.08;
+        letter-spacing: -0.01em;
+        color: var(--color-text);
+        margin: var(--space-3) 0 var(--space-4) 0;
+      }
+      .dealer-open-head h2 em { font-style: italic; font-weight: 400; }
+      .dealer-open-head p {
+        font-size: var(--text-lg);
+        line-height: 1.55;
+        color: var(--color-text);
+        max-width: 60ch;
+      }
+      .dealer-open-grid {
+        margin-top: var(--space-8);
+        display: grid;
+        gap: var(--space-4);
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 700px) {
+        .dealer-open-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (min-width: 1024px) {
+        .dealer-open-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      }
+      .dealer-open-region {
+        background: #ffffff;
+        border: 1px solid rgba(14, 31, 58, 0.10);
+        border-radius: var(--radius-md, 10px);
+        padding: var(--space-5);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        position: relative;
+        transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .dealer-open-region:hover {
+        border-color: var(--color-accent);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(14, 31, 58, 0.06);
+      }
+      .dealer-open-tag {
+        align-self: flex-start;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: 'Satoshi', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--color-accent);
+        background: rgba(199, 32, 50, 0.08);
+        padding: 4px 10px;
+        border-radius: 999px;
+      }
+      .dealer-open-tag::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--color-accent);
+        box-shadow: 0 0 0 0 rgba(199, 32, 50, 0.6);
+        animation: dealerOpenPulse 2.2s ease-out infinite;
+      }
+      @keyframes dealerOpenPulse {
+        0%   { box-shadow: 0 0 0 0 rgba(199, 32, 50, 0.45); }
+        70%  { box-shadow: 0 0 0 8px rgba(199, 32, 50, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(199, 32, 50, 0); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .dealer-open-tag::before { animation: none; }
+      }
+      .dealer-open-region h3 {
+        font-family: 'Boska', serif;
+        font-weight: 500;
+        font-size: var(--text-xl);
+        line-height: 1.15;
+        color: var(--color-text);
+        margin: 0;
+      }
+      .dealer-open-region p {
+        font-size: var(--text-sm);
+        line-height: 1.55;
+        color: rgba(14, 31, 58, 0.72);
+        margin: 0;
+      }
+      .dealer-open-region-fit {
+        margin-top: auto;
+        padding-top: var(--space-3);
+        border-top: 1px dashed rgba(14, 31, 58, 0.12);
+        font-family: 'Satoshi', sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: rgba(14, 31, 58, 0.55);
+        font-weight: 600;
+      }
+      .dealer-open-foot {
+        margin-top: var(--space-8);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-4);
+        justify-content: space-between;
+      }
+      .dealer-open-foot p {
+        font-size: var(--text-base);
+        color: var(--color-text);
+        margin: 0;
+        max-width: 52ch;
+      }
+      .dealer-open-foot p strong { font-weight: 600; }
     </style>
   </head>
   <body>
@@ -543,6 +672,53 @@
               </div>
             </article>
 
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== OPEN TERRITORY ==========
+           Sits between the active dealer cards and the dealer application
+           form. Frames the regions where we have no stocking dealer yet as
+           a first-mover opportunity. Every region links to #become-a-dealer
+           so the path from interest to application is one tap. -->
+      <section class="dealer-open" aria-labelledby="open-territory-title">
+        <div class="container">
+          <div class="dealer-open-head" data-reveal>
+            <span class="eyebrow">Open Territory</span>
+            <h2 id="open-territory-title">Regions where we are<br /><em>looking for our next dealer.</em></h2>
+            <p>American Pro is family-run and we don't stack dealers on top of each other. The regions below are open. If your yard or distribution book covers one of them, you are the conversation we want to have.</p>
+          </div>
+
+          <ul class="dealer-open-grid" role="list" data-reveal data-reveal-delay="1">
+            <li class="dealer-open-region">
+              <span class="dealer-open-tag" aria-label="Territory open">Territory open</span>
+              <h3>Mid-Atlantic</h3>
+              <p>NJ, PA, DE, MD, Northern VA. High coastal porch demand, dense lumberyard footprint, fast turn on Legacy PVC and TrueGrain.</p>
+              <span class="dealer-open-region-fit">Best fit: lumberyard chain or regional distributor</span>
+            </li>
+            <li class="dealer-open-region">
+              <span class="dealer-open-tag" aria-label="Territory open">Territory open</span>
+              <h3>Carolinas</h3>
+              <p>NC and SC coast through the Piedmont. Year-round build season, strong custom porch market, and a builder base actively pulling away from composites.</p>
+              <span class="dealer-open-region-fit">Best fit: building products dealer with builder accounts</span>
+            </li>
+            <li class="dealer-open-region">
+              <span class="dealer-open-tag" aria-label="Territory open">Territory open</span>
+              <h3>Florida &amp; Gulf Coast</h3>
+              <p>Coastal FL, AL, MS, LA. Salt, sun, hurricane-cycle rebuilds. Cellular PVC outperforms wood and composite in exactly this climate and the channel is wide open for a real American-made line.</p>
+              <span class="dealer-open-region-fit">Best fit: marine and coastal building supply</span>
+            </li>
+            <li class="dealer-open-region">
+              <span class="dealer-open-tag" aria-label="Territory open">Territory open</span>
+              <h3>Great Lakes &amp; Midwest</h3>
+              <p>OH, MI, IN, IL, WI. Freeze-thaw country where PVC's dimensional stability matters most. Strong porch and screened-room culture across older housing stock.</p>
+              <span class="dealer-open-region-fit">Best fit: independent lumberyard with porch business</span>
+            </li>
+          </ul>
+
+          <div class="dealer-open-foot" data-reveal data-reveal-delay="2">
+            <p>Don't see your region? <strong>Tell us where you are anyway.</strong> We add dealers as the right partners surface, not on a schedule.</p>
+            <a href="#become-a-dealer" class="btn btn--primary">Stake your territory</a>
           </div>
         </div>
       </section>
