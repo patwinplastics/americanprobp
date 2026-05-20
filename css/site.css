@@ -1129,7 +1129,7 @@
   right: var(--space-4);
 }
 
-/* ─── Home stocked-at strip (Stonewood, Genesee, Outwater) ──────────────
+/* ─── Home stocked-at strip (Stonewood, Genesee) ──────────────
    Compact dealer band that replaced the two .home-dist call-outs on
    index.html. Links each name to its anchor on /pages/dealers.html. */
 .home-stocked {
