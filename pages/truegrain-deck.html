@@ -677,7 +677,7 @@
             <div>
               <p>
                 Pick the colors you want to see. We ship 6-inch sample sections in a padded mailer
-                with the spec sheet and a color guide. No salesperson follow-up unless you ask.
+                with the spec sheet and a color guide.
               </p>
               <ul class="samples-list" style="list-style: none; padding: 0; margin-top: var(--space-5); display: grid; gap: var(--space-3);">
                 <li style="display: grid; grid-template-columns: 24px 1fr; gap: var(--space-3); align-items: start;">
@@ -714,9 +714,17 @@
                     <label for="tg-email">Email</label>
                     <input id="tg-email" name="email" type="email" required autocomplete="email" />
                   </div>
+                  <div class="field form-row">
+                    <label for="tg-address">Shipping Address</label>
+                    <input id="tg-address" name="address" type="text" required autocomplete="street-address" placeholder="Street, City, State" />
+                  </div>
                   <div class="field">
                     <label for="tg-zip">ZIP Code</label>
                     <input id="tg-zip" name="zip" type="text" inputmode="numeric" required autocomplete="postal-code" />
+                  </div>
+                  <div class="field">
+                    <label for="tg-phone">Phone <span style="opacity:0.6;font-weight:400;">(optional)</span></label>
+                    <input id="tg-phone" name="phone" type="tel" autocomplete="tel" />
                   </div>
                   <div class="field">
                     <label for="tg-role">I Am A</label>
