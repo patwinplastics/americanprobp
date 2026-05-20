@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>TrueGrain Deck&trade; Laminate Construction | Technical Data Sheet</title>
+    <meta name="description" content="One-page technical data sheet for the TrueGrain Deck five-layer PMMA laminate engineered by RENOLIT. Layer-by-layer construction, materials, and functional purpose for architects, specifiers, and trade partners." />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="author" content="American Pro Building Products" />
+    <meta name="theme-color" content="#0e1f3a" />
+    <link rel="canonical" href="https://americanprobp.com/pages/truegrain-laminate-data-sheet.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="American Pro Building Products" />
+    <meta property="og:url" content="https://americanprobp.com/pages/truegrain-laminate-data-sheet.html" />
+    <meta property="og:title" content="TrueGrain Deck Laminate Construction | Technical Data Sheet" />
+    <meta property="og:description" content="The five-layer PMMA laminate behind TrueGrain Deck, engineered by RENOLIT. Layer-by-layer technical breakdown for trade partners." />
+    <meta property="og:image" content="https://americanprobp.com/images/truegrain_tech/laminate-construction.jpg" />
+    <meta property="og:image:width" content="1500" />
+    <meta property="og:image:height" content="830" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg?v=2" />
+    <link rel="alternate icon" href="../favicon.ico?v=2" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=boska@400,500,500i,700&f[]=satoshi@400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ==========================================================
+         TrueGrain Deck x RENOLIT
+         One-page printable technical data sheet
+         US Letter, prints clean to PDF from any browser
+         ========================================================== */
+
+      :root {
+        --navy: #0e1f3a;
+        --navy-2: #1a2f54;
+        --red: #b91c2c;
+        --cream: #f4f1ec;
+        --cream-2: #ebe7df;
+        --divider: #d8d3c8;
+        --ink: #0e1f3a;
+        --muted: #5b6478;
+        --paper: #ffffff;
+        --font-display: "Boska", Georgia, "Times New Roman", serif;
+        --font-sans: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        font-family: var(--font-sans);
+        color: var(--ink);
+        background: #ddd;
+        font-size: 10pt;
+        line-height: 1.45;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Screen wrapper that mimics a piece of paper */
+      .sheet {
+        width: 8.5in;
+        min-height: 11in;
+        margin: 24px auto;
+        background: var(--paper);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+        padding: 0.45in 0.55in 0.4in;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ---------- Print rules ---------- */
+      @page {
+        size: Letter;
+        margin: 0.45in 0.55in 0.4in;
+      }
+      @media print {
+        body { background: #fff; }
+        .sheet {
+          width: auto;
+          min-height: 0;
+          margin: 0;
+          padding: 0;
+          box-shadow: none;
+        }
+        .no-print { display: none !important; }
+        a { color: inherit; text-decoration: none; }
+      }
+
+      /* Floating print bar shown on screen only */
+      .print-bar {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        z-index: 50;
+        display: inline-flex;
+        gap: 8px;
+        background: var(--navy);
+        color: #fff;
+        padding: 10px 14px;
+        border-radius: 999px;
+        font-family: var(--font-sans);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 700;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      }
+      .print-bar button {
+        background: var(--red);
+        color: #fff;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font: inherit;
+        cursor: pointer;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .print-bar button:hover { background: #9b1622; }
+      .print-bar a {
+        color: #fff;
+        opacity: 0.8;
+        text-decoration: none;
+        padding: 6px 6px;
+      }
+      .print-bar a:hover { opacity: 1; }
+
+      /* ---------- Header ---------- */
+      .ds-head {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 18px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--navy);
+      }
+      .ds-head-logo img { height: 36px; width: auto; display: block; }
+      .ds-head-title {
+        text-align: center;
+      }
+      .ds-eyebrow {
+        display: inline-block;
+        font-size: 8.5pt;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--red);
+        font-weight: 800;
+      }
+      .ds-head h1 {
+        font-family: var(--font-display);
+        font-size: 17pt;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        margin: 2px 0 0;
+        color: var(--navy);
+        font-weight: 700;
+      }
+      .ds-head h1 em { font-style: italic; font-weight: 400; }
+      .ds-head-meta {
+        text-align: right;
+        font-size: 7.5pt;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 700;
+        line-height: 1.5;
+      }
+      .ds-head-meta strong { color: var(--navy); display: block; font-size: 8pt; }
+
+      /* ---------- Intro ---------- */
+      .ds-intro {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        align-items: center;
+        padding: 10px 0 8px;
+        border-bottom: 1px solid var(--divider);
+      }
+      .ds-intro p {
+        margin: 0;
+        font-size: 9.5pt;
+        line-height: 1.5;
+        color: var(--ink);
+        max-width: 62ch;
+      }
+      .ds-renolit-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 12px;
+        border: 1px solid var(--divider);
+        border-radius: 999px;
+        background: var(--cream);
+        font-size: 8pt;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 800;
+        color: var(--navy);
+        white-space: nowrap;
+      }
+      .ds-renolit-chip::before {
+        content: "";
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        background: var(--red);
+      }
+      .ds-renolit-chip b { letter-spacing: 0.20em; font-weight: 800; }
+
+      /* ---------- Body grid ---------- */
+      .ds-body {
+        display: grid;
+        grid-template-columns: 2.9in 1fr;
+        gap: 18px;
+        padding-top: 10px;
+        flex: 1;
+      }
+
+      /* Figure column */
+      .ds-figure {
+        background: var(--cream);
+        border: 1px solid var(--divider);
+        border-radius: 6px;
+        padding: 10px 10px 8px;
+      }
+      .ds-figure img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 4px;
+      }
+      .ds-figure-cap {
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid var(--divider);
+        font-size: 7.5pt;
+        letter-spacing: 0.10em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 700;
+        line-height: 1.4;
+      }
+      .ds-figure-cap strong { color: var(--navy); display: block; margin-bottom: 2px; }
+
+      .ds-figure-meta {
+        margin-top: 10px;
+        background: #fff;
+        border: 1px solid var(--divider);
+        border-radius: 6px;
+        padding: 10px 12px;
+        font-size: 8.5pt;
+      }
+      .ds-figure-meta dl {
+        margin: 0;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 12px;
+        row-gap: 5px;
+      }
+      .ds-figure-meta dt {
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.10em;
+        font-size: 7.5pt;
+        font-weight: 700;
+      }
+      .ds-figure-meta dd {
+        margin: 0;
+        color: var(--navy);
+        font-weight: 600;
+      }
+
+      /* Layers column */
+      .ds-layers {
+        display: grid;
+        gap: 6px;
+      }
+      .ds-layer {
+        display: grid;
+        grid-template-columns: 26px 1fr;
+        column-gap: 10px;
+        align-items: start;
+        background: #fff;
+        border: 1px solid var(--divider);
+        border-left: 3px solid var(--red);
+        border-radius: 5px;
+        padding: 8px 11px 8px 10px;
+        break-inside: avoid;
+      }
+      .ds-layer-num {
+        font-family: var(--font-display);
+        font-size: 13pt;
+        color: var(--red);
+        font-weight: 700;
+        line-height: 1;
+        padding-top: 2px;
+      }
+      .ds-layer-head {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 2px;
+      }
+      .ds-layer-body h3 {
+        font-family: var(--font-sans);
+        font-size: 9.5pt;
+        margin: 0;
+        color: var(--navy);
+        font-weight: 700;
+        letter-spacing: -0.005em;
+        line-height: 1.2;
+      }
+      .ds-layer-body p {
+        margin: 0;
+        font-size: 8.5pt;
+        color: #2a2f3a;
+        line-height: 1.42;
+      }
+      .ds-layer-fn {
+        font-size: 6.5pt;
+        letter-spacing: 0.10em;
+        text-transform: uppercase;
+        font-weight: 800;
+        color: var(--muted);
+        border: 1px solid var(--divider);
+        border-radius: 3px;
+        padding: 2px 6px;
+        white-space: nowrap;
+      }
+
+      /* ---------- Footer ---------- */
+      .ds-foot {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 2px solid var(--navy);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: end;
+        gap: 12px;
+      }
+      .ds-foot-credit {
+        font-size: 8pt;
+        color: var(--muted);
+        line-height: 1.5;
+        max-width: 4.6in;
+      }
+      .ds-foot-credit strong { color: var(--navy); }
+      .ds-foot-id {
+        text-align: right;
+        font-size: 7.5pt;
+        letter-spacing: 0.10em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 700;
+        line-height: 1.5;
+      }
+      .ds-foot-id strong { color: var(--navy); display: block; font-size: 8pt; }
+      .ds-foot-id a { color: var(--navy); text-decoration: none; }
+    </style>
+  </head>
+
+  <body>
+    <!-- Floating print/download bar, screen only -->
+    <div class="print-bar no-print" role="region" aria-label="Document actions">
+      <button type="button" onclick="window.print()">Print / Save as PDF</button>
+      <a href="../downloads/truegrain-laminate-data-sheet.pdf" download>Download PDF</a>
+    </div>
+
+    <article class="sheet" aria-label="TrueGrain laminate construction technical data sheet">
+      <!-- ====================== HEADER ====================== -->
+      <header class="ds-head">
+        <div class="ds-head-logo">
+          <img src="../images/logo/americanpro-header.png" alt="American Pro Building Products" />
+        </div>
+        <div class="ds-head-title">
+          <span class="ds-eyebrow">Technical Data Sheet</span>
+          <h1>TrueGrain Deck&trade; Laminate Construction<br /><em>Five-Layer PMMA Film, Engineered by RENOLIT</em></h1>
+        </div>
+        <div class="ds-head-meta">
+          <strong>Document</strong>
+          TDS-TG-LAM-01<br />
+          Rev. 2026-05<br />
+          Page 1 of 1
+        </div>
+      </header>
+
+      <!-- ====================== INTRO ====================== -->
+      <section class="ds-intro">
+        <p>
+          The TrueGrain decorative surface is a precision-laminated, five-layer PMMA film
+          stack engineered by RENOLIT and bonded to a domestically extruded cellular PVC
+          substrate at Patwin Plastics in Linden, New Jersey. Each layer performs a distinct
+          functional role, from abrasion resistance on the wear face to chemical adhesion at
+          the substrate interface. The diagram and descriptions below are reproduced without
+          alteration and are intended for use by architects, specifiers, dealers, and
+          distributor partners.
+        </p>
+        <span class="ds-renolit-chip">Engineered by <b>RENOLIT</b></span>
+      </section>
+
+      <!-- ====================== BODY ====================== -->
+      <div class="ds-body">
+        <!-- Figure / spec column -->
+        <aside>
+          <figure class="ds-figure">
+            <img
+              src="../images/truegrain_tech/laminate-construction.jpg"
+              alt="Cross-section diagram of the TrueGrain laminate showing five labeled layers from top to bottom: Highly scratch-resistant top layer, Wear-resistant UV-protection layer, Printing ink, Pigmented PMMA base layer with SST, and Primer."
+            />
+            <figcaption class="ds-figure-cap">
+              <strong>Figure 1.</strong>
+              TrueGrain laminate cross-section. Layers shown in true stacking order, top to bottom.
+            </figcaption>
+          </figure>
+
+          <div class="ds-figure-meta">
+            <dl>
+              <dt>Product</dt>
+              <dd>TrueGrain Deck&trade; capped cellular PVC</dd>
+              <dt>Surface</dt>
+              <dd>RENOLIT exterior PMMA laminate</dd>
+              <dt>Film Chemistry</dt>
+              <dd>PMMA (acrylic) with SST</dd>
+              <dt>Substrate</dt>
+              <dd>Cellular PVC with ASA capstock</dd>
+              <dt>Bonding</dt>
+              <dd>Primer-assisted permanent lamination</dd>
+              <dt>Origin</dt>
+              <dd>Laminated and extruded in Linden, NJ, USA</dd>
+              <dt>Warranty</dt>
+              <dd>25-year limited residential</dd>
+            </dl>
+          </div>
+        </aside>
+
+        <!-- Layers column -->
+        <section class="ds-layers" aria-label="Five-layer construction">
+          <article class="ds-layer">
+            <div class="ds-layer-num">01</div>
+            <div class="ds-layer-body">
+              <div class="ds-layer-head">
+                <h3>Highly scratch-resistant top layer</h3>
+                <span class="ds-layer-fn">Surface Durability</span>
+              </div>
+              <p>
+                Clear, high-hardness exterior surface film engineered to resist abrasion from
+                foot traffic, patio furniture, pet claws, sand, and grit. Defines the wear
+                face of the board and protects the printed decor against everyday mechanical
+                contact in residential service.
+              </p>
+            </div>
+          </article>
+
+          <article class="ds-layer">
+            <div class="ds-layer-num">02</div>
+            <div class="ds-layer-body">
+              <div class="ds-layer-head">
+                <h3>Wear-resistant UV-protection layer</h3>
+                <span class="ds-layer-fn">Weathering &amp; Color Hold</span>
+              </div>
+              <p>
+                Dedicated UV stabilizer film formulated to absorb solar radiation before it
+                can reach the print or the polymer substrate. Preserves color fidelity on the
+                decorative wood-grain and shields the underlying chemistry from
+                photo-oxidative degradation.
+              </p>
+            </div>
+          </article>
+
+          <article class="ds-layer">
+            <div class="ds-layer-num">03</div>
+            <div class="ds-layer-body">
+              <div class="ds-layer-head">
+                <h3>Printing ink</h3>
+                <span class="ds-layer-fn">Photorealistic Decor</span>
+              </div>
+              <p>
+                High-resolution rotogravure decor print laid down between the protective
+                films above and the pigmented PMMA base below. Reproduces variegated grain,
+                pore structure, and tonal depth of premium hardwoods with edge-to-edge
+                registration on every board.
+              </p>
+            </div>
+          </article>
+
+          <article class="ds-layer">
+            <div class="ds-layer-num">04</div>
+            <div class="ds-layer-body">
+              <div class="ds-layer-head">
+                <h3>Pigmented PMMA base layer with SST</h3>
+                <span class="ds-layer-fn">Heat Reflection &amp; Film Backbone</span>
+              </div>
+              <p>
+                Acrylic (PMMA) base layer carrying RENOLIT's Solar Shield Technology (SST).
+                SST reflects the near-infrared portion of the solar spectrum so the board
+                runs measurably cooler under direct sun, while the PMMA chemistry provides
+                the dimensional stability and weatherability specified for exterior cladding.
+              </p>
+            </div>
+          </article>
+
+          <article class="ds-layer">
+            <div class="ds-layer-num">05</div>
+            <div class="ds-layer-body">
+              <div class="ds-layer-head">
+                <h3>Primer</h3>
+                <span class="ds-layer-fn">Substrate Adhesion</span>
+              </div>
+              <p>
+                Engineered tie-coat applied to the underside of the film stack. Forms the
+                chemical bond that locks the laminate to the capped cellular PVC substrate,
+                producing a permanent lamination rather than a surface-applied coating.
+              </p>
+            </div>
+          </article>
+        </section>
+      </div>
+
+      <!-- ====================== FOOTER ====================== -->
+      <footer class="ds-foot">
+        <p class="ds-foot-credit">
+          <strong>RENOLIT</strong> is a leading global manufacturer of high-performance polymer
+          films. Their exterior PMMA foils, including the Solar Shield Technology shown above,
+          are specified in window, door, and architectural cladding products worldwide.
+          American Pro Building Products laminates the RENOLIT TrueGrain film to a
+          domestically extruded cellular PVC substrate, marrying European film science to an
+          American-made deck board.
+        </p>
+        <div class="ds-foot-id">
+          <strong>American Pro Building Products</strong>
+          A Patwin Plastics company &middot; Linden, NJ<br />
+          1-877-442-6776 &middot; sales@americanprobp.com<br />
+          <a href="https://americanprobp.com/pages/truegrain-deck.html#laminate-technology">americanprobp.com/truegrain-deck</a>
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>

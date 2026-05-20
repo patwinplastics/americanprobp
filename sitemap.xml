@@ -36,8 +36,14 @@
     </image:image>
   </url>
   <url>
+    <loc>https://americanprobp.com/pages/truegrain-laminate-data-sheet.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
     <loc>https://americanprobp.com/pages/truegrain-deck.html</loc>
-    <lastmod>2026-05-13</lastmod>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/truegrain-deck.html" />
