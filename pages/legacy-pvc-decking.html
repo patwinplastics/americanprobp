@@ -52,7 +52,7 @@
     />
 
     <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/site.css?v=16-staging" />
+    <link rel="stylesheet" href="../css/site.css?v=17-staging" />
 
     <style>
       /* ==========================================================
@@ -193,6 +193,11 @@
           </div>
         </div>
       </section>
+
+      <!-- Geo-targeted callout for Cape Cod / SE Mass visitors. Hydrated
+           by js/geo-banner.js only when the visitor IP resolves to
+           Stonewood Products territory. Empty + invisible otherwise. -->
+      <div data-geo-decking-callout></div>
 
       <!-- ========== WHY STANDARD PVC ========== -->
       <section class="section">
@@ -593,7 +598,7 @@
     <div data-include="footer"></div>
 
     <script src="./_partials.js?v=6-staging" defer></script>
-    <script src="../js/geo-banner.js?v=1" defer></script>
+    <script src="../js/geo-banner.js?v=2" defer></script>
     <script src="../js/site.js?v=3" defer></script>
   </body>
 </html>

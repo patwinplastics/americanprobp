@@ -3027,10 +3027,18 @@ html.reveal-ready [data-reveal].is-visible {
 }
 
 /* =========================================================================
- * Geo-targeted Genesee Reserve Supply callouts
- * Top-of-page slim banner + porch-page in-context card. Only inserted into
- * the DOM by js/geo-banner.js when the visitor IP resolves to the Western
- * New York / Finger Lakes territory served by Genesee Reserve.
+ * Geo-targeted authorized-dealer callouts
+ * Top-of-page slim banner + in-context card. Only inserted into the DOM by
+ * js/geo-banner.js when the visitor IP resolves to a configured dealer
+ * territory. Currently supports two themes:
+ *
+ *   .geo-banner--gold / .geo-porch-callout--gold  -> Genesee Reserve Supply
+ *       (Western NY / Finger Lakes, porch flooring)
+ *   .geo-banner--sea  / .geo-porch-callout--sea   -> Stonewood Products
+ *       (Cape Cod / SE Massachusetts, decking)
+ *
+ * Base styles below are the gold defaults; the sea overrides follow at the
+ * end of the block.
  * ========================================================================= */
 
 /* ----- Top-of-page slim banner ----- */
@@ -3255,4 +3263,41 @@ html.reveal-ready [data-reveal].is-visible {
   .geo-porch-actions { flex-direction: column; align-items: stretch; }
   .geo-porch-actions .btn { width: 100%; text-align: center; justify-content: center; }
   .geo-porch-branches { gap: var(--space-4, 16px); }
+}
+
+/* ----- Sea theme: Stonewood Products (Cape Cod / SE Mass) ----- */
+
+/* Banner: deep ocean gradient with a sandy-coral CTA so it reads "coastal"
+   without leaning kitsch. */
+.geo-banner--sea {
+  background: linear-gradient(90deg, #0a2540 0%, #134d6b 60%, #2a7a9b 100%);
+}
+.geo-banner--sea .geo-banner-pin { color: #ffb98a; }
+.geo-banner--sea .geo-banner-cta {
+  background: #ffb98a;
+  color: #0a2540;
+}
+.geo-banner--sea .geo-banner-cta:hover { background: #ffc89e; }
+.geo-banner--sea .geo-banner-close:focus-visible { outline-color: #ffb98a; }
+
+/* In-context card: pale-sand wash, slate-blue accent stripe. */
+.geo-porch-callout--sea {
+  background: linear-gradient(180deg, #eef5fa 0%, #dfecf3 100%);
+}
+.geo-porch-callout--sea .geo-porch-card::before {
+  background: linear-gradient(180deg, #2a7a9b 0%, #134d6b 100%);
+}
+.geo-porch-callout--sea .geo-porch-eyebrow { color: #134d6b; }
+.geo-porch-callout--sea .geo-porch-dot {
+  background: #2a7a9b;
+  box-shadow: 0 0 0 4px rgba(42, 122, 155, 0.18);
+  animation-name: geoSeaPulse;
+}
+@keyframes geoSeaPulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(42, 122, 155, 0.18); }
+  50%      { box-shadow: 0 0 0 7px rgba(42, 122, 155, 0.05); }
+}
+.geo-porch-callout--sea .geo-porch-title em { color: #134d6b; }
+.geo-porch-callout--sea .geo-porch-branches a:hover {
+  border-bottom-color: #2a7a9b;
 }
