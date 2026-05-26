@@ -3025,3 +3025,234 @@ html.reveal-ready [data-reveal].is-visible {
 @media (max-width: 420px) {
   .sample-color-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* =========================================================================
+ * Geo-targeted Genesee Reserve Supply callouts
+ * Top-of-page slim banner + porch-page in-context card. Only inserted into
+ * the DOM by js/geo-banner.js when the visitor IP resolves to the Western
+ * New York / Finger Lakes territory served by Genesee Reserve.
+ * ========================================================================= */
+
+/* ----- Top-of-page slim banner ----- */
+.geo-banner {
+  position: relative;
+  background: linear-gradient(90deg, #0e1f3a 0%, #14305c 100%);
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-body, inherit);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 220ms ease, max-height 260ms ease;
+  z-index: 60;
+}
+.geo-banner.is-visible {
+  opacity: 1;
+  max-height: 200px;
+}
+.geo-banner.is-closing {
+  opacity: 0;
+  max-height: 0;
+}
+.geo-banner-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4, 12px);
+  max-width: var(--container-width, 1280px);
+  margin: 0 auto;
+  padding: 10px clamp(16px, 4vw, 32px);
+}
+.geo-banner-pin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.10);
+  color: #ffd166;
+}
+.geo-banner-text {
+  margin: 0;
+  font-size: var(--text-sm, 0.9rem);
+  line-height: 1.4;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.geo-banner-text strong { font-weight: 600; }
+.geo-banner-sub {
+  color: rgba(255, 255, 255, 0.78);
+}
+.geo-banner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #ffd166;
+  color: #0e1f3a;
+  font-weight: 600;
+  font-size: var(--text-xs, 0.78rem);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+.geo-banner-cta:hover {
+  background: #ffdd8a;
+  transform: translateY(-1px);
+}
+.geo-banner-arrow {
+  font-weight: 700;
+  transform: translateY(-1px);
+}
+.geo-banner-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.geo-banner-close:hover {
+  background: rgba(255, 255, 255, 0.10);
+  color: #fff;
+}
+.geo-banner-close:focus-visible {
+  outline: 2px solid #ffd166;
+  outline-offset: 2px;
+}
+@media (max-width: 720px) {
+  .geo-banner-inner {
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    padding: 10px 14px;
+  }
+  .geo-banner-text { flex: 1 1 100%; order: 2; font-size: 0.85rem; }
+  .geo-banner-pin { order: 1; }
+  .geo-banner-cta { order: 3; flex: 1 1 auto; justify-content: center; }
+  .geo-banner-close { order: 4; }
+  .geo-banner-sub { display: block; margin-top: 2px; }
+}
+
+/* ----- Porch-page in-context card ----- */
+.geo-porch-callout {
+  background: linear-gradient(180deg, #fff8e6 0%, #fdf1cf 100%);
+  border-top: 1px solid rgba(14, 31, 58, 0.06);
+  border-bottom: 1px solid rgba(14, 31, 58, 0.06);
+  padding-block: clamp(var(--space-8, 32px), 5vw, var(--space-12, 56px));
+}
+.geo-porch-card {
+  background: #fff;
+  border: 1px solid rgba(14, 31, 58, 0.08);
+  border-radius: var(--radius-lg, 14px);
+  padding: clamp(var(--space-6, 24px), 4vw, var(--space-10, 44px));
+  box-shadow: 0 14px 40px -22px rgba(14, 31, 58, 0.25);
+  display: grid;
+  gap: var(--space-6, 24px);
+  position: relative;
+  overflow: hidden;
+}
+.geo-porch-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: linear-gradient(180deg, #ffd166 0%, #f0a500 100%);
+}
+.geo-porch-card-body { padding-left: clamp(8px, 1.5vw, 14px); }
+.geo-porch-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-xs, 0.78rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #b87800;
+}
+.geo-porch-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #f0a500;
+  box-shadow: 0 0 0 4px rgba(240, 165, 0, 0.18);
+  animation: geoPorchPulse 2.4s ease-in-out infinite;
+}
+@keyframes geoPorchPulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(240, 165, 0, 0.18); }
+  50%      { box-shadow: 0 0 0 7px rgba(240, 165, 0, 0.05); }
+}
+.geo-porch-title {
+  margin: var(--space-3, 12px) 0 var(--space-4, 16px);
+  font-family: var(--font-display, inherit);
+  font-size: clamp(var(--text-xl, 1.4rem), 3vw, var(--text-3xl, 2rem));
+  line-height: 1.15;
+  letter-spacing: -0.018em;
+  color: var(--color-primary, #0e1f3a);
+}
+.geo-porch-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: #14305c;
+}
+.geo-porch-blurb {
+  margin: 0 0 var(--space-6, 24px);
+  color: var(--color-text-muted, #4a556b);
+  max-width: 62ch;
+  font-size: var(--text-base, 1rem);
+  line-height: 1.6;
+}
+.geo-porch-blurb strong { color: var(--color-primary, #0e1f3a); }
+.geo-porch-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3, 12px);
+  margin-bottom: var(--space-5, 20px);
+}
+.geo-porch-branches {
+  list-style: none;
+  padding: var(--space-4, 16px) 0 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6, 24px) var(--space-8, 32px);
+  border-top: 1px solid rgba(14, 31, 58, 0.08);
+}
+.geo-porch-branches li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--text-sm, 0.9rem);
+}
+.geo-porch-branches strong {
+  font-size: var(--text-xs, 0.78rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #4a556b);
+  font-weight: 700;
+}
+.geo-porch-branches a {
+  font-family: var(--font-display, inherit);
+  font-weight: 500;
+  color: var(--color-primary, #0e1f3a);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.18s ease;
+}
+.geo-porch-branches a:hover {
+  border-bottom-color: var(--color-accent, #f0a500);
+}
+@media (max-width: 540px) {
+  .geo-porch-actions { flex-direction: column; align-items: stretch; }
+  .geo-porch-actions .btn { width: 100%; text-align: center; justify-content: center; }
+  .geo-porch-branches { gap: var(--space-4, 16px); }
+}

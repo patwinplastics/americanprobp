@@ -52,7 +52,7 @@
 
 
     <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/site.css?v=15-staging" />
+    <link rel="stylesheet" href="../css/site.css?v=16-staging" />
     <style>
       /* Hero */
       .porch-hero { position: relative; min-height: 60vh; display: flex; align-items: flex-end; color: #fff; isolation: isolate; }
@@ -210,6 +210,11 @@
           </div>
         </div>
       </section>
+
+      <!-- Geo-targeted callout for Western NY / Finger Lakes visitors.
+           Hydrated by js/geo-banner.js only when the visitor IP resolves
+           to Genesee Reserve Supply territory. Empty + invisible otherwise. -->
+      <div data-geo-porch-callout></div>
 
       <!-- Why American Pro Porch (six benefits, mirrors the live infographic) -->
       <section class="section">
@@ -493,6 +498,7 @@
 
     <div data-include="footer"></div>
     <script src="../pages/_partials.js?v=6-staging"></script>
+    <script src="../js/geo-banner.js?v=1" defer></script>
     <script src="../js/site.js?v=3" defer></script>
   </body>
 </html>
