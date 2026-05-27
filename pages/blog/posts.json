@@ -1,5 +1,16 @@
 [
   {
+    "slug": "truegrain-deck-construction",
+    "title": "Inside TrueGrain Deck. How the board is built.",
+    "category": "Engineering",
+    "date": "2026-05-27",
+    "excerpt": "Five layers of RENOLIT PMMA film over a Patwin proprietary ASA capstock over a cellular PVC core with 30% in-house regrind. The chemistry, the construction, and what it means on a finished deck.",
+    "hero": "../../images/truegrain_hero/walnut-1600.jpg",
+    "heroAlt": "TrueGrain Deck Tropical Walnut PVC decking installed on a coastal home at late-afternoon light",
+    "readMinutes": 7,
+    "author": "American Pro"
+  },
+  {
     "slug": "spring-deck-planning-checklist",
     "title": "Spring deck planning checklist for a summer 2026 install.",
     "category": "Guides",
