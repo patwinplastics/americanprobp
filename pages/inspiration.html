@@ -62,8 +62,42 @@
         overflow: hidden;
         margin: 0;
       }
+      .insp-grid a.insp-tile {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        color: inherit;
+        text-decoration: none;
+        outline: none;
+      }
+      .insp-grid a.insp-tile:focus-visible {
+        outline: 3px solid #c8102e;
+        outline-offset: 3px;
+        border-radius: var(--radius-lg);
+      }
       .insp-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms ease; }
-      .insp-grid figure:hover img { transform: scale(1.04); }
+      .insp-grid a.insp-tile:hover img,
+      .insp-grid a.insp-tile:focus-visible img { transform: scale(1.04); }
+      .insp-grid .insp-cta {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: var(--space-3);
+        font-family: var(--font-body);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #fff;
+        opacity: 0.92;
+        transition: opacity 220ms ease, transform 220ms ease;
+      }
+      .insp-grid .insp-cta svg { transition: transform 220ms ease; }
+      .insp-grid a.insp-tile:hover .insp-cta,
+      .insp-grid a.insp-tile:focus-visible .insp-cta { opacity: 1; }
+      .insp-grid a.insp-tile:hover .insp-cta svg,
+      .insp-grid a.insp-tile:focus-visible .insp-cta svg { transform: translateX(4px); }
       .insp-grid figcaption {
         position: absolute;
         left: 0; right: 0; bottom: 0;
@@ -133,73 +167,100 @@
 
             <!-- Row 1: hero pair, existing photography -->
             <figure class="span-7">
-              <img fetchpriority="high" width="2400" height="1339" decoding="async" src="../images/hero_deck.jpg" alt="Craftsman home with wraparound American Pro Chestnut PVC deck and white railing" />
-              <figcaption>
-                <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Chestnut</span><span class="tag">Wraparound</span></div>
-                Wraparound craftsman
-              </figcaption>
+              <a class="insp-tile" href="legacy-pvc-decking.html#samples" aria-label="Request free Legacy PVC Decking samples in Chestnut">
+                <img fetchpriority="high" width="2400" height="1339" decoding="async" src="../images/hero_deck.jpg" alt="Craftsman home with wraparound American Pro Chestnut PVC deck and white railing" />
+                <figcaption>
+                  <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Chestnut</span><span class="tag">Wraparound</span></div>
+                  Wraparound craftsman
+                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </figcaption>
+              </a>
             </figure>
             <figure class="span-5">
-              <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/gallery_pool.jpg" alt="Pool deck with American Pro Beachwood PVC decking and outdoor seating" />
-              <figcaption>
-                <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Beachwood</span><span class="tag">Poolside</span></div>
-                Poolside cabana
-              </figcaption>
+              <a class="insp-tile" href="legacy-pvc-decking.html#samples" aria-label="Request free Legacy PVC Decking samples in Beachwood">
+                <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/gallery_pool.jpg" alt="Pool deck with American Pro Beachwood PVC decking and outdoor seating" />
+                <figcaption>
+                  <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Beachwood</span><span class="tag">Poolside</span></div>
+                  Poolside cabana
+                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </figcaption>
+              </a>
             </figure>
 
             <!-- Row 2: portrait Tuscany porch + landscape modern Chestnut + portrait Coastal Driftwood -->
             <figure class="span-3-tall">
-              <img width="1822" height="3452" loading="lazy" decoding="async" src="../images/inspiration/porch_tuscany.jpg" alt="Front porch with narrow American Pro Tuscany terracotta porch flooring, white columns, and rocking chairs" />
-              <figcaption>
-                <div class="eyebrow-tags"><span class="tag">Porch Flooring</span><span class="tag">Tuscany</span><span class="tag">Front Porch</span></div>
-                Tuscany terracotta porch
-              </figcaption>
+              <a class="insp-tile" href="porch.html#samples" aria-label="Request free Porch Flooring samples in Tuscany">
+                <img width="1822" height="3452" loading="lazy" decoding="async" src="../images/inspiration/porch_tuscany.jpg" alt="Front porch with narrow American Pro Tuscany terracotta porch flooring, white columns, and rocking chairs" />
+                <figcaption>
+                  <div class="eyebrow-tags"><span class="tag">Porch Flooring</span><span class="tag">Tuscany</span><span class="tag">Front Porch</span></div>
+                  Tuscany terracotta porch
+                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </figcaption>
+              </a>
             </figure>
             <figure class="span-6">
-              <img width="2752" height="1536" loading="lazy" decoding="async" src="../images/inspiration/modern_chestnut.jpg" alt="Modern deck with rich Chestnut PVC decking, linear gas fire feature, and architectural lighting" />
-              <figcaption>
-                <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Chestnut</span><span class="tag">Modern</span></div>
-                Chestnut deck, modern fire feature
-              </figcaption>
+              <a class="insp-tile" href="legacy-pvc-decking.html#samples" aria-label="Request free Legacy PVC Decking samples in Chestnut">
+                <img width="2752" height="1536" loading="lazy" decoding="async" src="../images/inspiration/modern_chestnut.jpg" alt="Modern deck with rich Chestnut PVC decking, linear gas fire feature, and architectural lighting" />
+                <figcaption>
+                  <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Chestnut</span><span class="tag">Modern</span></div>
+                  Chestnut deck, modern fire feature
+                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </figcaption>
+              </a>
             </figure>
             <figure class="span-3-tall">
-              <img width="2110" height="2980" loading="lazy" decoding="async" src="../images/inspiration/coastal_driftwood.jpg" alt="Coastal home with American Pro TrueGrain Coastal Driftwood decking, weathered cedar shingles, and sea-grass landscaping" />
-              <figcaption>
-                <div class="eyebrow-tags"><span class="tag">TrueGrain Decking</span><span class="tag">Coastal Driftwood</span><span class="tag">Coastal</span></div>
-                Coastal Driftwood, shoreline
-              </figcaption>
+              <a class="insp-tile" href="truegrain-deck.html#samples" aria-label="Request free TrueGrain Deck samples in Coastal Driftwood">
+                <img width="2110" height="2980" loading="lazy" decoding="async" src="../images/inspiration/coastal_driftwood.jpg" alt="Coastal home with American Pro TrueGrain Coastal Driftwood decking, weathered cedar shingles, and sea-grass landscaping" />
+                <figcaption>
+                  <div class="eyebrow-tags"><span class="tag">TrueGrain Decking</span><span class="tag">Coastal Driftwood</span><span class="tag">Coastal</span></div>
+                  Coastal Driftwood, shoreline
+                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </figcaption>
+              </a>
             </figure>
 
             <!-- Row 3: porch landscape + backyard dining -->
             <figure class="span-5">
-              <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/product_porch.jpg" alt="American Pro Driftwood porch flooring on traditional home with painted column" />
-              <figcaption>
-                <div class="eyebrow-tags"><span class="tag">Porch Flooring</span><span class="tag">Driftwood</span><span class="tag">Traditional</span></div>
-                Painted column, Driftwood porch
-              </figcaption>
+              <a class="insp-tile" href="porch.html#samples" aria-label="Request free Porch Flooring samples in Driftwood">
+                <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/product_porch.jpg" alt="American Pro Driftwood porch flooring on traditional home with painted column" />
+                <figcaption>
+                  <div class="eyebrow-tags"><span class="tag">Porch Flooring</span><span class="tag">Driftwood</span><span class="tag">Traditional</span></div>
+                  Painted column, Driftwood porch
+                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </figcaption>
+              </a>
             </figure>
             <figure class="span-7">
-              <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/gallery_sunset.jpg" alt="Backyard dining deck with American Pro Beachwood PVC decking at golden hour" />
-              <figcaption>
-                <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Beachwood</span><span class="tag">Backyard</span></div>
-                Backyard dining, golden hour
-              </figcaption>
+              <a class="insp-tile" href="legacy-pvc-decking.html#samples" aria-label="Request free Legacy PVC Decking samples in Beachwood">
+                <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/gallery_sunset.jpg" alt="Backyard dining deck with American Pro Beachwood PVC decking at golden hour" />
+                <figcaption>
+                  <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Beachwood</span><span class="tag">Backyard</span></div>
+                  Backyard dining, golden hour
+                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </figcaption>
+              </a>
             </figure>
 
             <!-- Row 4: colonial moulding landscape + tall white moulding portrait -->
             <figure class="span-8">
-              <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/product_moulding.jpg" alt="American Pro PVC architectural crown and casing moulding on a colonial home facade" />
-              <figcaption>
-                <div class="eyebrow-tags"><span class="tag">Mouldings</span><span class="tag">Crown &amp; Casing</span><span class="tag">Colonial</span></div>
-                Colonial trim package
-              </figcaption>
+              <a class="insp-tile" href="mouldings.html#samples" aria-label="Request free Moulding samples including crown and casing">
+                <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/product_moulding.jpg" alt="American Pro PVC architectural crown and casing moulding on a colonial home facade" />
+                <figcaption>
+                  <div class="eyebrow-tags"><span class="tag">Mouldings</span><span class="tag">Crown &amp; Casing</span><span class="tag">Colonial</span></div>
+                  Colonial trim package
+                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </figcaption>
+              </a>
             </figure>
             <figure class="span-4-tall">
-              <img width="2048" height="3072" loading="lazy" decoding="async" src="../images/inspiration/moulding_white.jpg" alt="Detail of crisp white American Pro PVC architectural moulding profile against a clean wall" />
-              <figcaption>
-                <div class="eyebrow-tags"><span class="tag">Mouldings</span><span class="tag">White PVC</span><span class="tag">Trim Detail</span></div>
-                Pure white profile detail
-              </figcaption>
+              <a class="insp-tile" href="mouldings.html#samples" aria-label="Request free white PVC Moulding samples">
+                <img width="2048" height="3072" loading="lazy" decoding="async" src="../images/inspiration/moulding_white.jpg" alt="Detail of crisp white American Pro PVC architectural moulding profile against a clean wall" />
+                <figcaption>
+                  <div class="eyebrow-tags"><span class="tag">Mouldings</span><span class="tag">White PVC</span><span class="tag">Trim Detail</span></div>
+                  Pure white profile detail
+                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </figcaption>
+              </a>
             </figure>
 
           </div>
