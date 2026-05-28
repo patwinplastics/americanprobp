@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Inspiration Gallery | Real PVC Deck & Porch Projects | American Pro</title>
-    <meta name="description" content="Real homes and real projects built with American Pro PVC decking, porch flooring, and architectural mouldings. Decks, porches, and exterior trim across all fifty states." />
-    <meta name="keywords" content="PVC deck inspiration, PVC porch projects, deck design ideas, porch design ideas, American Pro projects" />
+    <title>From Shoreline to Mountainside | TrueGrain & Legacy PVC Project Gallery | American Pro</title>
+    <meta name="description" content="Real homes built with American Pro TrueGrain decking, legacy PVC decking, porch flooring, and architectural mouldings. Coastal, modern, traditional, and front-porch projects across all fifty states." />
+    <meta name="keywords" content="TrueGrain deck gallery, PVC deck inspiration, PVC porch projects, Coastal Driftwood deck, Chestnut deck, Tuscany porch flooring, PVC moulding ideas, American Pro projects" />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="author" content="American Pro Building Products" />
     <meta name="theme-color" content="#0e1f3a" />
@@ -18,8 +18,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="American Pro Building Products" />
     <meta property="og:url" content="https://americanprobp.com/pages/inspiration.html" />
-    <meta property="og:title" content="Inspiration Gallery | Real PVC Deck & Porch Projects | American Pro" />
-    <meta property="og:description" content="Real homes and real projects built with American Pro PVC decking, porch flooring, and architectural mouldings. Decks, porches, and exterior trim across all fifty states." />
+    <meta property="og:title" content="From Shoreline to Mountainside | American Pro Project Gallery" />
+    <meta property="og:description" content="Real homes built with American Pro TrueGrain decking, legacy PVC decking, porch flooring, and architectural mouldings. Coastal, modern, traditional, and front-porch projects across all fifty states." />
     <meta property="og:image" content="https://americanprobp.com/images/og/og-default.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -28,8 +28,8 @@
 
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Inspiration Gallery | Real PVC Deck & Porch Projects | American Pro" />
-    <meta name="twitter:description" content="Real homes and real projects built with American Pro PVC decking, porch flooring, and architectural mouldings. Decks, porches, and exterior trim across all fifty states." />
+    <meta name="twitter:title" content="From Shoreline to Mountainside | American Pro Project Gallery" />
+    <meta name="twitter:description" content="Real homes built with American Pro TrueGrain decking, legacy PVC decking, porch flooring, and architectural mouldings. Coastal, modern, traditional, and front-porch projects across all fifty states." />
     <meta name="twitter:image" content="https://americanprobp.com/images/og/og-default.jpg" />
     <meta name="twitter:image:alt" content="Backyard PVC deck with dining setup at sunset" />
 
@@ -69,29 +69,48 @@
         left: 0; right: 0; bottom: 0;
         padding: var(--space-6);
         color: #fff;
-        background: linear-gradient(to top, rgba(14,31,58,.85), transparent);
+        background: linear-gradient(to top, rgba(14,31,58,.92) 5%, rgba(14,31,58,.55) 60%, transparent);
         font-family: var(--font-display);
         font-size: var(--text-lg);
+        line-height: 1.25;
       }
-      .insp-grid figcaption span {
-        display: block;
+      .insp-grid figcaption .eyebrow-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: var(--space-3);
+      }
+      .insp-grid figcaption .eyebrow-tags .tag {
         font-family: var(--font-body);
-        font-size: var(--text-xs);
+        font-size: 10px;
         font-weight: 600;
-        letter-spacing: 0.18em;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: rgba(255,255,255,.8);
-        margin-bottom: var(--space-2);
+        color: #fff;
+        background: rgba(255,255,255,.14);
+        border: 1px solid rgba(255,255,255,.28);
+        border-radius: 999px;
+        padding: 4px 10px;
+        backdrop-filter: blur(4px);
       }
-      .span-7 { grid-column: span 7; aspect-ratio: 4/3; }
-      .span-5 { grid-column: span 5; aspect-ratio: 4/3; }
-      .span-6 { grid-column: span 6; aspect-ratio: 4/3; }
-      .span-4 { grid-column: span 4; aspect-ratio: 1; }
-      .span-8 { grid-column: span 8; aspect-ratio: 16/9; }
+      /* Landscape tiles */
+      .span-7  { grid-column: span 7; aspect-ratio: 4/3; }
+      .span-5  { grid-column: span 5; aspect-ratio: 4/3; }
+      .span-6  { grid-column: span 6; aspect-ratio: 4/3; }
+      .span-8  { grid-column: span 8; aspect-ratio: 16/9; }
       .span-12 { grid-column: 1 / -1; aspect-ratio: 16/6; }
+      /* Portrait tiles, narrower columns and taller aspect */
+      .span-4-tall { grid-column: span 4; aspect-ratio: 3/4; }
+      .span-3-tall { grid-column: span 3; aspect-ratio: 2/3; }
+      .span-5-tall { grid-column: span 5; aspect-ratio: 4/5; }
+      /* Square */
+      .span-4 { grid-column: span 4; aspect-ratio: 1; }
       @media (max-width: 720px) {
         .insp-grid { grid-template-columns: 1fr; }
         .insp-grid figure { grid-column: 1 / -1 !important; aspect-ratio: 4/3 !important; }
+        .insp-grid figure.span-4-tall,
+        .insp-grid figure.span-3-tall,
+        .insp-grid figure.span-5-tall { aspect-ratio: 3/4 !important; }
       }
     </style>
   </head>
@@ -102,8 +121,8 @@
       <section class="page-banner">
         <div class="container">
           <span class="eyebrow">Inspiration</span>
-          <h1>Real homes, real decks,<br /><em>real American Pro.</em></h1>
-          <p>A collection of projects featuring American Pro decking, porch flooring, and mouldings. From New England farmhouses to Southern coastal homes.</p>
+          <h1>From shoreline<br /><em>to mountainside.</em></h1>
+          <p>Real homes built with American Pro TrueGrain decking, legacy PVC decking, porch flooring, and architectural mouldings. Coastal cottages, modern fire-feature decks, traditional front porches, and colonial trim - all in one place.</p>
           <p style="margin-top:1rem;font-size:1rem;">See something you like? <a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener" title="American Pro Deck Builder - 3D TrueGrain Deck Visualizer"><strong>Design your own deck in 3D</strong></a> with our free TrueGrain Deck Visualizer - pick boards, patterns, lighting, and railing, then get an instant material estimate.</p>
         </div>
       </section>
@@ -111,26 +130,78 @@
       <section class="section">
         <div class="container">
           <div class="insp-grid" data-reveal>
+
+            <!-- Row 1: hero pair, existing photography -->
             <figure class="span-7">
-              <img fetchpriority="high" width="2400" height="1339" decoding="async" src="../images/hero_deck.jpg" alt="Craftsman home with American Pro PVC deck and railing"  />
-              <figcaption><span>Chestnut · Decking</span>Wraparound craftsman</figcaption>
+              <img fetchpriority="high" width="2400" height="1339" decoding="async" src="../images/hero_deck.jpg" alt="Craftsman home with wraparound American Pro Chestnut PVC deck and white railing" />
+              <figcaption>
+                <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Chestnut</span><span class="tag">Wraparound</span></div>
+                Wraparound craftsman
+              </figcaption>
             </figure>
             <figure class="span-5">
-              <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/gallery_pool.jpg" alt="Pool deck with American Pro PVC decking"  />
-              <figcaption><span>Beachwood · Decking</span>Poolside</figcaption>
+              <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/gallery_pool.jpg" alt="Pool deck with American Pro Beachwood PVC decking and outdoor seating" />
+              <figcaption>
+                <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Beachwood</span><span class="tag">Poolside</span></div>
+                Poolside cabana
+              </figcaption>
             </figure>
+
+            <!-- Row 2: portrait Tuscany porch + landscape modern Chestnut + portrait Coastal Driftwood -->
+            <figure class="span-3-tall">
+              <img width="1822" height="3452" loading="lazy" decoding="async" src="../images/inspiration/porch_tuscany.jpg" alt="Front porch with narrow American Pro Tuscany terracotta porch flooring, white columns, and rocking chairs" />
+              <figcaption>
+                <div class="eyebrow-tags"><span class="tag">Porch Flooring</span><span class="tag">Tuscany</span><span class="tag">Front Porch</span></div>
+                Tuscany terracotta porch
+              </figcaption>
+            </figure>
+            <figure class="span-6">
+              <img width="2752" height="1536" loading="lazy" decoding="async" src="../images/inspiration/modern_chestnut.jpg" alt="Modern deck with rich Chestnut PVC decking, linear gas fire feature, and architectural lighting" />
+              <figcaption>
+                <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Chestnut</span><span class="tag">Modern</span></div>
+                Chestnut deck, modern fire feature
+              </figcaption>
+            </figure>
+            <figure class="span-3-tall">
+              <img width="2110" height="2980" loading="lazy" decoding="async" src="../images/inspiration/coastal_driftwood.jpg" alt="Coastal home with American Pro TrueGrain Coastal Driftwood decking, weathered cedar shingles, and sea-grass landscaping" />
+              <figcaption>
+                <div class="eyebrow-tags"><span class="tag">TrueGrain Decking</span><span class="tag">Coastal Driftwood</span><span class="tag">Coastal</span></div>
+                Coastal Driftwood, shoreline
+              </figcaption>
+            </figure>
+
+            <!-- Row 3: porch landscape + backyard dining -->
             <figure class="span-5">
-              <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/product_porch.jpg" alt="American Pro porch flooring on traditional home"  />
-              <figcaption><span>Driftwood · Porch Flooring</span>Front porch, painted column</figcaption>
+              <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/product_porch.jpg" alt="American Pro Driftwood porch flooring on traditional home with painted column" />
+              <figcaption>
+                <div class="eyebrow-tags"><span class="tag">Porch Flooring</span><span class="tag">Driftwood</span><span class="tag">Traditional</span></div>
+                Painted column, Driftwood porch
+              </figcaption>
             </figure>
             <figure class="span-7">
-              <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/gallery_sunset.jpg" alt="Backyard deck with dining setup at golden hour"  />
-              <figcaption><span>Beachwood · Decking</span>Backyard dining</figcaption>
+              <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/gallery_sunset.jpg" alt="Backyard dining deck with American Pro Beachwood PVC decking at golden hour" />
+              <figcaption>
+                <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Beachwood</span><span class="tag">Backyard</span></div>
+                Backyard dining, golden hour
+              </figcaption>
             </figure>
-            <figure class="span-12">
-              <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/product_moulding.jpg" alt="American Pro PVC architectural moulding on a colonial home"  />
-              <figcaption><span>Crown &amp; Casing · Mouldings</span>Colonial trim</figcaption>
+
+            <!-- Row 4: colonial moulding landscape + tall white moulding portrait -->
+            <figure class="span-8">
+              <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/product_moulding.jpg" alt="American Pro PVC architectural crown and casing moulding on a colonial home facade" />
+              <figcaption>
+                <div class="eyebrow-tags"><span class="tag">Mouldings</span><span class="tag">Crown &amp; Casing</span><span class="tag">Colonial</span></div>
+                Colonial trim package
+              </figcaption>
             </figure>
+            <figure class="span-4-tall">
+              <img width="2048" height="3072" loading="lazy" decoding="async" src="../images/inspiration/moulding_white.jpg" alt="Detail of crisp white American Pro PVC architectural moulding profile against a clean wall" />
+              <figcaption>
+                <div class="eyebrow-tags"><span class="tag">Mouldings</span><span class="tag">White PVC</span><span class="tag">Trim Detail</span></div>
+                Pure white profile detail
+              </figcaption>
+            </figure>
+
           </div>
         </div>
       </section>
