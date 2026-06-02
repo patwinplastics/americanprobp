@@ -174,7 +174,8 @@
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="${B}pages/about.html">About Us</a></li>
+            <li><a href="${B}pages/american-pro.html">About American Pro</a></li>
+            <li><a href="${B}pages/about.html">About Patwin Plastics</a></li>
             <li><a href="${B}pages/blog/index.html">Blog</a></li>
             <li><a href="${B}pages/contact.html">Contact</a></li>
             <li><a href="${B}index.html#samples">Request Samples</a></li>
