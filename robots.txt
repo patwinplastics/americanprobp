@@ -10,6 +10,24 @@ User-agent: *
 Allow: /
 Disallow: /pages/thanks.html
 
+# ---- SOCIAL LINK PREVIEW CRAWLERS - ALLOWED ----
+# These render rich previews when our links are shared on social platforms.
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
 # ---- AI SEARCH / CITATION CRAWLERS - ALLOWED ----
 # These power live AI answers and cite your site as a source.
 
@@ -53,12 +71,6 @@ User-agent: CCBot
 Disallow: /
 
 User-agent: cohere-ai
-Disallow: /
-
-User-agent: FacebookBot
-Disallow: /
-
-User-agent: Meta-ExternalAgent
 Disallow: /
 
 User-agent: Bytespider
