@@ -2887,6 +2887,14 @@ html.reveal-ready [data-reveal].is-visible {
 }
 
 /* ---- Sticky mobile visualizer launcher ---- */
+/* On mobile (<=720px) the fixed-position .viz-launcher pill at the bottom
+   right of the viewport carries the same "See your deck" CTA as the
+   in-hero .hero-tertiary-link glassy pill. Showing both stacks them in
+   the bottom-right area of the hero. Hide the in-hero pill on mobile;
+   the floating launcher persists across scroll so the CTA is never lost. */
+@media (max-width: 720px) {
+  .hero-tertiary-link { display: none; }
+}
 .viz-launcher {
   position: fixed;
   right: var(--space-4);
