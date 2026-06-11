@@ -241,4 +241,16 @@
       <image:caption>Free 3D deck design tool with instant material estimates</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://americanprobp.com/pages/privacy-policy.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/terms-and-conditions.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>
