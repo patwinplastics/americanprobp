@@ -3309,3 +3309,87 @@ html.reveal-ready [data-reveal].is-visible {
 .geo-porch-callout--sea .geo-porch-branches a:hover {
   border-bottom-color: #2a7a9b;
 }
+
+/* ============================================================
+   HERO SLIDE 1 — SCENE REDESIGN (staging)
+   Lifestyle-forward first slide. Overlay re-anchored to the left
+   so the deck scene stays in full colour on the right, text stays
+   readable on the left, plus a slow image zoom and a text reveal.
+   Scoped to .tg-feature--scene so the other slides are untouched.
+   ============================================================ */
+
+/* Re-anchored scrim: strong on the left for legibility, clearing to
+   near-transparent on the right so the home + deck read in full colour.
+   A soft bottom gradient anchors the dot rail and CTAs. */
+.tg-feature--scene .tg-feature-overlay {
+  background:
+    linear-gradient(90deg,
+      rgba(14, 31, 58, 0.92) 0%,
+      rgba(14, 31, 58, 0.80) 32%,
+      rgba(14, 31, 58, 0.42) 58%,
+      rgba(14, 31, 58, 0.10) 82%,
+      rgba(14, 31, 58, 0.00) 100%),
+    linear-gradient(0deg,
+      rgba(14, 31, 58, 0.55) 0%,
+      rgba(14, 31, 58, 0.10) 30%,
+      rgba(14, 31, 58, 0.00) 55%);
+}
+
+/* Slow, subtle Ken-Burns push-in on the hero photo. Gives the static
+   scene a sense of life on land without being distracting. */
+.tg-feature--scene .tg-feature-image img {
+  transform-origin: 72% 60%;
+  animation: tg-scene-zoom 18s ease-out forwards;
+}
+@keyframes tg-scene-zoom {
+  from { transform: scale(1.06); }
+  to   { transform: scale(1.0); }
+}
+
+/* Text reveal: headline, copy, swatches, stats, CTAs rise + fade in,
+   gently staggered. Only runs on the active scene slide. */
+.tg-feature--scene.is-active [data-hero-reveal] > * {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: tg-reveal 700ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+.tg-feature--scene.is-active [data-hero-reveal] > *:nth-child(1) { animation-delay: 80ms; }
+.tg-feature--scene.is-active [data-hero-reveal] > *:nth-child(2) { animation-delay: 180ms; }
+.tg-feature--scene.is-active [data-hero-reveal] > *:nth-child(3) { animation-delay: 300ms; }
+.tg-feature--scene.is-active [data-hero-reveal] > *:nth-child(4) { animation-delay: 420ms; }
+.tg-feature--scene.is-active [data-hero-reveal] > *:nth-child(5) { animation-delay: 540ms; }
+.tg-feature--scene.is-active [data-hero-reveal] > *:nth-child(6) { animation-delay: 660ms; }
+@keyframes tg-reveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Lift the headline slightly and give the body copy a touch more
+   contrast on the brighter scene. */
+.tg-feature--scene .tg-feature-title {
+  text-shadow: 0 2px 18px rgba(8, 18, 36, 0.45);
+}
+.tg-feature--scene .tg-feature-sub {
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 1px 10px rgba(8, 18, 36, 0.35);
+}
+
+/* Honour reduced-motion: no zoom, no reveal animation. */
+@media (prefers-reduced-motion: reduce) {
+  .tg-feature--scene .tg-feature-image img { animation: none; transform: none; }
+  .tg-feature--scene.is-active [data-hero-reveal] > * {
+    opacity: 1; transform: none; animation: none;
+  }
+}
+
+/* Mobile: the scene fills the full width, so use a stronger top-down scrim
+   to keep the headline + body copy legible over the bright porch ceiling. */
+@media (max-width: 700px) {
+  .tg-feature--scene .tg-feature-overlay {
+    background:
+      linear-gradient(180deg,
+        rgba(14, 31, 58, 0.78) 0%,
+        rgba(14, 31, 58, 0.68) 42%,
+        rgba(14, 31, 58, 0.50) 70%,
+        rgba(14, 31, 58, 0.38) 100%);
+  }
+}

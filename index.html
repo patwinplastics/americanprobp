@@ -54,10 +54,10 @@
       href="https://api.fontshare.com/v2/css?f[]=boska@400,500,500i,700&f[]=satoshi@400,500,600,700&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" as="image" href="./images/hero_deck.jpg" />
+    <link rel="preload" as="image" href="./images/hero_deck.jpg" fetchpriority="high" />
 
     <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/site.css?v=17-staging" />
+    <link rel="stylesheet" href="./css/site.css?v=18-staging" />
   </head>
   <body>
     <!-- ========== HEADER ========== -->
@@ -172,7 +172,7 @@
       <section class="hero-slider" aria-roledescription="carousel" aria-label="American Pro featured highlights" data-hero-slider>
         <!-- ========== SLIDE 1: TrueGrain Deck™ launch (now default) ========== -->
         <article
-          class="hero-slide hero-slide--truegrain truegrain-feature is-active"
+          class="hero-slide hero-slide--truegrain truegrain-feature tg-feature--scene is-active"
           id="hero-slide-1"
           role="group"
           aria-roledescription="slide"
@@ -181,31 +181,30 @@
         >
           <div class="tg-feature-image">
             <picture>
-              <source media="(max-width: 700px)" srcset="./images/truegrain_hero/driftwood-800.jpg" />
-              <source media="(max-width: 1300px)" srcset="./images/truegrain_hero/driftwood-1200.jpg" />
-              <img loading="lazy"
-                src="./images/truegrain_hero/driftwood-1600.jpg"
-                alt="TrueGrain Deck PVC decking boards in Coastal Driftwood with deep wood grain texture"
+              <source media="(max-width: 700px)" srcset="./images/porch_hero.jpg" />
+              <img fetchpriority="high"
+                src="./images/hero_deck.jpg"
+                alt="Craftsman home with a TrueGrain PVC deck and covered porch at golden hour, hydrangeas and Adirondack chairs"
                 decoding="async"
-                width="1600"
-                height="900"
+                width="2400"
+                height="1339"
                />
             </picture>
             <div class="tg-feature-overlay" aria-hidden="true"></div>
           </div>
-          <div class="container tg-feature-inner">
+          <div class="container tg-feature-inner" data-hero-reveal>
             <span class="tg-feature-badge">
               <span class="tg-feature-badge-dot" aria-hidden="true"></span>
               New from American Pro
             </span>
             <h2 class="tg-feature-title" id="tg-feature-title">
-              Introducing<br />
-              <em>TrueGrain Deck&trade;.</em>
+              Wood to touch.<br />
+              <em>PVC to last.</em>
             </h2>
             <p class="tg-feature-sub">
-              Ultra realistic wood look, built to outlast wood. Six hardwood-inspired colors, a
-              protective ASA cap laminate that stops fade and stain, and a cellular PVC core that
-              won't rot, splinter, or warp. Wood to touch. PVC to last.
+              Introducing TrueGrain Deck&trade;. An ultra-realistic hardwood look, built to
+              outlast wood. A protective ASA cap stops fade and stain, and a cellular PVC core
+              won't rot, splinter, or warp. American-made in Linden, NJ, since 1971.
             </p>
 
             <div class="tg-feature-swatches" role="list" aria-label="Six TrueGrain Deck colors">
