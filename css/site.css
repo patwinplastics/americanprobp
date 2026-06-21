@@ -2230,7 +2230,7 @@ html.reveal-ready [data-reveal].is-visible {
   border-radius: 2px;
 }
 .hero-dot.is-active .hero-dot-fill {
-  animation: hero-dot-progress 11s linear forwards;
+  animation: hero-dot-progress 7s linear forwards;
 }
 .hero-slider.is-paused .hero-dot.is-active .hero-dot-fill {
   animation-play-state: paused;
