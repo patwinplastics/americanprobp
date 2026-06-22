@@ -699,60 +699,64 @@
             <a class="home-blog-all" href="./pages/blog/index.html">All posts &rarr;</a>
           </header>
 
-          <div class="home-blog-grid" data-reveal data-reveal-delay="1">
+          <!-- Feed rendered from /pages/blog/posts.json by the home-blog
+               script near the bottom of this page (newest first: 1 hero + 2
+               side cards). The markup below is a static fallback shown only if
+               the fetch fails; the renderer replaces it on success. -->
+          <div class="home-blog-grid" id="home-blog-grid" data-reveal data-reveal-delay="1">
 
-            <!-- HERO: InvisiClip launch -->
-            <a class="home-blog-hero" href="./pages/blog/posts/invisiclip-launch.html" aria-label="Read: Introducing InvisiClip. Hidden hardware. Honest deck.">
+            <!-- HERO: newest post (fallback) -->
+            <a class="home-blog-hero" href="./pages/blog/posts/pvc-mouldings-dont-rot.html" aria-label="Read: PVC mouldings do not rot. What that actually means for your trim.">
               <div class="home-blog-hero-media">
                 <img
-                  src="./images/invisiclip/clip_macro_hero.png?v=4"
-                  alt="Walnut PVC deck board hovering above two InvisiClip hidden fasteners on an aluminum rail, grooves aligned with the clips"
+                  src="./images/product_moulding.jpg"
+                  alt="American Pro PVC architectural mouldings stacked at the Patwin Plastics extrusion facility in Linden, New Jersey, showing crowns, casings, sills, and brick mould profiles in bright white finish"
                   loading="lazy" decoding="async"
                 />
               </div>
               <div class="home-blog-hero-body">
-                <span class="home-blog-hero-tag">News</span>
-                <h3 class="home-blog-hero-title">Introducing InvisiClip&#8482;. <em>Hidden hardware. Honest deck.</em></h3>
-                <p class="home-blog-hero-excerpt">POM clips on aluminum rails. Boards drop in from above. No screws on the deck surface. Powered by the GRAD&#174; system.</p>
+                <span class="home-blog-hero-tag">Education</span>
+                <h3 class="home-blog-hero-title">PVC mouldings don&#39;t rot. <em>What that means for your trim.</em></h3>
+                <p class="home-blog-hero-excerpt">Wood trim absorbs water and rots from the inside. American Pro PVC mouldings, brick mould, sills, casings, and crowns are cellular PVC, so they will not rot, split, or wick moisture.</p>
                 <div class="home-blog-hero-meta">
-                  <span>May 7, 2026</span>
+                  <span>June 12, 2026</span>
                   <span aria-hidden="true">&middot;</span>
-                  <span>5 min read</span>
+                  <span>6 min read</span>
                   <span class="home-blog-cta">Read post &rarr;</span>
                 </div>
               </div>
             </a>
 
-            <!-- SIDE: 2 small cards -->
+            <!-- SIDE: next 2 newest posts (fallback) -->
             <div class="home-blog-side">
 
-              <a class="home-blog-card" href="./pages/blog/posts/where-to-buy-east-coast.html" aria-label="Read: Where to buy American Pro on the East Coast">
+              <a class="home-blog-card" href="./pages/blog/posts/porch-reborn-1908-victorian-tuscany.html" aria-label="Read: Front porch reborn. A 1908 Victorian gets a tongue-and-groove PVC porch in Tuscany.">
                 <div class="home-blog-card-media">
                   <img
-                    src="./images/blog_dealer_hero.png"
-                    alt="Walnut and grey PVC decking bundles being loaded onto a flatbed at an East Coast wholesale building products dealer yard at golden hour"
+                    src="./images/porch_reborn/victorian-1908-tuscany-hero.png"
+                    alt="Restored 1908 Queen Anne Victorian front porch with new American Pro Tuscany cellular PVC tongue-and-groove flooring, white turned-spindle railing, hanging fern, and hydrangeas at golden hour"
                     loading="lazy" decoding="async"
                   />
                 </div>
                 <div class="home-blog-card-body">
-                  <span class="home-blog-card-tag">News</span>
-                  <h3 class="home-blog-card-title">Where to buy American Pro <em>on the East Coast.</em></h3>
-                  <div class="home-blog-card-meta">May 6, 2026 &middot; 3 min read</div>
+                  <span class="home-blog-card-tag">Inspiration</span>
+                  <h3 class="home-blog-card-title">Front porch reborn. <em>A 1908 Victorian in Tuscany.</em></h3>
+                  <div class="home-blog-card-meta">June 8, 2026 &middot; 5 min read</div>
                 </div>
               </a>
 
-              <a class="home-blog-card" href="./pages/blog/posts/made-in-linden-nj.html" aria-label="Read: Made in Linden, New Jersey. Where American Pro decking is extruded.">
+              <a class="home-blog-card" href="./pages/blog/posts/truegrain-deck-construction.html" aria-label="Read: Inside TrueGrain Deck. How the board is built.">
                 <div class="home-blog-card-media">
                   <img
-                    src="./images/blog_linden_hero.png"
-                    alt="A walnut wood-grain PVC deck board exiting an extrusion die head and traveling along stainless cooling rollers inside an American Pro production line in Linden, New Jersey"
+                    src="./images/truegrain_hero/walnut-1600.jpg"
+                    alt="TrueGrain Deck Tropical Walnut PVC decking installed on a coastal home at late-afternoon light"
                     loading="lazy" decoding="async"
                   />
                 </div>
                 <div class="home-blog-card-body">
-                  <span class="home-blog-card-tag">News</span>
-                  <h3 class="home-blog-card-title">Made in Linden, New Jersey. <em>Where our decking is extruded.</em></h3>
-                  <div class="home-blog-card-meta">May 5, 2026 &middot; 3 min read</div>
+                  <span class="home-blog-card-tag">Engineering</span>
+                  <h3 class="home-blog-card-title">Inside TrueGrain Deck. <em>How the board is built.</em></h3>
+                  <div class="home-blog-card-meta">May 27, 2026 &middot; 7 min read</div>
                 </div>
               </a>
 
@@ -1137,6 +1141,85 @@
       <span><b>See it on your house</b><small>Deck Visualizer</small></span>
     </a>
 
+    <script>
+      // Home "Latest from American Pro" feed. Reads /pages/blog/posts.json,
+      // sorts newest first, and renders 1 hero + 2 side cards. Mirrors the blog
+      // index renderer. Falls back to the static markup already in the grid if
+      // the fetch fails. Vanilla JS, no deps.
+      (function () {
+        var grid = document.getElementById('home-blog-grid');
+        if (!grid) return;
+
+        function fmtDate(iso) {
+          var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+          if (!m) return iso || '';
+          var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+          return months[parseInt(m[2], 10) - 1] + ' ' + parseInt(m[3], 10) + ', ' + parseInt(m[1], 10);
+        }
+        function esc(s) {
+          return String(s == null ? '' : s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+        // posts.json hero paths are relative to /pages/blog/ (../../images/...).
+        // Rewrite them to be relative to the homepage (./images/...).
+        function homeImg(src) {
+          src = String(src || '');
+          return src.replace(/^(\.\.\/)+images\//, './images/');
+        }
+        function postUrl(slug) {
+          return './pages/blog/posts/' + encodeURIComponent(slug) + '.html';
+        }
+
+        function heroHtml(p) {
+          return ''
+            + '<a class="home-blog-hero" href="' + postUrl(p.slug) + '" aria-label="Read: ' + esc(p.title) + '">'
+            +   '<div class="home-blog-hero-media">'
+            +     '<img src="' + esc(homeImg(p.hero)) + '" alt="' + esc(p.heroAlt || '') + '" loading="lazy" decoding="async" />'
+            +   '</div>'
+            +   '<div class="home-blog-hero-body">'
+            +     '<span class="home-blog-hero-tag">' + esc(p.category) + '</span>'
+            +     '<h3 class="home-blog-hero-title">' + esc(p.title) + '</h3>'
+            +     '<p class="home-blog-hero-excerpt">' + esc(p.excerpt || '') + '</p>'
+            +     '<div class="home-blog-hero-meta">'
+            +       '<span>' + esc(fmtDate(p.date)) + '</span>'
+            +       (p.readMinutes ? '<span aria-hidden="true">&middot;</span><span>' + esc(p.readMinutes) + ' min read</span>' : '')
+            +       '<span class="home-blog-cta">Read post &rarr;</span>'
+            +     '</div>'
+            +   '</div>'
+            + '</a>';
+        }
+        function cardHtml(p) {
+          return ''
+            + '<a class="home-blog-card" href="' + postUrl(p.slug) + '" aria-label="Read: ' + esc(p.title) + '">'
+            +   '<div class="home-blog-card-media">'
+            +     '<img src="' + esc(homeImg(p.hero)) + '" alt="' + esc(p.heroAlt || '') + '" loading="lazy" decoding="async" />'
+            +   '</div>'
+            +   '<div class="home-blog-card-body">'
+            +     '<span class="home-blog-card-tag">' + esc(p.category) + '</span>'
+            +     '<h3 class="home-blog-card-title">' + esc(p.title) + '</h3>'
+            +     '<div class="home-blog-card-meta">' + esc(fmtDate(p.date))
+            +       (p.readMinutes ? ' &middot; ' + esc(p.readMinutes) + ' min read' : '') + '</div>'
+            +   '</div>'
+            + '</a>';
+        }
+
+        fetch('./pages/blog/posts.json', { cache: 'no-cache' })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (posts) {
+            if (!posts || !posts.length) return; // keep static fallback
+            posts = posts.slice().sort(function (a, b) {
+              return (b.date || '').localeCompare(a.date || '');
+            });
+            var hero = posts[0];
+            var side = posts.slice(1, 3);
+            var html = heroHtml(hero);
+            html += '<div class="home-blog-side">' + side.map(cardHtml).join('') + '</div>';
+            grid.innerHTML = html;
+          })
+          .catch(function () { /* keep static fallback */ });
+      })();
+    </script>
     <script src="./js/geo-banner.js?v=2" defer></script>
     <script src="./js/site.js?v=3" defer></script>
 
