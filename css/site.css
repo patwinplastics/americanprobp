@@ -1538,23 +1538,6 @@ html.reveal-ready [data-reveal].is-visible {
 .tg-feature-inner .tg-feature-actions { max-width: 720px; }
 .tg-feature-inner .tg-feature-swatches { max-width: 720px; }
 
-/* TrueGrain logo chip */
-.tg-feature-logo {
-  display: inline-block;
-  background: #fff;
-  padding: 0.85rem 1.35rem;
-  border-radius: 14px;
-  margin-bottom: var(--space-5);
-  box-shadow: 0 14px 40px -12px rgba(0, 0, 0, 0.45);
-  max-width: 100%;
-}
-.tg-feature-logo img {
-  display: block;
-  width: auto;
-  height: clamp(40px, 5.2vw, 62px);
-  max-width: 100%;
-}
-
 /* Launch badge */
 .tg-feature-badge {
   display: inline-flex;
