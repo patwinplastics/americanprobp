@@ -57,7 +57,7 @@
     <link rel="preload" as="image" href="./images/hero_deck.jpg" fetchpriority="high" />
 
     <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/site.css?v=20" />
+    <link rel="stylesheet" href="./css/site.css?v=21" />
   </head>
   <body>
     <!-- ========== HEADER ========== -->
@@ -170,14 +170,55 @@
            Order is now: 1) TrueGrain Deck, 2) InvisiClip, 3) American Pro brand.
            Slide indices and aria-labels are renumbered to match. -->
       <section class="hero-slider" aria-roledescription="carousel" aria-label="American Pro featured highlights" data-hero-slider>
-        <!-- ========== SLIDE 1: TrueGrain Deck™ launch (now default) ========== -->
+        <!-- ========== SLIDE 1: American Pro brand hero (now default) ========== -->
         <article
-          class="hero-slide hero-slide--truegrain truegrain-feature tg-feature--scene is-active"
+          class="hero-slide hero-slide--original is-active"
+          id="hero-slide-3"
+          role="group"
+          aria-roledescription="slide"
+          aria-label="Slide 1 of 3: American-made building products"
+          data-hero-slide="0"
+          aria-hidden="true"
+        >
+          <div class="hero-image">
+            <img loading="lazy" width="2400" height="1339" decoding="async" src="./images/hero_deck.jpg" alt="American craftsman home with PVC composite deck at golden hour"  />
+          </div>
+          <div class="container hero-inner">
+            <span class="hero-eyebrow">American-Made Since 1971</span>
+            <h1 class="hero-title" id="hero-title">
+              American Pro.<br />
+              Built for the<br />
+              <em>life around your home.</em>
+            </h1>
+            <p class="hero-sub">
+              Decking, porch flooring, and architectural mouldings engineered from
+              UV-stabilized cellular PVC. They won't split, crack, splinter, or rot,
+              so the home you love stays the home you love.
+            </p>
+            <div class="hero-actions">
+              <a href="#samples" class="btn btn--primary btn--lg">Request Free Samples</a>
+              <a href="./pages/contact.html" class="btn btn--ghost-light btn--lg">Get a Quote</a>
+            </div>
+            <a class="hero-tertiary-link" href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener">
+              <span class="hero-tertiary-eyebrow">New tool</span>
+              See your deck before you build it
+              <span class="hero-tertiary-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div class="hero-meta">
+            <strong>50+ years</strong>
+            of American manufacturing
+          </div>
+        </article>
+
+        <!-- ========== SLIDE 2: TrueGrain Deck™ launch ========== -->
+        <article
+          class="hero-slide hero-slide--truegrain truegrain-feature tg-feature--scene"
           id="hero-slide-1"
           role="group"
           aria-roledescription="slide"
-          aria-label="Slide 1 of 3: Introducing TrueGrain Deck"
-          data-hero-slide="0"
+          aria-label="Slide 2 of 3: Introducing TrueGrain Deck"
+          data-hero-slide="1"
         >
           <div class="tg-feature-image">
             <picture>
@@ -193,15 +234,6 @@
             <div class="tg-feature-overlay" aria-hidden="true"></div>
           </div>
           <div class="container tg-feature-inner" data-hero-reveal>
-            <span class="tg-feature-logo">
-              <img
-                src="./images/logo/truegrain-decking-horizontal.png"
-                alt="TrueGrain Decking by American Pro logo"
-                width="824"
-                height="184"
-                decoding="async"
-              />
-            </span>
             <span class="tg-feature-badge">
               <span class="tg-feature-badge-dot" aria-hidden="true"></span>
               Now Shipping &middot; New from American Pro
@@ -276,14 +308,14 @@
           </div>
         </article>
 
-        <!-- ========== SLIDE 2: InvisiClip™ (Grad System) ========== -->
+        <!-- ========== SLIDE 3: InvisiClip™ (Grad System) ========== -->
         <article
           class="hero-slide hero-slide--invisiclip ic-feature"
           id="hero-slide-2"
           role="group"
           aria-roledescription="slide"
-          aria-label="Slide 2 of 3: InvisiClip™ Hidden Fastener System"
-          data-hero-slide="1"
+          aria-label="Slide 3 of 3: InvisiClip™ Hidden Fastener System"
+          data-hero-slide="2"
           aria-hidden="true"
         >
           <div class="ic-feature-art" aria-hidden="true">
@@ -340,47 +372,6 @@
           </div>
         </article>
 
-        <!-- ========== SLIDE 3: American Pro brand hero (now last) ========== -->
-        <article
-          class="hero-slide hero-slide--original"
-          id="hero-slide-3"
-          role="group"
-          aria-roledescription="slide"
-          aria-label="Slide 3 of 3: American-made building products"
-          data-hero-slide="2"
-          aria-hidden="true"
-        >
-          <div class="hero-image">
-            <img loading="lazy" width="2400" height="1339" decoding="async" src="./images/hero_deck.jpg" alt="American craftsman home with PVC composite deck at golden hour"  />
-          </div>
-          <div class="container hero-inner">
-            <span class="hero-eyebrow">American-Made Since 1971</span>
-            <h1 class="hero-title" id="hero-title">
-              American Pro.<br />
-              Built for the<br />
-              <em>life around your home.</em>
-            </h1>
-            <p class="hero-sub">
-              Decking, porch flooring, and architectural mouldings engineered from
-              UV-stabilized cellular PVC. They won't split, crack, splinter, or rot,
-              so the home you love stays the home you love.
-            </p>
-            <div class="hero-actions">
-              <a href="#samples" class="btn btn--primary btn--lg">Request Free Samples</a>
-              <a href="./pages/contact.html" class="btn btn--ghost-light btn--lg">Get a Quote</a>
-            </div>
-            <a class="hero-tertiary-link" href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener">
-              <span class="hero-tertiary-eyebrow">New tool</span>
-              See your deck before you build it
-              <span class="hero-tertiary-arrow" aria-hidden="true">↗</span>
-            </a>
-          </div>
-          <div class="hero-meta">
-            <strong>50+ years</strong>
-            of American manufacturing
-          </div>
-        </article>
-
         <!-- Prev / Next arrow controls. aria-hidden because the dots above are the
              canonical carousel controls (already announced by screen readers).
              These are a visual / touch affordance for sighted users. -->
@@ -410,15 +401,26 @@
         </button>
 
         <!-- Dot indicators (also act as progress bar). Order matches slide order:
-             TrueGrain Deck, InvisiClip, American Pro. -->
+             American Pro, TrueGrain Deck, InvisiClip. -->
         <div class="hero-dots" role="tablist" aria-label="Hero slides">
           <button
             class="hero-dot is-active"
             type="button"
             role="tab"
             aria-selected="true"
-            aria-controls="hero-slide-1"
+            aria-controls="hero-slide-3"
             data-hero-dot="0"
+          >
+            <span class="hero-dot-track"><span class="hero-dot-fill"></span></span>
+            <span class="hero-dot-label">American Pro</span>
+          </button>
+          <button
+            class="hero-dot"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="hero-slide-1"
+            data-hero-dot="1"
           >
             <span class="hero-dot-track"><span class="hero-dot-fill"></span></span>
             <span class="hero-dot-label">TrueGrain Deck&trade;</span>
@@ -429,21 +431,10 @@
             role="tab"
             aria-selected="false"
             aria-controls="hero-slide-2"
-            data-hero-dot="1"
-          >
-            <span class="hero-dot-track"><span class="hero-dot-fill"></span></span>
-            <span class="hero-dot-label">InvisiClip&trade;</span>
-          </button>
-          <button
-            class="hero-dot"
-            type="button"
-            role="tab"
-            aria-selected="false"
-            aria-controls="hero-slide-3"
             data-hero-dot="2"
           >
             <span class="hero-dot-track"><span class="hero-dot-fill"></span></span>
-            <span class="hero-dot-label">American Pro</span>
+            <span class="hero-dot-label">InvisiClip&trade;</span>
           </button>
         </div>
       </section>
