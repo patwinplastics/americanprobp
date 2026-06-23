@@ -545,8 +545,20 @@
                     <input id="sp-email" name="email" type="email" required autocomplete="email" />
                   </div>
                   <div class="field form-row">
-                    <label for="sp-address">Shipping Address</label>
-                    <input id="sp-address" name="address" type="text" required autocomplete="street-address" placeholder="Street, City, State" />
+                    <label for="sp-address">Street Address</label>
+                    <input id="sp-address" name="address" type="text" required autocomplete="address-line1" placeholder="Street address" />
+                  </div>
+                  <div class="field form-row">
+                    <label for="sp-address2">Apt / Suite / Unit</label>
+                    <input id="sp-address2" name="address2" type="text" autocomplete="address-line2" />
+                  </div>
+                  <div class="field">
+                    <label for="sp-city">City / Town</label>
+                    <input id="sp-city" name="city" type="text" required autocomplete="address-level2" />
+                  </div>
+                  <div class="field">
+                    <label for="sp-state">State</label>
+                    <input id="sp-state" name="state" type="text" required autocomplete="address-level1" />
                   </div>
                   <div class="field">
                     <label for="sp-zip">ZIP Code</label>

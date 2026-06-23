@@ -340,9 +340,13 @@
             <div class="form-grid">
               <label class="field"><span>First Name *</span><input type="text" name="first_name" autocomplete="given-name" required /></label>
               <label class="field"><span>Last Name *</span><input type="text" name="last_name" autocomplete="family-name" required /></label>
-              <label class="field field--full"><span>Address *</span><input type="text" name="address" autocomplete="street-address" required /></label>
+              <label class="field form-row"><span>Street Address *</span><input type="text" name="address" autocomplete="address-line1" required /></label>
+              <label class="field form-row"><span>Apt / Suite / Unit</span><input type="text" name="address2" autocomplete="address-line2" /></label>
+              <label class="field"><span>City / Town *</span><input type="text" name="city" autocomplete="address-level2" required /></label>
+              <label class="field"><span>State *</span><input type="text" name="state" autocomplete="address-level1" required /></label>
+              <label class="field"><span>ZIP Code *</span><input type="text" name="zip" inputmode="numeric" autocomplete="postal-code" required /></label>
               <label class="field"><span>Email *</span><input type="email" name="email" autocomplete="email" required /></label>
-              <label class="field"><span>Phone</span><input type="tel" name="phone" autocomplete="tel" /></label>
+              <label class="field form-row"><span>Phone</span><input type="tel" name="phone" autocomplete="tel" /></label>
 
               <fieldset class="field field--full">
                 <legend>Choose Your Samples</legend>

@@ -732,8 +732,20 @@
                     <input id="tg-email" name="email" type="email" required autocomplete="email" />
                   </div>
                   <div class="field form-row">
-                    <label for="tg-address">Shipping Address</label>
-                    <input id="tg-address" name="address" type="text" required autocomplete="street-address" placeholder="Street, City, State" />
+                    <label for="tg-address">Street Address</label>
+                    <input id="tg-address" name="address" type="text" required autocomplete="address-line1" placeholder="Street address" />
+                  </div>
+                  <div class="field form-row">
+                    <label for="tg-address2">Apt / Suite / Unit</label>
+                    <input id="tg-address2" name="address2" type="text" autocomplete="address-line2" />
+                  </div>
+                  <div class="field">
+                    <label for="tg-city">City / Town</label>
+                    <input id="tg-city" name="city" type="text" required autocomplete="address-level2" />
+                  </div>
+                  <div class="field">
+                    <label for="tg-state">State</label>
+                    <input id="tg-state" name="state" type="text" required autocomplete="address-level1" />
                   </div>
                   <div class="field">
                     <label for="tg-zip">ZIP Code</label>
