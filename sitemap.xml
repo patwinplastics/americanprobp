@@ -243,12 +243,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/blog/posts/where-to-buy-east-coast.html" />
   </url>
   <url>
-    <loc>https://deckvisualizer.truegraindeck.com/</loc>
+    <loc>https://deckbuilder.americanprobp.com/</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <image:image>
-      <image:loc>https://deckvisualizer.truegraindeck.com/images/share-preview.jpg</image:loc>
+      <image:loc>https://deckbuilder.americanprobp.com/images/share-preview.jpg</image:loc>
       <image:title>American Pro Deck Builder - TrueGrain 3D Deck Visualizer</image:title>
       <image:caption>Free 3D deck design tool with instant material estimates</image:caption>
     </image:image>
