@@ -110,7 +110,7 @@
             </div>
           </div>
         </div>
-        <a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener" class="nav-external nav-vis">Deck Visualizer<span aria-hidden="true" class="nav-external-arrow">↗</span></a>
+        <a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener" class="nav-external nav-vis">Deck Visualizer<span aria-hidden="true" class="nav-external-arrow">↗</span></a>
         <a href="${B}pages/inspiration.html">Inspiration</a>
         <a href="${B}pages/blog/index.html">Blog</a>
         <a href="${B}pages/about.html">About</a>
@@ -137,7 +137,7 @@
             ${mobileProductLinksHTML()}
           </ul>
         </li>
-        <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
         <li><a href="${B}pages/inspiration.html">Inspiration</a></li>
         <li><a href="${B}pages/blog/index.html">Blog</a></li>
         <li><a href="${B}pages/about.html">About</a></li>
@@ -167,7 +167,7 @@
             <li><a href="${B}pages/legacy-pvc-decking.html">Legacy PVC Decking</a></li>
             <li><a href="${B}pages/porch.html">Porch Flooring</a></li>
             <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
-            <li><a href="https://deckvisualizer.truegraindeck.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
             <li><a href="${B}pages/inspiration.html">Inspiration Gallery</a></li>
           </ul>
         </div>
