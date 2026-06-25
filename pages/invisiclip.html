@@ -52,7 +52,7 @@
     />
 
     <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/site.css?v=17-staging" />
+    <link rel="stylesheet" href="../css/site.css?v=18-staging" />
 
     <style>
       /* ==========================================================
@@ -219,7 +219,8 @@
       /* Brand attribution */
 
       /* Anchor scroll offset for fixed header */
-      section[id] { scroll-margin-top: 90px; }
+      /* scroll-margin-top for section[id] is centralized in css/site.css
+         so it clears both the header and the sticky section sub-nav. */
 
       /* Testing section */
       .ic-test-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: var(--space-10); align-items: stretch; }
@@ -274,6 +275,19 @@
     <div data-include="header"></div>
 
     <main>
+    <!-- ========== SECTION SUB-NAV (scroll-spy) ========== -->
+    <nav class="subnav" data-subnav aria-label="On this page">
+      <div class="subnav-inner">
+        <span class="subnav-label">On this page</span>
+        <a class="subnav-link" href="#top">Overview</a>
+        <a class="subnav-link" href="#spec">Specs</a>
+        <a class="subnav-link" href="#testing">Testing</a>
+        <a class="subnav-link" href="#pairs-with-decking">Works With</a>
+        <a class="subnav-link" href="#faq">FAQ</a>
+        <a class="subnav-link" href="#samples">Free Samples</a>
+      </div>
+    </nav>
+    <!-- ========== /SECTION SUB-NAV ========== -->
       <!-- ========== HERO ========== -->
       <section class="ic-hero" aria-labelledby="ic-hero-title">
         <div class="ic-hero-art" aria-hidden="true">
@@ -970,6 +984,6 @@
 
     <script src="./_partials.js?v=6-staging" defer></script>
     <script src="../js/geo-banner.js?v=2" defer></script>
-    <script src="../js/site.js?v=3" defer></script>
+    <script src="../js/site.js?v=4" defer></script>
   </body>
 </html>

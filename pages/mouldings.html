@@ -52,7 +52,7 @@
 
 
     <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/site.css?v=17-staging" />
+    <link rel="stylesheet" href="../css/site.css?v=18-staging" />
     <style>
       /* Hero */
       .moul-hero { position: relative; min-height: 60vh; display: flex; align-items: flex-end; color: #fff; isolation: isolate; }
@@ -123,6 +123,17 @@
     <div data-include="header"></div>
 
     <main>
+    <!-- ========== SECTION SUB-NAV (scroll-spy) ========== -->
+    <nav class="subnav" data-subnav aria-label="On this page">
+      <div class="subnav-inner">
+        <span class="subnav-label">On this page</span>
+        <a class="subnav-link" href="#top">Overview</a>
+        <a class="subnav-link" href="#catalog">Catalog</a>
+        <a class="subnav-link" href="#faq">FAQ</a>
+        <a class="subnav-link" href="#samples">Free Samples</a>
+      </div>
+    </nav>
+    <!-- ========== /SECTION SUB-NAV ========== -->
       <!-- Hero -->
       <section class="moul-hero">
         <img fetchpriority="high" width="2000" height="1493" decoding="async" src="../images/product_moulding.jpg" alt="American Pro PVC mouldings on a residential exterior"  />
@@ -446,7 +457,7 @@
     <div data-include="footer"></div>
     <script src="./_partials.js?v=6-staging"></script>
     <script src="../js/geo-banner.js?v=2" defer></script>
-    <script src="../js/site.js?v=3"></script>
+    <script src="../js/site.js?v=4"></script>
     <script>
       // Category tab toggle
       document.addEventListener('click', function (e) {

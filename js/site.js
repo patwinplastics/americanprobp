@@ -714,3 +714,96 @@
     init();
   }
 })();
+
+/* ─── Section sub-nav scroll-spy ───────────────────────────────────────────
+   Highlights the sub-nav link for whichever section is currently in view and
+   keeps the active chip scrolled into view inside the horizontal mobile bar.
+   Smooth scrolling on click is handled natively by CSS scroll-behavior plus
+   the scroll-margin-top offset, so this module only manages the active state.
+   Self-initializing and dependency-free; safe on pages with no .subnav. */
+(function () {
+  function initSubnav() {
+    var nav = document.querySelector('.subnav[data-subnav]');
+    if (!nav) return;
+
+    var links = Array.prototype.slice.call(nav.querySelectorAll('.subnav-link'));
+    if (!links.length) return;
+
+    // Map each section id to its link, and collect the observed targets.
+    var linkById = {};
+    var targets = [];
+    links.forEach(function (link) {
+      var href = link.getAttribute('href') || '';
+      var hash = href.indexOf('#') >= 0 ? href.slice(href.indexOf('#') + 1) : '';
+      if (!hash) return; // e.g. an "Overview" link to the top of the page
+      var section = document.getElementById(hash);
+      if (!section) return;
+      linkById[hash] = link;
+      targets.push(section);
+    });
+
+    var current = null;
+    function setActive(id) {
+      if (id === current) return;
+      current = id;
+      links.forEach(function (l) { l.classList.remove('is-active'); });
+      var active = id && linkById[id];
+      if (active) {
+        active.classList.add('is-active');
+        // Keep the active chip visible in the horizontal scroller (mobile).
+        var inner = nav.querySelector('.subnav-inner');
+        if (inner && inner.scrollWidth > inner.clientWidth) {
+          var off = active.offsetLeft - (inner.clientWidth / 2) + (active.offsetWidth / 2);
+          inner.scrollTo({ left: Math.max(0, off), behavior: 'smooth' });
+        }
+      }
+    }
+
+    if (!('IntersectionObserver' in window) || !targets.length) return;
+
+    // Track how much of each section is in view; the topmost section that is
+    // sufficiently visible (or has scrolled past the trigger line) wins.
+    var visibility = {};
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        visibility[entry.target.id] = entry.isIntersecting ? entry.intersectionRatio : 0;
+      });
+      // Pick the first section (in document order) that is currently visible.
+      var pick = null;
+      for (var i = 0; i < targets.length; i++) {
+        if (visibility[targets[i].id] > 0) { pick = targets[i].id; break; }
+      }
+      if (pick) setActive(pick);
+    }, {
+      // Trigger line sits just under the header + sub-nav stack.
+      rootMargin: '-32% 0px -55% 0px',
+      threshold: [0, 0.01, 0.25, 0.5, 1]
+    });
+
+    targets.forEach(function (t) { observer.observe(t); });
+
+    // If an "Overview"/top link exists, mark it active when the page is
+    // scrolled near the very top. The Overview link is the first link whose
+    // href has no fragment, points at "#" / "#top", or has no matching
+    // section element (so it was never registered as a scroll target).
+    var topLink = links[0];
+    var topHref = topLink ? (topLink.getAttribute('href') || '') : '';
+    var topHash = topHref.indexOf('#') >= 0 ? topHref.slice(topHref.indexOf('#') + 1) : '';
+    var topIsOverview = topLink && (topHash === '' || topHash === 'top' || !document.getElementById(topHash));
+    if (topIsOverview) {
+      window.addEventListener('scroll', function () {
+        if (window.scrollY < 80) {
+          current = null;
+          links.forEach(function (l) { l.classList.remove('is-active'); });
+          topLink.classList.add('is-active');
+        }
+      }, { passive: true });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSubnav);
+  } else {
+    initSubnav();
+  }
+})();
