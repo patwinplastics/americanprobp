@@ -557,9 +557,14 @@
   padding: var(--space-6) var(--space-6) calc(var(--space-8) + env(safe-area-inset-bottom, 0px));
   z-index: 99;
   /* Never taller than the space between the drawer top and the bottom of
-     the viewport; scroll internally if the menu is taller than that. Uses
-     100dvh so the live mobile-browser chrome is accounted for. */
-  max-height: calc(100dvh - 6.5rem);
+     the VISIBLE viewport; scroll internally if the menu is taller. iOS
+     Safari overlays a bottom toolbar that 100dvh does not always subtract
+     while a fixed overlay is open, so js/site.js measures the real visual
+     viewport height into --app-vh and we prefer it. Fallbacks: dvh, then vh. */
+  --drawer-top: 6.5rem;
+  max-height: calc(100vh - var(--drawer-top));
+  max-height: calc(100dvh - var(--drawer-top));
+  max-height: calc(var(--app-vh, 100dvh) - var(--drawer-top));
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
@@ -588,7 +593,10 @@
   border-bottom: 1px solid var(--color-divider);
 }
 .mobile-menu .mobile-cta {
-  margin-top: var(--space-6);
+  /* Stays clear of the last nav link but stays compact so both CTA pills
+     fit on short phones. */
+  margin-top: var(--space-4);
+  padding-bottom: var(--space-2);
   display: grid;
   gap: var(--space-3);
 }
@@ -614,9 +622,13 @@
   .mobile-menu {
     inset: 9.25rem 0 auto 0;
     /* Top offset grows to clear the full logo lockup, so the height cap
-       must shrink to match or the bottom CTA would run off-screen. */
-    max-height: calc(100dvh - 9.25rem);
+       must shrink to match or the bottom CTA would run off-screen. The
+       three declarations layer fallbacks; the last supported one wins. */
+    --drawer-top: 9.25rem;
   }
+  /* Slightly tighter link padding on the smallest screens so the full
+     menu (5 links + 2 CTAs) fits without scrolling on most phones. */
+  .mobile-menu ul a { padding: 0.625rem 0; font-size: var(--text-base); }
 }
 
 /* ─── Hero ────────────────────────────────────────────────────────────────── */

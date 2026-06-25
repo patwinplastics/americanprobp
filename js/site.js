@@ -12,7 +12,27 @@
   const menuToggle = document.querySelector('[data-menu-toggle]');
   const mobileMenu = document.querySelector('.mobile-menu');
   if (menuToggle && mobileMenu) {
+    // Write the REAL visible viewport height into --app-vh so the drawer's
+    // max-height reflects the space actually on screen. iOS Safari overlays
+    // a bottom toolbar that 100dvh does not reliably subtract while a fixed
+    // overlay is open, which pushed the bottom Call CTA under the toolbar.
+    // visualViewport.height excludes that toolbar, so the cap is correct and
+    // the drawer scrolls internally to keep every item (including Call)
+    // reachable.
+    const setAppVh = () => {
+      const vv = window.visualViewport;
+      const h = vv ? vv.height : window.innerHeight;
+      document.documentElement.style.setProperty('--app-vh', h + 'px');
+    };
+    setAppVh();
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', setAppVh);
+      window.visualViewport.addEventListener('scroll', setAppVh);
+    }
+    window.addEventListener('orientationchange', setAppVh);
+
     menuToggle.addEventListener('click', () => {
+      setAppVh(); // remeasure right before opening
       const open = mobileMenu.classList.toggle('is-open');
       menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.body.style.overflow = open ? 'hidden' : '';
