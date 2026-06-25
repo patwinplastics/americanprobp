@@ -552,8 +552,17 @@
   inset: 6.5rem 0 auto 0;
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-divider);
-  padding: var(--space-6) var(--space-6) var(--space-8);
+  /* Bottom padding also clears the iOS home-indicator safe area so the
+     final CTA (the Call button) is never cut off at the screen edge. */
+  padding: var(--space-6) var(--space-6) calc(var(--space-8) + env(safe-area-inset-bottom, 0px));
   z-index: 99;
+  /* Never taller than the space between the drawer top and the bottom of
+     the viewport; scroll internally if the menu is taller than that. Uses
+     100dvh so the live mobile-browser chrome is accounted for. */
+  max-height: calc(100dvh - 6.5rem);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   /* Closed state: shift the drawer fully off-screen plus a buffer so its
      bottom edge, border, and shadow never bleed into the header area on
      short viewports where translateY(-110%) of a tall drawer is not enough. */
@@ -602,7 +611,12 @@
    on top of AMERICAN PRO on top of BUILDING PRODUCTS wordmark) which
    ends near 9rem at <= 540px. */
 @media (max-width: 540px) {
-  .mobile-menu { inset: 9.25rem 0 auto 0; }
+  .mobile-menu {
+    inset: 9.25rem 0 auto 0;
+    /* Top offset grows to clear the full logo lockup, so the height cap
+       must shrink to match or the bottom CTA would run off-screen. */
+    max-height: calc(100dvh - 9.25rem);
+  }
 }
 
 /* ─── Hero ────────────────────────────────────────────────────────────────── */
