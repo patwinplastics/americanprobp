@@ -20,6 +20,14 @@
     </image:image>
   </url>
   <url>
+    <loc>https://americanprobp.com/lookbook/</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/lookbook/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/lookbook/" />
+  </url>
+  <url>
     <loc>https://americanprobp.com/pages/american-pro.html</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
