@@ -98,7 +98,18 @@
 
       .geo-crosslink { font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-6); }
       .geo-crosslink a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
-    </style>
+    
+      .colors-section { background: var(--color-surface-2, #f4f1ea); }
+      .sp-swatches { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); max-width: 720px; margin-top: var(--space-8); }
+      @media (max-width: 540px) { .sp-swatches { grid-template-columns: 1fr; gap: var(--space-4); } }
+      .sp-swatch { background: #fff; border: 1px solid var(--color-divider); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm, 0 1px 3px rgba(14,31,58,.06)); }
+      .sp-swatch-color { aspect-ratio: 4/3; background-size: cover; background-position: center; }
+      .sp-swatch-body { padding: var(--space-5) var(--space-6); border-top: 1px solid var(--color-divider); }
+      .sp-swatch-name { font-family: var(--font-display); font-size: var(--text-xl); letter-spacing: -0.01em; color: var(--color-primary, #0e1f3a); font-weight: 600; }
+      .sp-swatch-meta { font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); font-weight: 600; margin-top: 6px; }
+      .colors-cta { margin-top: var(--space-8); color: var(--color-text-muted); font-size: var(--text-sm); }
+      .colors-cta a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+</style>
 
     <script>
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -126,6 +137,31 @@
             <a href="#where-to-buy" class="btn btn--primary btn--lg">Where to Buy in SE Mass</a>
             <a href="./legacy-pvc-decking.html" class="btn btn--ghost-light btn--lg">See Legacy PVC Decking</a>
           </div>
+        </div>
+      </section>
+
+            <section class="section colors-section" id="colors">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <div>
+              <span class="eyebrow">The two SE Mass colors</span>
+              <h2>Driftwood and Khaki.<br /><em>Stocked at Stonewood.</em></h2>
+            </div>
+            <p>The two Legacy PVC colors Stonewood keeps in inventory at Harwich and Mashpee, delivered across Plymouth County, Bristol County, and the South Shore. Driftwood reads as a soft weathered grey, and Khaki brings a warm tan for South Shore and SouthCoast homes.</p>
+          </header>
+
+          <div class="sp-swatches" data-reveal>
+            <div class="sp-swatch">
+              <div class="sp-swatch-color" style="background-image: url('../images/deck_swatches/driftwood.jpg');"></div>
+              <div class="sp-swatch-body"><div class="sp-swatch-name">Driftwood</div><div class="sp-swatch-meta">Light grey wood-grain</div></div>
+            </div>
+            <div class="sp-swatch">
+              <div class="sp-swatch-color" style="background-image: url('../images/deck_swatches/khaki.jpg');"></div>
+              <div class="sp-swatch-body"><div class="sp-swatch-name">Khaki</div><div class="sp-swatch-meta">Warm tan</div></div>
+            </div>
+          </div>
+
+          <p class="colors-cta">Want to compare on your home before you buy? <a href="legacy-pvc-decking.html#samples">Request free Legacy PVC samples</a> from American Pro.</p>
         </div>
       </section>
 
