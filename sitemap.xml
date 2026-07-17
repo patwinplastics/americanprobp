@@ -425,4 +425,88 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://americanprobp.com/pages/pvc-vs-composite-decking.html</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/pvc-vs-composite-decking.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/pvc-vs-composite-decking.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/og/og-decking.jpg</image:loc>
+      <image:title>PVC vs composite decking comparison</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/truegrain-vs-capped-composite-decking.html</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/truegrain-vs-capped-composite-decking.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/truegrain-vs-capped-composite-decking.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/og/og-cool-deck.jpg</image:loc>
+      <image:title>TrueGrain PVC vs capped composite decking comparison</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/premium-pvc-decking-comparison.html</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/premium-pvc-decking-comparison.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/premium-pvc-decking-comparison.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/og/og-decking.jpg</image:loc>
+      <image:title>Premium PVC decking buyer's comparison guide</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/realistic-woodgrain-pvc-decking.html</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/realistic-woodgrain-pvc-decking.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/realistic-woodgrain-pvc-decking.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/og/og-decking.jpg</image:loc>
+      <image:title>Most realistic woodgrain PVC decking</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/cellular-pvc-decking-guide.html</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/cellular-pvc-decking-guide.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/cellular-pvc-decking-guide.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/og/og-decking.jpg</image:loc>
+      <image:title>Cellular PVC decking guide</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/ipe-wood-alternative-decking.html</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/ipe-wood-alternative-decking.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/ipe-wood-alternative-decking.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/og/og-decking.jpg</image:loc>
+      <image:title>Ipe wood alternative decking</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/pvc-decking-coastal-homes.html</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/pvc-decking-coastal-homes.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/pvc-decking-coastal-homes.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/og/og-decking.jpg</image:loc>
+      <image:title>PVC decking for coastal homes</image:title>
+    </image:image>
+  </url>
 </urlset>
