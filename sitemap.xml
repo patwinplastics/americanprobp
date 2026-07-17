@@ -231,6 +231,14 @@
     </image:image>
   </url>
   <url>
+    <loc>https://americanprobp.com/pages/dealers.html</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/dealers.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/dealers.html" />
+  </url>
+  <url>
     <loc>https://americanprobp.com/pages/contact.html</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
