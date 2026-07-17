@@ -94,50 +94,48 @@
       .filter-btn:focus-visible { outline: 3px solid #c8102e; outline-offset: 2px; }
       .filter-btn.is-active { background: #0e1f3a; color: #fff; border-color: #0e1f3a; }
 
-      /* Base layout: CSS columns fallback (robust masonry for all browsers) */
-      .gallery-grid { columns: 3; column-gap: var(--space-4); }
-      .gallery-grid .card {
+      /* Bulletproof CSS multi-column masonry layout.
+         Scoped under .inspo-gallery so it cannot collide with the site-wide
+         .gallery-grid rule in site.css (display:grid; 12 cols), which was
+         collapsing every card into a single row. */
+      .inspo-gallery {
+        column-count: 3;
+        column-gap: var(--space-6);
+      }
+      @media (max-width: 1024px) { .inspo-gallery { column-count: 2; } }
+      @media (max-width: 640px)  { .inspo-gallery { column-count: 1; } }
+
+      .inspo-gallery .card {
+        display: inline-block;
+        width: 100%;
+        margin: 0 0 var(--space-6);
+        -webkit-column-break-inside: avoid;
+        page-break-inside: avoid;
         break-inside: avoid;
-        margin: 0 0 var(--space-4);
         position: relative;
         border-radius: var(--radius-lg);
         overflow: hidden;
-        display: block;
-      }
-      @media (max-width: 1024px) { .gallery-grid { columns: 2; } }
-      @media (max-width: 640px)  { .gallery-grid { columns: 1; } }
-
-      /* Progressive enhancement: native CSS masonry grid where supported */
-      @supports (grid-template-rows: masonry) {
-        .gallery-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          grid-template-rows: masonry;
-          gap: var(--space-4);
-          columns: auto;
-        }
-        .gallery-grid .card { margin: 0; }
-        @media (max-width: 1024px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 640px)  { .gallery-grid { grid-template-columns: 1fr; } }
       }
 
-      .gallery-grid .card img {
+      .inspo-gallery .card img {
         width: 100%;
         height: auto;
         display: block;
         transition: transform 700ms ease;
       }
-      .gallery-grid .card:hover img { transform: scale(1.04); }
-      .gallery-grid .card[hidden] { display: none; }
+      .inspo-gallery .card:hover img { transform: scale(1.04); }
+      .inspo-gallery .card[hidden] { display: none; }
 
-      .gallery-grid figcaption {
+      .inspo-gallery figcaption {
         position: absolute;
         left: 0; right: 0; bottom: 0;
-        padding: var(--space-6);
+        padding: var(--space-5) var(--space-6);
         color: #fff;
-        background: linear-gradient(to top, rgba(14,31,58,.92) 5%, rgba(14,31,58,.55) 55%, transparent);
+        /* Solid band anchored to the bottom that fades out well before the
+           top of the image, so the photo stays visible. */
+        background: linear-gradient(to top, rgba(14,31,58,.95) 0%, rgba(14,31,58,.85) 35%, rgba(14,31,58,0) 100%);
       }
-      .gallery-grid .card-product {
+      .inspo-gallery .card-product {
         display: block;
         font-family: var(--font-body);
         font-size: 10px;
@@ -146,14 +144,14 @@
         text-transform: uppercase;
         opacity: 0.85;
       }
-      .gallery-grid .card-color {
+      .inspo-gallery .card-color {
         display: block;
         font-family: var(--font-display);
         font-size: var(--text-lg);
         line-height: 1.2;
         margin-top: 2px;
       }
-      .gallery-grid .card-cta {
+      .inspo-gallery .card-cta {
         display: inline-flex;
         align-items: center;
         gap: 6px;
@@ -168,10 +166,10 @@
         opacity: 0.92;
         transition: opacity 220ms ease;
       }
-      .gallery-grid .card-cta:hover { opacity: 1; }
-      .gallery-grid .card-cta svg { transition: transform 220ms ease; }
-      .gallery-grid .card-cta:hover svg { transform: translateX(4px); }
-      .gallery-grid .card-cta:focus-visible { outline: 3px solid #c8102e; outline-offset: 2px; }
+      .inspo-gallery .card-cta:hover { opacity: 1; }
+      .inspo-gallery .card-cta svg { transition: transform 220ms ease; }
+      .inspo-gallery .card-cta:hover svg { transform: translateX(4px); }
+      .inspo-gallery .card-cta:focus-visible { outline: 3px solid #c8102e; outline-offset: 2px; }
 
       .gallery-empty { display: none; padding: var(--space-8) 0; color: var(--muted, #6b7280); }
       .gallery-empty.is-visible { display: block; }
@@ -203,7 +201,7 @@
             <button type="button" class="filter-btn" data-filter="dark-tones" aria-pressed="false">Dark Tones</button>
           </div>
 
-          <div class="gallery-grid" id="galleryGrid" data-reveal>
+          <div class="inspo-gallery" id="galleryGrid" data-reveal>
             <figure class="card" data-tags="decking classic-colors">
               <picture>
                 <source type="image/webp" srcset="../lookbook/truegrain/truegrain-aged-oak-lakeside-deck-800w.webp 800w, ../lookbook/truegrain/truegrain-aged-oak-lakeside-deck-1400w.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
