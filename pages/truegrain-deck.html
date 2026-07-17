@@ -755,6 +755,49 @@
         </div>
       </section>
 
+      <!-- ========== FIND YOUR MATCH QUIZ ========== -->
+      <section class="section quiz" id="find-your-deck" aria-labelledby="quiz-title" data-quiz>
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Find your match</span>
+            <h2 id="quiz-title">Not sure which deck?<br /><em>Answer three questions.</em></h2>
+            <p class="section-lede">Tell us what you're working with, what matters most, and how you feel about wood grain. We will point you to the American Pro line that fits, then put real samples in your hands.</p>
+          </div>
+          <div class="quiz-card" data-reveal data-reveal-delay="1">
+            <fieldset class="quiz-step">
+              <legend id="quiz-q1-label">1. What are you replacing or building over?</legend>
+              <div class="quiz-options" role="group" aria-labelledby="quiz-q1-label">
+                <button type="button" class="quiz-option" data-quiz-q="1" data-quiz-value="wood" aria-pressed="false">Wood</button>
+                <button type="button" class="quiz-option" data-quiz-q="1" data-quiz-value="composite" aria-pressed="false">Composite</button>
+                <button type="button" class="quiz-option" data-quiz-q="1" data-quiz-value="pvc" aria-pressed="false">Existing PVC</button>
+                <button type="button" class="quiz-option" data-quiz-q="1" data-quiz-value="newbuild" aria-pressed="false">New build</button>
+              </div>
+            </fieldset>
+            <fieldset class="quiz-step">
+              <legend id="quiz-q2-label">2. What matters most?</legend>
+              <div class="quiz-options" role="group" aria-labelledby="quiz-q2-label">
+                <button type="button" class="quiz-option" data-quiz-q="2" data-quiz-value="look" aria-pressed="false">Realistic wood look</button>
+                <button type="button" class="quiz-option" data-quiz-q="2" data-quiz-value="heat" aria-pressed="false">Heat resistance</button>
+                <button type="button" class="quiz-option" data-quiz-q="2" data-quiz-value="price" aria-pressed="false">Price</button>
+                <button type="button" class="quiz-option" data-quiz-q="2" data-quiz-value="ease" aria-pressed="false">Contractor ease</button>
+              </div>
+            </fieldset>
+            <fieldset class="quiz-step">
+              <legend id="quiz-q3-label">3. How important is a real wood grain look?</legend>
+              <div class="quiz-options" role="group" aria-labelledby="quiz-q3-label">
+                <button type="button" class="quiz-option" data-quiz-q="3" data-quiz-value="very" aria-pressed="false">Very important</button>
+                <button type="button" class="quiz-option" data-quiz-q="3" data-quiz-value="somewhat" aria-pressed="false">Somewhat</button>
+                <button type="button" class="quiz-option" data-quiz-q="3" data-quiz-value="not" aria-pressed="false">Not important</button>
+                <button type="button" class="quiz-option" data-quiz-q="3" data-quiz-value="clean" aria-pressed="false">I prefer a clean uniform finish</button>
+              </div>
+            </fieldset>
+            <div class="quiz-result" data-quiz-result hidden aria-live="polite"></div>
+            <button type="button" class="quiz-reset btn btn--ghost" data-quiz-reset hidden>Start over</button>
+          </div>
+        </div>
+      </section>
+      <script src="../js/quiz.js" defer></script>
+
       <!-- ========== SAMPLES ========== -->
       <section class="section" id="samples">
         <div class="container">
