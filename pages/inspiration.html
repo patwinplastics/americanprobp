@@ -50,103 +50,6 @@
 
     <link rel="stylesheet" href="../css/base.css" />
     <link rel="stylesheet" href="../css/site.css?v=20-staging" />
-    <style>
-      .insp-grid {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: var(--space-4);
-      }
-      .insp-grid figure {
-        position: relative;
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        margin: 0;
-      }
-      .insp-grid a.insp-tile {
-        display: block;
-        position: relative;
-        width: 100%;
-        height: 100%;
-        color: inherit;
-        text-decoration: none;
-        outline: none;
-      }
-      .insp-grid a.insp-tile:focus-visible {
-        outline: 3px solid #c8102e;
-        outline-offset: 3px;
-        border-radius: var(--radius-lg);
-      }
-      .insp-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms ease; }
-      .insp-grid a.insp-tile:hover img,
-      .insp-grid a.insp-tile:focus-visible img { transform: scale(1.04); }
-      .insp-grid .insp-cta {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: var(--space-3);
-        font-family: var(--font-body);
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #fff;
-        opacity: 0.92;
-        transition: opacity 220ms ease, transform 220ms ease;
-      }
-      .insp-grid .insp-cta svg { transition: transform 220ms ease; }
-      .insp-grid a.insp-tile:hover .insp-cta,
-      .insp-grid a.insp-tile:focus-visible .insp-cta { opacity: 1; }
-      .insp-grid a.insp-tile:hover .insp-cta svg,
-      .insp-grid a.insp-tile:focus-visible .insp-cta svg { transform: translateX(4px); }
-      .insp-grid figcaption {
-        position: absolute;
-        left: 0; right: 0; bottom: 0;
-        padding: var(--space-6);
-        color: #fff;
-        background: linear-gradient(to top, rgba(14,31,58,.92) 5%, rgba(14,31,58,.55) 60%, transparent);
-        font-family: var(--font-display);
-        font-size: var(--text-lg);
-        line-height: 1.25;
-      }
-      .insp-grid figcaption .eyebrow-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-bottom: var(--space-3);
-      }
-      .insp-grid figcaption .eyebrow-tags .tag {
-        font-family: var(--font-body);
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: #fff;
-        background: rgba(255,255,255,.14);
-        border: 1px solid rgba(255,255,255,.28);
-        border-radius: 999px;
-        padding: 4px 10px;
-        backdrop-filter: blur(4px);
-      }
-      /* Landscape tiles */
-      .span-7  { grid-column: span 7; aspect-ratio: 4/3; }
-      .span-5  { grid-column: span 5; aspect-ratio: 4/3; }
-      .span-6  { grid-column: span 6; aspect-ratio: 4/3; }
-      .span-8  { grid-column: span 8; aspect-ratio: 16/9; }
-      .span-12 { grid-column: 1 / -1; aspect-ratio: 16/6; }
-      /* Portrait tiles, narrower columns and taller aspect */
-      .span-4-tall { grid-column: span 4; aspect-ratio: 3/4; }
-      .span-3-tall { grid-column: span 3; aspect-ratio: 2/3; }
-      .span-5-tall { grid-column: span 5; aspect-ratio: 4/5; }
-      /* Square */
-      .span-4 { grid-column: span 4; aspect-ratio: 1; }
-      @media (max-width: 720px) {
-        .insp-grid { grid-template-columns: 1fr; }
-        .insp-grid figure { grid-column: 1 / -1 !important; aspect-ratio: 4/3 !important; }
-        .insp-grid figure.span-4-tall,
-        .insp-grid figure.span-3-tall,
-        .insp-grid figure.span-5-tall { aspect-ratio: 3/4 !important; }
-      }
-    </style>
     <!-- Meta Pixel Code -->
     <script>
       !function(f,b,e,v,n,t,s)
@@ -164,6 +67,115 @@
       src="https://www.facebook.com/tr?id=431677712006030&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
+      <style>
+      .gallery-intro { max-width: 60ch; }
+      .gallery-intro p { margin-top: 0.75rem; }
+      .gallery-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: var(--space-6) 0 var(--space-8);
+      }
+      .filter-btn {
+        font-family: var(--font-body);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #0e1f3a;
+        background: transparent;
+        border: 1.5px solid rgba(14,31,58,.28);
+        border-radius: 999px;
+        padding: 9px 18px;
+        cursor: pointer;
+        transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+      }
+      .filter-btn:hover { border-color: #0e1f3a; }
+      .filter-btn:focus-visible { outline: 3px solid #c8102e; outline-offset: 2px; }
+      .filter-btn.is-active { background: #0e1f3a; color: #fff; border-color: #0e1f3a; }
+
+      /* Base layout: CSS columns fallback (robust masonry for all browsers) */
+      .gallery-grid { columns: 3; column-gap: var(--space-4); }
+      .gallery-grid .card {
+        break-inside: avoid;
+        margin: 0 0 var(--space-4);
+        position: relative;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        display: block;
+      }
+      @media (max-width: 1024px) { .gallery-grid { columns: 2; } }
+      @media (max-width: 640px)  { .gallery-grid { columns: 1; } }
+
+      /* Progressive enhancement: native CSS masonry grid where supported */
+      @supports (grid-template-rows: masonry) {
+        .gallery-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: masonry;
+          gap: var(--space-4);
+          columns: auto;
+        }
+        .gallery-grid .card { margin: 0; }
+        @media (max-width: 1024px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px)  { .gallery-grid { grid-template-columns: 1fr; } }
+      }
+
+      .gallery-grid .card img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 700ms ease;
+      }
+      .gallery-grid .card:hover img { transform: scale(1.04); }
+      .gallery-grid .card[hidden] { display: none; }
+
+      .gallery-grid figcaption {
+        position: absolute;
+        left: 0; right: 0; bottom: 0;
+        padding: var(--space-6);
+        color: #fff;
+        background: linear-gradient(to top, rgba(14,31,58,.92) 5%, rgba(14,31,58,.55) 55%, transparent);
+      }
+      .gallery-grid .card-product {
+        display: block;
+        font-family: var(--font-body);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        opacity: 0.85;
+      }
+      .gallery-grid .card-color {
+        display: block;
+        font-family: var(--font-display);
+        font-size: var(--text-lg);
+        line-height: 1.2;
+        margin-top: 2px;
+      }
+      .gallery-grid .card-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: var(--space-3);
+        font-family: var(--font-body);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #fff;
+        text-decoration: none;
+        opacity: 0.92;
+        transition: opacity 220ms ease;
+      }
+      .gallery-grid .card-cta:hover { opacity: 1; }
+      .gallery-grid .card-cta svg { transition: transform 220ms ease; }
+      .gallery-grid .card-cta:hover svg { transform: translateX(4px); }
+      .gallery-grid .card-cta:focus-visible { outline: 3px solid #c8102e; outline-offset: 2px; }
+
+      .gallery-empty { display: none; padding: var(--space-8) 0; color: var(--muted, #6b7280); }
+      .gallery-empty.is-visible { display: block; }
+    </style>
   </head>
   <body>
     <div data-include="header"></div>
@@ -173,114 +185,209 @@
         <div class="container">
           <span class="eyebrow">Inspiration</span>
           <h1>From shoreline<br /><em>to mountainside.</em></h1>
-          <p>Real homes built with American Pro TrueGrain decking, legacy PVC decking, porch flooring, and architectural mouldings. Coastal cottages, modern fire-feature decks, traditional front porches, and colonial trim - all in one place.</p>
-          <p style="margin-top:1rem;font-size:1rem;">See something you like? <a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener" title="American Pro Deck Builder - 3D PVC Deck Visualizer"><strong>Design your own deck in 3D</strong></a> with our free TrueGrain Deck Visualizer - pick boards, patterns, lighting, and railing, then get an instant material estimate.</p>
+          <div class="gallery-intro">
+            <p>Explore real deck and porch color palettes in TrueGrain, Legacy PVC decking, and cellular-PVC porch flooring - from coastal driftwood tones to rich dark hardwood looks.</p>
+            <p>Filter by style below, then <a href="https://deckbuilder.americanprobp.com" target="_blank" rel="noopener"><strong>design your own deck in 3D</strong></a> or browse <a href="porch.html">porch flooring ideas</a> to find the right finish for your home.</p>
+          </div>
         </div>
       </section>
 
       <section class="section">
         <div class="container">
-          <div class="insp-grid" data-reveal>
-
-            <!-- Row 1: hero pair, existing photography -->
-            <figure class="span-7">
-              <a class="insp-tile" href="legacy-pvc-decking.html#samples" aria-label="Request free Legacy PVC Decking samples in Chestnut">
-                <img fetchpriority="high" width="2400" height="1339" decoding="async" src="../images/hero_deck.jpg" alt="Family relaxing on a backyard American Pro PVC deck with white railing at golden hour" />
-                <figcaption>
-                  <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Chestnut</span><span class="tag">Wraparound</span></div>
-                  Wraparound craftsman
-                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </figcaption>
-              </a>
-            </figure>
-            <figure class="span-5">
-              <a class="insp-tile" href="legacy-pvc-decking.html#samples" aria-label="Request free Legacy PVC Decking samples in Beachwood">
-                <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/gallery_pool.jpg" alt="Pool deck with American Pro Beachwood PVC decking and outdoor seating" />
-                <figcaption>
-                  <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Beachwood</span><span class="tag">Poolside</span></div>
-                  Poolside cabana
-                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </figcaption>
-              </a>
-            </figure>
-
-            <!-- Row 2: portrait Tuscany porch + landscape modern Chestnut + portrait Coastal Driftwood -->
-            <figure class="span-3-tall">
-              <a class="insp-tile" href="porch.html#samples" aria-label="Request free Porch Flooring samples in Tuscany">
-                <img width="1822" height="3452" loading="lazy" decoding="async" src="../images/inspiration/porch_tuscany.jpg" alt="Front porch with narrow American Pro Tuscany terracotta porch flooring, white columns, and rocking chairs" />
-                <figcaption>
-                  <div class="eyebrow-tags"><span class="tag">Porch Flooring</span><span class="tag">Tuscany</span><span class="tag">Front Porch</span></div>
-                  Tuscany terracotta porch
-                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </figcaption>
-              </a>
-            </figure>
-            <figure class="span-6">
-              <a class="insp-tile" href="legacy-pvc-decking.html#samples" aria-label="Request free Legacy PVC Decking samples in Chestnut">
-                <img width="2752" height="1536" loading="lazy" decoding="async" src="../images/inspiration/modern_chestnut.jpg" alt="Modern deck with rich Chestnut PVC decking, linear gas fire feature, and architectural lighting" />
-                <figcaption>
-                  <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Chestnut</span><span class="tag">Modern</span></div>
-                  Chestnut deck, modern fire feature
-                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </figcaption>
-              </a>
-            </figure>
-            <figure class="span-3-tall">
-              <a class="insp-tile" href="truegrain-deck.html#samples" aria-label="Request free TrueGrain Deck samples in Coastal Driftwood">
-                <img width="2110" height="2980" loading="lazy" decoding="async" src="../images/inspiration/coastal_driftwood.jpg" alt="Coastal home with American Pro TrueGrain Coastal Driftwood decking, weathered cedar shingles, and sea-grass landscaping" />
-                <figcaption>
-                  <div class="eyebrow-tags"><span class="tag">TrueGrain Decking</span><span class="tag">Coastal Driftwood</span><span class="tag">Coastal</span></div>
-                  Coastal Driftwood, shoreline
-                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </figcaption>
-              </a>
-            </figure>
-
-            <!-- Row 3: porch landscape + backyard dining -->
-            <figure class="span-5">
-              <a class="insp-tile" href="porch.html#samples" aria-label="Request free Porch Flooring samples in Driftwood">
-                <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/product_porch.jpg" alt="American Pro Driftwood porch flooring on traditional home with painted column" />
-                <figcaption>
-                  <div class="eyebrow-tags"><span class="tag">Porch Flooring</span><span class="tag">Driftwood</span><span class="tag">Traditional</span></div>
-                  Painted column, Driftwood porch
-                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </figcaption>
-              </a>
-            </figure>
-            <figure class="span-7">
-              <a class="insp-tile" href="legacy-pvc-decking.html#samples" aria-label="Request free Legacy PVC Decking samples in Beachwood">
-                <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/gallery_sunset.jpg" alt="Backyard dining deck with American Pro Beachwood PVC decking at golden hour" />
-                <figcaption>
-                  <div class="eyebrow-tags"><span class="tag">Legacy Decking</span><span class="tag">Beachwood</span><span class="tag">Backyard</span></div>
-                  Backyard dining, golden hour
-                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </figcaption>
-              </a>
-            </figure>
-
-            <!-- Row 4: colonial moulding landscape + tall white moulding portrait -->
-            <figure class="span-8">
-              <a class="insp-tile" href="mouldings.html#samples" aria-label="Request free Moulding samples including crown and casing">
-                <img width="2000" height="1493" loading="lazy" decoding="async" src="../images/product_moulding.jpg" alt="American Pro PVC architectural crown and casing moulding on a colonial home facade" />
-                <figcaption>
-                  <div class="eyebrow-tags"><span class="tag">Mouldings</span><span class="tag">Crown &amp; Casing</span><span class="tag">Colonial</span></div>
-                  Colonial trim package
-                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </figcaption>
-              </a>
-            </figure>
-            <figure class="span-4-tall">
-              <a class="insp-tile" href="mouldings.html#samples" aria-label="Request free white PVC Moulding samples">
-                <img width="2048" height="3072" loading="lazy" decoding="async" src="../images/inspiration/moulding_white.jpg" alt="Detail of crisp white American Pro PVC architectural moulding profile against a clean wall" />
-                <figcaption>
-                  <div class="eyebrow-tags"><span class="tag">Mouldings</span><span class="tag">White PVC</span><span class="tag">Trim Detail</span></div>
-                  Pure white profile detail
-                  <span class="insp-cta">Request samples <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </figcaption>
-              </a>
-            </figure>
-
+          <div class="gallery-controls" role="group" aria-label="Filter inspiration gallery">
+            <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="filter-btn" data-filter="decking" aria-pressed="false">Decking</button>
+            <button type="button" class="filter-btn" data-filter="porch" aria-pressed="false">Porch</button>
+            <button type="button" class="filter-btn" data-filter="coastal" aria-pressed="false">Coastal</button>
+            <button type="button" class="filter-btn" data-filter="classic-colors" aria-pressed="false">Classic Colors</button>
+            <button type="button" class="filter-btn" data-filter="dark-tones" aria-pressed="false">Dark Tones</button>
           </div>
+
+          <div class="gallery-grid" id="galleryGrid" data-reveal>
+            <figure class="card" data-tags="decking classic-colors">
+              <picture>
+                <source type="image/webp" srcset="../lookbook/truegrain/truegrain-aged-oak-lakeside-deck-800w.webp 800w, ../lookbook/truegrain/truegrain-aged-oak-lakeside-deck-1400w.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <img src="../lookbook/truegrain/truegrain-aged-oak-lakeside-deck-1400w.jpg" alt="Aged Oak TrueGrain PVC decking on a lakeside deck with Adirondack chairs at sunrise" width="1400" height="1045" fetchpriority="high" decoding="async" />
+              </picture>
+              <figcaption>
+                <span class="card-product">TrueGrain Deck</span>
+                <span class="card-color">Aged Oak</span>
+                <a class="card-cta" href="truegrain-deck.html#samples">Get Samples
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </figcaption>
+            </figure>
+            <figure class="card" data-tags="decking dark-tones">
+              <picture>
+                <source type="image/webp" srcset="../lookbook/truegrain/truegrain-tropical-walnut-poolside-800w.webp 800w, ../lookbook/truegrain/truegrain-tropical-walnut-poolside-1400w.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <img src="../lookbook/truegrain/truegrain-tropical-walnut-poolside-1400w.jpg" alt="Tropical Walnut TrueGrain PVC decking on a modern poolside deck in full sun" width="1400" height="1045" fetchpriority="high" decoding="async" />
+              </picture>
+              <figcaption>
+                <span class="card-product">TrueGrain Deck</span>
+                <span class="card-color">Tropical Walnut</span>
+                <a class="card-cta" href="truegrain-deck.html#samples">Get Samples
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </figcaption>
+            </figure>
+            <figure class="card" data-tags="decking coastal classic-colors">
+              <picture>
+                <source type="image/webp" srcset="../lookbook/truegrain/truegrain-coastal-driftwood-beach-deck-800w.webp 800w, ../lookbook/truegrain/truegrain-coastal-driftwood-beach-deck-1400w.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <img src="../lookbook/truegrain/truegrain-coastal-driftwood-beach-deck-1400w.jpg" alt="Coastal Driftwood TrueGrain PVC decking on an oceanfront beach house deck with dune grass" width="1400" height="1045" fetchpriority="high" decoding="async" />
+              </picture>
+              <figcaption>
+                <span class="card-product">TrueGrain Deck</span>
+                <span class="card-color">Coastal Driftwood</span>
+                <a class="card-cta" href="truegrain-deck.html#samples">Get Samples
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </figcaption>
+            </figure>
+            <figure class="card" data-tags="decking coastal classic-colors">
+              <picture>
+                <source type="image/webp" srcset="../lookbook/truegrain/truegrain-new-england-birch-cottage-800w.webp 800w, ../lookbook/truegrain/truegrain-new-england-birch-cottage-1400w.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <img src="../lookbook/truegrain/truegrain-new-england-birch-cottage-1400w.jpg" alt="New England Birch TrueGrain PVC decking on a coastal cottage deck with white railing and hydrangeas" width="1400" height="1875" loading="lazy" decoding="async" />
+              </picture>
+              <figcaption>
+                <span class="card-product">TrueGrain Deck</span>
+                <span class="card-color">New England Birch</span>
+                <a class="card-cta" href="truegrain-deck.html#samples">Get Samples
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </figcaption>
+            </figure>
+            <figure class="card" data-tags="decking dark-tones">
+              <picture>
+                <source type="image/webp" srcset="../lookbook/truegrain/truegrain-royal-ipe-evening-deck-800w.webp 800w, ../lookbook/truegrain/truegrain-royal-ipe-evening-deck-1400w.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <img src="../lookbook/truegrain/truegrain-royal-ipe-evening-deck-1400w.jpg" alt="Royal IPE TrueGrain PVC decking on an upscale backyard deck at golden hour with string lights" width="1400" height="1045" loading="lazy" decoding="async" />
+              </picture>
+              <figcaption>
+                <span class="card-product">TrueGrain Deck</span>
+                <span class="card-color">Royal IPE</span>
+                <a class="card-cta" href="truegrain-deck.html#samples">Get Samples
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </figcaption>
+            </figure>
+            <figure class="card" data-tags="decking dark-tones">
+              <picture>
+                <source type="image/webp" srcset="../lookbook/truegrain/truegrain-embered-taupe-backyard-800w.webp 800w, ../lookbook/truegrain/truegrain-embered-taupe-backyard-1400w.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <img src="../lookbook/truegrain/truegrain-embered-taupe-backyard-1400w.jpg" alt="Embered Taupe TrueGrain PVC decking on a suburban backyard deck with planters" width="1400" height="1875" loading="lazy" decoding="async" />
+              </picture>
+              <figcaption>
+                <span class="card-product">TrueGrain Deck</span>
+                <span class="card-color">Embered Taupe</span>
+                <a class="card-cta" href="truegrain-deck.html#samples">Get Samples
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </figcaption>
+            </figure>
+            <figure class="card" data-tags="decking coastal classic-colors">
+              <picture>
+                <source type="image/webp" srcset="../lookbook/truegrain/truegrain-coastal-driftwood-wraparound-800w.webp 800w, ../lookbook/truegrain/truegrain-coastal-driftwood-wraparound-1400w.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <img src="../lookbook/truegrain/truegrain-coastal-driftwood-wraparound-1400w.jpg" alt="Coastal Driftwood TrueGrain PVC decking on an oceanfront wraparound deck with white railing" width="1400" height="781" loading="lazy" decoding="async" />
+              </picture>
+              <figcaption>
+                <span class="card-product">TrueGrain Deck</span>
+                <span class="card-color">Coastal Driftwood</span>
+                <a class="card-cta" href="truegrain-deck.html#samples">Get Samples
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </figcaption>
+            </figure>
+            <figure class="card" data-tags="decking classic-colors">
+              <picture>
+                <source type="image/webp" srcset="../lookbook/legacy/legacy-khaki-backyard-deck-800w.webp 800w, ../lookbook/legacy/legacy-khaki-backyard-deck-1400w.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <img src="../lookbook/legacy/legacy-khaki-backyard-deck-1400w.jpg" alt="Khaki Legacy PVC decking on a family backyard deck with outdoor dining set" width="1400" height="1045" loading="lazy" decoding="async" />
+              </picture>
+              <figcaption>
+                <span class="card-product">Legacy PVC Decking</span>
+                <span class="card-color">Khaki</span>
+                <a class="card-cta" href="legacy-pvc-decking.html#samples">Get Samples
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </figcaption>
+            </figure>
+            <figure class="card" data-tags="decking classic-colors">
+              <picture>
+                <source type="image/webp" srcset="../lookbook/legacy/legacy-hazelnut-patio-deck-800w.webp 800w, ../lookbook/legacy/legacy-hazelnut-patio-deck-1400w.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <img src="../lookbook/legacy/legacy-hazelnut-patio-deck-1400w.jpg" alt="Hazelnut Legacy PVC decking on a patio deck with lounge chairs and lavender planters" width="1400" height="1875" loading="lazy" decoding="async" />
+              </picture>
+              <figcaption>
+                <span class="card-product">Legacy PVC Decking</span>
+                <span class="card-color">Hazelnut</span>
+                <a class="card-cta" href="legacy-pvc-decking.html#samples">Get Samples
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </figcaption>
+            </figure>
+            <figure class="card" data-tags="porch coastal classic-colors">
+              <picture>
+                <source type="image/webp" srcset="../lookbook/porch/porch-driftwood-cape-cod-800w.webp 800w, ../lookbook/porch/porch-driftwood-cape-cod-1400w.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <img src="../lookbook/porch/porch-driftwood-cape-cod-1400w.jpg" alt="Driftwood PVC tongue and groove porch flooring on a Cape Cod covered front porch with rocking chairs" width="1400" height="1045" loading="lazy" decoding="async" />
+              </picture>
+              <figcaption>
+                <span class="card-product">PVC Porch Flooring</span>
+                <span class="card-color">Driftwood</span>
+                <a class="card-cta" href="porch.html#samples">Get Samples
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </figcaption>
+            </figure>
+            <figure class="card" data-tags="porch classic-colors">
+              <picture>
+                <source type="image/webp" srcset="../lookbook/porch/porch-tuscany-farmhouse-800w.webp 800w, ../lookbook/porch/porch-tuscany-farmhouse-1400w.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <img src="../lookbook/porch/porch-tuscany-farmhouse-1400w.jpg" alt="Tuscany PVC tongue and groove porch flooring on a farmhouse front porch with a porch swing" width="1400" height="1875" loading="lazy" decoding="async" />
+              </picture>
+              <figcaption>
+                <span class="card-product">PVC Porch Flooring</span>
+                <span class="card-color">Tuscany</span>
+                <a class="card-cta" href="porch.html#samples">Get Samples
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </figcaption>
+            </figure>
+            <figure class="card" data-tags="porch dark-tones">
+              <picture>
+                <source type="image/webp" srcset="../lookbook/porch/porch-chestnut-colonial-800w.webp 800w, ../lookbook/porch/porch-chestnut-colonial-1400w.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <img src="../lookbook/porch/porch-chestnut-colonial-1400w.jpg" alt="Chestnut PVC tongue and groove porch flooring on a brick colonial front porch at dusk" width="1400" height="1045" loading="lazy" decoding="async" />
+              </picture>
+              <figcaption>
+                <span class="card-product">PVC Porch Flooring</span>
+                <span class="card-color">Chestnut</span>
+                <a class="card-cta" href="porch.html#samples">Get Samples
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </figcaption>
+            </figure>
+            <figure class="card" data-tags="porch coastal classic-colors">
+              <picture>
+                <source type="image/webp" srcset="../lookbook/porch/porch-beachwood-screened-800w.webp 800w, ../lookbook/porch/porch-beachwood-screened-1400w.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <img src="../lookbook/porch/porch-beachwood-screened-1400w.jpg" alt="Beachwood PVC tongue and groove porch flooring in a coastal screened porch with wicker seating" width="1400" height="1045" loading="lazy" decoding="async" />
+              </picture>
+              <figcaption>
+                <span class="card-product">PVC Porch Flooring</span>
+                <span class="card-color">Beachwood</span>
+                <a class="card-cta" href="porch.html#samples">Get Samples
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </figcaption>
+            </figure>
+            <figure class="card" data-tags="porch coastal dark-tones">
+              <picture>
+                <source type="image/webp" srcset="../lookbook/porch/porch-redwood-sunset-800w.webp 800w, ../lookbook/porch/porch-redwood-sunset-1400w.webp 1400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <img src="../lookbook/porch/porch-redwood-sunset-1400w.jpg" alt="Redwood PVC tongue and groove porch flooring on a seaside cottage porch at sunset" width="1400" height="1045" loading="lazy" decoding="async" />
+              </picture>
+              <figcaption>
+                <span class="card-product">PVC Porch Flooring</span>
+                <span class="card-color">Redwood</span>
+                <a class="card-cta" href="porch.html#samples">Get Samples
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </figcaption>
+            </figure>
+          </div>
+          <p class="gallery-empty" id="galleryEmpty">No projects match that filter yet.</p>
         </div>
       </section>
 
@@ -322,5 +429,6 @@
     <script src="../pages/_partials.js?v=6-staging"></script>
     <script src="../js/geo-banner.js?v=2" defer></script>
     <script src="../js/site.js?v=5" defer></script>
+    <script src="../js/gallery-filter.js?v=1" defer></script>
   </body>
 </html>
