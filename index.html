@@ -175,6 +175,11 @@
         .quiz-result-card { flex-direction: row; align-items: stretch; }
         .quiz-result-media { width: 42%; flex: 0 0 42%; aspect-ratio: auto; }
       }
+      @media (max-width: 640px) {
+        .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem; }
+        .quiz-option { width: 100%; min-width: 0; padding: 0.7rem 0.6rem; font-size: 0.88rem; }
+      }
+      #find-your-deck { scroll-margin-top: 7rem; }
 
       /* B-3: sample tiles */
       .sample-tiles {
