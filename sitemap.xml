@@ -288,11 +288,23 @@
   </url>
   <url>
     <loc>https://americanprobp.com/pages/blog/index.html</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/blog/index.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/blog/index.html" />
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/blog/posts/welcome-stonewood-cape-cod-dealer.html</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/blog/posts/welcome-stonewood-cape-cod-dealer.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/blog/posts/welcome-stonewood-cape-cod-dealer.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/blog_stonewood_cape_cod_hero.png</image:loc>
+      <image:title>American Pro Legacy PVC decking in Driftwood and Khaki on a Cape Cod home, stocked by Stonewood Products</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://americanprobp.com/pages/blog/posts/legacy-pvc-six-colors.html</loc>

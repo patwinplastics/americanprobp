@@ -1,5 +1,16 @@
 [
   {
+    "slug": "welcome-stonewood-cape-cod-dealer",
+    "title": "Welcome Stonewood Products, our newest Cape Cod dealer.",
+    "category": "News",
+    "date": "2026-07-23",
+    "excerpt": "Stonewood Products is the newest authorized American Pro dealer. They now stock Legacy PVC decking in Driftwood and Khaki at their Harwich and Mashpee stores, giving Cape Cod, the South Shore, Southeastern Massachusetts, and the Islands a local source. Locations, hours, colors, and how to order.",
+    "hero": "../../images/blog_stonewood_cape_cod_hero.png",
+    "heroAlt": "American Pro Legacy PVC decking in a light grey Driftwood field with a warm tan Khaki border on a Cape Cod shingle-style home, with hydrangeas, a white railing, dune grass, and a bay view at golden hour",
+    "readMinutes": 4,
+    "author": "American Pro"
+  },
+  {
     "slug": "legacy-pvc-six-colors",
     "title": "Six Legacy PVC colors, and how to choose one.",
     "category": "Guides",
