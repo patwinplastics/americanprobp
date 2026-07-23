@@ -113,6 +113,37 @@
       src="https://www.facebook.com/tr?id=431677712006030&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
+
+    <!-- Meta Lead conversion (fires once per successful form submission) -->
+    <script>
+      (function () {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          var src = params.get('src') || 'Website form';
+          var type = (params.get('type') || 'lead').toLowerCase();
+
+          // Only fire when the thanks page is reached via a real form redirect
+          // (identified by the query string Formspree carries through _next).
+          if (!window.location.search) return;
+
+          // Guard against duplicate fires on refresh / back-forward cache.
+          var key = 'ap_lead_fired_' + src + '_' + type;
+          if (sessionStorage.getItem(key)) return;
+          sessionStorage.setItem(key, '1');
+
+          if (typeof fbq === 'function') {
+            fbq('track', 'Lead', {
+              content_name: src,
+              content_category: type === 'contact' ? 'Quote / Contact' : 'Sample Request',
+              value: type === 'contact' ? 5.0 : 1.0,
+              currency: 'USD'
+            });
+          }
+        } catch (e) {
+          /* fail quietly, never block the thank-you page */
+        }
+      })();
+    </script>
   </head>
   <body>
     <div data-include="header"></div>
