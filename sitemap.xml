@@ -288,11 +288,23 @@
   </url>
   <url>
     <loc>https://americanprobp.com/pages/blog/index.html</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/blog/index.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/blog/index.html" />
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/blog/posts/hidden-fasteners-vs-face-screwing.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/blog/posts/hidden-fasteners-vs-face-screwing.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/blog/posts/hidden-fasteners-vs-face-screwing.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/blog_hidden_vs_screwed_hero.jpg</image:loc>
+      <image:title>American Pro PVC decking compared face screwed with visible screw heads versus a clean fastener-free InvisiClip hidden fastener surface</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://americanprobp.com/pages/blog/posts/welcome-stonewood-cape-cod-dealer.html</loc>
