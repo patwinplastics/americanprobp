@@ -288,11 +288,23 @@
   </url>
   <url>
     <loc>https://americanprobp.com/pages/blog/index.html</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/blog/index.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/blog/index.html" />
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/blog/posts/choosing-crown-moulding-size-profile.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/blog/posts/choosing-crown-moulding-size-profile.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/blog/posts/choosing-crown-moulding-size-profile.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/blog_crown_moulding_guide_hero.jpg</image:loc>
+      <image:title>Carpenter installing white PVC crown moulding under a roofline, American Pro moulding size and profile guide</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://americanprobp.com/pages/blog/posts/hidden-fasteners-vs-face-screwing.html</loc>
