@@ -117,6 +117,40 @@
       /* Cross-link back to the main porch page */
       .geo-crosslink { font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-6); }
       .geo-crosslink a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+    
+      /* ===== Colors / swatch grid (matches porch.html) ===== */
+      .colors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+      @media (max-width: 880px) { .colors-grid { grid-template-columns: repeat(2, 1fr); } }
+      .swatch { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-divider); background: var(--color-surface); transition: var(--transition-interactive); display: block; text-decoration: none; color: inherit; }
+      .swatch:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+      .swatch-color { aspect-ratio: 3/5; background-size: cover; background-position: center; background-repeat: no-repeat; }
+      .swatch-body { padding: var(--space-4) var(--space-5) var(--space-5); }
+      .swatch-name { font-family: var(--font-display); font-size: var(--text-base); font-weight: 500; }
+      .swatch-meta { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+      /* ===== Feature rows (proof imagery) ===== */
+      .feature-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(var(--space-8), 5vw, var(--space-12)); align-items: center; }
+      @media (max-width: 800px) { .feature-row { grid-template-columns: 1fr; } }
+      .feature-row.flip > div:first-child { order: 2; }
+      @media (max-width: 800px) { .feature-row.flip > div:first-child { order: 0; } }
+      .feature-row img { border-radius: var(--radius-lg); width: 100%; aspect-ratio: 4/3; object-fit: cover; box-shadow: var(--shadow-md); display: block; }
+      .feature-row h3 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-4); letter-spacing: -0.015em; }
+      .feature-row p { color: var(--color-text-muted); margin-bottom: var(--space-3); }
+      .feature-row p a { color: var(--color-primary); font-weight: 600; text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent); padding-bottom: 1px; transition: var(--transition-interactive); }
+      .feature-row p a:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+      .feature-stack { display: grid; gap: clamp(var(--space-12), 8vw, var(--space-20)); }
+
+      /* ===== Sample CTA band ===== */
+      .sample-cta { background: var(--color-primary, #0e1f3a); color: #fff; border-radius: var(--radius-lg); padding: clamp(var(--space-8), 5vw, var(--space-12)); display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(var(--space-8), 4vw, var(--space-10)); align-items: center; }
+      @media (max-width: 800px) { .sample-cta { grid-template-columns: 1fr; } }
+      .sample-cta h2 { color: #fff; font-size: clamp(var(--text-2xl), 3.5vw, var(--text-3xl)); letter-spacing: -0.02em; margin: var(--space-2) 0 var(--space-4); }
+      .sample-cta h2 em { font-style: italic; font-weight: 400; }
+      .sample-cta .eyebrow { color: rgba(255,255,255,.65); }
+      .sample-cta p { color: rgba(255,255,255,.85); margin: 0; max-width: 46ch; }
+      .sample-cta-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+      .sample-cta-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+      .sample-cta-list li { color: rgba(255,255,255,.85); font-size: var(--text-sm); padding-left: 1.6em; position: relative; }
+      .sample-cta-list li::before { content: ""; position: absolute; left: 0; top: .45em; width: .7em; height: .7em; border-radius: 50%; background: var(--color-accent, #b91c2c); }
     </style>
 
     <!-- Meta Pixel Code -->
@@ -147,8 +181,10 @@
           <span class="subnav-label">On this page</span>
           <a class="subnav-link" href="#top">Overview</a>
           <a class="subnav-link" href="#winters">Built for Winter</a>
+          <a class="subnav-link" href="#colors">Colors</a>
           <a class="subnav-link" href="#where-to-buy">Where to Buy</a>
           <a class="subnav-link" href="#towns">Service Area</a>
+          <a class="subnav-link" href="#samples">Free Samples</a>
           <a class="subnav-link" href="#faq">FAQ</a>
         </div>
       </nav>
@@ -251,6 +287,108 @@
             <div class="spec"><strong>Fire Resistant</strong><span>Surface Rating</span></div>
             <div class="spec"><strong>Slip Resistant</strong><span>Walking Surface</span></div>
             <div class="spec"><strong>25 yr</strong><span>Stain &amp; Fade Limited Warranty</span></div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Colors / finishes (real board swatches) -->
+      <section class="section section--tight" id="colors">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <div>
+              <span class="eyebrow">Six Finishes</span>
+              <h2>Six colors, chosen for<br /><em>Pittsburgh houses.</em></h2>
+            </div>
+            <p>
+              Cool greys for a modern build in Cranberry or Mt. Lebanon, warm browns and reds for the brick rowhouses and big wraparound porches of Squirrel Hill, Lawrenceville, and the South Hills. Every board is embossed wood-grain and carries the same 25-year stain and fade limited warranty.
+            </p>
+          </header>
+
+          <div class="colors-grid" data-reveal>
+            <a class="swatch" href="./porch.html#samples">
+              <div class="swatch-color" style="background-image:url('../images/porch_swatches/driftwood.jpg');" role="img" aria-label="American Pro Driftwood PVC porch flooring color swatch"></div>
+              <div class="swatch-body"><div class="swatch-name">Driftwood</div><div class="swatch-meta">Cool &middot; Light Grey</div></div>
+            </a>
+            <a class="swatch" href="./porch.html#samples">
+              <div class="swatch-color" style="background-image:url('../images/porch_swatches/slate.jpg');" role="img" aria-label="American Pro Slate PVC porch flooring color swatch"></div>
+              <div class="swatch-body"><div class="swatch-name">Slate</div><div class="swatch-meta">Cool &middot; Charcoal</div></div>
+            </a>
+            <a class="swatch" href="./porch.html#samples">
+              <div class="swatch-color" style="background-image:url('../images/porch_swatches/beachwood.jpg');" role="img" aria-label="American Pro Beachwood PVC porch flooring color swatch"></div>
+              <div class="swatch-body"><div class="swatch-name">Beachwood</div><div class="swatch-meta">Neutral &middot; Warm Grey</div></div>
+            </a>
+            <a class="swatch" href="./porch.html#samples">
+              <div class="swatch-color" style="background-image:url('../images/porch_swatches/tuscany.jpg');" role="img" aria-label="American Pro Tuscany PVC porch flooring color swatch"></div>
+              <div class="swatch-body"><div class="swatch-name">Tuscany</div><div class="swatch-meta">Warm &middot; Terracotta</div></div>
+            </a>
+            <a class="swatch" href="./porch.html#samples">
+              <div class="swatch-color" style="background-image:url('../images/porch_swatches/chestnut.jpg');" role="img" aria-label="American Pro Chestnut PVC porch flooring color swatch"></div>
+              <div class="swatch-body"><div class="swatch-name">Chestnut</div><div class="swatch-meta">Warm &middot; Walnut</div></div>
+            </a>
+            <a class="swatch" href="./porch.html#samples">
+              <div class="swatch-color" style="background-image:url('../images/porch_swatches/redwood.jpg');" role="img" aria-label="American Pro Redwood PVC porch flooring color swatch"></div>
+              <div class="swatch-body"><div class="swatch-name">Redwood</div><div class="swatch-meta">Warm &middot; Rosy Brown</div></div>
+            </a>
+          </div>
+
+          <p class="geo-crosslink">
+            Every finish is embossed wood-grain straight through the surface, not a
+            printed film or a cap that can peel. Pick any combination and we ship
+            free full-board samples to anywhere in Western Pennsylvania, so you can hold the real
+            color against your siding, trim, and roof before you commit.
+          </p>
+        </div>
+      </section>
+
+      <!-- Proof imagery -->
+      <section class="section">
+        <div class="container">
+          <div class="feature-stack">
+            <div class="feature-row" data-reveal>
+              <img width="1200" height="900" loading="lazy" decoding="async" src="../images/porch_profile.jpg" alt="Close-up of the American Pro tongue-and-groove PVC porch board profile showing the interlocking tongue and groove edge" />
+              <div>
+                <h3>A real tongue and groove.<br /><em>Not a deck board with a gap.</em></h3>
+                <p>This is the actual profile. The tongue on one edge seats into the groove on the next, so the finished floor reads as one continuous surface with a hairline seam, the way a painted porch has looked for a century.</p>
+                <p>No 1/4-inch gaps for leaves, snow, and salt to pack into. Face-fasten the first board, then blind-fasten through the tongue at every joist and the fasteners disappear.</p>
+                <p><a href="./how-to-install-pvc-porch-flooring.html">See the full install method</a></p>
+              </div>
+            </div>
+            <div class="feature-row flip" data-reveal>
+              <img width="1200" height="900" loading="lazy" decoding="async" src="../images/porch_lifestyle.jpg" alt="American Pro PVC porch flooring on a Pittsburgh area front porch" />
+              <div>
+                <h3>Wet, grey, and freezing.<br /><em>Then wet again.</em></h3>
+                <p>Pittsburgh averages more rainy days than Seattle and cycles above and below freezing all winter. That combination is what rots a wood porch. Cellular PVC has no wood fiber for water to get into, so it does not absorb moisture, swell, cup, or rot.</p>
+                <p>No sanding, no staining, no sealing, ever. Wash it with soap and water in the spring and it looks the way it did the day it went down.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Free samples CTA -->
+      <section class="section section--tight" id="samples">
+        <div class="container">
+          <div class="sample-cta" data-reveal>
+            <div>
+              <span class="eyebrow">Free Samples</span>
+              <h2>Hold the real board<br /><em>against your own house.</em></h2>
+              <p>
+                A color on a screen is not a color on your porch. We ship free
+                full-board samples of any of the six finishes to anywhere in Western Pennsylvania,
+                no cost and no obligation.
+              </p>
+              <div class="sample-cta-actions" style="margin-top: var(--space-7);">
+                <a href="./porch.html#samples" class="btn btn--primary btn--lg">Request Free Samples</a>
+                <a href="tel:18774426776" class="btn btn--ghost-light btn--lg">Call 1-877-442-6776</a>
+              </div>
+            </div>
+            <ul class="sample-cta-list">
+              <li>Full-board samples, not chips, so you see the real grain and width</li>
+              <li>Any combination of Driftwood, Slate, Beachwood, Tuscany, Chestnut, and Redwood</li>
+              <li>Shipped from our Linden, NJ plant, usually within a few days</li>
+              <li>Builder and lumberyard pricing available on the same call</li>
+            </ul>
           </div>
         </div>
       </section>
