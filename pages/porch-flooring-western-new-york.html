@@ -146,6 +146,14 @@
       .feature-row p a { color: var(--color-primary); font-weight: 600; text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent); padding-bottom: 1px; transition: var(--transition-interactive); }
       .feature-row p a:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
       .feature-stack { display: grid; gap: clamp(var(--space-12), 8vw, var(--space-20)); }
+      .feature-note { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(var(--space-8), 5vw, var(--space-12)); align-items: start; }
+      @media (max-width: 800px) { .feature-note { grid-template-columns: 1fr; gap: var(--space-6); } }
+      .feature-note h3 { font-family: var(--font-display); font-size: var(--text-xl); margin: 0; letter-spacing: -0.015em; }
+      .feature-note h3 em { font-style: italic; font-weight: 400; }
+      .feature-note p { color: var(--color-text-muted); margin-bottom: var(--space-3); }
+      .feature-note p:last-child { margin-bottom: 0; }
+      .feature-note p a { color: var(--color-primary); font-weight: 600; text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent); padding-bottom: 1px; transition: var(--transition-interactive); }
+      .feature-note p a:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
 
       /* ===== Sample CTA band ===== */
       .sample-cta { background: var(--color-primary, #0e1f3a); color: #fff; border-radius: var(--radius-lg); padding: clamp(var(--space-8), 5vw, var(--space-12)); display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(var(--space-8), 4vw, var(--space-10)); align-items: center; }
@@ -353,16 +361,15 @@
       <section class="section">
         <div class="container">
           <div class="feature-stack">
-            <div class="feature-row" data-reveal>
-              <img width="1200" height="900" loading="lazy" decoding="async" src="../images/porch_profile.jpg" alt="Close-up of the American Pro tongue-and-groove PVC porch board profile showing the interlocking tongue and groove edge" />
+            <div class="feature-note" data-reveal>
+              <h3>A real tongue and groove.<br /><em>Not a deck board with a gap.</em></h3>
               <div>
-                <h3>A real tongue and groove.<br /><em>Not a deck board with a gap.</em></h3>
-                <p>This is the actual profile. The tongue on one edge seats into the groove on the next, so the finished floor reads as one continuous surface with a hairline seam, the way a painted porch has looked for a century.</p>
+                <p>The tongue on one edge seats into the groove on the next, so the finished floor reads as one continuous surface with a hairline seam, the way a painted porch has looked for a century.</p>
                 <p>No 1/4-inch gaps for leaves, snow, and salt to pack into. Face-fasten the first board, then blind-fasten through the tongue at every joist and the fasteners disappear.</p>
                 <p><a href="./how-to-install-pvc-porch-flooring.html">See the full install method</a></p>
               </div>
             </div>
-            <div class="feature-row flip" data-reveal>
+            <div class="feature-row" data-reveal>
               <img width="1200" height="900" loading="lazy" decoding="async" src="../images/porch_lifestyle.jpg" alt="American Pro PVC porch flooring on a Western New York front porch" />
               <div>
                 <h3>Built for lake-effect winters.<br /><em>And the thaw that follows.</em></h3>
