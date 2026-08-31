@@ -195,6 +195,18 @@
     </image:image>
   </url>
   <url>
+    <loc>https://americanprobp.com/pages/faq.html</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/faq.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/faq.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/og/og-default.jpg</image:loc>
+      <image:title>American Pro Building Products FAQ</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://americanprobp.com/pages/inspiration.html</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>

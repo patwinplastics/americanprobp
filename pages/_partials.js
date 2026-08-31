@@ -113,6 +113,7 @@
         <a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener" class="nav-external nav-vis">Deck Visualizer<span aria-hidden="true" class="nav-external-arrow">↗</span></a>
         <a href="${B}pages/inspiration.html">Inspiration</a>
         <a href="${B}pages/blog/index.html">Blog</a>
+        <a href="${B}pages/faq.html">FAQ</a>
         <a href="${B}pages/about.html">About</a>
       </nav>
       <div class="header-actions">
@@ -140,6 +141,7 @@
         <li><a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
         <li><a href="${B}pages/inspiration.html">Inspiration</a></li>
         <li><a href="${B}pages/blog/index.html">Blog</a></li>
+        <li><a href="${B}pages/faq.html">FAQ</a></li>
         <li><a href="${B}pages/about.html">About</a></li>
       </ul>
       <div class="mobile-cta">
@@ -177,6 +179,7 @@
             <li><a href="${B}pages/american-pro.html">About American Pro</a></li>
             <li><a href="${B}pages/about.html">About Patwin Plastics</a></li>
             <li><a href="${B}pages/blog/index.html">Blog</a></li>
+            <li><a href="${B}pages/faq.html">FAQ</a></li>
             <li><a href="${B}pages/contact.html">Contact</a></li>
             <li><a href="${B}index.html#samples">Request Samples</a></li>
             <li><a href="${B}pages/contact.html">Get a Quote</a></li>
