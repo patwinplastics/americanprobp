@@ -112,8 +112,9 @@
         </div>
         <a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener" class="nav-external nav-vis">Deck Visualizer<span aria-hidden="true" class="nav-external-arrow">↗</span></a>
         <a href="${B}pages/inspiration.html">Inspiration</a>
-        <a href="${B}pages/blog/index.html">Blog</a>
-        <a href="${B}pages/about.html">About</a>
+        <a href="${B}pages/resources.html">Resources</a>
+        <a href="${B}pages/for-the-pros.html">For the Pros</a>
+        <a href="${B}pages/dealers.html">Where to Buy</a>
       </nav>
       <div class="header-actions">
         <a href="tel:18774426776" class="header-phone">
@@ -139,6 +140,9 @@
         </li>
         <li><a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
         <li><a href="${B}pages/inspiration.html">Inspiration</a></li>
+        <li><a href="${B}pages/resources.html">Resource Center</a></li>
+        <li><a href="${B}pages/for-the-pros.html">For the Pros</a></li>
+        <li><a href="${B}pages/dealers.html">Where to Buy</a></li>
         <li><a href="${B}pages/blog/index.html">Blog</a></li>
         <li><a href="${B}pages/about.html">About</a></li>
       </ul>
@@ -150,14 +154,19 @@
   </header>`;
 
   const FOOTER = `
-  <footer class="site-footer">
+  <footer class="site-footer site-footer--expanded">
     <div class="container">
+      <div class="footer-start">
+        <div><span class="eyebrow">Take the Next Step</span><h2>Ready to start your project?</h2></div>
+        <div class="footer-start-actions"><a href="${B}index.html#samples" class="btn btn--primary">Request Free Samples</a><a href="${B}pages/dealers.html" class="btn btn--ghost-light">Find a Dealer</a></div>
+      </div>
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="${B}index.html" class="logo">
             <img src="${B}images/logo/americanpro-header-white.png" alt="American Pro Building Products" class="logo-img logo-img--footer" width="660" height="306"/>
           </a>
           <p>American-made PVC building products. A division of Patwin Plastics, manufacturing precision profiles in the USA since 1971.</p>
+          <div class="footer-contact"><a href="tel:18774426776">1-877-442-6776</a><a href="mailto:sales@americanprobp.com">sales@americanprobp.com</a><span>Mon to Fri, 8am to 4pm ET</span></div>
         </div>
         <div class="footer-col">
           <h4>Products</h4>
@@ -167,27 +176,40 @@
             <li><a href="${B}pages/legacy-pvc-decking.html">Legacy PVC Decking</a></li>
             <li><a href="${B}pages/porch.html">Porch Flooring</a></li>
             <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
-            <li><a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
-            <li><a href="${B}pages/inspiration.html">Inspiration Gallery</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Company</h4>
+          <h4>Plan Your Project</h4>
           <ul>
-            <li><a href="${B}pages/american-pro.html">About American Pro</a></li>
-            <li><a href="${B}pages/about.html">About Patwin Plastics</a></li>
-            <li><a href="${B}pages/blog/index.html">Blog</a></li>
-            <li><a href="${B}pages/contact.html">Contact</a></li>
+            <li><a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
+            <li><a href="${B}pages/decking.html">Compare Decking</a></li>
+            <li><a href="${B}pages/truegrain-deck.html#find-your-deck">Find Your Deck Match</a></li>
+            <li><a href="${B}pages/inspiration.html">Inspiration Gallery</a></li>
+            <li><a href="${B}lookbook/">TrueGrain Lookbook</a></li>
             <li><a href="${B}index.html#samples">Request Samples</a></li>
+            <li><a href="${B}pages/dealers.html">Where to Buy</a></li>
             <li><a href="${B}pages/contact.html">Get a Quote</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Get In Touch</h4>
+          <h4>For the Pros</h4>
           <ul>
-            <li><a href="tel:18774426776">1-877-442-6776</a></li>
-            <li><a href="mailto:sales@americanprobp.com">sales@americanprobp.com</a></li>
-            <li style="color:rgba(255,255,255,0.55); font-size:var(--text-xs); margin-top: var(--space-2);">Mon to Fri, 8am to 4pm ET</li>
+            <li><a href="${B}pages/for-the-pros.html">Trade &amp; Project Support</a></li>
+            <li><a href="${B}pages/resources.html">Resource Center</a></li>
+            <li><a href="${B}pages/resources.html?type=installation#library">Installation &amp; Fastening</a></li>
+            <li><a href="${B}pages/resources.html?type=technical#library">Specifications &amp; Testing</a></li>
+            <li><a href="${B}pages/for-the-pros.html?inquiry=dealer#inquiry">Become a Dealer</a></li>
+            <li><a href="${B}pages/for-the-pros.html?inquiry=samples#inquiry">Trade Sample Kit Inquiry</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support &amp; Company</h4>
+          <ul>
+            <li><a href="${B}pages/contact.html">Contact Us</a></li>
+            <li><a href="${B}pages/resources.html#support">Product Information Help</a></li>
+            <li><a href="${B}pages/american-pro.html">About American Pro</a></li>
+            <li><a href="${B}pages/about.html">About Patwin Plastics</a></li>
+            <li><a href="${B}pages/blog/index.html">Blog &amp; Project Stories</a></li>
           </ul>
         </div>
       </div>

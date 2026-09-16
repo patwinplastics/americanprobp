@@ -68,7 +68,7 @@
     />
 
     <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/site.css?v=20-staging" />
+    <link rel="stylesheet" href="../css/site.css?v=22-phase1" />
     <style>
       .dealers-hero { position: relative; min-height: 42vh; display: flex; align-items: flex-end; color: #fff; isolation: isolate; background: linear-gradient(135deg, #0e1f3a 0%, #1a3555 100%); }
       .dealers-hero-inner { padding-block: var(--space-16) var(--space-10); }
@@ -134,7 +134,8 @@
       src="https://www.facebook.com/tr?id=431677712006030&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
-  </head>
+  <link rel="stylesheet" href="../css/pro-resources.css?v=1">
+</head>
   <body>
     <div data-include="header"></div>
 
@@ -145,12 +146,27 @@
           <span class="hero-eyebrow">Authorized Dealers &amp; Distributors</span>
           <h1>Where to buy<br /><em>American Pro.</em></h1>
           <p>
-            American Pro Legacy PVC decking, TrueGrain Deck, PVC porch flooring,
-            InvisiClip, and PVC mouldings are stocked by authorized dealers on the
-            East Coast, with factory-direct shipping from Linden, NJ nationwide.
-            Below is the current stocking-dealer network, with more partners
-            being announced through 2026.
+            Find a purchasing option for your American Pro project. Start with
+            our regional partners below, or ask our team about your product and
+            ZIP code. Product lines, colors, and availability vary by location;
+            contact the supplier before visiting or placing an order.
           </p>
+          <div class="pro-actions"><a class="btn btn--primary" href="#find-your-product">Find My Purchasing Option</a><a class="btn btn--ghost-light" href="./for-the-pros.html?inquiry=dealer#inquiry">Become a Dealer</a></div>
+        </div>
+      </section>
+
+      <section class="dealer-finder" id="find-your-product" aria-labelledby="dealer-finder-title">
+        <div class="container">
+          <div class="dealer-finder-grid">
+            <div><h2 id="dealer-finder-title">Building somewhere else?</h2><p>Enter your ZIP code and product to start an availability inquiry. Our team will help you find a purchasing option; this is not a live inventory search.</p></div>
+            <form class="dealer-request" action="./contact.html#contact-form" method="get">
+              <input type="hidden" name="intent" value="dealer">
+              <div><label for="dealer-zip">Project ZIP</label><input id="dealer-zip" name="zip" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{5}(-[0-9]{4})?" title="Enter a 5-digit US ZIP code or ZIP+4" placeholder="e.g. 08742" required></div>
+              <div><label for="dealer-product">Product</label><select id="dealer-product" name="product" required><option value="">Select a product</option><option value="truegrain">TrueGrain Deck</option><option value="legacy">Legacy PVC Decking</option><option value="porch">Porch Flooring</option><option value="invisiclip">InvisiClip</option><option value="mouldings">PVC Mouldings</option></select></div>
+              <button class="btn btn--primary" type="submit">Continue</button>
+            </form>
+          </div>
+          <nav class="pro-inline-links" aria-label="Browse regional suppliers"><a href="#cape-cod">Legacy PVC: Cape Cod &amp; National Shipping</a><a href="#western-ny">Porch Flooring: Western NY &amp; Finger Lakes</a><a href="tel:18774426776">Other products or regions? Call us</a></nav>
         </div>
       </section>
 
@@ -365,8 +381,9 @@
 
     </main>
 
-    <div data-include="footer"><nav aria-label="Footer navigation" hidden><a href="/index.html">Home</a><a href="/pages/truegrain-deck.html">TrueGrain Deck</a><a href="/pages/invisiclip.html">InvisiClip</a><a href="/pages/legacy-pvc-decking.html">Legacy PVC Decking</a><a href="/pages/porch.html">Porch Flooring</a><a href="/pages/mouldings.html">PVC Mouldings</a><a href="/pages/decking.html">Decking</a><a href="/pages/dealers.html">Dealers</a><a href="/pages/blog/index.html">Blog</a><a href="/pages/inspiration.html">Inspiration Gallery</a><a href="/pages/american-pro.html">About American Pro</a><a href="/pages/about.html">About Patwin Plastics</a><a href="/pages/contact.html">Contact</a><a href="/pages/privacy-policy.html">Privacy Policy</a><a href="/pages/terms-and-conditions.html">Terms &amp; Conditions</a><a href="/pages/cellular-pvc-decking-guide.html">Cellular PVC Decking Guide</a><a href="/pages/premium-pvc-decking-comparison.html">Premium PVC Decking Comparison</a><a href="/pages/pvc-vs-composite-decking.html">PVC vs Composite Decking</a><a href="/pages/truegrain-vs-capped-composite-decking.html">TrueGrain vs Capped Composite</a><a href="/pages/how-to-install-pvc-porch-flooring.html">How to Install PVC Porch Flooring</a><a href="/pages/blog/posts/where-to-buy-east-coast.html">East Coast Dealer Directory</a><a href="/pages/blog/posts/pvc-mouldings-dont-rot.html">Why PVC Mouldings Don't Rot</a><a href="/pages/blog/posts/invisiclip-launch.html">InvisiClip Launch</a><a href="/pages/blog/posts/lakeside-deck-aged-oak-invisiclip.html">Lakeside Deck in Aged Oak</a></nav></div>
-    <script src="../pages/_partials.js?v=6-staging"></script>
+    <div data-include="footer"><nav aria-label="Footer navigation" hidden><a href="../pages/resources.html">Resource Center</a><a href="../pages/for-the-pros.html">For the Pros</a><a href="/index.html">Home</a><a href="/pages/truegrain-deck.html">TrueGrain Deck</a><a href="/pages/invisiclip.html">InvisiClip</a><a href="/pages/legacy-pvc-decking.html">Legacy PVC Decking</a><a href="/pages/porch.html">Porch Flooring</a><a href="/pages/mouldings.html">PVC Mouldings</a><a href="/pages/decking.html">Decking</a><a href="/pages/dealers.html">Dealers</a><a href="/pages/blog/index.html">Blog</a><a href="/pages/inspiration.html">Inspiration Gallery</a><a href="/pages/american-pro.html">About American Pro</a><a href="/pages/about.html">About Patwin Plastics</a><a href="/pages/contact.html">Contact</a><a href="/pages/privacy-policy.html">Privacy Policy</a><a href="/pages/terms-and-conditions.html">Terms &amp; Conditions</a><a href="/pages/cellular-pvc-decking-guide.html">Cellular PVC Decking Guide</a><a href="/pages/premium-pvc-decking-comparison.html">Premium PVC Decking Comparison</a><a href="/pages/pvc-vs-composite-decking.html">PVC vs Composite Decking</a><a href="/pages/truegrain-vs-capped-composite-decking.html">TrueGrain vs Capped Composite</a><a href="/pages/how-to-install-pvc-porch-flooring.html">How to Install PVC Porch Flooring</a><a href="/pages/blog/posts/where-to-buy-east-coast.html">East Coast Dealer Directory</a><a href="/pages/blog/posts/pvc-mouldings-dont-rot.html">Why PVC Mouldings Don't Rot</a><a href="/pages/blog/posts/invisiclip-launch.html">InvisiClip Launch</a><a href="/pages/blog/posts/lakeside-deck-aged-oak-invisiclip.html">Lakeside Deck in Aged Oak</a></nav></div>
+    <script src="../pages/_partials.js?v=7-phase1"></script>
     <script src="../js/site.js?v=5" defer></script>
-  </body>
+  <script src="../js/pro-resources.js?v=1" defer></script>
+</body>
 </html>

@@ -1,0 +1,21 @@
+name: Website checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  resource-and-navigation-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate resource links, metadata and sitemap
+        run: python3 tests/check_phase1.py
+      - name: Validate shared JavaScript
+        run: |
+          node --check pages/_partials.js
+          node --check js/pro-resources.js
+          node --check js/site.js
+      - name: Check whitespace
+        run: git diff --check
