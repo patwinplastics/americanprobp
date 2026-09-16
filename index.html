@@ -57,7 +57,7 @@
     <link rel="preload" as="image" href="./images/hero_deck.jpg" fetchpriority="high" />
 
     <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/site.css?v=21" />
+    <link rel="stylesheet" href="./css/site.css?v=22-phase1" />
 
     <!-- Homepage funnel scaffolds (buyer selector, quiz, sample tiles) -->
     <style id="funnel-styles">
@@ -225,8 +225,9 @@
           </div>
           <a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener" class="nav-external nav-vis">Deck Visualizer<span aria-hidden="true" class="nav-external-arrow">↗</span></a>
           <a href="./pages/inspiration.html">Inspiration</a>
-          <a href="./pages/blog/index.html">Blog</a>
-          <a href="./pages/about.html">About</a>
+          <a href="./pages/resources.html">Resources</a>
+          <a href="./pages/for-the-pros.html">For the Pros</a>
+          <a href="./pages/dealers.html">Where to Buy</a>
         </nav>
 
         <div class="header-actions">
@@ -258,6 +259,7 @@
           </li>
           <li><a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
           <li><a href="./pages/inspiration.html">Inspiration</a></li>
+          <li><a href="./pages/resources.html">Resource Center</a></li><li><a href="./pages/for-the-pros.html">For the Pros</a></li><li><a href="./pages/dealers.html">Where to Buy</a></li>
           <li><a href="./pages/blog/index.html">Blog</a></li>
           <li><a href="./pages/about.html">About</a></li>
         </ul>
@@ -556,13 +558,13 @@
               <span class="buyer-card__desc">See colors on your own house and get free product samples mailed to you.</span>
               <span class="buyer-card__go">Visualize &amp; sample <span aria-hidden="true">&rarr;</span></span>
             </a>
-            <a class="buyer-card" href="#products">
+            <a class="buyer-card" href="./pages/for-the-pros.html#contractors">
               <span class="buyer-card__eyebrow">For the job</span>
               <span class="buyer-card__title">I'm a Builder / Contractor</span>
               <span class="buyer-card__desc">Dive into specs, profiles, and the InvisiClip&trade; hidden-fastener system.</span>
               <span class="buyer-card__go">See specs &amp; products <span aria-hidden="true">&rarr;</span></span>
             </a>
-            <a class="buyer-card" href="./pages/contact.html">
+            <a class="buyer-card" href="./pages/for-the-pros.html?inquiry=dealer#inquiry">
               <span class="buyer-card__eyebrow">For your business</span>
               <span class="buyer-card__title">I'm a Dealer / Distributor</span>
               <span class="buyer-card__desc">Stock American Pro lines. Talk to us about becoming an authorized partner.</span>
@@ -1256,69 +1258,77 @@
     </main>
 
     <!-- ========== FOOTER ========== -->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <a href="./index.html" class="logo" style="color:#fff;">
-              <img loading="lazy" decoding="async" src="./images/logo/americanpro-header-white.png" alt="American Pro Building Products" class="logo-img logo-img--footer" width="431" height="200"  />
-              <span class="logo-text" hidden>
-                <strong>American Pro</strong>
-                <small style="color: rgba(255,255,255,0.55);">Building Products</small>
-              </span>
-            </a>
-            <p>
-              American-made PVC building products. A division of Patwin Plastics,
-              manufacturing precision profiles in the USA since 1971.
-            </p>
-          </div>
-
-          <div class="footer-col">
-            <h4>Products</h4>
-            <ul>
-              <li><a href="./pages/decking.html">PVC Decking</a></li>
-              <li><a href="./pages/invisiclip.html">InvisiClip™ Hidden Fastener</a></li>
-              <li><a href="./pages/porch.html">Porch Flooring</a></li>
-              <li><a href="./pages/mouldings.html">Mouldings</a></li>
-              <li><a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
-              <li><a href="./pages/inspiration.html">Inspiration Gallery</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="./pages/about.html">About Us</a></li>
-              <li><a href="./pages/contact.html">Contact</a></li>
-              <li><a href="#samples">Request Samples</a></li>
-              <li><a href="./pages/contact.html">Get a Quote</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4>Get In Touch</h4>
-            <ul>
-              <li><a href="tel:18774426776">1-877-442-6776</a></li>
-              <li><a href="mailto:sales@americanprobp.com">sales@americanprobp.com</a></li>
-              <li style="color:rgba(255,255,255,0.55); font-size:var(--text-xs); margin-top: var(--space-2);">Mon-Fri, 8am-4pm ET</li>
-            </ul>
-          </div>
+    <footer class="site-footer site-footer--expanded">
+    <div class="container">
+      <div class="footer-start">
+        <div><span class="eyebrow">Take the Next Step</span><h2>Ready to start your project?</h2></div>
+        <div class="footer-start-actions"><a href="./index.html#samples" class="btn btn--primary">Request Free Samples</a><a href="./pages/dealers.html" class="btn btn--ghost-light">Find a Dealer</a></div>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="./index.html" class="logo">
+            <img src="./images/logo/americanpro-header-white.png" alt="American Pro Building Products" class="logo-img logo-img--footer" width="660" height="306"/>
+          </a>
+          <p>American-made PVC building products. A division of Patwin Plastics, manufacturing precision profiles in the USA since 1971.</p>
+          <div class="footer-contact"><a href="tel:18774426776">1-877-442-6776</a><a href="mailto:sales@americanprobp.com">sales@americanprobp.com</a><span>Mon to Fri, 8am to 4pm ET</span></div>
         </div>
-
-        <div class="footer-bar">
-          <span>© 2026 American Pro Building Products · A Patwin Plastics Brand</span>
-          <div class="footer-legal-links" style="display:flex;flex-wrap:wrap;gap:0.4rem 1.1rem;">
-            <a href="./pages/privacy-policy.html">Privacy Policy</a>
-            <a href="./pages/terms-and-conditions.html">Terms &amp; Conditions</a>
-          </div>
-          <div class="footer-social">
-            <a href="https://www.facebook.com/americanprobuilding/" target="_blank" rel="noopener" aria-label="American Pro on Facebook">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg>
-            </a>
-          </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="./pages/truegrain-deck.html">TrueGrain Deck™</a></li>
+            <li><a href="./pages/invisiclip.html">InvisiClip™ Hidden Fastener</a></li>
+            <li><a href="./pages/legacy-pvc-decking.html">Legacy PVC Decking</a></li>
+            <li><a href="./pages/porch.html">Porch Flooring</a></li>
+            <li><a href="./pages/mouldings.html">Mouldings</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Plan Your Project</h4>
+          <ul>
+            <li><a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
+            <li><a href="./pages/decking.html">Compare Decking</a></li>
+            <li><a href="./pages/truegrain-deck.html#find-your-deck">Find Your Deck Match</a></li>
+            <li><a href="./pages/inspiration.html">Inspiration Gallery</a></li>
+            <li><a href="./lookbook/">TrueGrain Lookbook</a></li>
+            <li><a href="./index.html#samples">Request Samples</a></li>
+            <li><a href="./pages/dealers.html">Where to Buy</a></li>
+            <li><a href="./pages/contact.html">Get a Quote</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>For the Pros</h4>
+          <ul>
+            <li><a href="./pages/for-the-pros.html">Trade &amp; Project Support</a></li>
+            <li><a href="./pages/resources.html">Resource Center</a></li>
+            <li><a href="./pages/resources.html?type=installation#library">Installation &amp; Fastening</a></li>
+            <li><a href="./pages/resources.html?type=technical#library">Specifications &amp; Testing</a></li>
+            <li><a href="./pages/for-the-pros.html?inquiry=dealer#inquiry">Become a Dealer</a></li>
+            <li><a href="./pages/for-the-pros.html?inquiry=samples#inquiry">Trade Sample Kit Inquiry</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support &amp; Company</h4>
+          <ul>
+            <li><a href="./pages/contact.html">Contact Us</a></li>
+            <li><a href="./pages/resources.html#support">Product Information Help</a></li>
+            <li><a href="./pages/american-pro.html">About American Pro</a></li>
+            <li><a href="./pages/about.html">About Patwin Plastics</a></li>
+            <li><a href="./pages/blog/index.html">Blog &amp; Project Stories</a></li>
+          </ul>
         </div>
       </div>
-    </footer>
+      <div class="footer-bar">
+        <span>© 2026 American Pro Building Products · A Patwin Plastics Brand</span>
+        <div class="footer-legal-links" style="display:flex;flex-wrap:wrap;gap:0.4rem 1.1rem;">
+          <a href="./pages/privacy-policy.html">Privacy Policy</a>
+          <a href="./pages/terms-and-conditions.html">Terms &amp; Conditions</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/americanprobuilding/" target="_blank" rel="noopener" aria-label="American Pro on Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
     <!-- Sticky mobile visualizer launcher: appears only at ≤720px, sits above
          thumb on the bottom-right, hidden when the on-page viz band is in view. -->
