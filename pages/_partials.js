@@ -113,6 +113,7 @@
         <a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener" class="nav-external nav-vis">Deck Visualizer<span aria-hidden="true" class="nav-external-arrow">↗</span></a>
         <a href="${B}pages/inspiration.html">Inspiration</a>
         <a href="${B}pages/resources.html">Resources</a>
+        <a href="${B}pages/blog/index.html">Blog</a>
         <a href="${B}pages/for-the-pros.html">For the Pros</a>
         <a href="${B}pages/dealers.html">Where to Buy</a>
       </nav>
