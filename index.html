@@ -548,6 +548,73 @@
         </div>
       </section>
 
+      <!-- ========== FEATURED VIDEO: InvisiClip install story ========== -->
+      <section class="section featured-video" id="featured-video" aria-label="InvisiClip installation video">
+        <div class="container">
+          <header class="section-head featured-video-head" data-reveal>
+            <div>
+              <span class="eyebrow">See It Installed</span>
+              <h2>Hear that? <em>That's InvisiClip&trade;.</em></h2>
+            </div>
+            <p>
+              Real job-site footage of the InvisiClip&trade; hidden fastener system going down
+              on grooved Legacy PVC and TrueGrain Deck&trade;, rails, clips, and the snap that
+              locks each board into place.
+            </p>
+          </header>
+
+          <div class="featured-video-frame" data-reveal data-reveal-delay="1">
+            <video
+              class="featured-video-player"
+              id="featured-video-player"
+              poster="./images/invisiclip-video-poster-homepage.jpg"
+              preload="none"
+              playsinline
+              controls
+              width="1280"
+              height="720"
+            >
+              <source src="./videos/invisiclip-hear-that-homepage.mp4" type="video/mp4" />
+              Your browser doesn't support embedded video. <a href="./videos/invisiclip-hear-that-homepage.mp4">Watch the InvisiClip install video</a>.
+            </video>
+            <button type="button" class="featured-video-play" id="featured-video-play" aria-label="Play video: Hear that? That's InvisiClip.">
+              <span class="featured-video-play-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+            </button>
+          </div>
+
+          <div class="featured-video-stat" data-reveal data-reveal-delay="2">
+            <span class="featured-video-stat-num">306 PSF</span>
+            <span class="featured-video-stat-copy">
+              Average ultimate uplift, independently tested by Intertek under ICC-ES AC174 / ASTM E330.
+              Ultimate test result, not an allowable design load.
+              <a href="./downloads/invisiclip-uplift-test-report-r1545-intertek.pdf">View the test report</a>.
+            </span>
+          </div>
+
+          <div class="featured-video-actions">
+            <a href="./pages/invisiclip.html" class="btn btn--primary btn--lg">See the InvisiClip&trade; system</a>
+            <a href="./pages/for-the-pros.html?inquiry=dealer#inquiry" class="btn btn--ghost btn--lg">Become a dealer</a>
+          </div>
+        </div>
+      </section>
+      <script>
+        (function () {
+          var video = document.getElementById('featured-video-player');
+          var playBtn = document.getElementById('featured-video-play');
+          if (!video || !playBtn) return;
+          function playVideo() {
+            video.play();
+            playBtn.classList.add('is-hidden');
+          }
+          playBtn.addEventListener('click', playVideo);
+          video.addEventListener('play', function () { playBtn.classList.add('is-hidden'); });
+          video.addEventListener('pause', function () { playBtn.classList.remove('is-hidden'); });
+          video.addEventListener('ended', function () { playBtn.classList.remove('is-hidden'); });
+        })();
+      </script>
+
       <!-- ========== BUYER-TYPE SELECTOR (funnel entry) ========== -->
       <section class="buyer-select" aria-label="Choose the path that fits you">
         <div class="container">
