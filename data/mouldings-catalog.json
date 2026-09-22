@@ -1,0 +1,244 @@
+{
+  "source": "American Pro Full Line Catalog, pages 11-12; approved September 17, 2026",
+  "dimensionOrder": "thickness x width",
+  "profiles": [
+    {
+      "sku": "8016PVC",
+      "name": "Bed Mould",
+      "dimensions": "9/16\" x 1-5/8\"",
+      "category": "Crowns & Bed Moulding",
+      "image": "images/mouldings_profiles/bed_mould.jpg"
+    },
+    {
+      "sku": "WM53PVC",
+      "name": "2-5/8\" Crown",
+      "dimensions": "9/16\" x 2-5/8\"",
+      "category": "Crowns & Bed Moulding",
+      "image": "images/mouldings_profiles/wm53pvc.webp"
+    },
+    {
+      "sku": "LWM49PVC",
+      "name": "3-5/8\" Crown",
+      "dimensions": "9/16\" x 3-5/8\"",
+      "category": "Crowns & Bed Moulding",
+      "image": "images/mouldings_profiles/crown_3_625.jpg"
+    },
+    {
+      "sku": "WM47PVC",
+      "name": "4-5/8\" Crown",
+      "dimensions": "11/16\" x 4-5/8\"",
+      "category": "Crowns & Bed Moulding",
+      "image": "images/mouldings_profiles/crown_4_625.jpg"
+    },
+    {
+      "sku": "L8027PVC",
+      "name": "5-1/4\" Crown",
+      "dimensions": "9/16\" x 5-1/4\"",
+      "category": "Crowns & Bed Moulding",
+      "image": "images/mouldings_profiles/crown_5_25.jpg"
+    },
+    {
+      "sku": "SC234PVC",
+      "name": "Solid Crown",
+      "dimensions": "1-3/8\" x 2-3/4\"",
+      "category": "Crowns & Bed Moulding",
+      "image": "images/mouldings_profiles/solid_crown.jpg"
+    },
+    {
+      "sku": "RAMPVC",
+      "name": "Rams Crown",
+      "dimensions": "1-13/32\" x 2\"",
+      "category": "Crowns & Bed Moulding",
+      "image": "images/mouldings_profiles/rams_crown.jpg"
+    },
+    {
+      "sku": "WM180PVC",
+      "name": "Brickmould",
+      "dimensions": "1-1/4\" x 2\"",
+      "category": "Casings, Brickmould & Backband",
+      "image": "images/mouldings_profiles/brick.jpg"
+    },
+    {
+      "sku": "WC1CTPVC",
+      "name": "Windsor Casing",
+      "dimensions": "1-1/16\" x 3-1/2\"",
+      "category": "Casings, Brickmould & Backband",
+      "image": "images/mouldings_profiles/wc1ctpvc.webp"
+    },
+    {
+      "sku": "WM97PVC",
+      "name": "Adam's Casing",
+      "dimensions": "1-1/16\" x 3-1/2\"",
+      "category": "Casings, Brickmould & Backband",
+      "image": "images/mouldings_profiles/wm97pvc.webp"
+    },
+    {
+      "sku": "138BBPVC",
+      "name": "Backband",
+      "dimensions": "1-3/8\" x 1-3/8\"",
+      "category": "Casings, Brickmould & Backband",
+      "image": "images/mouldings_profiles/138bbpvc.webp"
+    },
+    {
+      "sku": "SILL7117PVC",
+      "name": "5-1/4\" Sill Extender",
+      "dimensions": "1-1/4\" x 5-1/4\"",
+      "category": "Sills & Extenders",
+      "image": "images/mouldings_profiles/sill7117pvc.webp"
+    },
+    {
+      "sku": "SILL7118PVC",
+      "name": "Sill Nose",
+      "dimensions": "1-5/16\" x 1-3/8\"",
+      "category": "Sills & Extenders",
+      "image": "images/mouldings_profiles/sill7118pvc.webp"
+    },
+    {
+      "sku": "SILL7435PVC",
+      "name": "Large Historical Sill",
+      "dimensions": "1-3/4\" x 2-3/4\"",
+      "category": "Sills & Extenders",
+      "image": "images/mouldings_profiles/sill7435pvc.webp"
+    },
+    {
+      "sku": "SILL7650PVC",
+      "name": "Historical Sill",
+      "dimensions": "1-3/4\" x 2\"",
+      "category": "Sills & Extenders",
+      "image": "images/mouldings_profiles/historic_sill.jpg"
+    },
+    {
+      "sku": "SILLFARMPVC",
+      "name": "Farmhouse Sill",
+      "dimensions": "2-1/4\" x 2-3/4\"",
+      "category": "Sills & Extenders",
+      "image": "images/mouldings_profiles/sillfarmpvc.webp"
+    },
+    {
+      "sku": "8416PVC",
+      "name": "Base Cap",
+      "dimensions": "11/16\" x 1-5/8\"",
+      "category": "Base & Cap Mouldings",
+      "image": "images/mouldings_profiles/8416pvc.webp"
+    },
+    {
+      "sku": "WM164PVC",
+      "name": "Base Cap",
+      "dimensions": "11/16\" x 1-1/8\"",
+      "category": "Base & Cap Mouldings",
+      "image": "images/mouldings_profiles/base_cap.jpg"
+    },
+    {
+      "sku": "BDB35PVC",
+      "name": "3-1/2\" Baseboard",
+      "dimensions": "7/16\" x 3-1/2\"",
+      "category": "Base & Cap Mouldings",
+      "image": "images/mouldings_profiles/bdb35pvc.webp"
+    },
+    {
+      "sku": "BB514PVC",
+      "name": "5-1/4\" Speed Base",
+      "dimensions": "7/16\" x 5-1/4\"",
+      "category": "Base & Cap Mouldings",
+      "image": "images/mouldings_profiles/bb514pvc.webp"
+    },
+    {
+      "sku": "ES11PVC",
+      "name": "Rab Panel",
+      "dimensions": "5/8\" x 1-3/4\"",
+      "category": "Exterior Trim",
+      "image": "images/mouldings_profiles/es11pvc.webp"
+    },
+    {
+      "sku": "RAKEPVC",
+      "name": "Rake Mould",
+      "dimensions": "1\" x 2\"",
+      "category": "Exterior Trim",
+      "image": "images/mouldings_profiles/rake_mold.jpg"
+    },
+    {
+      "sku": "WM197PVC",
+      "name": "Drip Cap",
+      "dimensions": "11/16\" x 1-5/8\"",
+      "category": "Exterior Trim",
+      "image": "images/mouldings_profiles/drip_cap.jpg"
+    },
+    {
+      "sku": "WM210PVC",
+      "name": "Shingle Mould",
+      "dimensions": "11/16\" x 1-5/8\"",
+      "category": "Exterior Trim",
+      "image": "images/mouldings_profiles/shingle.jpg"
+    },
+    {
+      "sku": "WATERTABLEPVC",
+      "name": "Water Table",
+      "dimensions": null,
+      "category": "Exterior Trim",
+      "image": "images/mouldings_profiles/watertablepvc.webp"
+    },
+    {
+      "sku": "8065PVC",
+      "name": "Quarter Round",
+      "dimensions": "3/4\" x 3/4\"",
+      "category": "Coves, Quarter Round & Panel Mouldings",
+      "image": "images/mouldings_profiles/quarter_round.jpg"
+    },
+    {
+      "sku": "WM93PVC",
+      "name": "Cove Mould",
+      "dimensions": "3/4\" x 3/4\"",
+      "category": "Coves, Quarter Round & Panel Mouldings",
+      "image": "images/mouldings_profiles/wm93pvc.webp"
+    },
+    {
+      "sku": "BC5PVC",
+      "name": "Beaded Cove",
+      "dimensions": "3/4\" x 5-1/4\"",
+      "category": "Coves, Quarter Round & Panel Mouldings",
+      "image": "images/mouldings_profiles/bc5pvc.webp"
+    },
+    {
+      "sku": "8577PVC",
+      "name": "Nose and Cove",
+      "dimensions": "5/8\" x 3/4\"",
+      "category": "Coves, Quarter Round & Panel Mouldings",
+      "image": "images/mouldings_profiles/8577pvc.webp"
+    },
+    {
+      "sku": "8578PVC",
+      "name": "Nose and Cove",
+      "dimensions": "11/16\" x 1-1/8\"",
+      "category": "Coves, Quarter Round & Panel Mouldings",
+      "image": "images/mouldings_profiles/8578pvc.webp"
+    },
+    {
+      "sku": "ECB6PVC",
+      "name": "6\" E&CB Beadboard",
+      "dimensions": null,
+      "category": "Beadboard & Balusters",
+      "image": "images/mouldings_profiles/ecb6pvc.webp"
+    },
+    {
+      "sku": "ECBCAPPVC",
+      "name": "ECB Cap",
+      "dimensions": "3/4\" x 1-3/4\"",
+      "category": "Beadboard & Balusters",
+      "image": "images/mouldings_profiles/bead_cap.jpg"
+    },
+    {
+      "sku": "APV-8903",
+      "name": "1-1/4\" Square Baluster",
+      "dimensions": "1-1/4\" x 1-1/4\"",
+      "category": "Beadboard & Balusters",
+      "image": "images/mouldings_profiles/square_125.jpg"
+    },
+    {
+      "sku": "APV-8904",
+      "name": "1-1/2\" Square Baluster",
+      "dimensions": "1-1/2\" x 1-1/2\"",
+      "category": "Beadboard & Balusters",
+      "image": "images/mouldings_profiles/apv-8904.webp"
+    }
+  ]
+}
