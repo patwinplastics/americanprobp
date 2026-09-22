@@ -17,5 +17,7 @@ jobs:
           node --check pages/_partials.js
           node --check js/pro-resources.js
           node --check js/site.js
+      - name: Validate full-line moulding catalog
+        run: python3 tests/check_mouldings.py
       - name: Check whitespace
         run: git diff --check
