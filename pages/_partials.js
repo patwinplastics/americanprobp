@@ -35,8 +35,8 @@
       name: 'TrueGrain Deck\u2122',
       tagline: 'Wood to touch, PVC to last. Six hardwood-inspired colors.',
       href: B + 'pages/truegrain-deck.html',
-      img: B + 'images/truegrain_swatches/tropical_walnut.jpg',
-      alt: 'TrueGrain Deck wood-grain PVC deck board, Tropical Walnut',
+      img: B + 'images/mega/truegrain_lifestyle.jpg',
+      alt: 'TrueGrain Deck in Aged Oak on a lakeside deck at sunset',
     },
     {
       name: 'InvisiClip\u2122',
@@ -49,8 +49,8 @@
       name: 'Legacy PVC Decking',
       tagline: 'The workhorse. Same chemistry as TrueGrain, classic solid colors.',
       href: B + 'pages/legacy-pvc-decking.html',
-      img: B + 'images/deck_swatches/driftwood.jpg',
-      alt: 'American Pro Legacy PVC decking, Driftwood color',
+      img: B + 'images/mega/legacy_pvc_lifestyle.jpg',
+      alt: 'Legacy PVC decking in Khaki on a backyard patio with outdoor seating',
     },
     {
       name: 'Porch Flooring',
