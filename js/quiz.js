@@ -102,7 +102,7 @@
       look:  { win: 'truegrain', text: 'Six hardwood tones from birch to ipe, laminated for depth.' },
       heat:  { win: 'either',    tg: 'Capped cellular PVC runs cooler than composite in summer sun.', lg: 'Solid PVC extrusion with a cool-touch surface in real heat.' },
       price: { win: 'legacy',    text: 'Cellular PVC value without cutting corners on chemistry.' },
-      ease:  { win: 'legacy',    text: 'Grooved or square edge, top-fasten or hidden clip, contractor tested.' }
+      ease:  { win: 'legacy',    text: 'Solid Edge, Grooved Edge, or InvisiClip profile: face screws, side clips, or rails.' }
     },
     1: {
       wood:      { win: 'either', text: 'A no-splinter, no-sealing upgrade over the wood you’re removing.' },

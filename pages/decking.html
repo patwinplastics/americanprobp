@@ -54,6 +54,7 @@
 
     <link rel="stylesheet" href="../css/base.css" />
     <link rel="stylesheet" href="../css/site.css?v=22-phase1" />
+    <link rel="stylesheet" href="../css/profiles.css?v=1" />
     <style>
       /* Hero */
       .deck-hero { position: relative; min-height: 60vh; display: flex; align-items: flex-end; color: #fff; isolation: isolate; }
@@ -759,32 +760,49 @@
             </p>
           </div>
 
-          <!-- Profile types -->
+          <!-- Profile types: three profiles, both lines -->
           <div style="max-width: 60ch; margin-bottom: var(--space-8);" data-reveal>
-            <span class="eyebrow">Two profiles</span>
+            <span class="eyebrow">Three profiles, both lines</span>
             <h3 style="font-family: var(--font-display); font-size: clamp(var(--text-xl), 3vw, var(--text-3xl)); font-weight: 500; letter-spacing: -0.015em;">
-              Solid Edge or<br /><em>Grooved.</em>
+              Solid Edge, Grooved Edge,<br /><em>or Grooved for InvisiClip&trade;.</em>
             </h3>
           </div>
-          <div class="profile-types" data-reveal>
-            <div class="profile-card">
-              <span class="profile-tag">Profile</span>
-              <h3>Solid Edge</h3>
-              <p>
-                Traditional square-edge boards. Top-fastened with screws and
-                color-matched plugs. The most flexible install for picture
-                framing, breaker boards, and angled patterns.
-              </p>
-            </div>
-            <div class="profile-card">
-              <span class="profile-tag">Profile</span>
-              <h3>Grooved</h3>
-              <p>
-                Grooved boards for use with hidden fastener clips. Cleaner
-                finished surface with no visible screws across the field. Ideal
-                for straight runs over standard joist framing.
-              </p>
-            </div>
+          <div data-reveal>
+<div class="bp-grid">
+  <article class="bp-card" id="profile-solid-edge">
+    <figure class="bp-fig"><img src="../images/profiles/solid-edge.svg" width="760" height="350" alt="Cross-section drawing of the 1 by 5-1/2 inch Solid Edge deck board with square edges, face screwed into the joist with color-matched plugs" loading="lazy" decoding="async" /></figure>
+    <div class="bp-body">
+      <span class="bp-num">Profile 01</span>
+      <h4>Solid Edge</h4>
+      <p class="bp-fasten"><strong>Fastens with</strong>Face screws and color-matched plugs</p>
+      <ul class="bp-points"><li>Square edges, no groove</li><li>Most flexible for picture framing, borders, stairs, and angled patterns</li><li>The classic, fully fastened look</li></ul>
+      <p class="bp-lines">Available in <b>Legacy PVC</b> and <b>TrueGrain Deck&trade;</b></p>
+    </div>
+  </article>
+  <article class="bp-card" id="profile-grooved-edge">
+    <figure class="bp-fig"><img src="../images/profiles/grooved-edge.svg" width="760" height="350" alt="Cross-section drawing of the 1 by 5-1/2 inch Grooved Edge deck board with a slot in each side edge holding a grooved-edge hidden clip between boards" loading="lazy" decoding="async" /></figure>
+    <div class="bp-body">
+      <span class="bp-num">Profile 02</span>
+      <h4>Grooved Edge</h4>
+      <p class="bp-fasten"><strong>Fastens with</strong>Standard grooved-edge hidden clips, such as Starborn Clip &amp; Rip</p>
+      <ul class="bp-points"><li>A slot in each side edge</li><li>Clips fasten between boards, so no screws show on the surface</li><li>Use the grooved clip system your crew already stocks</li></ul>
+      <p class="bp-lines">Available in <b>Legacy PVC</b> and <b>TrueGrain Deck&trade;</b></p>
+    </div>
+  </article>
+  <article class="bp-card" id="profile-grooved-invisiclip">
+    <figure class="bp-fig"><img src="../images/profiles/grooved-invisiclip.svg" width="760" height="350" alt="Cross-section drawing of the 1 by 5-1/2 inch Grooved for InvisiClip deck board with two dovetail channels on the underside seated on InvisiClip clips and an aluminum rail" loading="lazy" decoding="async" /></figure>
+    <div class="bp-body">
+      <span class="bp-num">Profile 03</span>
+      <h4>Grooved for InvisiClip&trade;</h4>
+      <p class="bp-fasten"><strong>Fastens with</strong>InvisiClip&trade; clips pre-set on aluminum rails</p>
+      <ul class="bp-points"><li>Two dovetail channels on the underside, square side edges</li><li>Boards press down onto the clips, with no screws through the board</li><li>306 psf average ultimate uplift in independent Intertek testing</li></ul>
+      <p class="bp-lines">Available in <b>Legacy PVC</b> and <b>TrueGrain Deck&trade;</b></p>
+    </div>
+  </article>
+</div>
+          </div>
+          <div data-reveal>
+<div class="bp-note"><span class="bp-note-icon" aria-hidden="true">!</span><p style="margin:0;"><strong>Order the profile that matches your fastener.</strong> Each board is built for one fastening method. Grooved Edge boards do not seat on InvisiClip&trade;, and InvisiClip boards do not take side clips. <a href="../pages/decking-profiles.html">Compare all three profiles</a>.</p></div>
           </div>
 
           <!-- Standard colors -->
@@ -1117,9 +1135,12 @@
                 <span>Profile Preference *</span>
                 <select name="profile_type" required>
                   <option value="" disabled selected>Required</option>
-                  <option value="TrueGrain Deck (capped, hidden-fastener)">TrueGrain Deck (capped, hidden-fastener)</option>
+                  <option value="TrueGrain · Solid Edge">TrueGrain · Solid Edge</option>
+                  <option value="TrueGrain · Grooved Edge">TrueGrain · Grooved Edge</option>
+                  <option value="TrueGrain · Grooved for InvisiClip">TrueGrain · Grooved for InvisiClip&trade;</option>
                   <option value="Legacy PVC · Solid Edge">Legacy PVC · Solid Edge</option>
-                  <option value="Legacy PVC · Grooved">Legacy PVC · Grooved</option>
+                  <option value="Legacy PVC · Grooved Edge">Legacy PVC · Grooved Edge</option>
+                  <option value="Legacy PVC · Grooved for InvisiClip">Legacy PVC · Grooved for InvisiClip&trade;</option>
                   <option value="Not sure yet">Not sure yet</option>
                 </select>
               </label>
