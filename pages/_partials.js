@@ -184,6 +184,7 @@
           <ul>
             <li><a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
             <li><a href="${B}pages/decking.html">Compare Decking</a></li>
+            <li><a href="${B}pages/decking-profiles.html">Choose a Board Profile</a></li>
             <li><a href="${B}pages/truegrain-deck.html#find-your-deck">Find Your Deck Match</a></li>
             <li><a href="${B}pages/inspiration.html">Inspiration Gallery</a></li>
             <li><a href="${B}lookbook/">TrueGrain Lookbook</a></li>

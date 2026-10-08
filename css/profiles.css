@@ -1,0 +1,28 @@
+/* ==========================================================
+   Board profiles component (Solid Edge, Grooved Edge, Grooved for InvisiClip)
+   Shared by decking, Legacy PVC, TrueGrain, InvisiClip, and the
+   decking-profiles guide. Drawings live in /images/profiles/ and are
+   generated from the production DXF cross-sections.
+   ========================================================== */
+.bp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
+.bp-card { position: relative; display: flex; flex-direction: column; background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: 10px; overflow: hidden; }
+.bp-card.is-featured { border-color: var(--color-primary); box-shadow: 0 0 0 1px var(--color-primary); }
+.bp-fig { margin: 0; background: #fff; border-bottom: 1px solid var(--color-divider); }
+.bp-fig img { display: block; width: 100%; height: auto; aspect-ratio: 760 / 350; }
+.bp-body { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-5) var(--space-6) var(--space-6); flex: 1; }
+.bp-num { font-size: var(--text-xs); letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent); font-weight: 700; }
+.bp-card h3, .bp-card h4 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; letter-spacing: -0.015em; margin: 0; }
+.bp-fasten { margin: 0; padding: var(--space-3) var(--space-4); background: var(--color-surface-offset, #ebe7df); border-radius: 6px; font-size: var(--text-sm); color: var(--color-text); }
+.bp-fasten strong { display: block; font-size: var(--text-xs); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 2px; }
+.bp-points { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); font-size: var(--text-sm); color: var(--color-text-muted); }
+.bp-points li { position: relative; padding-left: 1.25em; }
+.bp-points li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 0.5em; height: 0.5em; border-radius: 50%; background: var(--color-accent); }
+.bp-lines { margin-top: auto; padding-top: var(--space-3); border-top: 1px solid var(--color-divider); font-size: var(--text-xs); letter-spacing: 0.06em; color: var(--color-text-muted); }
+.bp-lines b { color: var(--color-primary); font-weight: 700; }
+.bp-note { display: flex; gap: var(--space-4); align-items: flex-start; margin-top: var(--space-6); padding: var(--space-5) var(--space-6); background: #0e1f3a; color: rgba(255,255,255,0.86); border-radius: 10px; font-size: var(--text-sm); }
+.bp-note strong { color: #fff; }
+.bp-note-icon { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%; background: var(--color-accent); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 15px; line-height: 1; }
+.bp-note a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.bp-more { margin-top: var(--space-5); font-size: var(--text-sm); }
+.bp-more a { color: var(--color-accent); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 1020px) { .bp-grid { grid-template-columns: 1fr; max-width: 640px; } }
