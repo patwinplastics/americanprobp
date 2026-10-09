@@ -33,7 +33,7 @@
   const PRODUCTS = [
     {
       name: 'TrueGrain Deck\u2122',
-      tagline: 'Wood to touch, PVC to last. Six hardwood-inspired colors.',
+      tagline: 'The look of hardwood, the life of PVC. Six hardwood-inspired colors.',
       href: B + 'pages/truegrain-deck.html',
       img: B + 'images/mega/truegrain_lifestyle.jpg',
       alt: 'TrueGrain Deck in Aged Oak on a lakeside deck at sunset',
@@ -42,7 +42,7 @@
       name: 'InvisiClip\u2122',
       tagline: 'Hidden hardware. Honest deck.',
       href: B + 'pages/invisiclip.html',
-      img: B + 'images/invisiclip/clip_macro_hero.png',
+      img: B + 'images/invisiclip/clip_macro_hero.jpg',
       alt: 'InvisiClip hidden fastener clip on stainless rail',
     },
     {
