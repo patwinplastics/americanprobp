@@ -57,7 +57,7 @@
     <link rel="preload" as="image" type="image/webp" imagesrcset="./images/hero_deck-1000.webp 1000w, ./images/hero_deck-1600.webp 1600w, ./images/hero_deck.webp 2400w" imagesizes="100vw" fetchpriority="high" />
 
     <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/site.css?v=23-core-funnel" />
+    <link rel="stylesheet" href="./css/site.css?v=24-kits" />
 
     <!-- Homepage funnel scaffolds (buyer selector, quiz, sample tiles) -->
     <style id="funnel-styles">
@@ -1102,10 +1102,9 @@
             <span class="eyebrow">Free Samples</span>
             <h2>Touch the difference <em>before you commit.</em></h2>
             <p>
-              Tell us which line you want to see and we'll mail real product
-              samples, free, anywhere in the continental U.S. Pick the product
-              below to open the right request form, so we can capture the colors
-              and profile you need without back-and-forth.
+              We mail real product samples, free, anywhere in the continental U.S.
+              Start from a curated kit or pick a single line below. Either way you
+              land on the right request form with your colors already selected.
             </p>
             <ul class="samples-list samples-chooser-bullets">
               <li>
@@ -1123,6 +1122,15 @@
             </ul>
           </div>
 
+          <div class="kits-block" data-reveal data-reveal-delay="1">
+            <div class="kits-block__head">
+              <h3>Curated sample kits. <em>Picked to go together.</em></h3>
+              <p>Each kit is a starting point built around a palette or a job. Open one and add or remove any color before you send it.</p>
+            </div>
+            <div data-sample-kits data-kits-variant="full"></div>
+          </div>
+
+          <div class="kits-divider" aria-hidden="true">Or pick a single line</div>
           <div class="sample-tiles" data-reveal data-reveal-delay="1">
             <div class="sample-tile">
               <span class="sample-tile__media"><img src="./images/truegrain_swatches/tropical_walnut.jpg" alt="TrueGrain Deck Tropical Walnut PVC decking color swatch" loading="lazy" decoding="async" /></span>
@@ -1329,6 +1337,7 @@
     </script>
     <script src="./js/geo-banner.js?v=2" defer></script>
     <script src="./js/site.js?v=5" defer></script>
+    <script src="./js/sample-kits.js?v=1" defer></script>
 
   </body>
 </html>
