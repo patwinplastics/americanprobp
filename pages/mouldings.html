@@ -52,7 +52,7 @@
 
 
     <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/site.css?v=24-kits" />
+    <link rel="stylesheet" href="../css/site.css?v=25-kits-all" />
     <style>
       /* Hero */
       .moul-hero { position: relative; min-height: 60vh; display: flex; align-items: flex-end; color: #fff; isolation: isolate; }
@@ -493,6 +493,14 @@
             </p>
           </div>
 
+          <div class="kits-block" style="margin-top: 0; margin-bottom: var(--space-10);" data-reveal>
+            <div class="kits-block__head">
+              <h3>Start from a <em>curated trim kit.</em></h3>
+              <p>Pre-selects a set of profiles in the form below. Add or remove any profile after it loads.</p>
+            </div>
+            <div data-sample-kits data-kits-variant="compact" data-kits-only="crown-sizing,window-door-trim,exterior-trim,porch-ceiling-finish"></div>
+          </div>
+
           <form class="form-card" data-reveal data-formspree="mlgzgqnn" action="https://formspree.io/f/mlgzgqnn" method="POST">
             <input type="hidden" name="_subject" value="Mouldings sample request" />
             <input type="hidden" name="_next" value="./thanks.html?type=lead&src=Mouldings" />
@@ -628,6 +636,7 @@
     <script src="./_partials.js?v=8-blog-nav"></script>
     <script src="../js/geo-banner.js?v=2" defer></script>
     <script src="../js/site.js?v=5"></script>
+    <script src="../js/sample-kits.js?v=2" defer></script>
     <script>
       // Native buttons keep category filters keyboard-accessible.
       document.addEventListener('click', function (e) {

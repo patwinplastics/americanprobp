@@ -54,7 +54,7 @@
 
 
     <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/site.css?v=24-kits" />
+    <link rel="stylesheet" href="../css/site.css?v=25-kits-all" />
     <style>
       /* Hero */
       .porch-hero { position: relative; min-height: 60vh; display: flex; align-items: flex-end; color: #fff; isolation: isolate; }
@@ -737,6 +737,13 @@
       <!-- Samples -->
       <section class="section samples" id="samples">
         <div class="container">
+          <div class="kits-block" style="margin-top: 0; margin-bottom: var(--space-10);" data-reveal>
+            <div class="kits-block__head">
+              <h3>Start from a <em>curated porch kit.</em></h3>
+              <p>Pre-selects colors and both thicknesses in the form below. Add or remove anything after it loads.</p>
+            </div>
+            <div data-sample-kits data-kits-variant="compact" data-kits-only="porch-coastal-greys,porch-warm-woods,porch-thickness-compare,porch-full-palette"></div>
+          </div>
           <div class="samples-inner">
             <div data-reveal>
               <span class="eyebrow">Free Samples</span>
@@ -769,7 +776,15 @@
                   <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email" /></div>
                   <div class="field form-row"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" /></div>
                   <div class="field form-row">
-                    <label>Choose Your Samples</label>
+                    <label>Board Thickness</label>
+                    <div class="thickness-checks">
+                      <label class="check"><input type="checkbox" name="thickness[]" value="3/4&quot; (joists up to 12&quot; O.C.)" /><span>3/4&quot; <small>Joists up to 12&quot; O.C.</small></span></label>
+                      <label class="check"><input type="checkbox" name="thickness[]" value="1&quot; nominal, 7/8&quot; actual (joists up to 16&quot; O.C.)" /><span>1&quot; nominal (7/8&quot; actual) <small>Joists up to 16&quot; O.C.</small></span></label>
+                    </div>
+                    <p class="thickness-hint">Not sure which you need? Pick both and compare them in hand.</p>
+                  </div>
+                  <div class="field form-row">
+                    <label>Choose Your Colors</label>
                     <div class="swatch-checks">
                       <label class="check"><input type="checkbox" name="samples[]" value="Driftwood" /><span>Driftwood</span></label>
                       <label class="check"><input type="checkbox" name="samples[]" value="Slate" /><span>Slate</span></label>
@@ -810,5 +825,6 @@
     <script src="../pages/_partials.js?v=8-blog-nav"></script>
     <script src="../js/geo-banner.js?v=2" defer></script>
     <script src="../js/site.js?v=5" defer></script>
+    <script src="../js/sample-kits.js?v=2" defer></script>
   </body>
 </html>

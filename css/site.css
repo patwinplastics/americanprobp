@@ -3993,3 +3993,43 @@ section[id] {
 @media (max-width: 760px) {
   .samples-grid { grid-template-columns: 1fr !important; }
 }
+
+/* Kit category chips (homepage) */
+.kit-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: var(--space-6); }
+.kit-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(14, 31, 58, 0.18);
+  background: #fff;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.kit-chip:hover { border-color: rgba(14, 31, 58, 0.4); }
+.kit-chip.is-active { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+.kit-chip__n {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.05rem 0.45rem;
+  border-radius: var(--radius-full);
+  background: rgba(14, 31, 58, 0.08);
+  color: var(--color-text-muted);
+}
+.kit-chip.is-active .kit-chip__n { background: rgba(255,255,255,0.18); color: #fff; }
+.kit-card__thickness { margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--color-text-muted); }
+.kit-card__thickness b { color: var(--color-text); font-weight: 600; }
+/* Moulding profile drawings are line art on white; give them room to read. */
+.kit-swatch img[src*="mouldings_profiles"] { object-fit: contain; background: #fff; padding: 3px; }
+
+/* Porch thickness checkboxes in the sample form */
+.thickness-checks { display: grid; gap: 0.5rem; }
+@media (min-width: 560px) { .thickness-checks { grid-template-columns: 1fr 1fr; } }
+.thickness-checks .check { align-items: flex-start; }
+.thickness-checks .check small { display: block; font-weight: 400; color: var(--color-text-muted); font-size: 0.8rem; margin-top: 0.1rem; }
+.thickness-hint { margin: 0.35rem 0 0; font-size: 0.8rem; color: var(--color-text-muted); }
