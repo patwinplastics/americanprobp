@@ -2131,7 +2131,8 @@ html.reveal-ready [data-reveal].is-visible {
      Once JS sets an explicit height, that wins. On phones we keep this
      low so short slides like InvisiClip can shrink below the desktop floor. */
   min-height: clamp(420px, 60vh, 720px);
-  transition: height 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* No height transition: JS locks the slider to the tallest slide so the
+     page below never shifts as slides change. */
   /* Touch behavior: allow vertical page scroll, but tell the browser we handle
      horizontal gestures ourselves. Without this, iOS Safari may try to interpret
      a horizontal swipe as a back-navigation edge gesture and the swipe is lost. */
@@ -4033,3 +4034,34 @@ section[id] {
 .thickness-checks .check { align-items: flex-start; }
 .thickness-checks .check small { display: block; font-weight: 400; color: var(--color-text-muted); font-size: 0.8rem; margin-top: 0.1rem; }
 .thickness-hint { margin: 0.35rem 0 0; font-size: 0.8rem; color: var(--color-text-muted); }
+
+/* Hero slider: fixed height (tallest slide). Center shorter slides' content
+   in the shared space instead of pinning it to the top, so no slide looks
+   like it has a gap underneath. */
+.hero-slider .hero-slide--original {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-slider .hero-slide.truegrain-feature,
+.hero-slider .hero-slide.ic-feature {
+  align-items: center;
+}
+
+/* <picture> wrappers on hero art: let the <img> size against the slide,
+   not against an inline <picture> box (which broke the 100% height cover). */
+.hero-image picture { display: block; width: 100%; height: 100%; }
+.ic-feature-art picture { display: contents; }
+
+/* Mobile: the slider is locked to the tallest slide (TrueGrain), so keep that
+   slide compact to avoid dead space on the shorter slides. Six swatches in a
+   single row without names, and the 3D builder button drops because the
+   floating "See it on your house" launcher already carries it on phones. */
+@media (max-width: 720px) {
+  .hero-slide.truegrain-feature .tg-feature-swatches {
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 0.35rem;
+  }
+  .hero-slide.truegrain-feature .tg-feature-swatches .tg-swatch-name { display: none; }
+  .hero-slide.truegrain-feature .tg-feature-vis { display: none; }
+}
