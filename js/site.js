@@ -423,18 +423,31 @@
       // Inner's vertical margins (rare, but be safe).
       const innerMarginTop = parseFloat(innerStyles.marginTop) || 0;
       const innerMarginBottom = parseFloat(innerStyles.marginBottom) || 0;
+      // offsetHeight, not scrollHeight: the TrueGrain text reveal animates
+      // children with translateY, and scrollHeight counts that transient
+      // overflow, which made the locked height jump by ~14px mid-cycle.
       return Math.ceil(
-        inner.scrollHeight +
+        inner.offsetHeight +
         slidePadTop + slidePadBottom +
         innerMarginTop + innerMarginBottom
       );
     }
 
+    // Lock the slider to the TALLEST slide so the page below never moves as
+    // the hero cycles. Shorter slides sit vertically centered in that space.
+    // Re-measured on resize, font load, and image load (see bottom of module).
+    let lockedWidth = 0;
+    let lockedHeight = 0;
     function applyHeight() {
-      const active = slides[current];
-      if (!active) return;
-      const h = measureSlide(active);
-      if (h > 0) slider.style.height = h + 'px';
+      // Only allow the height to shrink when the viewport width actually
+      // changes (rotation, window resize). Otherwise it can only grow, so a
+      // late font or image can never make the page below jump up and down.
+      const w = slider.clientWidth;
+      if (w !== lockedWidth) { lockedWidth = w; lockedHeight = 0; }
+      let h = 0;
+      slides.forEach((s) => { h = Math.max(h, measureSlide(s)); });
+      if (h > lockedHeight) lockedHeight = h;
+      if (lockedHeight > 0) slider.style.height = lockedHeight + 'px';
     }
 
     function restartFill(fillEl) {
@@ -471,9 +484,7 @@
         }
       });
       current = next;
-      // Resize the slider to match the new active slide's content height.
-      // Runs after the active class swap so measurement uses the right slide.
-      applyHeight();
+      // Height is fixed to the tallest slide; nothing to resize per slide.
     }
 
     function pause() {
