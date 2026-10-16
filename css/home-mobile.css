@@ -95,9 +95,6 @@
   #samples .kit-chip { flex: 0 0 auto; }
   #samples .kit-card { height: auto; }
   #samples .kits-divider { margin: 1.25rem 0 0.75rem; }
-  #samples .sample-tiles > * { flex-basis: 56%; max-width: 56%; }
-  #samples .sample-tile__media { aspect-ratio: 4 / 3; height: auto; }
-  #samples .sample-tile__media img { width: 100%; height: 100%; object-fit: cover; }
 
   /* ---------- Trust bar ---------- */
   .home-main > .trust { padding-block: 1rem; }
@@ -153,4 +150,71 @@
   .footer-acc .footer-col:last-child h4 { border-bottom: 1px solid rgba(255, 255, 255, 0.14); }
   #samples .samples-chooser-bullets { flex-direction: column; align-items: flex-start; width: fit-content; margin-inline: auto; gap: 0.3rem; }
   #samples .samples-chooser-bullets li { display: inline-flex; align-items: center; gap: 0.4rem; }
+}
+
+/* ---------- v2: full-width cards, no cut-off edges ---------- */
+@media (max-width: 720px) {
+  /* One whole card per view. Gap equals the gutter so the next card
+     starts exactly at the screen edge and is never partially visible. */
+  .m-track,
+  #samples .kit-grid {
+    gap: var(--m-gutter, clamp(1rem, 4vw, 2rem)) !important;
+    align-items: flex-start;
+  }
+  .m-track > *,
+  #samples .kit-grid > *,
+  .buyer-select .m-track > *,
+  .pillars .m-track > * {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  #samples .kit-card__cta { margin-top: 1rem; }
+
+  /* Pager: arrows + dots + count */
+  .m-pager {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.9rem; margin-top: 0.6rem;
+  }
+  .m-pager .m-dots { margin: 0; }
+  .m-arrow {
+    width: 40px; height: 40px; border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1.5px solid currentColor; background: transparent;
+    color: inherit; opacity: 0.85; cursor: pointer; padding: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .m-arrow svg { width: 18px; height: 18px; }
+  .m-arrow:disabled { opacity: 0.25; cursor: default; }
+  .m-count { font-size: 0.8rem; letter-spacing: 0.06em; opacity: 0.7; min-width: 3.2em; text-align: center; }
+
+  /* Single-line samples: compact list, everything visible */
+  #samples .sample-tiles.m-list {
+    display: flex !important; flex-direction: column; gap: 0.6rem;
+    grid-template-columns: none !important;
+  }
+  #samples .m-list .sample-tile {
+    display: grid; grid-template-columns: 72px 1fr; align-items: center;
+    border-radius: 14px; overflow: hidden;
+  }
+  #samples .m-list .sample-tile:hover { transform: none; }
+  #samples .m-list .sample-tile__media { aspect-ratio: auto; width: 72px; height: 72px; }
+  #samples .m-list .sample-tile__body {
+    display: flex; flex-direction: row; align-items: center;
+    justify-content: space-between; gap: 0.6rem; padding: 0.6rem 0.75rem 0.6rem 0.9rem;
+  }
+  #samples .m-list .sample-tile__name { font-size: 0.95rem; }
+  #samples .m-list .btn {
+    flex: 0 0 auto; padding: 0.55rem 0.95rem; font-size: 0.82rem; width: auto; min-height: 0;
+  }
+  html.reveal-ready #samples .m-list[data-reveal] { opacity: 1 !important; transform: none !important; }
+}
+@media (max-width: 720px) {
+  /* Kit filter chips wrap instead of running off the right edge */
+  #samples .kit-chips { flex-wrap: wrap; overflow: visible; margin-inline: 0; padding-inline: 0; }
+}
+@media (max-width: 720px) {
+  #samples .kit-chips { display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; }
+  #samples .kit-chip { justify-content: center; padding: 0.5rem 0.6rem; font-size: 0.82rem; white-space: nowrap; }
+  /* Track height follows the visible card so short cards leave no gap */
+  .m-track, #samples .kit-grid { overflow-y: hidden; transition: height 260ms ease; }
 }
