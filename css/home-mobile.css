@@ -218,3 +218,29 @@
   /* Track height follows the visible card so short cards leave no gap */
   .m-track, #samples .kit-grid { overflow-y: hidden; transition: height 260ms ease; }
 }
+
+/* ---------- v3: transform-based swipe (no native scroll-snap) ----------
+   JS adds .m-swipe to each track. Cards move together via --m-x, so every
+   swipe settles on exactly one whole card, aligned to the page gutter. */
+@media (max-width: 720px) {
+  .home-main .m-track.m-swipe,
+  #samples .kit-grid.m-swipe {
+    overflow: hidden !important;
+    scroll-snap-type: none !important;
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: height 280ms ease;
+  }
+  html .home-main .m-track.m-swipe > *,
+  html #samples .kit-grid.m-swipe > * {
+    transform: translate3d(var(--m-x, 0px), 0, 0) !important;
+    transition: transform 380ms cubic-bezier(0.22, 0.8, 0.24, 1) !important;
+    will-change: transform;
+  }
+  html .home-main .m-track.m-swipe.is-dragging > *,
+  html #samples .kit-grid.m-swipe.is-dragging > * {
+    transition: none !important;
+  }
+  .m-swipe img { -webkit-user-drag: none; pointer-events: none; }
+}
