@@ -58,6 +58,7 @@
 
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/site.css?v=26-hero-fixed" />
+    <link rel="stylesheet" href="./css/home-mobile.css?v=1" />
 
     <!-- Homepage funnel scaffolds (buyer selector, quiz, sample tiles) -->
     <style id="funnel-styles">
@@ -271,7 +272,7 @@
       </div>
     </header>
 
-    <main>
+    <main class="home-main">
       <!-- ========== HERO SLIDER (TrueGrain Deck™ default, InvisiClip, brand) ========== -->
       <!-- STAGING: Slide order reworked so the first slide names a product.
            Order is now: 1) TrueGrain Deck, 2) InvisiClip, 3) American Pro brand.
@@ -629,7 +630,7 @@
       <!-- ========== BUYER-TYPE SELECTOR (funnel entry) ========== -->
       <section class="buyer-select" aria-label="Choose the path that fits you">
         <div class="container">
-          <div class="buyer-select-grid">
+          <div class="buyer-select-grid m-track">
             <a class="buyer-card" href="#visualizer">
               <span class="buyer-card__eyebrow">For your home</span>
               <span class="buyer-card__title">I'm a Homeowner</span>
@@ -698,7 +699,7 @@
             </p>
           </header>
 
-          <div class="product-grid product-grid--5">
+          <div class="product-grid product-grid--5 m-track">
             <article class="product-card product-card--flagship" data-reveal>
               <a href="./pages/truegrain-deck.html">
                 <div class="product-image">
@@ -838,7 +839,7 @@
             </p>
           </header>
 
-          <div class="pillars-grid">
+          <div class="pillars-grid m-track">
             <div class="pillar" data-reveal>
               <div class="pillar-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
@@ -872,7 +873,7 @@
       </section>
 
       <!-- ========== FIND YOUR MATCH PROMO BAND ========== -->
-      <section class="section quiz-promo" aria-labelledby="quiz-promo-title">
+      <section class="section quiz-promo m-hide" aria-labelledby="quiz-promo-title">
         <div class="container quiz-promo-inner" data-reveal>
           <div class="quiz-promo-copy">
             <span class="eyebrow">Find your match</span>
@@ -892,7 +893,7 @@
       </section>
 
       <!-- ========== STORY / MANUFACTURING ========== -->
-      <section class="section">
+      <section class="section home-story m-hide">
         <div class="container">
           <div class="story">
             <div class="story-image" data-reveal>
@@ -1060,7 +1061,7 @@
       </section>
 
       <!-- ========== INSPIRATION GALLERY ========== -->
-      <section class="section gallery">
+      <section class="section gallery m-hide">
         <div class="container">
           <header class="section-head" data-reveal>
             <div>
@@ -1131,7 +1132,7 @@
           </div>
 
           <div class="kits-divider" aria-hidden="true">Or pick a single line</div>
-          <div class="sample-tiles" data-reveal data-reveal-delay="1">
+          <div class="sample-tiles m-track" data-reveal data-reveal-delay="1">
             <div class="sample-tile">
               <span class="sample-tile__media"><img src="./images/truegrain_swatches/tropical_walnut.jpg" alt="TrueGrain Deck Tropical Walnut PVC decking color swatch" loading="lazy" decoding="async" /></span>
               <div class="sample-tile__body">
@@ -1338,6 +1339,7 @@
     <script src="./js/geo-banner.js?v=2" defer></script>
     <script src="./js/site.js?v=6" defer></script>
     <script src="./js/sample-kits.js?v=2" defer></script>
+    <script src="./js/home-mobile.js?v=1" defer></script>
 
   </body>
 </html>
