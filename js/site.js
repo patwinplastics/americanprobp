@@ -219,6 +219,11 @@
   // natively as a hard fallback so the lead is never silently lost.
   document.querySelectorAll('form[data-formspree]').forEach((form) => {
     form.addEventListener('submit', async (e) => {
+      // Tag every lead with the visitor's role ("I Am A") so submissions can be
+      // filtered by Homeowner, Dealer, Distributor, Contractor, and so on.
+      // Runs before both the fetch path and the native-submit fallback.
+      tagRole(form);
+
       // Honeypot: if the hidden _gotcha field has any value, the submitter is
       // a bot. Pretend success, do nothing.
       const honey = form.querySelector('input[name="_gotcha"]');
@@ -284,6 +289,31 @@
       }
     });
   });
+
+  function tagRole(form) {
+    const field = form.querySelector('[name="role"]');
+    const role = field && field.value ? field.value.trim() : '';
+    if (!role) return;
+    const subj = form.querySelector('input[name="_subject"]');
+    if (subj) {
+      // Subject becomes "[Dealer] Porch flooring sample request" for inbox rules.
+      subj.value = '[' + role + '] ' + subj.value.replace(/^\[[^\]]*\]\s*/, '');
+    }
+    let tag = form.querySelector('input[name="lead_role"]');
+    if (!tag) {
+      tag = document.createElement('input');
+      tag.type = 'hidden';
+      tag.name = 'lead_role';
+      form.appendChild(tag);
+    }
+    // Stable lowercase key for CSV sorting and filtering: homeowner, dealer, distributor ...
+    tag.value = role.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const next = form.querySelector('input[name="_next"]');
+    if (next && next.value) {
+      const base = next.value.replace(/([?&])role=[^&]*(&|$)/, function (m, a, b) { return b ? a : ''; });
+      next.value = base + (base.indexOf('?') === -1 ? '?' : '&') + 'role=' + encodeURIComponent(tag.value);
+    }
+  }
 
   function renderInlineThanks(form) {
     const card = form.closest('.form-card') || form;
