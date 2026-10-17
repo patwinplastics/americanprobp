@@ -45,7 +45,7 @@
     const role = tradeForm.elements.role;
     const paths = {
       contractor: ['Builder / Contractor', 'Installation support'],
-      dealer: ['Dealer / Distributor', 'Dealer / distributor inquiry'],
+      dealer: ['Dealer', 'Dealer / distributor inquiry'],
       specifier: ['Architect / Designer', 'Technical documents'],
       samples: ['', 'Trade sample kit inquiry']
     };
