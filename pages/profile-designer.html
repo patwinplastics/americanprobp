@@ -148,6 +148,7 @@
       .pd-attach:disabled { opacity: .7; cursor: progress; }
       .pd-out small { display: block; margin-top: .5rem; font-size: .72rem; color: #7a8296; line-height: 1.4; }
 
+      .pd-acct[hidden], .pd-exp[hidden], .pd-out h3[hidden] { display: none !important; }
       .pd-acct { padding: .85rem 1rem; border-bottom: 1px solid #e2ddd3; background: #fbfaf7; }
       .pd-acct__pitch { font-size: .8rem; color: #3a4560; line-height: 1.4; margin: 0 0 .55rem; }
       .pd-acct__btns { display: flex; gap: .4rem; flex-wrap: wrap; }
@@ -226,7 +227,7 @@
         <div class="container pd-intro__in">
           <div>
             <h1 id="pd-title">Profile Designer <em>Draw It to Scale.</em></h1>
-            <p>Sketch your moulding's cross-section, add rounds and coves, and send it straight to American Pro. Free account holders can save designs and download DXF, PDF and PNG files.</p>
+            <p>Sketch your moulding's cross-section, add rounds and coves, and send it straight to American Pro.</p>
           </div>
           <a class="pd-back" href="./custom-historic-profiles.html">Back to Custom &amp; Historic Profiles</a>
         </div>
@@ -315,7 +316,6 @@
                 <li>Scroll or pinch to zoom. Hold <kbd>Space</kbd> and drag to pan.</li>
                 <li><kbd>F</kbd> fits the drawing, <kbd>Ctrl Z</kbd> undoes.</li>
                 <li>A sketch is fine. Our engineers confirm the final die geometry with you.</li>
-                <li>A free account saves designs and unlocks downloads.</li>
               </ul>
             </div>
           </div>
@@ -330,7 +330,7 @@
     <script src="../js/vendor/jspdf.umd.min.js" defer></script>
     <script src="../js/profile-engine.js?v=1" defer></script>
     <script src="../js/profile-designer.js?v=2" defer></script>
-    <script src="../js/profile-account.js?v=1" defer></script>
+    <script src="../js/profile-account.js?v=2" defer></script>
     <script>
       document.addEventListener('click', function (e) {
         if (e.target.closest('[data-hint-example]') && window.APProfileDesigner) window.APProfileDesigner.act('example');

@@ -249,9 +249,30 @@
 
   window.APProfileAccount = { open: open, user: function () { return user; }, token: token, api: api, save: saveDesign };
 
-  renderBar();
-  if (token() && API) {
-    api('GET', '/me').then(function (j) { signedIn(j.user); if (j.mustChange) open('password', 'forced'); })
-      .catch(function (e) { if (e.status === 401) signOut(); else { renderBar(); } });
+  // Accounts switch on automatically once the designer API answers. Until then
+  // the account bar and downloads stay hidden and guests can still send drawings.
+  var out = app.querySelector('.pd-exp'), outHead = out && out.previousElementSibling;
+  function setAvailable(on) {
+    bar.hidden = !on;
+    if (out) out.hidden = !on;
+    if (outHead) outHead.hidden = !on;
+    app.classList.toggle('pd-no-accounts', !on);
+  }
+  setAvailable(false);
+  if (API) {
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 8000);
+    fetch(API + '/health', { signal: ctl ? ctl.signal : undefined }).then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        clearTimeout(timer);
+        if (!j || !j.ok) return;
+        setAvailable(true);
+        renderBar();
+        if (token()) {
+          api('GET', '/me').then(function (k) { signedIn(k.user); if (k.mustChange) open('password', 'forced'); })
+            .catch(function (e) { if (e.status === 401) signOut(); else renderBar(); });
+        }
+      })
+      .catch(function () { clearTimeout(timer); });
   }
 })();
