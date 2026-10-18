@@ -107,6 +107,41 @@
     b.w = b.x1 - b.x0; b.h = b.y1 - b.y0;
     return b;
   }
+  // Additional shapes (offsets, hollows) live in S.extra; the bound shape is the active one
+  function shapes() {
+    return [api].concat((S.extra || []).filter(function (sh) { return sh && sh.pts && sh.pts.length; }).map(function (sh) {
+      return bind({ pts: sh.pts, bul: sh.bul || [], closed: !!sh.closed, units: S.units, name: S.name, project: S.project });
+    }));
+  }
+  function bboxAll() {
+    var b = null;
+    shapes().forEach(function (E2) {
+      var q = E2.bbox(); if (!q) return;
+      if (!b) { b = Object.assign({}, q); return; }
+      b.x0 = Math.min(b.x0, q.x0); b.y0 = Math.min(b.y0, q.y0); b.x1 = Math.max(b.x1, q.x1); b.y1 = Math.max(b.y1, q.y1);
+    });
+    if (b) { b.w = b.x1 - b.x0; b.h = b.y1 - b.y0; }
+    return b;
+  }
+  function bulAt(i) { return S.bul[i] || 0; }
+  function isClosed() { return !!S.closed; }
+  function inside(pt, poly) {
+    var c = false;
+    for (var i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+      var a = poly[i], b = poly[j];
+      if ((a.y > pt.y) !== (b.y > pt.y) && pt.x < (b.x - a.x) * (pt.y - a.y) / (b.y - a.y) + a.x) c = !c;
+    }
+    return c;
+  }
+  // closed shapes with nesting depth (even = solid, odd = hollow)
+  function fills() {
+    var cl = shapes().filter(function (E2) { return E2.isClosed() && E2.outline().length > 2; });
+    return cl.map(function (E2) {
+      var o = E2.outline(), probe = o[0];
+      var depth = cl.filter(function (F) { return F !== E2 && inside(probe, F.outline()); }).length;
+      return { E: E2, out: o, depth: depth, area: E2.area() };
+    }).sort(function (a, b) { return b.area - a.area; });
+  }
   function area() {
     if (!S.closed) return 0;
     var p = outline(), a = 0;
@@ -154,7 +189,7 @@
     var L = [];
     function g(c, v) { L.push(String(c), String(v)); }
     function num(v) { return (Math.round(v * k * 1e6) / 1e6).toString(); }
-    var bb = bbox() || { x0: 0, y0: 0, x1: 1, y1: 1 };
+    var bb = bboxAll() || { x0: 0, y0: 0, x1: 1, y1: 1 };
     g(0, 'SECTION'); g(2, 'HEADER');
     g(9, '$ACADVER'); g(1, 'AC1009');
     g(9, '$INSUNITS'); g(70, isMM() ? 4 : 1);
@@ -169,8 +204,9 @@
     g(0, 'ENDTAB');
     g(0, 'ENDSEC');
     g(0, 'SECTION'); g(2, 'ENTITIES');
-    for (var i = 0; i < segCount(); i++) {
-      var e = segEnds(i), b = S.bul[i] || 0;
+    shapes().forEach(function (E2) {
+    for (var i = 0; i < E2.segCount(); i++) {
+      var e = E2.segEnds(i), b = E2.bulAt(i);
       if (!b) {
         g(0, 'LINE'); g(8, 'PROFILE');
         g(10, num(e[0].x)); g(20, num(e[0].y)); g(30, 0);
@@ -185,6 +221,7 @@
         g(40, num(A.r)); g(50, deg(s)); g(51, deg(en));
       }
     }
+    });
     var th = (isMM() ? 3 : 0.125) / k;
     var ty = bb.y0 - th * 4;
     var notes = [
@@ -208,26 +245,42 @@
   /* ============ Export: PNG ============ */
   function drawToCanvas(ctx, W, H, opts) {
     opts = opts || {};
-    var bb = bbox();
+    var bb = bboxAll();
     ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H);
     if (!bb) return;
     var pad = opts.pad || 140;
     var s = Math.min((W - pad * 2) / Math.max(bb.w, 0.1), (H - pad * 2) / Math.max(bb.h, 0.1));
     var ox = W / 2 - (bb.x0 + bb.x1) / 2 * s, oy = H / 2 + (bb.y0 + bb.y1) / 2 * s;
     var T = function (p) { return { x: ox + p.x * s, y: oy - p.y * s }; };
-    var out = outline();
+    var all = shapes();
     ctx.lineJoin = 'round'; ctx.lineCap = 'round';
     ctx.beginPath();
-    out.forEach(function (p, k) { var q = T(p); k ? ctx.lineTo(q.x, q.y) : ctx.moveTo(q.x, q.y); });
-    if (S.closed) { ctx.closePath(); ctx.fillStyle = '#e8edf5'; ctx.fill(); }
-    ctx.strokeStyle = '#0e1f3a'; ctx.lineWidth = opts.lw || 4; ctx.stroke();
+    all.forEach(function (E2) {
+      if (!E2.isClosed()) return;
+      E2.outline().forEach(function (p, k) { var q = T(p); k ? ctx.lineTo(q.x, q.y) : ctx.moveTo(q.x, q.y); });
+      ctx.closePath();
+    });
+    ctx.fillStyle = '#e8edf5'; ctx.fill('evenodd');
+    ctx.strokeStyle = '#0e1f3a'; ctx.lineWidth = opts.lw || 4;
+    all.forEach(function (E2) {
+      ctx.beginPath();
+      E2.outline().forEach(function (p, k) { var q = T(p); k ? ctx.lineTo(q.x, q.y) : ctx.moveTo(q.x, q.y); });
+      if (E2.isClosed()) ctx.closePath();
+      ctx.stroke();
+    });
     var fs = opts.fs || 22;
     ctx.font = '600 ' + fs + 'px Helvetica, Arial, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    dimLabels().forEach(function (d) {
-      var w = ctx.measureText(d.text).width + 14;
-      var q = T({ x: d.x, y: d.y }), px = q.x + d.nx * (fs * 0.7 + Math.abs(d.nx) * w / 2), py = q.y - d.ny * fs * 1.2;
-      ctx.fillStyle = 'rgba(255,255,255,.92)'; ctx.fillRect(px - w / 2, py - fs * 0.7, w, fs * 1.4);
-      ctx.fillStyle = S.bul[d.i] ? '#b91c2c' : '#0e1f3a'; ctx.fillText(d.text, px, py);
+    var placed = [];
+    all.forEach(function (E2) {
+      E2.dimLabels().forEach(function (d) {
+        var w = ctx.measureText(d.text).width + 14;
+        var q = T({ x: d.x, y: d.y }), px = q.x + d.nx * (fs * 0.7 + Math.abs(d.nx) * w / 2), py = q.y - d.ny * fs * 1.2;
+        var box = { x0: px - w / 2, x1: px + w / 2, y0: py - fs * 0.7, y1: py + fs * 0.7 };
+        if (placed.some(function (o) { return box.x0 < o.x1 && box.x1 > o.x0 && box.y0 < o.y1 && box.y1 > o.y0; })) return;
+        placed.push(box);
+        ctx.fillStyle = 'rgba(255,255,255,.92)'; ctx.fillRect(px - w / 2, py - fs * 0.7, w, fs * 1.4);
+        ctx.fillStyle = E2.bulAt(d.i) ? '#b91c2c' : '#0e1f3a'; ctx.fillText(d.text, px, py);
+      });
     });
     // overall dims
     var A = T({ x: bb.x0, y: bb.y0 }), B = T({ x: bb.x1, y: bb.y1 });
@@ -271,7 +324,7 @@
     doc.line(m, tbY, W - m, tbY);
     var cols = [m, m + 3.1, m + 5.6, m + 7.6, W - m];
     for (var c = 1; c < cols.length - 1; c++) doc.line(cols[c], tbY, cols[c], H - m);
-    var bb = bbox() || { w: 0, h: 0, x0: 0, y0: 0, x1: 0, y1: 0 };
+    var bb = bboxAll() || { w: 0, h: 0, x0: 0, y0: 0, x1: 0, y1: 0 };
     // drawing area
     var ax = m + 0.9, ay = m + 0.6, aw = W - 2 * m - 1.8, ah = tbY - ay - 0.9;
     var scales = [1, 0.5, 0.25, 0.2, 0.125, 0.1, 0.0625, 0.05];
@@ -280,26 +333,34 @@
     if (bb.w && bb.h && bb.w * 2 <= aw && bb.h * 2 <= ah && bb.w < 2.5 && bb.h < 1.6) sc = 2; // small profiles enlarge 2:1
     var ox = ax + aw / 2 - (bb.x0 + bb.x1) / 2 * sc, oy = ay + ah / 2 + (bb.y0 + bb.y1) / 2 * sc;
     var T = function (p) { return [ox + p.x * sc, oy - p.y * sc]; };
-    var out = outline();
-    if (out.length > 1) {
-      if (S.closed) {
-        doc.setFillColor(232, 237, 245);
+    var all = shapes();
+    if (bboxAll() && (bb.w > 0 || bb.h > 0)) {
+      // fills: outer shapes solid, nested shapes (hollows) white
+      fills().forEach(function (f) {
+        if (f.depth % 2) doc.setFillColor(255, 255, 255); else doc.setFillColor(232, 237, 245);
         var segs = [];
-        for (var i = 1; i < out.length; i++) { var a = T(out[i - 1]), b = T(out[i]); segs.push([b[0] - a[0], b[1] - a[1]]); }
-        var st = T(out[0]);
-        doc.lines(segs, st[0], st[1], [1, 1], 'FD', true);
-      } else {
-        for (var j = 1; j < out.length; j++) { var p1 = T(out[j - 1]), p2 = T(out[j]); doc.setLineWidth(0.018); doc.line(p1[0], p1[1], p2[0], p2[1]); }
-      }
+        for (var i = 1; i < f.out.length; i++) { var a = T(f.out[i - 1]), b = T(f.out[i]); segs.push([b[0] - a[0], b[1] - a[1]]); }
+        var st = T(f.out[0]);
+        doc.lines(segs, st[0], st[1], [1, 1], 'F', true);
+      });
       doc.setLineWidth(0.018); doc.setDrawColor.apply(doc, navy);
-      for (var j2 = 1; j2 < out.length; j2++) { var q1 = T(out[j2 - 1]), q2 = T(out[j2]); doc.line(q1[0], q1[1], q2[0], q2[1]); }
-      if (S.closed) { var z1 = T(out[out.length - 1]), z2 = T(out[0]); doc.line(z1[0], z1[1], z2[0], z2[1]); }
+      all.forEach(function (E2) {
+        var o = E2.outline();
+        for (var j2 = 1; j2 < o.length; j2++) { var q1 = T(o[j2 - 1]), q2 = T(o[j2]); doc.line(q1[0], q1[1], q2[0], q2[1]); }
+        if (E2.isClosed() && o.length > 2) { var z1 = T(o[o.length - 1]), z2 = T(o[0]); doc.line(z1[0], z1[1], z2[0], z2[1]); }
+      });
       // segment labels
       doc.setFont('helvetica', 'bold'); doc.setFontSize(8);
-      dimLabels().forEach(function (d) {
-        var q = T({ x: d.x, y: d.y }), w = doc.getTextWidth(d.text); var px = q[0] + d.nx * (0.14 + Math.abs(d.nx) * w / 2), py = q[1] - d.ny * 0.17 + 0.03;
-        doc.setTextColor.apply(doc, S.bul[d.i] ? red : navy);
-        doc.text(d.text.replace(/\u00d7/g, 'x'), px, py, { align: 'center' });
+      var placed = [];
+      all.forEach(function (E2) {
+        E2.dimLabels().forEach(function (d) {
+          var q = T({ x: d.x, y: d.y }), w = doc.getTextWidth(d.text); var px = q[0] + d.nx * (0.14 + Math.abs(d.nx) * w / 2), py = q[1] - d.ny * 0.17 + 0.03;
+          var box = { x0: px - w / 2 - 0.02, x1: px + w / 2 + 0.02, y0: py - 0.12, y1: py + 0.03 };
+          if (placed.some(function (o) { return box.x0 < o.x1 && box.x1 > o.x0 && box.y0 < o.y1 && box.y1 > o.y0; })) return;
+          placed.push(box);
+          doc.setTextColor.apply(doc, E2.bulAt(d.i) ? red : navy);
+          doc.text(d.text.replace(/\u00d7/g, 'x'), px, py, { align: 'center' });
+        });
       });
       // overall dims
       var A = T({ x: bb.x0, y: bb.y0 }), B = T({ x: bb.x1, y: bb.y1 });
@@ -316,7 +377,8 @@
     doc.setTextColor.apply(doc, red); doc.setFont('helvetica', 'bold'); doc.setFontSize(9);
     doc.text('CUSTOM PROFILE SHOP DRAWING', m + 0.2, m + 0.3);
     doc.setTextColor.apply(doc, gray); doc.setFont('helvetica', 'normal'); doc.setFontSize(8);
-    doc.text(S.closed ? 'Closed outline' : 'Open outline (not yet a closed shape)', W - m - 0.2, m + 0.3, { align: 'right' });
+    var nSh = shapes().length;
+    doc.text((nSh > 1 ? nSh + ' shapes, ' : '') + (S.closed ? 'closed outline' : 'open outline (not yet a closed shape)'), W - m - 0.2, m + 0.3, { align: 'right' });
     // title block text
     var cell = function (x, label, value, big) {
       doc.setTextColor.apply(doc, gray); doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5);
@@ -367,12 +429,14 @@
     ctx.fillText('American Pro Building Products  \u00b7  americanprobp.com', W - 60, H - 50);
     ctx.restore();
   }
-    return {
+    var api = {
+      shapes: shapes, bboxAll: bboxAll, bulAt: bulAt, isClosed: isClosed, fills: fills, inside: inside,
       MM: MM, isMM: isMM, fmtLen: fmtLen, fmtNum: fmtNum, parseLen: parseLen, fmtAng: fmtAng,
       segCount: segCount, segEnds: segEnds, arcInfo: arcInfo, segPoints: segPoints, segMid: segMid,
       segLen: segLen, segAngle: segAngle, outline: outline, bbox: bbox, area: area, signedArea: signedArea,
       dimLabels: dimLabels, slug: slug, dxf: dxf, pdf: pdf, png: png, drawToCanvas: drawToCanvas
     };
+    return api;
   }
-  window.APProfileEngine = { bind: bind, version: 1 };
+  window.APProfileEngine = { bind: bind, version: 2 };
 })();
