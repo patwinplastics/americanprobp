@@ -85,6 +85,16 @@
       .pd-seg.is-hover { stroke: #b91c2c; stroke-width: 3.2; }
       .pd-seg.is-sel { stroke: #b91c2c; stroke-width: 4; }
       .pd-preview { stroke: #b91c2c; stroke-width: 1.8; stroke-dasharray: 6 5; fill: none; }
+      .pd-preview--off { stroke-width: 2; stroke-dasharray: 4 4; }
+      .pd-seg--other { stroke: #4b5d7a; stroke-width: 2; fill: none; cursor: pointer; }
+      .pd-seg--other.is-hover { stroke: #0e1f3a; stroke-width: 3; }
+      .pd-dim.is-other { opacity: .72; }
+      .pd-bend { fill: #fff; stroke: #b91c2c; stroke-width: 2; cursor: grab; }
+      .pd-presets { display: flex; flex-wrap: wrap; gap: .3rem; margin: .45rem 0 .5rem; }
+      .pd-pre { font: inherit; font-size: .76rem; font-weight: 600; padding: .28rem .5rem; min-height: 30px; border: 1px solid #c9d2e0; background: #fff; color: #0e1f3a; border-radius: 6px; cursor: pointer; }
+      .pd-pre:hover { border-color: #0e1f3a; }
+      .pd-pre.is-on { background: #0e1f3a; color: #fff; border-color: #0e1f3a; }
+      .pd-note--err { color: #b91c2c; font-weight: 600; }
       .pd-pt { fill: #fff; stroke: #0e1f3a; stroke-width: 2; }
       .pd-pt.is-first { fill: #0e1f3a; }
       .pd-pt.is-hover { stroke: #b91c2c; }
@@ -328,8 +338,8 @@
     <script src="../js/geo-banner.js?v=2" defer></script>
     <script src="../js/site.js?v=7"></script>
     <script src="../js/vendor/jspdf.umd.min.js" defer></script>
-    <script src="../js/profile-engine.js?v=1" defer></script>
-    <script src="../js/profile-designer.js?v=2" defer></script>
+    <script src="../js/profile-engine.js?v=2" defer></script>
+    <script src="../js/profile-designer.js?v=3" defer></script>
     <script src="../js/profile-account.js?v=2" defer></script>
     <script>
       document.addEventListener('click', function (e) {
