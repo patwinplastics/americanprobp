@@ -417,9 +417,10 @@
     lastFocus = document.activeElement;
     root.classList.add('is-open');
     document.documentElement.classList.add('ap-search-lock');
-    if (typeof prefill === 'string') input.value = prefill;
+    input.value = typeof prefill === 'string' ? prefill : '';
+    run();
+    input.focus();
     load().then(function () { if (input.value) run(); });
-    setTimeout(function () { input.focus(); input.select(); }, 20);
   }
   function close() {
     if (!root) return;

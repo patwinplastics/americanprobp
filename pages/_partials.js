@@ -235,7 +235,7 @@
   // Site search: header button + search dialog (js/site-search.js)
   if (!document.querySelector('script[src*="site-search.js"]')) {
     const ss = document.createElement('script');
-    ss.src = B + 'js/site-search.js?v=1';
+    ss.src = B + 'js/site-search.js?v=2';
     ss.defer = true;
     document.head.appendChild(ss);
   }
