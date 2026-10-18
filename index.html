@@ -60,7 +60,7 @@
 
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/site.css?v=26-hero-fixed" />
-    <link rel="stylesheet" href="./css/house-hero.css?v=1" />
+    <link rel="stylesheet" href="./css/house-hero.css?v=3" />
     <link rel="stylesheet" href="./css/home-mobile.css?v=3" />
 
     <!-- Homepage funnel scaffolds (buyer selector, quiz, sample tiles) -->
@@ -324,10 +324,6 @@
               <span class="house-dot__ring" aria-hidden="true"></span>
               <span class="house-dot__label">Decking</span>
             </button>
-            <button type="button" class="house-dot" data-dot="invisiclip" data-x="905" data-y="466" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
-              <span class="house-dot__ring" aria-hidden="true"></span>
-              <span class="house-dot__label">InvisiClip&trade;</span>
-            </button>
             <button type="button" class="house-dot" data-dot="porch" data-x="590" data-y="437" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
               <span class="house-dot__ring" aria-hidden="true"></span>
               <span class="house-dot__label">Porch Flooring</span>
@@ -367,7 +363,6 @@
             <div class="house-chips" role="group" aria-label="Explore product lines on the house">
               <span class="house-chips__label">Explore the Home</span>
               <button type="button" class="house-chip" data-chip="deck">Decking</button>
-              <button type="button" class="house-chip" data-chip="invisiclip">InvisiClip&trade;</button>
               <button type="button" class="house-chip" data-chip="porch">Porch Flooring</button>
               <button type="button" class="house-chip" data-chip="trim">Mouldings &amp; Trim</button>
             </div>
@@ -379,7 +374,7 @@
           <img class="house-card__media" src="./images/house_hero/card-deck.webp" width="480" height="300" alt="Close-up of wood-grained PVC deck boards" loading="lazy" decoding="async" />
           <span class="house-card__eyebrow">The Deck</span>
           <h2 class="house-card__title" id="house-card-title">PVC Decking</h2>
-          <p class="house-card__text">Cellular PVC boards that won't split, crack, splinter, or rot. Choose your line:</p>
+          <p class="house-card__text house-card__text--intro">Cellular PVC boards that won't split, crack, splinter, or rot. Choose your line:</p>
           <div class="house-card__lines">
             <a class="house-card__line" href="./pages/truegrain-deck.html">
               <strong>TrueGrain Deck&trade;</strong>
@@ -389,14 +384,11 @@
               <strong>Legacy PVC</strong>
               <span>Six classic colors, solid or grooved edge</span>
             </a>
+            <a class="house-card__line house-card__line--addon" href="./pages/invisiclip.html">
+              <strong>Add InvisiClip&trade;<span class="hh-hide-sm"> Hidden Fasteners</span></strong>
+              <span>No visible screws on the walking surface</span>
+            </a>
           </div>
-        </template>
-        <template id="house-tpl-invisiclip">
-          <img class="house-card__media" src="./images/house_hero/card-invisiclip.webp" width="480" height="300" alt="InvisiClip clips holding a deck board on an aluminum rail" loading="lazy" decoding="async" />
-          <span class="house-card__eyebrow">Under the Boards</span>
-          <h2 class="house-card__title" id="house-card-title">InvisiClip&trade; Hidden Fasteners</h2>
-          <p class="house-card__text">POM clips on aluminum rails. Boards drop in from above, with no visible screws on the walking surface.</p>
-          <a class="btn btn--primary house-card__cta" href="./pages/invisiclip.html">See the InvisiClip&trade; System</a>
         </template>
         <template id="house-tpl-porch">
           <img class="house-card__media" src="./images/house_hero/card-porch.webp" width="480" height="300" alt="Covered porch with white tongue-and-groove PVC porch flooring" loading="lazy" decoding="async" />
@@ -1481,7 +1473,7 @@
     <script src="./js/site.js?v=7" defer></script>
     <script src="./js/sample-kits.js?v=2" defer></script>
     <script src="./js/home-mobile.js?v=3" defer></script>
-    <script src="./js/house-hero.js?v=1" defer></script>
+    <script src="./js/house-hero.js?v=2" defer></script>
 
   </body>
 </html>

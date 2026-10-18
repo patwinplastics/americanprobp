@@ -106,7 +106,6 @@
 }
 .house-dot:nth-child(2) .house-dot__ring { animation-delay: 0.55s; }
 .house-dot:nth-child(3) .house-dot__ring { animation-delay: 1.1s; }
-.house-dot:nth-child(4) .house-dot__ring { animation-delay: 1.65s; }
 @keyframes house-pulse {
   0%   { transform: scale(0.8); opacity: 0.95; }
   80%  { transform: scale(2.1); opacity: 0; }
@@ -265,7 +264,9 @@
 .house-card__line:hover,
 .house-card__line:focus-visible { border-color: var(--hh-red); background: #fbe9eb; }
 .house-card__line strong { display: block; font-size: 0.98rem; }
-.house-card__line span { display: block; margin-top: 0.15rem; font-size: 0.8rem; color: #5b6478; }
+.house-card__line--addon { border-style: dashed; background: #f7f5f0; }
+.house-card__line--addon strong { font-size: 0.9rem; }
+.house-card__line > span { display: block; margin-top: 0.15rem; font-size: 0.8rem; color: #5b6478; }
 
 /* ---------- Copy block ---------- */
 .house-copy { position: relative; z-index: 4; background: var(--hh-navy); }
@@ -368,6 +369,9 @@
   .house-card__lines { margin-bottom: 0.9rem; }
   .house-card__line { padding: 0.55rem 1.8rem 0.55rem 0.7rem; }
   .house-card__line span { display: none; }
+  .house-card__text--intro { display: none; }
+  .house-card__lines { margin-top: 0.6rem; }
+  .house-card__line strong .hh-hide-sm { display: none; }
   .house-chips__label { width: auto; margin: 0 0.25rem 0 0; }
   .house-actions .btn { flex: 1 1 auto; justify-content: center; }
 }

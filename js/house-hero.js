@@ -23,8 +23,7 @@
   hero.querySelectorAll('.house-dot').forEach(function (d) { dots[d.dataset.dot] = d; });
   hero.querySelectorAll('.house-chip').forEach(function (c) { chips[c.dataset.chip] = c; });
 
-  // InvisiClip lives on the deck, so it lights the deck zone.
-  var zoneFor = { deck: 'deck', invisiclip: 'deck', porch: 'porch', trim: 'trim' };
+  var zoneFor = { deck: 'deck', porch: 'porch', trim: 'trim' };
   var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var phone = window.matchMedia('(max-width: 719px)');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -188,7 +187,7 @@
 
   /* ---------- One-time intro tour: glow each area once if visitor is idle ---------- */
   if (!reduceMotion) {
-    var order = ['deck', 'porch', 'trim', 'invisiclip'];
+    var order = ['deck', 'porch', 'trim'];
     var i = 0;
     var tour = function () {
       if (interacted) return clearPreview();
