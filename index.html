@@ -55,7 +55,7 @@
       rel="stylesheet"
     />
     <!-- Hero preload: house hero is active. For slider mode, swap to the commented line. -->
-    <link rel="preload" as="image" type="image/webp" imagesrcset="./images/house_hero/house-640.webp 640w, ./images/house_hero/house-1000.webp 1000w, ./images/house_hero/house-1672.webp 1672w" imagesizes="100vw" fetchpriority="high" />
+    <link rel="preload" as="image" type="image/webp" imagesrcset="./images/house_hero/house-640.webp?v=2 640w, ./images/house_hero/house-1000.webp?v=2 1000w, ./images/house_hero/house-1672.webp?v=2 1672w" imagesizes="100vw" fetchpriority="high" />
     <!-- <link rel="preload" as="image" type="image/webp" imagesrcset="./images/hero_deck-1000.webp 1000w, ./images/hero_deck-1600.webp 1600w, ./images/hero_deck.webp 2400w" imagesizes="100vw" fetchpriority="high" /> -->
 
     <link rel="stylesheet" href="./css/base.css" />
@@ -288,8 +288,8 @@
       <section class="house-hero" aria-labelledby="house-hero-title" data-house-hero>
         <div class="house-stage" data-house-stage>
           <picture>
-            <source type="image/webp" srcset="./images/house_hero/house-640.webp 640w, ./images/house_hero/house-1000.webp 1000w, ./images/house_hero/house-1672.webp 1672w" sizes="100vw" />
-            <img class="house-stage__img" src="./images/house_hero/house-1672.jpg" srcset="./images/house_hero/house-640.jpg 640w, ./images/house_hero/house-1000.jpg 1000w, ./images/house_hero/house-1672.jpg 1672w" sizes="100vw" width="1672" height="941" fetchpriority="high" decoding="async" alt="White colonial home with a covered front porch, a large brown PVC deck, and crisp white PVC window trim at sunset. Select a highlighted area to explore that product line." />
+            <source type="image/webp" srcset="./images/house_hero/house-640.webp?v=2 640w, ./images/house_hero/house-1000.webp?v=2 1000w, ./images/house_hero/house-1672.webp?v=2 1672w" sizes="100vw" />
+            <img class="house-stage__img" src="./images/house_hero/house-1672.jpg?v=2" srcset="./images/house_hero/house-640.jpg?v=2 640w, ./images/house_hero/house-1000.jpg?v=2 1000w, ./images/house_hero/house-1672.jpg?v=2 1672w" sizes="100vw" width="1672" height="941" fetchpriority="high" decoding="async" alt="White colonial home with a covered front porch, a large brown PVC deck, and crisp white PVC window trim at sunset. Select a highlighted area to explore that product line." />
           </picture>
 
           <svg class="house-zones" viewBox="0 0 1200 675" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false" data-house-zones>
@@ -300,7 +300,7 @@
               </filter>
             </defs>
             <g class="house-zone" data-zone="deck" data-href="./pages/decking.html">
-              <polygon points="628,500 700,478 820,446 1005,434 1200,436 1200,568 1150,603" />
+              <polygon points="778,466 822,446 1005,434 1200,440 1200,493 1170,490" />
             </g>
             <g class="house-zone" data-zone="porch" data-href="./pages/porch.html">
               <polygon points="300,424 560,424 812,442 812,450 668,458 600,447 340,440" />
@@ -320,11 +320,11 @@
           </svg>
 
           <div class="house-dots" data-house-dots>
-            <button type="button" class="house-dot" data-dot="deck" data-x="1000" data-y="500" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
+            <button type="button" class="house-dot" data-dot="deck" data-x="1085" data-y="462" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
               <span class="house-dot__ring" aria-hidden="true"></span>
               <span class="house-dot__label">Decking</span>
             </button>
-            <button type="button" class="house-dot" data-dot="invisiclip" data-x="770" data-y="520" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
+            <button type="button" class="house-dot" data-dot="invisiclip" data-x="905" data-y="466" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
               <span class="house-dot__ring" aria-hidden="true"></span>
               <span class="house-dot__label">InvisiClip&trade;</span>
             </button>
