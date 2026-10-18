@@ -1,0 +1,37 @@
+name: Rebuild search index
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'data/mouldings-catalog.json'
+      - 'tools/build_search_index.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: search-index
+  cancel-in-progress: true
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build data/search-index.json
+        run: python3 tools/build_search_index.py
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- data/search-index.json; then
+            echo "Search index already current."
+            exit 0
+          fi
+          git config user.name "search-index-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/search-index.json
+          git commit -m "Rebuild search index"
+          git push
+          # Pushes made with GITHUB_TOKEN may not start a Pages build on their own
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages build request skipped"
+        env:
+          GH_TOKEN: ${{ github.token }}

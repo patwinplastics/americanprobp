@@ -231,4 +231,12 @@
 
   document.querySelectorAll('[data-include="header"]').forEach((el) => (el.outerHTML = HEADER));
   document.querySelectorAll('[data-include="footer"]').forEach((el) => (el.outerHTML = FOOTER));
+
+  // Site search: header button + search dialog (js/site-search.js)
+  if (!document.querySelector('script[src*="site-search.js"]')) {
+    const ss = document.createElement('script');
+    ss.src = B + 'js/site-search.js?v=1';
+    ss.defer = true;
+    document.head.appendChild(ss);
+  }
 })();
