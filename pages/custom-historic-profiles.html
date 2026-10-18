@@ -105,7 +105,16 @@
       .cp-shop__chips li { font: 600 .82rem/1 var(--font-body); padding: .65rem .9rem; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; background: rgba(255,255,255,.06); }
 
       .cp-send { display: grid; gap: var(--space-5); }
-      @media (min-width: 820px) { .cp-send { grid-template-columns: repeat(3, 1fr); } }
+      @media (min-width: 640px) { .cp-send { grid-template-columns: repeat(2, 1fr); } }
+      @media (min-width: 1100px) { .cp-send { grid-template-columns: repeat(4, 1fr); } }
+      .cp-send__card--tool { background: #0e1f3a; border-color: #0e1f3a; }
+      .cp-send__card--tool h3 { color: #fff; }
+      .cp-send__card--tool p { color: rgba(255,255,255,.82) !important; }
+      .cp-send__card--tool a { color: #fff; font-weight: 700; text-decoration: underline; }
+      .cp-send__new { display: inline-block; margin-bottom: .5rem; font: 700 .64rem/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: #fff; background: #b91c2c; padding: .3rem .5rem; border-radius: 4px; }
+      .cp-designer { display: flex; gap: .7rem; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-top: .6rem; padding: .7rem .85rem; border-radius: 10px; background: #eef1f6; font-size: .84rem; color: #0e1f3a; }
+      .cp-designer[data-state="attached"] { background: #e8f5ec; }
+      .cp-designer a { color: #b91c2c; font-weight: 700; }
       .cp-send__card { border: 1px solid var(--color-divider); border-radius: var(--radius-lg); padding: 1.5rem; background: var(--color-surface); }
       .cp-send__card h3 { font-size: var(--text-lg); }
       .cp-send__card p { color: var(--color-text-muted); font-size: var(--text-sm); margin-top: .5rem; }
@@ -185,7 +194,7 @@
             </p>
             <div class="hero-actions">
               <a href="#start" class="btn btn--primary btn--lg">Start a Custom Profile</a>
-              <a href="./mouldings.html#catalog" class="btn btn--ghost-light btn--lg">Browse Stock Profiles</a>
+              <a href="./profile-designer.html" class="btn btn--ghost-light btn--lg">Draw It in the Profile Designer</a>
             </div>
             <ul class="cp-hero__proof" aria-label="Highlights">
               <li><strong>Since 1971</strong><span>American extruder</span></li>
@@ -302,6 +311,11 @@
             <h2 id="cp-send-title">Any One of These <em>Gets Us Started.</em></h2>
           </header>
           <div class="cp-send" data-reveal>
+            <div class="cp-send__card cp-send__card--tool">
+              <span class="cp-send__new">Free Online Tool</span>
+              <h3>Draw It Online</h3>
+              <p>No CAD software? Sketch the profile to scale in the <a href="./profile-designer.html">Profile Designer</a>. It creates the DXF, PDF and PNG and attaches them to your request.</p>
+            </div>
             <div class="cp-send__card">
               <h3>A Drawing</h3>
               <p>A section drawing with overall width, height and key radii. DWG, DXF, STEP or PDF all work.</p>
@@ -338,7 +352,7 @@
             </details>
             <details>
               <summary>Do I need a CAD drawing?</summary>
-              <p>No. A drawing helps, but a physical sample or good photos with a ruler in frame are enough to start.</p>
+              <p>No. You can sketch the profile in our free <a href="./profile-designer.html">Profile Designer</a>, or send a physical sample or good photos with a ruler in frame.</p>
             </details>
             <details>
               <summary>Can custom PVC mouldings be painted?</summary>
@@ -418,6 +432,11 @@
                 </div>
                 <ul class="cp-files" data-cp-list aria-live="polite"></ul>
                 <small class="cp-files__note" data-cp-note hidden></small>
+                <div class="cp-designer" data-cp-designer>
+                  <span>No drawing yet? Sketch it to scale in the Profile Designer.</span>
+                  <a href="./profile-designer.html">Open the Profile Designer</a>
+                </div>
+                <input type="hidden" name="profile_designer" value="" data-cp-designer-summary />
               </div>
               <div class="field form-row"><label for="cp-message">Tell Us About the Project</label><textarea id="cp-message" name="message" placeholder="Where the trim goes, the finish, your timeline, anything else helpful."></textarea></div>
             </div>
@@ -462,6 +481,42 @@
         input.addEventListener('change', check);
         ['dragenter', 'dragover'].forEach(function (e) { drop.addEventListener(e, function () { drop.classList.add('is-over'); }); });
         ['dragleave', 'drop'].forEach(function (e) { drop.addEventListener(e, function () { drop.classList.remove('is-over'); }); });
+      })();
+    </script>
+    <script>
+      (function () {
+        var raw = null;
+        try { raw = sessionStorage.getItem('apDesignerAttach'); } catch (e) {}
+        if (!raw) return;
+        var data; try { data = JSON.parse(raw); } catch (e) { return; }
+        var input = document.querySelector('[data-cp-files]');
+        var strip = document.querySelector('[data-cp-designer]');
+        var hidden = document.querySelector('[data-cp-designer-summary]');
+        if (!input || !data || !data.files) return;
+        try {
+          var dt = new DataTransfer();
+          Array.prototype.forEach.call(input.files || [], function (f) { dt.items.add(f); });
+          data.files.forEach(function (f) {
+            var bin = atob(f.b64), u8 = new Uint8Array(bin.length);
+            for (var i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+            dt.items.add(new File([u8], f.name, { type: f.type }));
+          });
+          input.files = dt.files;
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+          if (hidden) hidden.value = data.summary || 'Profile Designer drawing attached';
+          var type = document.getElementById('cp-type');
+          var msg = document.getElementById('cp-message');
+          if (msg && !msg.value && data.project) msg.value = 'Project: ' + data.project + '\n';
+          if (strip) {
+            strip.setAttribute('data-state', 'attached');
+            strip.innerHTML = '<span><strong>Your Profile Designer drawing is attached.</strong> ' + String(data.summary || '').replace(/[<>&]/g, '') + '</span><a href="./profile-designer.html">Edit the Drawing</a>';
+          }
+          sessionStorage.removeItem('apDesignerAttach');
+          var start = document.getElementById('start');
+          if (start) setTimeout(function () { start.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 150);
+        } catch (e) {
+          if (strip) strip.innerHTML = '<span>Your browser could not attach the drawing automatically. Download the files in the Profile Designer and add them here.</span><a href="./profile-designer.html">Open the Profile Designer</a>';
+        }
       })();
     </script>
   </body>

@@ -18,6 +18,7 @@ jobs:
           node --check js/pro-resources.js
           node --check js/site.js
           node --check js/site-search.js
+          node --check js/profile-designer.js
       - name: Validate full-line moulding catalog
         run: python3 tests/check_mouldings.py
       - name: Check whitespace
