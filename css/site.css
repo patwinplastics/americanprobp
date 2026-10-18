@@ -4065,3 +4065,23 @@ section[id] {
   .hero-slide.truegrain-feature .tg-feature-swatches .tg-swatch-name { display: none; }
   .hero-slide.truegrain-feature .tg-feature-vis { display: none; }
 }
+
+/* ---- Visualizer band: two palettes (TrueGrain + Legacy PVC) ---- */
+.viz-band-palettes { display: grid; gap: var(--space-6); min-width: 0; }
+.viz-band-palette-title {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-3);
+}
+@media (min-width: 881px) {
+  .viz-band-palettes .viz-band-swatches { grid-template-columns: repeat(6, 1fr); gap: var(--space-2); }
+  .viz-band-palettes .viz-band-swatches li a { padding: var(--space-2); gap: 0.35rem; }
+  .viz-band-palettes .viz-band-swatches li a span { aspect-ratio: 1 / 1; }
+  .viz-band-palettes .viz-band-swatches li a b { font-size: 0.7rem; line-height: 1.2; min-height: 2.4em; display: flex; align-items: center; }
+}
+.viz-launcher { transition: transform 200ms ease, opacity 200ms ease; }
+.viz-launcher.is-hidden { opacity: 0; pointer-events: none; transform: translateY(12px); }

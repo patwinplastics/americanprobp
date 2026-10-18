@@ -123,6 +123,7 @@
 
   /* ---------- Visualizer: CTA bar ---------- */
   #visualizer { padding-block: 2rem; }
+  #visualizer .viz-band-palettes,
   #visualizer .viz-band-swatches,
   #visualizer .viz-band-blurb,
   #visualizer .viz-band-actions .btn--ghost { display: none; }
