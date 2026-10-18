@@ -177,6 +177,7 @@
             <li><a href="${B}pages/legacy-pvc-decking.html">Legacy PVC Decking</a></li>
             <li><a href="${B}pages/porch.html">Porch Flooring</a></li>
             <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
+            <li><a href="${B}pages/custom-historic-profiles.html">Custom &amp; Historic Profiles</a></li>
           </ul>
         </div>
         <div class="footer-col">

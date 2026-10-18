@@ -135,9 +135,9 @@
           if (typeof fbq === 'function') {
             fbq('track', 'Lead', {
               content_name: src,
-              content_category: type === 'contact' ? 'Quote / Contact' : 'Sample Request',
+              content_category: type === 'contact' ? 'Quote / Contact' : (type === 'custom-profile' ? 'Custom Profile' : 'Sample Request'),
               lead_role: role,
-              value: type === 'contact' ? 5.0 : 1.0,
+              value: (type === 'contact' || type === 'custom-profile') ? 5.0 : 1.0,
               currency: 'USD'
             });
           }
