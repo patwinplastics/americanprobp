@@ -178,6 +178,7 @@
             <li><a href="${B}pages/porch.html">Porch Flooring</a></li>
             <li><a href="${B}pages/mouldings.html">Mouldings</a></li>
             <li><a href="${B}pages/custom-historic-profiles.html">Custom &amp; Historic Profiles</a></li>
+            <li><a href="${B}pages/profile-designer.html">Profile Designer</a></li>
           </ul>
         </div>
         <div class="footer-col">
