@@ -148,6 +148,36 @@
       .pd-attach:disabled { opacity: .7; cursor: progress; }
       .pd-out small { display: block; margin-top: .5rem; font-size: .72rem; color: #7a8296; line-height: 1.4; }
 
+      .pd-acct { padding: .85rem 1rem; border-bottom: 1px solid #e2ddd3; background: #fbfaf7; }
+      .pd-acct__pitch { font-size: .8rem; color: #3a4560; line-height: 1.4; margin: 0 0 .55rem; }
+      .pd-acct__btns { display: flex; gap: .4rem; flex-wrap: wrap; }
+      .pd-acct__btns .pd-btn { height: 34px; padding: 0 .8rem; }
+      .pd-acct__who { display: flex; align-items: center; gap: .45rem; font-size: .8rem; color: #3a4560; margin-bottom: .5rem; }
+      .pd-acct__dot { width: 8px; height: 8px; border-radius: 50%; background: #15803d; }
+      .pd-exp button.is-locked { color: #7a8296; background: #f4f1eb; border-style: dashed; }
+      .pd-exp button.is-locked::before { content: ""; display: inline-block; width: 9px; height: 10px; margin-right: 5px; vertical-align: -1px; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 10'%3E%3Cpath d='M2 4V3a2.5 2.5 0 0 1 5 0v1h1v6H1V4zm1 0h3V3a1.5 1.5 0 0 0-3 0z'/%3E%3C/svg%3E") no-repeat center / contain; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 10'%3E%3Cpath d='M2 4V3a2.5 2.5 0 0 1 5 0v1h1v6H1V4zm1 0h3V3a1.5 1.5 0 0 0-3 0z'/%3E%3C/svg%3E") no-repeat center / contain; }
+      .pd-stage::after { content: "AMERICAN PRO"; position: absolute; right: 1rem; bottom: .75rem; font: 800 .7rem/1 var(--font-body); letter-spacing: .3em; color: rgba(14, 31, 58, .18); pointer-events: none; }
+      .pd-modal { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 1rem; }
+      .pd-modal[hidden] { display: none; }
+      .pd-modal__scrim { position: absolute; inset: 0; background: rgba(14, 31, 58, .55); }
+      .pd-modal__card { position: relative; width: min(480px, 100%); max-height: calc(100dvh - 2rem); overflow-y: auto; background: #fff; border-radius: 16px; padding: 1.6rem 1.5rem 1.4rem; box-shadow: 0 30px 80px rgba(0, 0, 0, .3); }
+      .pd-modal__card h2 { font-size: 1.45rem; letter-spacing: -0.01em; padding-right: 2rem; }
+      .pd-modal__x { position: absolute; top: .7rem; right: .7rem; width: 36px; height: 36px; border-radius: 50%; border: 0; background: #f4f1eb; font-size: 1.3rem; line-height: 1; color: #0e1f3a; cursor: pointer; }
+      .pd-modal__lead { font-size: .88rem; color: #4b5468; line-height: 1.5; margin: .4rem 0 1rem; }
+      .pd-modal__form .pd-field input, .pd-modal__form .pd-field select { height: 42px; }
+      .pd-modal__err { background: #fbe9eb; color: #9d1725; font-size: .82rem; padding: .55rem .7rem; border-radius: 8px; margin: .2rem 0 .4rem; }
+      .pd-modal__alt { font-size: .82rem; color: #4b5468; text-align: center; margin: .7rem 0 0; }
+      .pd-modal__alt a { color: #b91c2c; font-weight: 700; }
+      .pd-link { background: none; border: 0; padding: 0; color: #b91c2c; font: inherit; font-weight: 700; cursor: pointer; text-decoration: underline; }
+      .pd-dl { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: .45rem; }
+      .pd-dl__item { display: flex; align-items: center; justify-content: space-between; gap: .6rem; border: 1px solid #e2ddd3; border-radius: 10px; padding: .6rem .7rem; }
+      .pd-dl__item.is-cur { border-color: #0e1f3a; background: #f4f6fa; }
+      .pd-dl__item strong { display: block; font-size: .9rem; color: #0e1f3a; }
+      .pd-dl__item small { font-size: .74rem; color: #7a8296; }
+      .pd-dl__act { display: flex; gap: .3rem; flex-shrink: 0; }
+      .pd-dl__act .pd-btn { height: 32px; padding: 0 .7rem; }
+      html.pd-modal-open { overflow: hidden; }
+
       .pd-status { grid-column: 2; grid-row: 2; background: #fff; border-top: 1px solid #e2ddd3; font: 500 .76rem/1 var(--font-body); color: #5b6478; padding: .55rem .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
       .pd-help { padding-block: 2.5rem 3rem; }
@@ -196,13 +226,13 @@
         <div class="container pd-intro__in">
           <div>
             <h1 id="pd-title">Profile Designer <em>Draw It to Scale.</em></h1>
-            <p>Sketch your moulding's cross-section, add rounds and coves, and send the DXF, PDF and PNG with your custom profile request.</p>
+            <p>Sketch your moulding's cross-section, add rounds and coves, and send it straight to American Pro. Free account holders can save designs and download DXF, PDF and PNG files.</p>
           </div>
           <a class="pd-back" href="./custom-historic-profiles.html">Back to Custom &amp; Historic Profiles</a>
         </div>
       </section>
 
-      <div class="pd-app" data-pd data-pd-form="./custom-historic-profiles.html?designer=1#start">
+      <div class="pd-app" data-pd data-pd-form="./custom-historic-profiles.html?designer=1#start" data-pd-api="https://dealerportal.ameridex.com/api/designer">
         <nav class="pd-tools" data-pd-tools aria-label="Drawing tools">
           <button type="button" class="pd-tb is-on" data-tool="draw" data-tip="Draw (D)" aria-label="Draw" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 L10 8 L20 12"/><circle cx="4" cy="20" r="1.8" fill="currentColor"/><circle cx="10" cy="8" r="1.8" fill="currentColor"/><circle cx="20" cy="12" r="1.8" fill="currentColor"/></svg></button>
           <button type="button" class="pd-tb" data-tool="select" data-tip="Select &amp; Edit (V)" aria-label="Select and edit" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 7-6 2-2 6z"/></svg></button>
@@ -234,16 +264,17 @@
         </div>
 
         <aside class="pd-side" aria-label="Profile settings">
+          <div class="pd-acct" data-pd-account aria-live="polite"></div>
           <div class="pd-panel" data-pd-panel></div>
           <div class="pd-out">
-            <h3><span>Your Files</span><span class="pd-closed" data-pd-closed>Open</span></h3>
+            <h3><span>Download</span><span class="pd-closed" data-pd-closed>Open</span></h3>
             <div class="pd-exp" data-pd-export>
               <button type="button" data-exp="dxf" title="True-scale DXF for AutoCAD and die-design software">DXF</button>
               <button type="button" data-exp="pdf" title="Printable shop drawing with dimensions">PDF</button>
               <button type="button" data-exp="png" title="Image for email or reference">PNG</button>
             </div>
-            <button type="button" class="pd-attach" data-pd-attach>Attach to My Request</button>
-            <small>Adds the DXF, PDF and PNG to your custom profile request. Your drawing is saved in this browser.</small>
+            <button type="button" class="pd-attach" data-pd-attach>Send to American Pro</button>
+            <small data-pd-files-note>No account needed to send your drawing to American Pro. Guest drawings are not saved after you close this tab.</small>
           </div>
         </aside>
 
@@ -284,6 +315,7 @@
                 <li>Scroll or pinch to zoom. Hold <kbd>Space</kbd> and drag to pan.</li>
                 <li><kbd>F</kbd> fits the drawing, <kbd>Ctrl Z</kbd> undoes.</li>
                 <li>A sketch is fine. Our engineers confirm the final die geometry with you.</li>
+                <li>A free account saves designs and unlocks downloads.</li>
               </ul>
             </div>
           </div>
@@ -296,7 +328,9 @@
     <script src="../js/geo-banner.js?v=2" defer></script>
     <script src="../js/site.js?v=7"></script>
     <script src="../js/vendor/jspdf.umd.min.js" defer></script>
-    <script src="../js/profile-designer.js?v=1" defer></script>
+    <script src="../js/profile-engine.js?v=1" defer></script>
+    <script src="../js/profile-designer.js?v=2" defer></script>
+    <script src="../js/profile-account.js?v=1" defer></script>
     <script>
       document.addEventListener('click', function (e) {
         if (e.target.closest('[data-hint-example]') && window.APProfileDesigner) window.APProfileDesigner.act('example');

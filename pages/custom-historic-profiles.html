@@ -509,9 +509,26 @@
           if (msg && !msg.value && data.project) msg.value = 'Project: ' + data.project + '\n';
           if (strip) {
             strip.setAttribute('data-state', 'attached');
-            strip.innerHTML = '<span><strong>Your Profile Designer drawing is attached.</strong> ' + String(data.summary || '').replace(/[<>&]/g, '') + '</span><a href="./profile-designer.html">Edit the Drawing</a>';
+            strip.innerHTML = '<span><strong>Your Profile Designer drawing is attached.</strong> Add your contact details below and send. ' + String(data.summary || '').replace(/[<>&]/g, '') + '</span><a href="./profile-designer.html">Edit the Drawing</a>';
           }
           sessionStorage.removeItem('apDesignerAttach');
+          // Also record the drawing in the American Pro designer admin when the form is sent
+          var form = input.form;
+          if (form && data.design) {
+            form.addEventListener('submit', function () {
+              try {
+                var fd = new FormData(form), contact = {};
+                ['first_name', 'last_name', 'email', 'phone', 'company', 'zip', 'role', 'project_type', 'application', 'linear_feet', 'message'].forEach(function (k) { contact[k] = fd.get(k) || ''; });
+                if (!contact.email || fd.get('_gotcha') || form._apdSent) return;
+                form._apdSent = true;
+                var tok = null; try { tok = localStorage.getItem('apDesignerToken'); } catch (e) {}
+                var payload = JSON.stringify({ design: data.design, contact: contact, token: tok, source: 'custom-profiles-form' });
+                var url = (window.AP_DESIGNER_API || 'https://dealerportal.ameridex.com/api/designer') + '/submissions';
+                var blob = new Blob([payload], { type: 'text/plain' });
+                if (!(navigator.sendBeacon && navigator.sendBeacon(url, blob))) fetch(url, { method: 'POST', body: blob, keepalive: true, mode: 'cors' });
+              } catch (e) { /* email copy via Formspree still goes out */ }
+            }, true);
+          }
           var start = document.getElementById('start');
           if (start) setTimeout(function () { start.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 150);
         } catch (e) {
