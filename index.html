@@ -54,10 +54,13 @@
       href="https://api.fontshare.com/v2/css?f[]=boska@400,500,500i,700&f[]=satoshi@400,500,600,700&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" as="image" type="image/webp" imagesrcset="./images/hero_deck-1000.webp 1000w, ./images/hero_deck-1600.webp 1600w, ./images/hero_deck.webp 2400w" imagesizes="100vw" fetchpriority="high" />
+    <!-- Hero preload: house hero is active. For slider mode, swap to the commented line. -->
+    <link rel="preload" as="image" type="image/webp" imagesrcset="./images/house_hero/house-640.webp 640w, ./images/house_hero/house-1000.webp 1000w, ./images/house_hero/house-1672.webp 1672w" imagesizes="100vw" fetchpriority="high" />
+    <!-- <link rel="preload" as="image" type="image/webp" imagesrcset="./images/hero_deck-1000.webp 1000w, ./images/hero_deck-1600.webp 1600w, ./images/hero_deck.webp 2400w" imagesizes="100vw" fetchpriority="high" /> -->
 
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/site.css?v=26-hero-fixed" />
+    <link rel="stylesheet" href="./css/house-hero.css?v=1" />
     <link rel="stylesheet" href="./css/home-mobile.css?v=3" />
 
     <!-- Homepage funnel scaffolds (buyer selector, quiz, sample tiles) -->
@@ -272,7 +275,145 @@
       </div>
     </header>
 
-    <main class="home-main">
+    <!-- HERO MODE: data-hero-mode="house" shows the Interactive House hero.
+         Set it to "slider" to bring back the original 3-slide hero (also swap
+         the hero preload in <head>). Both sections stay in the page. -->
+    <main class="home-main" data-hero-mode="house">
+      <!-- ========== INTERACTIVE HOUSE HERO ==========
+           Toggle lives on <main data-hero-mode>. "house" shows this section,
+           "slider" restores the original 3-slide hero (markup kept intact below).
+           Zone geometry and dot positions use a 1200 x 675 coordinate space that
+           matches images/house_hero/house-*.jpg. Card copy lives in the
+           <template> elements at the bottom of this section. -->
+      <section class="house-hero" aria-labelledby="house-hero-title" data-house-hero>
+        <div class="house-stage" data-house-stage>
+          <picture>
+            <source type="image/webp" srcset="./images/house_hero/house-640.webp 640w, ./images/house_hero/house-1000.webp 1000w, ./images/house_hero/house-1672.webp 1672w" sizes="100vw" />
+            <img class="house-stage__img" src="./images/house_hero/house-1672.jpg" srcset="./images/house_hero/house-640.jpg 640w, ./images/house_hero/house-1000.jpg 1000w, ./images/house_hero/house-1672.jpg 1672w" sizes="100vw" width="1672" height="941" fetchpriority="high" decoding="async" alt="White colonial home with a covered front porch, a large brown PVC deck, and crisp white PVC window trim at sunset. Select a highlighted area to explore that product line." />
+          </picture>
+
+          <svg class="house-zones" viewBox="0 0 1200 675" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false" data-house-zones>
+            <defs>
+              <filter id="house-glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="4" result="b" />
+                <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+            <g class="house-zone" data-zone="deck" data-href="./pages/decking.html">
+              <polygon points="628,500 700,478 820,446 1005,434 1200,436 1200,568 1150,603" />
+            </g>
+            <g class="house-zone" data-zone="porch" data-href="./pages/porch.html">
+              <polygon points="300,424 560,424 812,442 812,450 668,458 600,447 340,440" />
+            </g>
+            <g class="house-zone" data-zone="trim" data-href="./pages/mouldings.html">
+              <rect x="366" y="205" width="28" height="63" />
+              <rect x="426" y="186" width="32" height="70" />
+              <rect x="497" y="166" width="37" height="78" />
+              <rect x="588" y="138" width="48" height="90" />
+              <rect x="698" y="107" width="56" height="106" />
+              <rect x="908" y="68" width="36" height="128" />
+              <rect x="583" y="292" width="54" height="120" />
+              <rect x="699" y="284" width="57" height="132" />
+              <rect x="850" y="288" width="47" height="136" />
+              <polygon points="318,200 330,192 840,58 860,70 856,76 334,206" />
+            </g>
+          </svg>
+
+          <div class="house-dots" data-house-dots>
+            <button type="button" class="house-dot" data-dot="deck" data-x="1000" data-y="500" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
+              <span class="house-dot__ring" aria-hidden="true"></span>
+              <span class="house-dot__label">Decking</span>
+            </button>
+            <button type="button" class="house-dot" data-dot="invisiclip" data-x="770" data-y="520" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
+              <span class="house-dot__ring" aria-hidden="true"></span>
+              <span class="house-dot__label">InvisiClip&trade;</span>
+            </button>
+            <button type="button" class="house-dot" data-dot="porch" data-x="590" data-y="437" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
+              <span class="house-dot__ring" aria-hidden="true"></span>
+              <span class="house-dot__label">Porch Flooring</span>
+            </button>
+            <button type="button" class="house-dot" data-dot="trim" data-x="726" data-y="160" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
+              <span class="house-dot__ring" aria-hidden="true"></span>
+              <span class="house-dot__label">Mouldings &amp; Trim</span>
+            </button>
+          </div>
+
+          <p class="house-hint" data-house-hint>
+            <span class="house-hint__dot" aria-hidden="true"></span>
+            <span class="house-hint__touch">Tap a glowing spot to explore</span>
+            <span class="house-hint__mouse">Hover the house to explore each product</span>
+          </p>
+
+          <div class="house-card" id="house-card" role="dialog" aria-modal="false" aria-labelledby="house-card-title" hidden data-house-card>
+            <button type="button" class="house-card__close" aria-label="Close" data-house-close>&times;</button>
+            <div class="house-card__body" data-house-card-body></div>
+          </div>
+        </div>
+
+        <div class="house-copy">
+          <div class="container house-copy__inner">
+            <span class="hero-eyebrow">American-Made Since 1971</span>
+            <h1 class="house-title" id="house-hero-title">
+              American-Made PVC Decking, Porch Flooring, and Trim
+              <em>for the Life Around Your Home.</em>
+            </h1>
+            <p class="house-sub">
+              Extruded from UV-stabilized cellular PVC in Linden, NJ. Boards and mouldings that won't split, crack, splinter, or rot.
+            </p>
+            <div class="house-actions">
+              <a href="#samples" class="btn btn--primary btn--lg">Request Free Samples</a>
+              <a href="./pages/contact.html" class="btn btn--ghost-light btn--lg">Get a Quote</a>
+            </div>
+            <div class="house-chips" role="group" aria-label="Explore product lines on the house">
+              <span class="house-chips__label">Explore the Home</span>
+              <button type="button" class="house-chip" data-chip="deck">Decking</button>
+              <button type="button" class="house-chip" data-chip="invisiclip">InvisiClip&trade;</button>
+              <button type="button" class="house-chip" data-chip="porch">Porch Flooring</button>
+              <button type="button" class="house-chip" data-chip="trim">Mouldings &amp; Trim</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card content. Edit copy here; each template id is house-tpl-{zone}. -->
+        <template id="house-tpl-deck">
+          <img class="house-card__media" src="./images/house_hero/card-deck.webp" width="480" height="300" alt="Close-up of wood-grained PVC deck boards" loading="lazy" decoding="async" />
+          <span class="house-card__eyebrow">The Deck</span>
+          <h2 class="house-card__title" id="house-card-title">PVC Decking</h2>
+          <p class="house-card__text">Cellular PVC boards that won't split, crack, splinter, or rot. Choose your line:</p>
+          <div class="house-card__lines">
+            <a class="house-card__line" href="./pages/truegrain-deck.html">
+              <strong>TrueGrain Deck&trade;</strong>
+              <span>Wood-grained capped PVC, six hardwood-inspired colors</span>
+            </a>
+            <a class="house-card__line" href="./pages/legacy-pvc-decking.html">
+              <strong>Legacy PVC</strong>
+              <span>Six classic colors, solid or grooved edge</span>
+            </a>
+          </div>
+        </template>
+        <template id="house-tpl-invisiclip">
+          <img class="house-card__media" src="./images/house_hero/card-invisiclip.webp" width="480" height="300" alt="InvisiClip clips holding a deck board on an aluminum rail" loading="lazy" decoding="async" />
+          <span class="house-card__eyebrow">Under the Boards</span>
+          <h2 class="house-card__title" id="house-card-title">InvisiClip&trade; Hidden Fasteners</h2>
+          <p class="house-card__text">POM clips on aluminum rails. Boards drop in from above, with no visible screws on the walking surface.</p>
+          <a class="btn btn--primary house-card__cta" href="./pages/invisiclip.html">See the InvisiClip&trade; System</a>
+        </template>
+        <template id="house-tpl-porch">
+          <img class="house-card__media" src="./images/house_hero/card-porch.webp" width="480" height="300" alt="Covered porch with white tongue-and-groove PVC porch flooring" loading="lazy" decoding="async" />
+          <span class="house-card__eyebrow">The Front Porch</span>
+          <h2 class="house-card__title" id="house-card-title">PVC Porch Flooring</h2>
+          <p class="house-card__text">Tongue-and-groove cellular PVC porch boards in six fade-resistant finishes, 3/4" or 1" nominal.</p>
+          <a class="btn btn--primary house-card__cta" href="./pages/porch.html">Explore Porch Flooring</a>
+        </template>
+        <template id="house-tpl-trim">
+          <img class="house-card__media" src="./images/house_hero/card-trim.webp" width="480" height="300" alt="White PVC crown, casing and window trim on a home exterior" loading="lazy" decoding="async" />
+          <span class="house-card__eyebrow">Windows &amp; Eaves</span>
+          <h2 class="house-card__title" id="house-card-title">PVC Mouldings &amp; Trim</h2>
+          <p class="house-card__text">Crown, casing, sills, brick mould and more. Cut, route and paint it like premium millwork.</p>
+          <a class="btn btn--primary house-card__cta" href="./pages/mouldings.html">Explore Mouldings</a>
+        </template>
+      </section>
+
       <!-- ========== HERO SLIDER (TrueGrain Deck™ default, InvisiClip, brand) ========== -->
       <!-- STAGING: Slide order reworked so the first slide names a product.
            Order is now: 1) TrueGrain Deck, 2) InvisiClip, 3) American Pro brand.
@@ -1340,6 +1481,7 @@
     <script src="./js/site.js?v=7" defer></script>
     <script src="./js/sample-kits.js?v=2" defer></script>
     <script src="./js/home-mobile.js?v=3" defer></script>
+    <script src="./js/house-hero.js?v=1" defer></script>
 
   </body>
 </html>
