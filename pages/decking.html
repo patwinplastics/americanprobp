@@ -121,6 +121,7 @@
 
       /* Color swatches */
       .colors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+      .colors-grid--seven { grid-template-columns: repeat(4, 1fr); }
       @media (max-width: 880px) { .colors-grid { grid-template-columns: repeat(2, 1fr); } }
       .swatch { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-divider); background: var(--color-surface); transition: var(--transition-interactive); }
       .swatch:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
@@ -599,7 +600,7 @@
               <h4>Legacy PVC Decking</h4>
               <ul>
                 <li><b>Finish</b><span>Solid-color UV-stabilized PVC with subtle grain texture.</span></li>
-                <li><b>Colors</b><span>Six classic tones, driftwood greys to warm reds.</span></li>
+                <li><b>Colors</b><span>Seven classic tones, driftwood greys to warm reds.</span></li>
                 <li><b>Tech</b><span>Solid PVC, top-fasten or <a href="./invisiclip.html">hidden-clip</a> ready.</span></li>
                 <li><b>Warranty</b><span>25-year residential, 10-year commercial.</span></li>
                 <li><b>Best for</b><span>Builders and homeowners who want proven low-maintenance value.</span></li>
@@ -807,12 +808,12 @@
 
           <!-- Standard colors -->
           <div style="max-width: 60ch; margin: var(--space-12) 0 var(--space-6);" data-reveal>
-            <span class="eyebrow">Six classic colors</span>
+            <span class="eyebrow">Seven classic colors</span>
             <h3 style="font-family: var(--font-display); font-size: clamp(var(--text-xl), 3vw, var(--text-3xl)); font-weight: 500; letter-spacing: -0.015em;">
               Driftwood greys<br /><em>to warm reds.</em>
             </h3>
           </div>
-          <div class="colors-grid" data-reveal>
+          <div class="colors-grid colors-grid--seven" data-reveal>
             <div class="swatch">
               <div class="swatch-color" style="background-image: url('../images/deck_swatches/driftwood.jpg');"></div>
               <div class="swatch-body">
@@ -853,6 +854,13 @@
               <div class="swatch-body">
                 <div class="swatch-name">Redwood</div>
                 <div class="swatch-meta">Warm reddish-brown</div>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background-image: url('../images/deck_swatches/slate.jpg');"></div>
+              <div class="swatch-body">
+                <div class="swatch-name">Slate</div>
+                <div class="swatch-meta">Cool charcoal</div>
               </div>
             </div>
           </div>
@@ -1129,6 +1137,7 @@
                   <label><input type="checkbox" name="samples[]" value="Standard · Beachwood" /> Beachwood</label>
                   <label><input type="checkbox" name="samples[]" value="Standard · Chestnut" /> Chestnut</label>
                   <label><input type="checkbox" name="samples[]" value="Standard · Redwood" /> Redwood</label>
+                  <label><input type="checkbox" name="samples[]" value="Standard · Slate" /> Slate</label>
                 </div>
               </fieldset>
 

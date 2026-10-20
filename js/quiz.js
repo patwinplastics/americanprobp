@@ -34,7 +34,8 @@
       'Beachwood': '../images/deck_swatches/beachwood.jpg',
       'Hazelnut': '../images/deck_swatches/hazelnut.jpg',
       'Chestnut': '../images/deck_swatches/chestnut.jpg',
-      'Redwood': '../images/deck_swatches/redwood.jpg'
+      'Redwood': '../images/deck_swatches/redwood.jpg',
+      'Slate': '../images/deck_swatches/slate.jpg'
     }
   };
 
