@@ -40,7 +40,8 @@
       'Hazelnut': 'images/deck_swatches/hazelnut.jpg',
       'Beachwood': 'images/deck_swatches/beachwood.jpg',
       'Chestnut': 'images/deck_swatches/chestnut.jpg',
-      'Redwood': 'images/deck_swatches/redwood.jpg'
+      'Redwood': 'images/deck_swatches/redwood.jpg',
+      'Slate': 'images/deck_swatches/slate.jpg'
     },
     porch: {
       'Driftwood': 'images/porch_swatches/driftwood.jpg',
@@ -202,15 +203,15 @@
       id: 'full-legacy',
       category: 'decking',
       name: 'Full Legacy Palette',
-      tagline: 'All six Legacy PVC solid colors side by side, from Driftwood to Redwood.',
+      tagline: 'All seven Legacy PVC solid colors side by side, from Driftwood to Slate.',
       audience: 'Comparing the full solid-color range',
       page: 'legacy-pvc-decking',
       lines: ['legacy'],
       colors: {
-        legacy: ['Driftwood', 'Khaki', 'Hazelnut', 'Beachwood', 'Chestnut', 'Redwood']
+        legacy: ['Driftwood', 'Khaki', 'Hazelnut', 'Beachwood', 'Chestnut', 'Redwood', 'Slate']
       },
       extras: [],
-      note: 'Full Legacy Palette kit: all six Legacy PVC colors.'
+      note: 'Full Legacy Palette kit: all seven Legacy PVC colors.'
     },
 
     /* ---- Porch flooring. Two thicknesses: 3/4" (joists to 12" O.C.) and

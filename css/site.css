@@ -4067,6 +4067,9 @@ section[id] {
 }
 
 /* ---- Visualizer band: two palettes (TrueGrain + Legacy PVC) ---- */
+@media (min-width: 521px) and (max-width: 880px) {
+  .viz-band-palettes .viz-band-swatches--seven { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
 .viz-band-palettes { display: grid; gap: var(--space-6); min-width: 0; }
 .viz-band-palette-title {
   font-family: var(--font-body);
@@ -4079,9 +4082,15 @@ section[id] {
 }
 @media (min-width: 881px) {
   .viz-band-palettes .viz-band-swatches { grid-template-columns: repeat(6, 1fr); gap: var(--space-2); }
+  .viz-band-palettes .viz-band-swatches--seven { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .viz-band-palettes .viz-band-swatches li a { padding: var(--space-2); gap: 0.35rem; }
   .viz-band-palettes .viz-band-swatches li a span { aspect-ratio: 1 / 1; }
   .viz-band-palettes .viz-band-swatches li a b { font-size: 0.7rem; line-height: 1.2; min-height: 2.4em; display: flex; align-items: center; }
+}
+@media (min-width: 1200px) {
+  .viz-band-palettes .viz-band-swatches--seven { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .viz-band-palettes .viz-band-swatches--seven li a { padding-left: 0.3rem; padding-right: 0.3rem; }
+  .viz-band-palettes .viz-band-swatches--seven li a b { font-size: 0.64rem; letter-spacing: 0; white-space: nowrap; }
 }
 .viz-launcher { transition: transform 200ms ease, opacity 200ms ease; }
 .viz-launcher.is-hidden { opacity: 0; pointer-events: none; transform: translateY(12px); }
