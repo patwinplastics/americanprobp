@@ -95,6 +95,19 @@
       .pd-pre:hover { border-color: #0e1f3a; }
       .pd-pre.is-on { background: #0e1f3a; color: #fff; border-color: #0e1f3a; }
       .pd-note--err { color: #b91c2c; font-weight: 600; }
+      .pd-preview--chord { stroke: #7a8296; stroke-dasharray: 3 5; }
+      .pd-pend { fill: #b91c2c; stroke: #fff; stroke-width: 2; }
+      .pd-thru { fill: #fff; stroke: #b91c2c; stroke-width: 2; }
+      .pd-rad { display: grid; grid-template-columns: 38px minmax(0, 1fr) 38px auto; gap: .3rem; align-items: center; }
+      .pd-rad input { width: 100%; min-width: 0; height: 38px; border: 1px solid #ddd6ca; border-radius: 8px; background: #faf8f4; padding: 0 .6rem; font: 500 .9rem/1 var(--font-body); color: #0e1f3a; text-align: center; }
+      .pd-rad input:focus { outline: 2px solid rgba(185, 28, 44, .35); border-color: #b91c2c; background: #fff; }
+      .pd-rad .pd-btn { height: 38px; }
+      .pd-step { height: 38px; border: 1px solid #ddd6ca; border-radius: 8px; background: #fff; color: #0e1f3a; font: 700 1.05rem/1 var(--font-body); cursor: pointer; }
+      .pd-step:hover { border-color: #0e1f3a; }
+      .pd-sub { font: 700 .72rem/1 var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: #0e1f3a; margin: 1rem 0 .3rem; }
+      .pd-steps { margin: 0 0 .6rem; padding-left: 1.1rem; font-size: .8rem; color: #7a8296; line-height: 1.5; }
+      .pd-steps li.is-now { color: #b91c2c; font-weight: 700; }
+      .pd-steps li.is-done { color: #0e1f3a; text-decoration: line-through; text-decoration-color: rgba(14,31,58,.35); }
       .pd-pt { fill: #fff; stroke: #0e1f3a; stroke-width: 2; }
       .pd-pt.is-first { fill: #0e1f3a; }
       .pd-pt.is-hover { stroke: #b91c2c; }
@@ -267,7 +280,7 @@
             <ol>
               <li>Click the grid to place points. Click the first point to close the shape.</li>
               <li>Or type exact lengths and angles in the panel.</li>
-              <li>Select a segment to turn it into a round or a cove.</li>
+              <li>Select a segment to turn it into a round or a cove, or use 3-Point Arc.</li>
             </ol>
             <button type="button" class="pd-btn pd-btn--ghost pd-hint__btn" data-hint-example>Load an Example Profile</button>
           </div>
@@ -316,7 +329,8 @@
               <h3>Rounds &amp; Coves</h3>
               <ul>
                 <li>Select a segment, then choose Round Out or Cove In.</li>
-                <li>Type the radius. Flip Curve reverses the direction.</li>
+                <li>3-Point Arc: click the end, then any point on the curve. Press <kbd>3</kbd> to switch it on.</li>
+                <li>Type a new radius or use &minus; and +. Keep End Points or Keep Center. Flip Curve reverses it.</li>
                 <li>Arc radii show in red on the drawing.</li>
               </ul>
             </div>
@@ -339,7 +353,7 @@
     <script src="../js/site.js?v=7"></script>
     <script src="../js/vendor/jspdf.umd.min.js" defer></script>
     <script src="../js/profile-engine.js?v=2" defer></script>
-    <script src="../js/profile-designer.js?v=3" defer></script>
+    <script src="../js/profile-designer.js?v=4" defer></script>
     <script src="../js/profile-account.js?v=2" defer></script>
     <script>
       document.addEventListener('click', function (e) {

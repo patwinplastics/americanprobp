@@ -106,7 +106,7 @@
   /* ============ History & persistence ============ */
   function snapshot() { return JSON.stringify({ pts: S.pts, bul: S.bul, closed: S.closed, extra: S.extra }); }
   function commit() { undo.push(snapshot()); if (undo.length > 200) undo.shift(); redo = []; }
-  function restore(js) { var o = JSON.parse(js); S.pts = o.pts; S.bul = o.bul; S.closed = o.closed; S.extra = o.extra || []; sel = null; drawing = !S.closed && S.pts.length > 0 && drawing; }
+  function restore(js) { var o = JSON.parse(js); S.pts = o.pts; S.bul = o.bul; S.closed = o.closed; S.extra = o.extra || []; sel = null; pend = null; drawing = !S.closed && S.pts.length > 0 && drawing; }
   function doUndo() { if (!undo.length) return; redo.push(snapshot()); restore(undo.pop()); changed(); }
   function doRedo() { if (!redo.length) return; undo.push(snapshot()); restore(redo.pop()); changed(); }
   /* Guests: drawing lives only in this browser tab (sessionStorage), no saving.
@@ -134,6 +134,7 @@
 
   /* ============ Editing ops ============ */
   function addPoint(p) {
+    if (DM.three && S.pts.length && !S.closed) return addThreePoint(p);
     commit();
     if (S.closed) return;
     if (p.vi === 0 && S.pts.length >= 3) { S.closed = true; S.bul[S.pts.length - 1] = 0; if (DM.arc) applyDrawArc(S.pts.length - 1); drawing = false; sel = null; changed(); toast('Shape closed'); return; }
@@ -145,11 +146,52 @@
     changed();
   }
   function round6(v) { return Math.round(v * 1e6) / 1e6; }
+  // 3-Point Arc: start = last point, click 1 = end point, click 2 = any point the arc passes through
+  function addThreePoint(p) {
+    var last = S.pts[S.pts.length - 1];
+    if (!pend) {
+      if (dist(last, p) < 1e-6) return;
+      pend = { x: round6(p.x), y: round6(p.y), vi: p.vi };
+      if (pend.vi === 0 && S.pts.length < 3) { pend = null; return toast('Add at least one more point before closing the shape with an arc'); }
+      drawing = true; render(); renderPanel(); return;
+    }
+    var b = bulge3(last, pend, p);
+    if (b == null) return toast('Pick a point off the line between the two ends. That point sets the curve.');
+    commit();
+    var r = b ? arcInfo(last, pend, b).r : 0;
+    if (pend.vi === 0 && S.pts.length >= 3) {
+      S.closed = true; S.bul[S.pts.length - 1] = b; drawing = false; pend = null; sel = null; changed();
+      toast(b ? 'Shape closed with an R ' + fmtLen(r) + ' arc' : 'Shape closed'); return;
+    }
+    S.pts.push({ x: pend.x, y: pend.y });
+    S.bul[S.pts.length - 2] = b; S.bul[S.pts.length - 1] = 0;
+    pend = null; drawing = true; changed();
+    toast(b ? 'Arc placed at R ' + fmtLen(r) + '. Type a new radius in the panel to change it.' : 'Straight segment placed');
+  }
+  // bulge of the arc p1 -> p2 that passes through p3. 0 = straight, null = no valid arc
+  function bulge3(p1, p2, p3) {
+    var c = dist(p1, p2);
+    if (c < 1e-9 || dist(p3, p1) < 1e-9 || dist(p3, p2) < 1e-9) return null;
+    var d = 2 * (p1.x * (p2.y - p3.y) + p2.x * (p3.y - p1.y) + p3.x * (p1.y - p2.y));
+    var cr = ((p2.x - p1.x) * (p3.y - p1.y) - (p2.y - p1.y) * (p3.x - p1.x)) / (c * dist(p1, p3));
+    if (Math.abs(cr) < 1e-6) {
+      var t = ((p3.x - p1.x) * (p2.x - p1.x) + (p3.y - p1.y) * (p2.y - p1.y)) / (c * c);
+      return t > 0 && t < 1 ? 0 : null;
+    }
+    var s1 = p1.x * p1.x + p1.y * p1.y, s2 = p2.x * p2.x + p2.y * p2.y, s3 = p3.x * p3.x + p3.y * p3.y;
+    var cx = (s1 * (p2.y - p3.y) + s2 * (p3.y - p1.y) + s3 * (p1.y - p2.y)) / d;
+    var cy = (s1 * (p3.x - p2.x) + s2 * (p1.x - p3.x) + s3 * (p2.x - p1.x)) / d;
+    var a1 = Math.atan2(p1.y - cy, p1.x - cx), a2 = Math.atan2(p2.y - cy, p2.x - cx), a3 = Math.atan2(p3.y - cy, p3.x - cx);
+    var md = function (v) { v = v % TAU; return v < 0 ? v + TAU : v; };
+    var ccw = md(a2 - a1), t3 = md(a3 - a1);
+    var th = t3 < ccw ? ccw : ccw - TAU;
+    return Math.tan(th / 4);
+  }
   function closeShape() {
     if (S.closed || S.pts.length < 3) return toast('Add at least 3 points to close the shape');
     commit(); S.closed = true; S.bul[S.pts.length - 1] = 0; if (DM.arc) applyDrawArc(S.pts.length - 1); drawing = false; changed(); toast('Shape closed');
   }
-  function finish() { drawing = false; cursor = null; render(); renderPanel(); }
+  function finish() { drawing = false; cursor = null; pend = null; render(); renderPanel(); }
   function deleteSel() {
     if (!sel) return;
     if (sel.type === 'segs') return toast('Select a single segment or point to delete');
@@ -178,10 +220,19 @@
     S.bul.splice(i, 1, nb, nb);
     sel = { type: 'pt', i: i + 1 }; changed();
   }
-  function setArc(i, radius, dir) {
+  function setArc(i, radius, dir, keep) {
     var e = segEnds(i), c = Math.hypot(e[1].x - e[0].x, e[1].y - e[0].y);
     if (!(radius > 0)) return;
-    if (radius < c / 2 - 1e-9) { toast('Radius must be at least half the segment span (' + fmtLen(c / 2) + ')'); return false; }
+    var ob = S.bul[i] || 0;
+    if ((keep || RK) === 'center' && ob) {
+      // CAD-style: same centre and sweep, the end points slide in or out and connected segments follow
+      var A0 = arcInfo(e[0], e[1], ob), k = radius / A0.r, n = S.pts.length, j = (i + 1) % n;
+      commit();
+      S.pts[i] = rnd({ x: A0.cx + (e[0].x - A0.cx) * k, y: A0.cy + (e[0].y - A0.cy) * k });
+      S.pts[j] = rnd({ x: A0.cx + (e[1].x - A0.cx) * k, y: A0.cy + (e[1].y - A0.cy) * k });
+      changed(); return true;
+    }
+    if (radius < c / 2 - 1e-9) { toast('With these end points the smallest radius is ' + fmtLen(c / 2) + '. Choose Keep Center to go smaller.'); return false; }
     var b = bulgeFor(c, radius, dir, Math.abs(S.bul[i] || 0) > 1 + 1e-9);
     commit(); S.bul[i] = b; changed(); return true;
   }
@@ -218,8 +269,10 @@
   function addByLenAng(L, angDeg) {
     if (S.closed) return toast('Shape is closed. Select a segment to edit it.');
     if (!S.pts.length) addPoint({ x: 0, y: 0 });
-    var l = S.pts[S.pts.length - 1], a = angDeg * Math.PI / 180;
+    var l = S.pts[S.pts.length - 1], a = angDeg * Math.PI / 180, t3 = DM.three;
+    DM.three = false; pend = null;   // typed segments are exact, never a pending 3-point pick
     addPoint({ x: l.x + Math.cos(a) * L, y: l.y + Math.sin(a) * L });
+    DM.three = t3;
     drawing = true;
     fitIfOffscreen();
   }
@@ -303,15 +356,27 @@
       h.push('<path class="' + cls + '" d="' + pathFrom(segPoints(i)) + '"/>');
     }
     // preview
-    if (tool === 'draw' && drawing && cursor && S.pts.length && !S.closed) {
+    if (tool === 'draw' && pend && S.pts.length && !S.closed) {
+      var l3 = S.pts[S.pts.length - 1], ps = toScr(pend);
+      var b3 = cursor ? bulge3(l3, pend, cursor) : null;
+      if (b3 == null) h.push('<path class="pd-preview pd-preview--chord" d="' + pathFrom([l3, pend]) + '"/>');
+      else h.push('<path class="pd-preview" d="' + pathFrom(arcPts(l3, pend, b3)) + '"/>');
+      h.push('<circle class="pd-pend" cx="' + ps.x.toFixed(2) + '" cy="' + ps.y.toFixed(2) + '" r="5.5"/>');
+      if (cursor) {
+        var c3 = toScr(cursor);
+        h.push('<circle class="pd-thru" cx="' + c3.x.toFixed(2) + '" cy="' + c3.y.toFixed(2) + '" r="4"/>');
+        var t3 = b3 == null ? 'Move off the line to curve' : b3 ? 'R ' + fmtLen(arcInfo(l3, pend, b3).r) + '  \u00b7  arc ' + fmtLen(arcInfo(l3, pend, b3).len) : 'Straight';
+        h.push('<g class="pd-tip" transform="translate(' + (c3.x + 14) + ' ' + (c3.y - 14) + ')"><rect x="0" y="-16" rx="5" width="' + (t3.length * 7.2 + 18) + '" height="22"/><text x="8" y="0">' + esc(t3) + '</text></g>');
+      }
+    } else if (tool === 'draw' && drawing && cursor && S.pts.length && !S.closed) {
       var last = S.pts[S.pts.length - 1];
       var L = Math.hypot(cursor.x - last.x, cursor.y - last.y);
       var pb = DM.arc && L > 1e-6 ? bulgeFor(L, DM.r, DM.side, DM.big) : 0;
-      h.push('<path class="pd-preview" d="' + pathFrom(arcPts(last, cursor, pb)) + '"/>');
+      h.push('<path class="pd-preview' + (DM.three ? ' pd-preview--chord' : '') + '" d="' + pathFrom(arcPts(last, cursor, pb)) + '"/>');
       if (L > 1e-6) {
         var a = Math.atan2(cursor.y - last.y, cursor.x - last.x) * 180 / Math.PI;
         var cs = toScr(cursor);
-        var tipT = fmtLen(L) + '  \u2220 ' + fmtAng(a) + (pb ? '  R ' + fmtLen(Math.max(DM.r, L / 2)) : '');
+        var tipT = (DM.three ? 'Arc end  ' : '') + fmtLen(L) + '  \u2220 ' + fmtAng(a) + (pb ? '  R ' + fmtLen(Math.max(DM.r, L / 2)) : '');
         h.push('<g class="pd-tip" transform="translate(' + (cs.x + 14) + ' ' + (cs.y - 14) + ')"><rect x="0" y="-16" rx="5" width="' + (tipT.length * 7.2 + 18) + '" height="22"/><text x="8" y="0">' + esc(tipT) + '</text></g>');
       }
     }
@@ -399,13 +464,16 @@
     parts.push(S.closed ? 'Closed shape' : (S.pts.length ? 'Open shape' : 'Empty'));
     if (S.extra.length) parts.push((S.extra.length + 1) + ' shapes');
     if (tool === 'draw' && DM.arc && !S.closed) parts.push('Drawing arcs R ' + fmtLen(DM.r) + ' (A for straight)');
+    if (tool === 'draw' && DM.three && !S.closed) parts.push(!S.pts.length ? '3-point arc: click the start point' : pend ? '3-point arc: click any point the arc passes through (Esc cancels)' : '3-point arc: click the end point');
     status.textContent = parts.join('   \u00b7   ');
     var closedEl = app.querySelector('[data-pd-closed]');
     if (closedEl) { closedEl.textContent = S.closed ? 'Closed' : 'Open'; closedEl.classList.toggle('is-ok', S.closed); }
   }
 
   /* ============ Arcs, rounded corners, offsets, multiple shapes ============ */
-  var DM = { arc: false, r: 0.25, side: 1, big: false };   // how new segments are drawn
+  var DM = { arc: false, three: false, r: 0.25, side: 1, big: false };   // how new segments are drawn
+  var RK = 'ends';                                          // radius edits keep: 'ends' | 'center'
+  var pend = null;                                          // 3-point arc: end point picked, waiting for the through point
   var OF = { d: 0.125, side: 1 };                           // offset settings (side +1 = left of travel)
   var TAU = Math.PI * 2;
   function rnd(p) { return { x: round6(p.x), y: round6(p.y) }; }
@@ -659,6 +727,19 @@
       (!full && S.closed ? '<div class="pd-btns"><button type="button" class="pd-btn pd-btn--ghost" data-act="sel-all">Select Whole Shape</button></div>' : '') +
       '</div>';
   }
+  function threePointPanel(unitWord) {
+    var step = !S.pts.length ? 0 : pend ? 2 : 1;
+    var li = function (k, t) { return '<li class="' + (k === step ? 'is-now' : k < step ? 'is-done' : '') + '">' + t + '</li>'; };
+    var h = '<ol class="pd-steps">' + li(0, 'Click the start point' + (S.pts.length ? ' (your last point)' : '')) + li(1, 'Click where the arc ends') + li(2, 'Click any point the arc passes through. The dashed preview shows the radius.') + '</ol>';
+    if (pend) h += '<div class="pd-btns" style="margin-bottom:.5rem"><button type="button" class="pd-btn pd-btn--ghost" data-act="pend-cancel">Cancel This Arc</button></div>';
+    var lk = segCount() - 1;
+    if (!pend && lk >= 0 && S.bul[lk]) {
+      var le = segEnds(lk), LA = arcInfo(le[0], le[1], S.bul[lk]);
+      h += '<h4 class="pd-sub">Change Last Arc</h4><div class="pd-row">' + field('Radius (' + unitWord + ')', 'pd-lr', fmtNum(LA.r)) + '<div class="pd-field"><span>&nbsp;</span><button type="button" class="pd-btn" data-act="lr-apply">Apply Radius</button></div></div>' +
+        presetChips('lr-pre', LA.r, LA.chord / 2) + '<p class="pd-note">Smallest for this span: ' + fmtLen(LA.chord / 2) + '. Select any arc later to change it again.</p>';
+    }
+    return h;
+  }
   function renderPanel() {
     var unitWord = isMM() ? 'mm' : 'inches';
     var h = '';
@@ -687,12 +768,18 @@
           '<div class="pd-btns"><button type="button" class="pd-btn" data-act="seg-apply">Apply</button><button type="button" class="pd-btn pd-btn--ghost" data-act="insert">Add Point in Middle</button></div>' +
           '<p class="pd-note" style="margin-top:.8rem">Pick a radius to round this segment out (then Cove In flips it), or drag the \u25c6 handle on the drawing.</p>' + presetChips('mk-arc', null, segLen(i) / 2);
       } else {
-        var A = arcInfo(e[0], e[1], b);
-        h += '<div class="pd-row">' + field('Radius (' + unitWord + ')', 'pd-ar', fmtNum(A.r)) + '<div class="pd-field pd-field--ro"><span>Arc length</span><output>' + fmtLen(A.len) + '</output></div></div>' +
-          presetChips('ar-pre', A.r, A.chord / 2) +
+        var A = arcInfo(e[0], e[1], b), mid = segMid(i);
+        h += '<div class="pd-field"><span>Radius (' + unitWord + ')</span><div class="pd-rad"><button type="button" class="pd-step" data-act="ar-dn" aria-label="Smaller radius">\u2212</button><input id="pd-ar" type="text" inputmode="decimal" value="' + esc(fmtNum(A.r)) + '" aria-label="Radius" /><button type="button" class="pd-step" data-act="ar-up" aria-label="Larger radius">+</button><button type="button" class="pd-btn" data-act="arc-apply">Apply</button></div></div>' +
+          '<div class="pd-field"><span>Radius change keeps</span><div class="pd-seg-type" role="radiogroup" aria-label="Radius change keeps" style="margin:0"><button type="button" class="pd-chip' + (RK === 'ends' ? ' is-on' : '') + '" data-act="rk-ends">End Points</button><button type="button" class="pd-chip' + (RK === 'center' ? ' is-on' : '') + '" data-act="rk-center">Center</button></div></div>' +
+          '<p class="pd-note">' + (RK === 'ends' ? 'The ends stay put and the curve gets deeper or flatter. Smallest radius for this span: ' + fmtLen(A.chord / 2) + ' (half circle).' : 'The center and sweep stay put and the ends slide in or out. Connected segments stretch to follow, so any radius works.') + '</p>' +
+          presetChips('ar-pre', A.r, RK === 'ends' ? A.chord / 2 : null) +
+          '<div class="pd-row"><div class="pd-field pd-field--ro"><span>Arc length</span><output>' + fmtLen(A.len) + '</output></div><div class="pd-field pd-field--ro"><span>Sweep</span><output>' + fmtAng(Math.abs(A.th) * 180 / Math.PI) + '</output></div></div>' +
           '<label class="pd-check"><input type="checkbox" id="pd-big"' + (Math.abs(b) > 1 + 1e-9 ? ' checked' : '') + ' /> Long way around (more than a half circle)</label>' +
-          '<p class="pd-note">Smallest radius for this span: ' + fmtLen(A.chord / 2) + ' (half circle). Drag the \u25c6 handle to bend by eye.</p>' +
-          '<div class="pd-btns"><button type="button" class="pd-btn" data-act="arc-apply">Apply Radius</button><button type="button" class="pd-btn pd-btn--ghost" data-act="flip">Flip Curve</button><button type="button" class="pd-btn pd-btn--ghost" data-act="insert">Add Point</button></div>';
+          '<div class="pd-btns"><button type="button" class="pd-btn pd-btn--ghost" data-act="flip">Flip Curve</button><button type="button" class="pd-btn pd-btn--ghost" data-act="insert">Add Point</button></div>' +
+          '<h4 class="pd-sub">3-Point Arc</h4><p class="pd-note">The arc runs from point ' + (i + 1) + ' to point ' + ((i + 1) % S.pts.length + 1) + ' through the point below (filled in with its midpoint). Type a new point, or drag the \u25c6 handle on the drawing.</p>' +
+          '<div class="pd-row">' + field('Through X (' + unitWord + ')', 'pd-tx', fmtNum(round6(mid.x))) + field('Through Y (' + unitWord + ')', 'pd-ty', fmtNum(round6(mid.y))) + '</div>' +
+          '<div class="pd-btns"><button type="button" class="pd-btn" data-act="thru-apply">Apply Through Point</button></div>' +
+          '<p class="pd-note">Center: X ' + esc(fmtLen(A.cx)) + ', Y ' + esc(fmtLen(A.cy)) + '</p>';
       }
       h += '<div class="pd-btns"><button type="button" class="pd-btn pd-btn--danger" data-act="del">' + (S.closed ? 'Open Shape Here' : 'Make Straight') + '</button></div></div>';
       h += offsetSection(unitWord);
@@ -706,19 +793,21 @@
         h += '<p class="pd-note">Click a segment to change its length, angle or radius. Click a corner point to round it. Shift+click segments to offset several at once.</p>' +
           '<div class="pd-btns"><button type="button" class="pd-btn" data-act="sel-all">Offset Whole Shape</button></div>';
       } else {
-        h += '<p class="pd-note">' + (S.pts.length ? 'Type the next segment from the last point, or click on the grid.' : 'Click the grid to place your first point, or type a length to start at 0, 0.') + '</p>' +
+        h += '<p class="pd-note">' + (DM.three ? 'Click three points on the grid to draw an arc through them. The radius is worked out for you, and you can change it after.' : S.pts.length ? 'Type the next segment from the last point, or click on the grid.' : 'Click the grid to place your first point, or type a length to start at 0, 0.') + '</p>' +
           '<div class="pd-seg-type" role="radiogroup" aria-label="Next segment type">' +
-            '<button type="button" class="pd-chip' + (!DM.arc ? ' is-on' : '') + '" data-act="dm-line">Straight</button>' +
+            '<button type="button" class="pd-chip' + (!DM.arc && !DM.three ? ' is-on' : '') + '" data-act="dm-line">Straight</button>' +
             '<button type="button" class="pd-chip' + (DM.arc ? ' is-on' : '') + '" data-act="dm-arc">Arc</button>' +
+            '<button type="button" class="pd-chip' + (DM.three ? ' is-on' : '') + '" data-act="dm-3pt">3-Point Arc</button>' +
           '</div>' +
+          (DM.three ? threePointPanel(unitWord) : '') +
           (DM.arc ? '<div class="pd-row">' + field('Radius (' + unitWord + ')', 'pd-dr', fmtNum(DM.r)) +
               '<div class="pd-field"><span>Curves to the</span><div class="pd-seg-type" style="margin:0"><button type="button" class="pd-chip' + (DM.side < 0 ? ' is-on' : '') + '" data-act="dm-left">Left</button><button type="button" class="pd-chip' + (DM.side > 0 ? ' is-on' : '') + '" data-act="dm-right">Right</button></div></div></div>' +
             presetChips('dr-pre', DM.r) +
             '<label class="pd-check"><input type="checkbox" id="pd-dbig"' + (DM.big ? ' checked' : '') + ' /> Long way around (more than a half circle)</label>' +
             '<p class="pd-note">Left or right is relative to the direction you\u2019re drawing. Watch the dashed preview, and press A to switch between arcs and straight lines.</p>' : '') +
-          '<div class="pd-row">' + field((DM.arc ? 'Span' : 'Length') + ' (' + unitWord + ')', 'pd-nl', '', 'placeholder="' + (isMM() ? 'e.g. 41.3' : 'e.g. 1-5/8') + '" enterkeyhint="next"') + field('Angle (\u00b0)', 'pd-na', '0', 'enterkeyhint="done"') + '</div>' +
-          '<div class="pd-angles" aria-label="Angle shortcuts">' + [['\u2192', 0], ['\u2191', 90], ['\u2190', 180], ['\u2193', -90], ['\u2197', 45], ['\u2196', 135], ['\u2199', -135], ['\u2198', -45]].map(function (a) { return '<button type="button" class="pd-ang" data-ang="' + a[1] + '" title="' + a[1] + '\u00b0">' + a[0] + '</button>'; }).join('') + '</div>' +
-          '<div class="pd-btns"><button type="button" class="pd-btn" data-act="add">Add Segment</button>' + (S.pts.length >= 3 ? '<button type="button" class="pd-btn pd-btn--ghost" data-act="close">Close Shape</button>' : '') + '</div>';
+          (DM.three ? '' : '<div class="pd-row">' + field((DM.arc ? 'Span' : 'Length') + ' (' + unitWord + ')', 'pd-nl', '', 'placeholder="' + (isMM() ? 'e.g. 41.3' : 'e.g. 1-5/8') + '" enterkeyhint="next"') + field('Angle (\u00b0)', 'pd-na', '0', 'enterkeyhint="done"') + '</div>' +
+          '<div class="pd-angles" aria-label="Angle shortcuts">' + [['\u2192', 0], ['\u2191', 90], ['\u2190', 180], ['\u2193', -90], ['\u2197', 45], ['\u2196', 135], ['\u2199', -135], ['\u2198', -45]].map(function (a) { return '<button type="button" class="pd-ang" data-ang="' + a[1] + '" title="' + a[1] + '\u00b0">' + a[0] + '</button>'; }).join('') + '</div>') +
+          '<div class="pd-btns">' + (DM.three ? '' : '<button type="button" class="pd-btn" data-act="add">Add Segment</button>') + (S.pts.length >= 3 ? '<button type="button" class="pd-btn pd-btn--ghost" data-act="close">Close Shape</button>' : '') + '</div>';
       }
       h += '</div>';
     }
@@ -751,7 +840,8 @@
     if (ang) { var na = document.getElementById('pd-na'); if (na) na.value = ang.getAttribute('data-ang'); var nl = document.getElementById('pd-nl'); if (nl && nl.value) act('add'); else if (nl) nl.focus(); return; }
     var pre = e.target.closest('.pd-pre');
     if (pre) {
-      var v = parseFloat(pre.getAttribute('data-cr-pre') || pre.getAttribute('data-mk-arc') || pre.getAttribute('data-ar-pre') || pre.getAttribute('data-dr-pre') || pre.getAttribute('data-od-pre'));
+      var v = parseFloat(pre.getAttribute('data-cr-pre') || pre.getAttribute('data-mk-arc') || pre.getAttribute('data-ar-pre') || pre.getAttribute('data-dr-pre') || pre.getAttribute('data-od-pre') || pre.getAttribute('data-lr-pre'));
+      if (pre.hasAttribute('data-lr-pre')) { var lk2 = segCount() - 1; if (lk2 >= 0 && S.bul[lk2]) setArc(lk2, v, S.bul[lk2] < 0 ? -1 : 1, 'ends'); return; }
       if (pre.hasAttribute('data-cr-pre')) roundCorner(sel.i, v);
       else if (pre.hasAttribute('data-mk-arc')) { var ce = segEnds(sel.i); if (v < dist(ce[0], ce[1]) / 2 - 1e-9) toast('R ' + fmtLen(v) + ' is smaller than half this span, so it became a half circle'); makeArc(sel.i, 1, Math.max(v, dist(ce[0], ce[1]) / 2)); }
       else if (pre.hasAttribute('data-ar-pre')) setArc(sel.i, v, (S.bul[sel.i] || 0) < 0 ? -1 : 1);
@@ -770,6 +860,8 @@
     else if (id === 'pd-px' || id === 'pd-py') { e.preventDefault(); act('pt-apply'); }
     else if (id === 'pd-sl' || id === 'pd-sa') { e.preventDefault(); act('seg-apply'); }
     else if (id === 'pd-ar') { e.preventDefault(); act('arc-apply'); }
+    else if (id === 'pd-lr') { e.preventDefault(); act('lr-apply'); }
+    else if (id === 'pd-tx' || id === 'pd-ty') { e.preventDefault(); act('thru-apply'); }
     else if (id === 'pd-cr') { e.preventDefault(); act('corner'); }
     else if (id === 'pd-od') { e.preventDefault(); act('offset'); }
     else if (id === 'pd-dr') { e.preventDefault(); var nl2 = document.getElementById('pd-nl'); if (nl2) nl2.focus(); }
@@ -826,8 +918,34 @@
       case 'to-cove': makeArc(i, -1, S.bul[i] ? arcInfo(segEnds(i)[0], segEnds(i)[1], S.bul[i]).r : 0); break;
       case 'flip': flipArc(i); break;
       case 'corner': { var cr = parseLen(val('pd-cr')); roundCorner(i, cr); break; }
-      case 'dm-line': DM.arc = false; renderPanel(); render(); break;
-      case 'dm-arc': DM.arc = true; renderPanel(); render(); break;
+      case 'dm-line': DM.arc = false; DM.three = false; pend = null; renderPanel(); render(); break;
+      case 'dm-arc': DM.arc = true; DM.three = false; pend = null; renderPanel(); render(); break;
+      case 'dm-3pt': DM.three = true; DM.arc = false; pend = null; renderPanel(); render(); break;
+      case 'pend-cancel': pend = null; renderPanel(); render(); break;
+      case 'lr-apply': {
+        var lk = segCount() - 1, lr = parseLen(val('pd-lr'));
+        if (lk < 0 || !S.bul[lk]) break;
+        if (!(lr > 0)) return toast('Enter a radius');
+        setArc(lk, lr, S.bul[lk] < 0 ? -1 : 1, 'ends'); break;
+      }
+      case 'rk-ends': RK = 'ends'; renderPanel(); break;
+      case 'rk-center': RK = 'center'; renderPanel(); break;
+      case 'ar-dn': case 'ar-up': {
+        var ae = segEnds(i), A3 = arcInfo(ae[0], ae[1], S.bul[i] || 0), stp = isMM() ? 1 / MM : 1 / 16;
+        var nr = Math.round(A3.r / stp) * stp + (a === 'ar-up' ? stp : -stp);
+        if (RK === 'ends' && nr < A3.chord / 2 - 1e-9) { if (A3.r > A3.chord / 2 + 1e-9) nr = A3.chord / 2; else return toast('This is already a half circle. Choose Keep Center to go smaller.'); }
+        if (!(nr > 0)) return;
+        setArc(i, nr, (S.bul[i] || 0) < 0 ? -1 : 1); break;
+      }
+      case 'thru-apply': {
+        var tx = parseLen(val('pd-tx')), ty = parseLen(val('pd-ty'));
+        if (!isFinite(tx) || !isFinite(ty)) return toast('Enter X and Y for the point on the arc');
+        var te = segEnds(i), tb = bulge3(te[0], te[1], { x: tx, y: ty });
+        if (tb == null) return toast('That point is on the line through the end points. Move it off the line.');
+        commit(); S.bul[i] = tb; changed();
+        if (tb) toast('Arc now passes through that point at R ' + fmtLen(arcInfo(te[0], te[1], tb).r));
+        break;
+      }
       case 'dm-left': DM.side = -1; renderPanel(); render(); break;
       case 'dm-right': DM.side = 1; renderPanel(); render(); break;
       case 'of-a': OF.side = 1; renderPanel(); render(); break;
@@ -860,7 +978,7 @@
   });
   function setTool(t) {
     tool = t;
-    if (t !== 'draw') { drawing = false; cursor = null; }
+    if (t !== 'draw') { drawing = false; cursor = null; pend = null; }
     else if (!S.closed && S.pts.length) drawing = true;
     app.querySelectorAll('[data-tool]').forEach(function (b) { b.classList.toggle('is-on', b.getAttribute('data-tool') === t); b.setAttribute('aria-pressed', b.getAttribute('data-tool') === t); });
     stage.setAttribute('data-mode', t);
@@ -961,7 +1079,7 @@
     }
     var raw = toCad(p.x, p.y);
     if (tool === 'draw' && !S.closed) {
-      cursor = snapPt(raw, { ortho: e.shiftKey, from: S.pts[S.pts.length - 1] });
+      cursor = snapPt(raw, pend ? {} : { ortho: e.shiftKey, from: S.pts[S.pts.length - 1] });
       render();
     } else {
       var hv = e.pointerType === 'mouse' ? hitTest(p.x, p.y) : null;
@@ -978,7 +1096,7 @@
     ptrs.delete(e.pointerId);
     if (pinch) { if (ptrs.size < 2) pinch = null; drag = null; return; }
     if (drag && drag.type === 'place' && !moved) {
-      var sp = snapPt(toCad(p.x, p.y), { ortho: e.shiftKey, from: S.pts[S.pts.length - 1] });
+      var sp = snapPt(toCad(p.x, p.y), pend ? {} : { ortho: e.shiftKey, from: S.pts[S.pts.length - 1] });
       addPoint(sp);
     } else if (drag && drag.type === 'bend') {
       if (!moved) undo.pop();
@@ -1010,15 +1128,16 @@
     if (mod && (e.key === 'y' || e.key === 'Y')) { if (typing) return; e.preventDefault(); doRedo(); return; }
     if (typing || mod || document.querySelector('.ap-search.is-open')) return;
     if (e.key === ' ') { spaceDown = true; stage.style.cursor = 'grab'; e.preventDefault(); }
-    else if (e.key === 'Escape') { if (drawing) finish(); else { sel = null; renderPanel(); render(); } }
+    else if (e.key === 'Escape') { if (pend) { pend = null; render(); renderPanel(); } else if (drawing) finish(); else { sel = null; renderPanel(); render(); } }
     else if (e.key === 'Enter') { if (drawing) finish(); }
-    else if (e.key === 'Delete' || e.key === 'Backspace') { if (sel) { e.preventDefault(); deleteSel(); } else if (drawing && S.pts.length) { e.preventDefault(); commit(); S.pts.pop(); S.bul.pop(); if (!S.pts.length) drawing = false; changed(); } }
+    else if (e.key === 'Delete' || e.key === 'Backspace') { if (sel) { e.preventDefault(); deleteSel(); } else if (pend) { e.preventDefault(); pend = null; render(); renderPanel(); } else if (drawing && S.pts.length) { e.preventDefault(); commit(); S.pts.pop(); S.bul.pop(); if (!S.pts.length) drawing = false; changed(); } }
     else if (e.key === 'd' || e.key === 'D' || e.key === 'l' || e.key === 'L') setTool('draw');
     else if (e.key === 'v' || e.key === 'V' || e.key === 's' || e.key === 'S') setTool('select');
     else if (e.key === 'h' || e.key === 'H') setTool('pan');
     else if (e.key === 'f' || e.key === 'F') fit();
     else if (e.key === 'c' || e.key === 'C') closeShape();
-    else if (e.key === 'a' || e.key === 'A') { DM.arc = !DM.arc; renderPanel(); render(); toast(DM.arc ? 'Drawing arcs, R ' + fmtLen(DM.r) : 'Drawing straight lines'); }
+    else if (e.key === 'a' || e.key === 'A') { DM.arc = !DM.arc; DM.three = false; pend = null; renderPanel(); render(); toast(DM.arc ? 'Drawing arcs, R ' + fmtLen(DM.r) : 'Drawing straight lines'); }
+    else if (e.key === '3') { DM.three = !DM.three; DM.arc = false; pend = null; if (DM.three) setTool('draw'); renderPanel(); render(); toast(DM.three ? '3-point arc: click the end point, then a point on the curve' : 'Drawing straight lines'); }
     else if ((e.key === 'o' || e.key === 'O') && selList().length) { var od = document.getElementById('pd-od'); if (od) { od.focus(); od.select(); } }
   });
   document.addEventListener('keyup', function (e) { if (e.key === ' ') { spaceDown = false; stage.style.cursor = ''; } });
