@@ -184,6 +184,96 @@
       .blog-cta-actions .btn--ghost-light { background: transparent; color: #fff; border-color: rgba(255,255,255,0.4); }
       .blog-cta-actions .btn--ghost-light:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
       .blog-article-body .blog-cta-actions .btn { text-decoration: none; }
+
+      /* ===== Americana touches (Made in America post) ===== */
+      .blog-article { --usa-red: #b22234; --usa-blue: #0e1f3a; --usa-blue-2: #1f3a6b; }
+      .blog-article-eyebrow::before { content: "\2605"; color: var(--usa-red); font-size: 0.95em; letter-spacing: 0; }
+      .usa-stripe {
+        height: 6px; border-radius: 3px; margin-top: var(--space-6);
+        background: linear-gradient(90deg, var(--usa-blue) 0 22%, transparent 22% 23%, var(--usa-red) 23% 48%, #fff 48% 52%, var(--usa-red) 52% 77%, #fff 77% 81%, var(--usa-red) 81% 100%);
+        box-shadow: inset 0 0 0 1px rgba(14,31,58,0.08);
+      }
+      .usa-divider {
+        display: flex; align-items: center; gap: var(--space-4);
+        margin: var(--space-12) 0 0; color: var(--usa-blue); font-size: 14px; letter-spacing: 0.5em;
+      }
+      .usa-divider::before, .usa-divider::after {
+        content: ""; flex: 1; height: 3px;
+        background: linear-gradient(180deg, var(--usa-red) 0 33%, #fff 33% 66%, var(--usa-blue) 66% 100%);
+        border-radius: 2px;
+      }
+      .usa-divider span { color: var(--usa-red); white-space: nowrap; padding-left: 0.5em; }
+      .usa-divider + h2 { margin-top: var(--space-6); }
+
+      .blog-article-body blockquote.usa-quote {
+        position: relative; border-left: 0; text-align: center;
+        padding: var(--space-8) var(--space-6) var(--space-6);
+        background: linear-gradient(180deg, #fff 0%, var(--color-surface-2) 100%);
+        border-top: 4px solid var(--usa-red); border-bottom: 4px solid var(--usa-blue);
+        border-radius: 4px;
+      }
+      .blog-article-body blockquote.usa-quote::before {
+        content: "\2605  \2605  \2605"; display: block; font-style: normal;
+        font-size: 14px; letter-spacing: 0.3em; color: var(--usa-red); margin-bottom: var(--space-3);
+      }
+
+      .blog-article-body figure.photo-portrait { max-width: 460px; margin-inline: auto; }
+      .blog-article-body figure.photo-framed img { border-bottom: 5px solid var(--usa-red); box-shadow: 0 10px 30px rgba(14,31,58,0.12); }
+
+      /* Infographics */
+      .usa-info {
+        margin: var(--space-10) 0; padding: var(--space-8) var(--space-6);
+        border-radius: 10px; position: relative; overflow: hidden;
+        background: var(--usa-blue); color: #fff;
+      }
+      .usa-info::before {
+        content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.09;
+        background-image: radial-gradient(#fff 1.4px, transparent 1.6px);
+        background-size: 22px 22px;
+      }
+      .usa-info::after {
+        content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 8px;
+        background: repeating-linear-gradient(90deg, var(--usa-red) 0 24px, #fff 24px 48px);
+      }
+      .usa-info > * { position: relative; }
+      .usa-info-kicker { font-size: var(--text-xs); letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: #ffb3bb; }
+      .usa-info h3 { color: #fff; margin: var(--space-2) 0 var(--space-6); font-size: var(--text-lg); letter-spacing: -0.01em; line-height: 1.2; }
+      .usa-info h3 em { font-style: italic; font-weight: 400; }
+      .usa-info-source { margin-top: var(--space-6); font-size: var(--text-xs); color: rgba(255,255,255,0.65); }
+
+      .usa-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+      .usa-stat { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; padding: var(--space-5) var(--space-4); text-align: center; }
+      .usa-stat-num { display: block; font-family: var(--font-display); font-size: clamp(2rem, 6vw, 2.75rem); line-height: 1; font-weight: 700; color: #fff; }
+      .usa-stat-num small { font-size: 0.45em; font-weight: 500; }
+      .usa-stat-label { display: block; margin-top: var(--space-2); font-size: var(--text-sm); color: rgba(255,255,255,0.82); line-height: 1.4; }
+      .usa-stat:nth-child(odd) { border-top: 3px solid var(--usa-red); }
+      .usa-stat:nth-child(even) { border-top: 3px solid #fff; }
+
+      .usa-flow { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); counter-reset: flow; }
+      .blog-article-body .usa-flow li { list-style: none; margin: 0; }
+      .usa-flow li {
+        display: grid; grid-template-columns: 52px 1fr; gap: var(--space-4); align-items: center;
+        background: #fff; color: var(--usa-blue); border-radius: 8px; padding: var(--space-4);
+      }
+      .usa-flow-icon { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--usa-red); color: #fff; font-size: 22px; }
+      .usa-flow li:nth-child(even) .usa-flow-icon { background: var(--usa-blue-2); }
+      .usa-flow strong { display: block; font-size: var(--text-base); color: var(--usa-blue); }
+      .usa-flow span.usa-flow-text { display: block; font-size: var(--text-sm); color: #3a4a66; line-height: 1.45; margin-top: 2px; }
+      .usa-flow-arrow { text-align: center; color: #ffb3bb; font-size: 18px; line-height: 1; margin: -4px 0; }
+
+      .usa-timeline { list-style: none; margin: 0; padding: 0 0 0 var(--space-6); position: relative; }
+      .usa-timeline::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 3px; background: linear-gradient(180deg, var(--usa-red), #fff, var(--usa-red)); border-radius: 2px; }
+      .blog-article-body .usa-timeline li { list-style: none; margin: 0; }
+      .usa-timeline li { position: relative; padding: 0 0 var(--space-5) var(--space-4); }
+      .usa-timeline li:last-child { padding-bottom: 0; }
+      .usa-timeline li::before { content: "\2605"; position: absolute; left: calc(-1 * var(--space-6) - 1px); top: -2px; width: 20px; text-align: center; color: #fff; font-size: 16px; text-shadow: 0 0 0 #fff; }
+      .usa-timeline-when { display: block; font-size: var(--text-xs); letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: #ffb3bb; }
+      .usa-timeline-what { display: block; margin-top: 2px; font-size: var(--text-base); color: #fff; line-height: 1.5; }
+
+      @media (min-width: 640px) {
+        .usa-info { padding: var(--space-10) var(--space-8); }
+        .usa-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      }
     </style>
       <!-- Meta Pixel Code -->
     <script>
@@ -227,8 +317,9 @@
           <div class="blog-article-byline">
             <span>By American Pro</span>
             <span><time datetime="2026-11-01">November 1, 2026</time></span>
-            <span>3 min read</span>
+            <span>4 min read</span>
           </div>
+          <div class="usa-stripe" aria-hidden="true"></div>
         </header>
 
         <!-- Hero image -->
@@ -256,18 +347,37 @@
             When something is Made in America, it has a story you can actually trace. Ours starts in Linden, New Jersey, where <a href="../../about.html">Patwin Plastics</a>, the family behind American Pro, has been making things since 1971. That is not a label we put on a box. It is where we show up to work every day.
           </p>
 
+          <!-- Infographic: American Pro by the numbers (facts as stated on americanprobp.com) -->
+          <aside class="usa-info" aria-label="American Pro by the numbers">
+            <span class="usa-info-kicker">&#9733; American Pro by the numbers</span>
+            <h3>One family. One plant. <em>Made in America.</em></h3>
+            <div class="usa-stats">
+              <div class="usa-stat"><span class="usa-stat-num">1971</span><span class="usa-stat-label">The year Thomas Hannen cut his first die</span></div>
+              <div class="usa-stat"><span class="usa-stat-num">3</span><span class="usa-stat-label">Generations of one family in the business</span></div>
+              <div class="usa-stat"><span class="usa-stat-num">100<small>%</small></span><span class="usa-stat-label">Made in house in Linden, New Jersey</span></div>
+              <div class="usa-stat"><span class="usa-stat-num">25</span><span class="usa-stat-label">Year limited residential warranty</span></div>
+            </div>
+          </aside>
+
+          <div class="usa-divider" aria-hidden="true"><span>&#9733; &#9733; &#9733;</span></div>
           <h2>Pride You Get to Share</h2>
           <p>
             Your home is where life happens. Birthday cookouts. Fourth of July fireworks. A graduation party that runs late into the evening. Kids chasing the dog around the backyard while the grown ups catch up at the table.
           </p>
+
+          <figure class="photo-framed">
+            <img src="../../../images/blog/made-in-america-family-fourth-of-july-porch.jpg" alt="A family celebrating the Fourth of July on their gray front porch, kids waving small American flags beside a grandfather and a golden retriever, with a full American flag hanging from the porch column" width="1152" height="864" loading="lazy" decoding="async" />
+            <figcaption>Fourth of July on the front porch. The moments that make a house a home.</figcaption>
+          </figure>
           <p>
             When the people you love gather on something you chose with care, there is a quiet pride in that. Maybe a friend asks about your new deck, and you get to say it was made right here, by a family run company in Linden, New Jersey. That little moment becomes part of the story of your home.
           </p>
 
-          <blockquote>
+          <blockquote class="usa-quote">
             Some things are worth paying a little more for. Your home is one of them.
           </blockquote>
 
+          <div class="usa-divider" aria-hidden="true"><span>&#9733; &#9733; &#9733;</span></div>
           <h2>Peace of Mind You Never Have to Second Guess</h2>
           <p>
             A deck or porch is a big decision. The best decisions are the ones you never think twice about, the ones that still feel right years later.
@@ -275,6 +385,13 @@
           <p>
             Part of that peace of mind comes from knowing there are real people behind what you bought. When you buy from a company that makes its own products, you can pick up the phone and talk to folks who know them inside and out. You are not just a number. You are a neighbor.
           </p>
+
+          <figure class="photo-portrait photo-framed">
+            <img src="../../../images/social/nov4_winter-porch-dusk-flag.jpg" alt="A snowy front porch at dusk with gray porch flooring, white railings, a glowing lantern and an American flag on the porch column" width="864" height="1152" loading="lazy" decoding="async" />
+            <figcaption>First snow, porch light on, flag still flying. Peace of mind looks a lot like this.</figcaption>
+          </figure>
+
+          <div class="usa-divider" aria-hidden="true"><span>&#9733; &#9733; &#9733;</span></div>
 
           <h2>Real People, Real Families, Real Communities</h2>
           <p>
@@ -284,6 +401,20 @@
             When you choose a product that is made here, you are helping keep skills, jobs, and family businesses alive in American towns. That is something you can feel good about every single time you step outside.
           </p>
 
+          <!-- Infographic: where your choice goes (qualitative, no statistics) -->
+          <aside class="usa-info" aria-label="Where your Made in America choice goes">
+            <span class="usa-info-kicker">&#9733; Where your dollar goes</span>
+            <h3>When you choose <em>Made in America</em></h3>
+            <ol class="usa-flow">
+              <li><span class="usa-flow-icon" aria-hidden="true">&#8962;</span><div><strong>It starts at your home</strong><span class="usa-flow-text">You pick something you feel good about for the place you love most.</span></div></li>
+              <li><span class="usa-flow-icon" aria-hidden="true">&#9881;</span><div><strong>A family run plant in Linden, NJ</strong><span class="usa-flow-text">Your order is made in house by the same family that started in 1971.</span></div></li>
+              <li><span class="usa-flow-icon" aria-hidden="true">&#9874;</span><div><strong>Skilled American jobs</strong><span class="usa-flow-text">Tool makers, machine operators and shippers who take pride in their work.</span></div></li>
+              <li><span class="usa-flow-icon" aria-hidden="true">&#9733;</span><div><strong>Stronger hometowns</strong><span class="usa-flow-text">Paychecks that stay close to home and keep American towns and family businesses going.</span></div></li>
+            </ol>
+          </aside>
+
+          <div class="usa-divider" aria-hidden="true"><span>&#9733; &#9733; &#9733;</span></div>
+
           <h2>A Little More Today, a Lot More Over the Years</h2>
           <p>
             A price tag only tells part of the story. The real measure is how you feel about your choice five, ten, or fifteen years from now. Will you still be glad you made it? Will you still be proud when friends come over?
@@ -291,6 +422,21 @@
           <p>
             Saving a little up front can feel good for a week. Loving where you live feels good for years. That is the trade most families are really making when they choose Made in America.
           </p>
+
+          <!-- Infographic: how the feeling grows over the years (qualitative) -->
+          <aside class="usa-info" aria-label="How the feeling grows over the years">
+            <span class="usa-info-kicker">&#9733; A little more today</span>
+            <h3>How the feeling <em>grows over the years</em></h3>
+            <ol class="usa-timeline">
+              <li><span class="usa-timeline-when">Day one</span><span class="usa-timeline-what">The first cup of coffee on boards you chose with care.</span></li>
+              <li><span class="usa-timeline-when">Year one</span><span class="usa-timeline-what">Your first Fourth of July cookout out back, and friends asking where it came from.</span></li>
+              <li><span class="usa-timeline-when">Year five</span><span class="usa-timeline-what">Birthday parties, quiet evenings, and no second guessing.</span></li>
+              <li><span class="usa-timeline-when">Year ten</span><span class="usa-timeline-what">Kids grown taller, the porch still the heart of the house.</span></li>
+              <li><span class="usa-timeline-when">Year twenty five</span><span class="usa-timeline-what">Still proud. Still glad you did it. Backed by a 25 year limited residential warranty.</span></li>
+            </ol>
+          </aside>
+
+          <div class="usa-divider" aria-hidden="true"><span>&#9733; &#9733; &#9733;</span></div>
 
           <h2>A Few Questions Worth Asking</h2>
           <p>
@@ -306,10 +452,16 @@
             If the answers make you smile, you are probably on the right track.
           </p>
 
+          <div class="usa-divider" aria-hidden="true"><span>&#9733; &#9733; &#9733;</span></div>
           <h2>See It for Yourself</h2>
           <p>
             The best way to feel the difference is to hold it in your hands. Order <a href="../../decking.html#samples"><strong>free samples</strong></a>, which ship anywhere in the continental U.S., or try our <a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener"><strong>3D deck designer</strong></a> to picture your new deck at home. Have a question? Call us at <a href="tel:18774426776"><strong>1-877-442-6776</strong></a> or email <a href="mailto:sales@americanprobp.com"><strong>sales@americanprobp.com</strong></a>. You can also read <a href="../../about.html">our family's story</a>.
           </p>
+
+          <figure class="photo-portrait photo-framed">
+            <img src="../../../images/social/nov6_deck-planning-tablet.jpg" alt="A contractor showing a homeowner couple deck board colors on a tablet in front of their white farmhouse, with an American flag on the porch" width="864" height="1152" loading="lazy" decoding="async" />
+            <figcaption>Planning a new deck the right way. Picture yours with our 3D deck designer.</figcaption>
+          </figure>
           <p>
             Here's to more Saturday mornings, more cookouts, and more moments at home that you are proud of.
           </p>
