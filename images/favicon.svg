@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="American Pro Building Products">
+  <!-- Flag-bar mark, mirrors the AmericanPro header logo simplified for small sizes. -->
+  <rect width="64" height="64" rx="10" fill="#0e1f3a"/>
+  <!-- Row 1: short blue + medium red -->
+  <rect x="10" y="14" width="22" height="6" rx="2" fill="#1e4a8c"/>
+  <rect x="34" y="14" width="20" height="6" rx="2" fill="#b91c2c"/>
+  <!-- Row 2: shorter blue + longer red -->
+  <rect x="10" y="24" width="14" height="6" rx="2" fill="#1e4a8c"/>
+  <rect x="26" y="24" width="28" height="6" rx="2" fill="#b91c2c"/>
+  <!-- Row 3: short blue + medium red -->
+  <rect x="10" y="34" width="22" height="6" rx="2" fill="#1e4a8c"/>
+  <rect x="34" y="34" width="20" height="6" rx="2" fill="#b91c2c"/>
+  <!-- Row 4: full red bar (the strong base note) -->
+  <rect x="10" y="44" width="44" height="6" rx="2" fill="#b91c2c"/>
+</svg>

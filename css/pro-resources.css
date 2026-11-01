@@ -1,0 +1,86 @@
+/* Phase 1 resource and trade pages. Uses the existing American Pro tokens. */
+.pro-hero { background: var(--color-primary); color: #fff; }
+.pro-hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; align-items: stretch; }
+.pro-hero-copy { padding: clamp(2.5rem, 6vw, 5.5rem) clamp(1.5rem, 5vw, 4.5rem) clamp(2.5rem, 6vw, 5.5rem) 0; }
+.pro-hero .eyebrow { color: #d9bda3; }
+.pro-hero h1 { color: #fff; font-size: clamp(2.8rem, 4.6vw, 4.8rem); line-height: 1.03; margin: 1.2rem 0 1.5rem; max-width: 13ch; letter-spacing: -.025em; }
+.pro-hero p { max-width: 48ch; color: #e0e5ec; font-size: 1.05rem; line-height: 1.7; }
+.pro-hero-media { min-width: 0; position: relative; margin: 1.5rem 0; }
+.pro-hero-media img { height: 100%; width: 100%; object-fit: cover; min-height: 330px; }
+.pro-hero-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(14,31,58,.92); padding: 1rem 1.3rem; font-size: .78rem; letter-spacing: .03em; color: #fff; }
+.pro-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+.pro-actions .btn { white-space: normal; text-align: center; }
+.pro-breadcrumb { padding-block: 1.2rem; color: var(--color-text-muted); font-size: .8rem; }
+.pro-breadcrumb a { text-decoration: underline; text-underline-offset: 3px; }
+.pro-intro { max-width: 66ch; margin-bottom: 2rem; }
+.pro-intro h2, .pro-help h2, .pro-inquiry h2 { font-size: clamp(2rem, 3.4vw, 3.2rem); line-height: 1.1; margin: .7rem 0 1rem; }
+.pro-intro p, .pro-help p, .pro-inquiry p { color: var(--color-text-muted); line-height: 1.7; }
+.resource-tools { display: grid; grid-template-columns: 1.5fr 1fr 1fr auto; align-items: end; gap: 1rem; padding: 1.5rem; background: var(--color-surface-2); border: 1px solid var(--color-divider); }
+.resource-tools label { display: block; font-size: .8rem; font-weight: 700; margin-bottom: .5rem; }
+.resource-tools input, .resource-tools select { width: 100%; min-height: 48px; border: 1px solid var(--color-border); border-radius: 4px; padding: .65rem .8rem; background: #fff; color: var(--color-text); font: inherit; font-size: .95rem; }
+.resource-count { margin: 1.2rem 0; font-size: .85rem; color: var(--color-text-muted); }
+.resource-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; }
+.resource-card { display: flex; flex-direction: column; border: 1px solid var(--color-divider); background: #fff; padding: 1.6rem; min-width: 0; }
+.resource-card[hidden], .resource-empty[hidden], .resource-tools[hidden] { display: none; }
+.resource-tag { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-accent); font-weight: 700; }
+.resource-card h3 { font-size: 1.6rem; line-height: 1.2; margin: .8rem 0; }
+.resource-card p { color: var(--color-text-muted); font-size: .9rem; line-height: 1.65; margin-bottom: 1.4rem; }
+.resource-card .resource-link { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--color-divider); font-size: .86rem; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.resource-card a:hover, .pro-help a:not(.btn):hover { color: var(--color-accent); }
+.resource-empty { padding: 2rem; background: var(--color-surface-2); text-align: center; }
+.resource-empty h3 { font-size: 1.5rem; margin-bottom: .5rem; }
+.resource-empty p { margin-bottom: 1rem; }
+.resource-note { margin-top: 1.5rem; font-size: .85rem; max-width: 85ch; color: var(--color-text-muted); }
+.pro-help { background: var(--color-surface-2); padding: clamp(2rem, 5vw, 4rem); display: grid; grid-template-columns: 1.3fr 1fr; gap: 2rem; align-items: center; }
+.pro-help .pro-actions { margin-top: 0; }
+.pro-tracks { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 2rem; }
+.pro-track { border-top: 3px solid var(--color-primary); padding-top: 1.5rem; display: flex; flex-direction: column; min-width: 0; }
+.pro-track h3 { font-size: 1.8rem; margin: .7rem 0; }
+.pro-track p { color: var(--color-text-muted); font-size: .95rem; line-height: 1.7; }
+.pro-track ul { list-style: disc; padding-left: 1.2rem; margin: 1.2rem 0 1.7rem; font-size: .9rem; line-height: 1.7; }
+.pro-track .btn { margin-top: auto; align-self: flex-start; }
+.pro-feature { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+.pro-feature img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.pro-feature h2 { font-size: clamp(2rem, 3.6vw, 3.2rem); margin: .8rem 0 1rem; line-height: 1.1; }
+.pro-feature p { color: var(--color-text-muted); line-height: 1.7; }
+.pro-inquiry { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.pro-inquiry .form-card h3 { font-size: 1.7rem; margin-bottom: 1.25rem; }
+.pro-inquiry fieldset { min-width: 0; border: 0; padding: 0; margin: 0; }
+.pro-inquiry legend { font-size: .8rem; font-weight: 600; margin-bottom: .6rem; }
+.pro-inquiry .form-submit small a { text-decoration: underline; }
+.pro-contact-line { margin-top: 1.5rem; }
+.pro-contact-line a { font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.pro-inline-links { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; margin: 1.25rem 0; font-size: .9rem; font-weight: 600; }
+.pro-inline-links a { text-decoration: underline; text-underline-offset: 4px; }
+.dealer-finder { background: var(--color-surface-2); border-bottom: 1px solid var(--color-divider); padding-block: 2rem; }
+.dealer-finder-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: center; }
+.dealer-finder h2 { font-size: 1.8rem; margin-bottom: .5rem; }
+.dealer-finder p { color: var(--color-text-muted); font-size: .9rem; }
+.dealer-request { display: grid; grid-template-columns: .8fr 1.2fr auto; gap: .8rem; align-items: end; }
+.dealer-request label { display: block; font-weight: 700; font-size: .8rem; margin-bottom: .5rem; }
+.dealer-request input, .dealer-request select { width: 100%; min-height: 48px; border: 1px solid var(--color-border); background: #fff; padding: .65rem; border-radius: 4px; font: inherit; font-size: .9rem; }
+.dealer-request .btn { white-space: normal; }
+.pro-hero [id], .pro-track[id], .pro-inquiry[id], #library, #contact-form { scroll-margin-top: 150px; }
+.pro-skip { position: fixed; left: 1rem; top: -100px; z-index: 999; background: #fff; color: var(--color-primary); padding: 1rem; }
+.pro-skip:focus { top: 1rem; }
+@media (max-width: 1050px) {
+  .resource-tools { grid-template-columns: 1fr 1fr; }
+  .resource-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .dealer-finder-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .pro-hero-grid, .pro-feature, .pro-inquiry, .pro-help { grid-template-columns: 1fr; }
+  .pro-hero-copy { padding: 2.5rem 0 1.5rem; }
+  .pro-hero-media { margin: 0 0 1.5rem; height: 220px; }
+  .pro-hero-media img { min-height: 0; }
+  .pro-tracks { grid-template-columns: 1fr; gap: 2.5rem; }
+  .resource-tools { padding: 1.1rem; }
+  .pro-hero h1 { max-width: 16ch; }
+}
+@media (max-width: 540px) {
+  .resource-grid, .resource-tools, .dealer-request { grid-template-columns: 1fr; }
+  .resource-card { padding: 1.4rem; }
+  .pro-inquiry .form-grid { grid-template-columns: 1fr; }
+  .pro-inquiry .form-submit { align-items: stretch; flex-direction: column; }
+  .pro-actions .btn { flex: 1 1 100%; }
+}
