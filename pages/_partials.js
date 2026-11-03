@@ -211,6 +211,7 @@
           <ul>
             <li><a href="${B}pages/contact.html">Contact Us</a></li>
             <li><a href="${B}pages/resources.html#support">Product Information Help</a></li>
+            <li><a href="${B}pages/warranty.html">Warranty</a></li>
             <li><a href="${B}pages/american-pro.html">About American Pro</a></li>
             <li><a href="${B}pages/about.html">About Patwin Plastics</a></li>
             <li><a href="${B}pages/blog/index.html">Blog &amp; Project Stories</a></li>
@@ -222,6 +223,7 @@
         <div class="footer-legal-links" style="display:flex;flex-wrap:wrap;gap:0.4rem 1.1rem;">
           <a href="${B}pages/privacy-policy.html">Privacy Policy</a>
           <a href="${B}pages/terms-and-conditions.html">Terms &amp; Conditions</a>
+          <a href="${B}pages/warranty.html">Warranty</a>
         </div>
         <div class="footer-social">
           <a href="https://www.facebook.com/americanprobuilding/" target="_blank" rel="noopener" aria-label="American Pro on Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg></a>
