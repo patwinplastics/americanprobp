@@ -70,7 +70,7 @@
       name: 'Porch Ceilings',
       tagline: 'Shiplap Nickelgap and beadboard in white or porch ceiling blue.',
       href: B + 'pages/porch-ceiling.html',
-      img: B + 'images/porch_ceiling/porch-ceiling-mega.jpg',
+      img: B + 'images/porch_ceiling/porch-ceiling-mega.jpg?v=2',
       alt: 'Shiplap Nickelgap and beadboard porch ceiling boards',
     },
   ];
