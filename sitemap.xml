@@ -680,4 +680,16 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/profile-designer.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/profile-designer.html" />
   </url>
+  <url>
+    <loc>https://americanprobp.com/pages/porch-ceiling.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/porch-ceiling.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/porch-ceiling.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/porch_ceiling/porch-ceiling-hero.jpg</image:loc>
+      <image:title>American Pro Shiplap Nickelgap and E&amp;CB Beadboard porch ceiling boards in porch ceiling blue and white</image:title>
+    </image:image>
+  </url>
 </urlset>

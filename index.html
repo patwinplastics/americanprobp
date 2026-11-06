@@ -223,6 +223,13 @@
                       <span class="mega-card__tag">Crowns, sills, brick mould, casing, and more.</span>
                     </span>
                   </a>
+                  <a class="mega-card" href="./pages/porch-ceiling.html" data-product-link>
+                    <span class="mega-card__media"><img src="./images/porch_ceiling/porch-ceiling-mega.jpg" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="mega-card__body">
+                      <span class="mega-card__name">Porch Ceilings</span>
+                      <span class="mega-card__tag">Shiplap Nickelgap and beadboard in white or porch ceiling blue.</span>
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -260,6 +267,7 @@
               <li><a href="./pages/legacy-pvc-decking.html" data-product-link>Legacy PVC Decking</a></li>
               <li><a href="./pages/porch.html" data-product-link>Porch Flooring</a></li>
               <li><a href="./pages/mouldings.html" data-product-link>Mouldings</a></li>
+              <li><a href="./pages/porch-ceiling.html" data-product-link>Porch Ceilings</a></li>
             </ul>
           </li>
           <li><a href="https://deckbuilder.americanprobp.com/" target="_blank" rel="noopener">Deck Visualizer <span aria-hidden="true">↗</span></a></li>
@@ -305,6 +313,9 @@
             <g class="house-zone" data-zone="porch" data-href="./pages/porch.html">
               <polygon points="300,424 560,424 812,442 812,450 668,458 600,447 340,440" />
             </g>
+            <g class="house-zone" data-zone="ceiling" data-href="./pages/porch-ceiling.html">
+              <polygon points="240,297 677,256 806,252 806,276 630,283 454,299 337,309 255,314" />
+            </g>
             <g class="house-zone" data-zone="trim" data-href="./pages/mouldings.html">
               <rect x="366" y="205" width="28" height="63" />
               <rect x="426" y="186" width="32" height="70" />
@@ -331,6 +342,10 @@
             <button type="button" class="house-dot" data-dot="trim" data-x="726" data-y="160" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
               <span class="house-dot__ring" aria-hidden="true"></span>
               <span class="house-dot__label">Mouldings &amp; Trim</span>
+            </button>
+            <button type="button" class="house-dot" data-dot="ceiling" data-x="640" data-y="272" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
+              <span class="house-dot__ring" aria-hidden="true"></span>
+              <span class="house-dot__label">Porch Ceiling</span>
             </button>
           </div>
 
@@ -365,6 +380,7 @@
               <button type="button" class="house-chip" data-chip="deck">Decking</button>
               <button type="button" class="house-chip" data-chip="porch">Porch Flooring</button>
               <button type="button" class="house-chip" data-chip="trim">Mouldings &amp; Trim</button>
+              <button type="button" class="house-chip" data-chip="ceiling">Porch Ceiling</button>
             </div>
           </div>
         </div>
@@ -403,6 +419,13 @@
           <h2 class="house-card__title" id="house-card-title">PVC Mouldings &amp; Trim</h2>
           <p class="house-card__text">Crown, casing, sills, brick mould and more. Cut, route and paint it like premium millwork.</p>
           <a class="btn btn--primary house-card__cta" href="./pages/mouldings.html">Explore Mouldings</a>
+        </template>
+        <template id="house-tpl-ceiling">
+          <img class="house-card__media" src="./images/house_hero/card-ceiling.webp" width="480" height="300" alt="American Pro Shiplap Nickelgap board in porch ceiling blue beside a white E&amp;CB Beadboard panel" loading="lazy" decoding="async" />
+          <span class="house-card__eyebrow">The Porch Ceiling</span>
+          <h2 class="house-card__title" id="house-card-title">Porch Ceilings</h2>
+          <p class="house-card__text">Shiplap Nickelgap and 6" E&amp;CB Beadboard in white or a soft porch ceiling blue. Standard 16 ft lengths, with custom lengths available.</p>
+          <a class="btn btn--primary house-card__cta" href="./pages/porch-ceiling.html">Explore Porch Ceilings</a>
         </template>
       </section>
 
@@ -1348,6 +1371,7 @@
             <li><a href="./pages/legacy-pvc-decking.html">Legacy PVC Decking</a></li>
             <li><a href="./pages/porch.html">Porch Flooring</a></li>
             <li><a href="./pages/mouldings.html">Mouldings</a></li>
+            <li><a href="./pages/porch-ceiling.html">Porch Ceilings</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -1507,7 +1531,7 @@
     <script src="./js/site.js?v=7" defer></script>
     <script src="./js/sample-kits.js?v=2" defer></script>
     <script src="./js/home-mobile.js?v=3" defer></script>
-    <script src="./js/house-hero.js?v=2" defer></script>
+    <script src="./js/house-hero.js?v=3" defer></script>
     <script src="./js/site-search.js?v=2" defer></script>
 
   </body>
