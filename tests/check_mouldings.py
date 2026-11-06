@@ -46,10 +46,13 @@ group = next(block for block in jsons if block.get('@type') == 'ProductGroup')
 assert len(group['hasVariant']) == 34
 assert {v['sku'] for v in group['hasVariant']} == set(page.skus)
 assert all('offers' not in v for v in group['hasVariant'])
-for sku in ['WATERTABLEPVC', 'ECB6PVC']:
+for sku in ['WATERTABLEPVC']:
     p = next(p for p in profiles if p['sku'] == sku)
     v = next(v for v in group['hasVariant'] if v['sku'] == sku)
     assert p['dimensions'] is None and 'additionalProperty' not in v
+# ECB6PVC size confirmed by Jim on 2026-11-06; no coverage width is published.
+assert next(p for p in profiles if p['sku'] == 'ECB6PVC')['dimensions'] == '1/2" x 5-1/2"'
+assert '1/2&quot; x 5-1/2&quot;' in text
 assert next(p for p in profiles if p['sku'] == 'SILLFARMPVC')['dimensions'] == '2-1/4" x 2-3/4"'
 assert not any(x in text for x in ('APV-JAMB-4', 'APV-JAMB-6', 'FCWTPVC', '\u2014'))
 assert 'id="top"' in text
