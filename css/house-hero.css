@@ -383,3 +383,288 @@
 
 /* Hide the floating mobile launchers while a product card is open so they never cover it */
 body.house-card-open .viz-launcher { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+
+/* ---------- Front door walk-in ---------- */
+.house-exterior { position: absolute; inset: 0; }
+.house-hero.is-inside .house-exterior { visibility: hidden; pointer-events: none; }
+
+.house-walk {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.house-hero.is-inside .house-walk { z-index: 6; }
+.house-hero.is-inside .house-card { z-index: 7; }
+.house-hero.is-inside .house-stage { aspect-ratio: 16 / 9; }
+
+.house-scene {
+  --ox: 50%;
+  --oy: 50%;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--hh-navy);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+.house-scene.is-on {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 2;
+}
+.house-scene__frame,
+.house-scene__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+.house-scene__img {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1);
+  transform-origin: var(--ox) var(--oy);
+  -webkit-user-drag: none;
+  user-select: none;
+}
+/* Outgoing scene stays on top and zooms toward the doorway, then fades. */
+.house-scene.is-walk-out,
+.house-scene.is-walk-back-out {
+  visibility: visible;
+  pointer-events: none;
+  z-index: 4;
+  animation: house-scene-leave 0.9s ease forwards;
+}
+.house-scene.is-walk-out .house-scene__img {
+  animation: house-scene-zoom 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.house-scene.is-walk-back-out .house-scene__img {
+  animation: house-scene-zoom 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.house-scene.is-walk-in,
+.house-scene.is-walk-back-in {
+  visibility: visible;
+  pointer-events: none;
+  z-index: 3;
+  animation: house-scene-in 0.9s ease both;
+}
+.house-scene.is-walk-in .house-scene__img,
+.house-scene.is-walk-back-in .house-scene__img {
+  animation: house-scene-arrive 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes house-scene-leave {
+  0% { opacity: 1; }
+  42% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes house-scene-zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.48); }
+}
+@keyframes house-scene-in {
+  0% { opacity: 0; }
+  38% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes house-scene-arrive {
+  0% { transform: scale(1.22); }
+  38% { transform: scale(1.14); }
+  100% { transform: scale(1); }
+}
+.house-scene.is-hiding-ui .house-dot,
+.house-scene.is-hiding-ui .house-back,
+.house-scene.is-hiding-ui .house-enter,
+.house-scene.is-hiding-ui .house-hit {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+/* Dots sit above the headline so the front door stays clickable when the type overlaps it.
+   The product card comes later in the page and still paints above the dots. */
+.house-dots { z-index: 5; }
+.house-dot--scene {
+  margin: 0;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+.house-dot--below .house-dot__label {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+@media (min-width: 720px) {
+  .house-scene .house-dot__label {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.house-back {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 8;
+  border: 0;
+  background: rgba(14, 31, 58, 0.92);
+  color: #fbfaf7;
+  font: 600 0.8rem/1 var(--font-body);
+  letter-spacing: 0.02em;
+  padding: 0.6rem 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+.house-back:hover { background: #1a2f54; }
+.house-back:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+.house-enter {
+  position: absolute;
+  left: 63%;
+  top: 28%;
+  z-index: 7;
+  width: min(320px, 34%);
+  background: #fff;
+  color: var(--hh-navy);
+  border-radius: 4px;
+  box-shadow: 0 18px 48px rgba(14, 31, 58, 0.22);
+  padding: 1.15rem 1.2rem 1.2rem;
+}
+.house-enter__eyebrow {
+  font: 700 0.68rem/1 var(--font-body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--hh-red);
+}
+.house-enter__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  margin: 0.35rem 0 0.85rem;
+}
+.house-enter__btn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  border: 0;
+  background: var(--hh-navy);
+  color: #fbfaf7;
+  font: 600 0.92rem/1 var(--font-body);
+  padding: 0.75rem 1rem;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.house-enter__btn:hover { background: #1a2f54; }
+.house-enter__btn:focus-visible { outline: 3px solid var(--hh-red); outline-offset: 2px; }
+
+.house-hit {
+  position: absolute;
+  left: 39.2%;
+  top: 0;
+  width: 21.5%;
+  height: 63%;
+  z-index: 5;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.house-hit:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -8px;
+}
+
+.house-card__skus {
+  list-style: none;
+  margin: 0.8rem 0 0;
+  padding: 0;
+}
+.house-card__skus li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: baseline;
+  padding: 0.42rem 0;
+  border-top: 1px solid #e5e1d9;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: var(--hh-navy);
+}
+.house-card__skus li:first-child { border-top: 0; }
+.house-card__sku {
+  flex: none;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: #5b6478;
+}
+.house-card--plain { width: min(360px, calc(100% - 2rem)); }
+.house-card--plain .house-card__body { padding-top: 0.15rem; }
+.house-card--plain .house-card__eyebrow,
+.house-card--plain .house-card__title { margin-right: 2.6rem; }
+
+@media (min-width: 1200px) {
+  .house-hero.is-inside {
+    height: auto;
+    min-height: 0;
+  }
+  .house-hero.is-inside .house-stage {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+  .house-hero.is-inside .house-stage::after { display: none; }
+  .house-hero.is-inside .house-copy { display: none; }
+}
+
+@media (max-width: 719px) {
+  .house-enter {
+    left: 63%;
+    top: 8%;
+    width: calc(100% - 63% - 0.45rem);
+    padding: 0.4rem 0.45rem 0.45rem;
+  }
+  .house-enter__eyebrow { font-size: 0.58rem; letter-spacing: 0.1em; }
+  .house-enter__title {
+    font-size: 0.84rem;
+    line-height: 1.12;
+    margin: 0.12rem 0 0.35rem;
+  }
+  .house-enter__btn { padding: 0.4rem 0.3rem; font-size: 0.75rem; }
+  .house-back { top: 0.55rem; left: 0.55rem; padding: 0.45rem 0.65rem; font-size: 0.72rem; }
+  .house-hero.is-inside .house-card { z-index: 1200; }
+  .house-card.house-card--plain {
+    display: block;
+    max-height: min(72vh, 540px);
+    overflow: auto;
+  }
+  .house-card.house-card--plain .house-card__body { display: block; }
+  .house-card.house-card--plain .house-card__close { position: sticky; top: 0.35rem; float: right; margin: 0.35rem 0.35rem 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .house-scene,
+  .house-scene__img,
+  .house-scene.is-walk-out,
+  .house-scene.is-walk-in,
+  .house-scene.is-walk-back-out,
+  .house-scene.is-walk-back-in,
+  .house-scene.is-walk-out .house-scene__img,
+  .house-scene.is-walk-in .house-scene__img,
+  .house-scene.is-walk-back-out .house-scene__img,
+  .house-scene.is-walk-back-in .house-scene__img {
+    animation: none !important;
+    transition: none !important;
+  }
+  .house-scene.is-walk-out .house-scene__img,
+  .house-scene.is-walk-in .house-scene__img,
+  .house-scene.is-walk-back-out .house-scene__img,
+  .house-scene.is-walk-back-in .house-scene__img { transform: none !important; }
+}
