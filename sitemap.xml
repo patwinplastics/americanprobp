@@ -313,11 +313,23 @@
   </url>
   <url>
     <loc>https://americanprobp.com/pages/blog/index.html</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/blog/index.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/blog/index.html" />
+  </url>
+  <url>
+    <loc>https://americanprobp.com/pages/blog/posts/pvc-window-door-mouldings.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://americanprobp.com/pages/blog/posts/pvc-window-door-mouldings.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://americanprobp.com/pages/blog/posts/pvc-window-door-mouldings.html" />
+    <image:image>
+      <image:loc>https://americanprobp.com/images/blog_window_door_mouldings_hero.jpg</image:loc>
+      <image:title>White American Pro PVC casings, sills, and brickmould around the windows and navy front door of a light gray colonial home, with mums by the steps. Shown in White.</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://americanprobp.com/pages/blog/posts/look-up-porch-ceiling.html</loc>
