@@ -63,7 +63,7 @@
   /* ---------------- Login ---------------- */
   function login(msg, forced) {
     root.innerHTML = '<div class="login"><form class="card" id="lf" novalidate>' +
-      '<img src="../images/logo/americanpro-header.png" alt="American Pro Building Products" width="660" height="306" />' +
+      '<img src="../images/logo/americanpro-header.png" alt="American Pro Building Products" width="2000" height="765" />' +
       '<h1>' + (forced ? 'Set a New Password' : 'Profile Designer Admin') + '</h1>' +
       '<p>' + (forced ? 'Choose a new password of at least 10 characters before continuing.' : 'Staff sign-in for submitted drawings, user accounts and staff logins.') + '</p>' +
       (msg ? '<div class="msg">' + esc(msg) + '</div>' : '') +
@@ -89,7 +89,7 @@
     var nNew = data.submissions.filter(function (s) { return s.status === 'new'; }).length;
     var tabs = [['submissions', 'Submitted Drawings', nNew], ['users', 'User Accounts'], ['staff', me.role === 'admin' ? 'Staff Logins' : null], ['account', 'My Password']];
     root.innerHTML = '<header class="top"><div class="top__in">' +
-      '<img src="../images/logo/americanpro-header-white.png" alt="American Pro" width="660" height="306" />' +
+      '<img src="../images/logo/americanpro-header-white.png" alt="American Pro" width="2000" height="765" />' +
       '<h1>Profile Designer Admin</h1>' +
       '<nav class="tabs" aria-label="Admin sections">' + tabs.filter(function (t) { return t[1]; }).map(function (t) {
         return '<button type="button" class="tab' + (tab === t[0] ? ' is-on' : '') + '" data-tab="' + t[0] + '">' + t[1] + (t[2] ? '<span class="count">' + t[2] + '</span>' : '') + '</button>';

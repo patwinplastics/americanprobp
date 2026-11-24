@@ -94,7 +94,7 @@
   var CATEGORY_LABEL = {
     decking: 'Decking',
     porch: 'Porch Flooring',
-    mouldings: 'Mouldings & Trim',
+    mouldings: 'Mouldings',
     fastening: 'Hidden Fastening'
   };
 
