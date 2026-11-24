@@ -9,6 +9,7 @@
 User-agent: *
 Allow: /
 Disallow: /pages/thanks.html
+Disallow: /pages/blog/_post-template.html
 
 # ---- SOCIAL LINK PREVIEW CRAWLERS - ALLOWED ----
 # These render rich previews when our links are shared on social platforms.
