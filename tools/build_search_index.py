@@ -29,7 +29,7 @@ PRODUCT = {
 }
 LEGAL = {"pages/privacy-policy.html", "pages/terms-and-conditions.html"}
 TOOLS = {"pages/calculator.html", "pages/dealers.html", "pages/contact.html", "pages/resources.html",
-         "pages/for-the-pros.html", "pages/inspiration.html", "lookbook/index.html"}
+         "pages/for-the-pros.html", "pages/inspiration.html", "pages/events.html", "lookbook/index.html"}
 
 BODY_LIMIT = 2400
 

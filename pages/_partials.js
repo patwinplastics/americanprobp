@@ -121,6 +121,7 @@
         <a href="${B}pages/inspiration.html">Inspiration</a>
         <a href="${B}pages/resources.html">Resources</a>
         <a href="${B}pages/blog/index.html">Blog</a>
+        <a href="${B}pages/events.html">Events</a>
         <a href="${B}pages/for-the-pros.html">For the Pros</a>
         <a href="${B}pages/dealers.html">Where to Buy</a>
       </nav>
@@ -152,6 +153,7 @@
         <li><a href="${B}pages/for-the-pros.html">For the Pros</a></li>
         <li><a href="${B}pages/dealers.html">Where to Buy</a></li>
         <li><a href="${B}pages/blog/index.html">Blog</a></li>
+        <li><a href="${B}pages/events.html">Events</a></li>
         <li><a href="${B}pages/about.html">About</a></li>
       </ul>
       <div class="mobile-cta">
@@ -175,6 +177,12 @@
           </a>
           <p>American-made PVC building products. A division of Patwin Plastics, manufacturing precision profiles in the USA since 1971.</p>
           <div class="footer-contact"><a href="tel:18774426776">1-877-442-6776</a><a href="mailto:sales@americanprobp.com">sales@americanprobp.com</a><span>Mon to Fri, 8am to 4pm ET</span></div>
+          <a class="nadra-badge nadra-badge--footer" href="https://nadra.org/" target="_blank" rel="noopener">
+            <picture>
+              <source type="image/webp" srcset="${B}images/badges/nadra-proud-member.webp" />
+              <img src="${B}images/badges/nadra-proud-member.png" width="447" height="447" alt="Proud Member of NADRA, North American Deck and Railing Association" />
+            </picture>
+          </a>
         </div>
         <div class="footer-col">
           <h4>Products</h4>
@@ -218,6 +226,7 @@
           <h4>Support &amp; Company</h4>
           <ul>
             <li><a href="${B}pages/contact.html">Contact Us</a></li>
+            <li><a href="${B}pages/events.html">Events</a></li>
             <li><a href="${B}pages/resources.html#support">Product Information Help</a></li>
             <li><a href="${B}pages/warranty.html">Warranty</a></li>
             <li><a href="${B}pages/american-pro.html">About American Pro</a></li>

@@ -4094,3 +4094,174 @@ section[id] {
 }
 .viz-launcher { transition: transform 200ms ease, opacity 200ms ease; }
 .viz-launcher.is-hidden { opacity: 0; pointer-events: none; transform: translateY(12px); }
+
+/* ─── NADRA membership badge ─────────────────────────────────────────────── */
+.nadra-badge {
+  display: inline-block;
+  line-height: 0;
+  text-decoration: none;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.nadra-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+}
+.nadra-badge img {
+  display: block;
+  width: 148px;
+  height: auto;
+  border-radius: 8px;
+}
+.nadra-badge--footer {
+  margin-top: 1.35rem;
+  padding: 0.35rem;
+  box-shadow: none;
+}
+.nadra-badge--footer:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+}
+.nadra-badge--footer img { width: 124px; }
+.nadra-badge--page img { width: 180px; }
+.membership-block {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(var(--space-6), 4vw, var(--space-10));
+  align-items: center;
+  max-width: 64rem;
+  padding: clamp(var(--space-6), 4vw, var(--space-10));
+  background: var(--color-surface-2, #f4f1ea);
+  border-radius: var(--radius-lg);
+}
+.membership-block h2 {
+  font-size: var(--text-xl);
+  margin: 0 0 var(--space-3);
+}
+.membership-block p {
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 52ch;
+  line-height: 1.7;
+}
+@media (max-width: 640px) {
+  .membership-block {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+}
+
+/* ─── Events page and homepage teaser ────────────────────────────────────── */
+.events-brand-line {
+  margin-top: var(--space-5);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: var(--text-sm);
+  letter-spacing: 0.01em;
+}
+.events-section-head {
+  margin-bottom: var(--space-8);
+}
+.events-section-head h2 {
+  font-size: var(--text-2xl);
+  letter-spacing: -0.02em;
+}
+.events-list {
+  display: grid;
+  gap: var(--space-6);
+}
+.event-card {
+  display: grid;
+  gap: var(--space-6);
+  padding: clamp(var(--space-6), 4vw, var(--space-10));
+  background: var(--color-surface-2, #f4f1ea);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-divider, rgba(15, 23, 42, 0.08));
+}
+@media (min-width: 800px) {
+  .event-card {
+    grid-template-columns: minmax(0, 1.5fr) minmax(16rem, 0.9fr);
+    align-items: start;
+  }
+}
+.event-card__status {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-faint, #7a7468);
+  margin-bottom: var(--space-3);
+}
+.event-card__name {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-3);
+}
+.event-card__dates {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 var(--space-2);
+}
+.event-card__venue,
+.event-card__hours,
+.event-card__summary {
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-2);
+  max-width: 62ch;
+  line-height: 1.7;
+}
+.event-card__summary { margin-top: var(--space-4); }
+.event-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+.event-card__ext {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.event-card__ext:hover { color: var(--color-accent); }
+.event-card--past { opacity: 0.86; }
+.events-empty p {
+  color: var(--color-text-muted);
+  max-width: 56ch;
+  margin: 0 0 var(--space-6);
+  line-height: 1.7;
+}
+.home-events {
+  background: var(--color-bg, #fbfaf7);
+  padding-block: var(--space-16) var(--space-12);
+}
+.home-events-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-8);
+}
+.home-events-head h2 {
+  font-size: var(--text-2xl);
+  margin-top: var(--space-3);
+}
+.home-events-all {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+.home-events-all:hover { color: var(--color-accent); }
+@media (min-width: 1101px) and (max-width: 1480px) {
+  .header-inner { gap: 1rem; }
+  .nav { gap: 0.85rem; }
+  .header-phone { display: none; }
+}
