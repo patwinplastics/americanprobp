@@ -59,7 +59,7 @@
     <!-- <link rel="preload" as="image" type="image/webp" imagesrcset="./images/hero_deck-1000.webp 1000w, ./images/hero_deck-1600.webp 1600w, ./images/hero_deck.webp 2400w" imagesizes="100vw" fetchpriority="high" /> -->
 
     <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/site.css?v=26-hero-fixed" />
+    <link rel="stylesheet" href="./css/site.css?v=27-events" />
     <link rel="stylesheet" href="./css/house-hero.css?v=4" />
     <link rel="stylesheet" href="./css/home-mobile.css?v=3" />
 
@@ -238,6 +238,7 @@
           <a href="./pages/inspiration.html">Inspiration</a>
           <a href="./pages/resources.html">Resources</a>
           <a href="./pages/blog/index.html">Blog</a>
+          <a href="./pages/events.html">Events</a>
           <a href="./pages/for-the-pros.html">For the Pros</a>
           <a href="./pages/dealers.html">Where to Buy</a>
         </nav>
@@ -274,6 +275,7 @@
           <li><a href="./pages/inspiration.html">Inspiration</a></li>
           <li><a href="./pages/resources.html">Resource Center</a></li><li><a href="./pages/for-the-pros.html">For the Pros</a></li><li><a href="./pages/dealers.html">Where to Buy</a></li>
           <li><a href="./pages/blog/index.html">Blog</a></li>
+          <li><a href="./pages/events.html">Events</a></li>
           <li><a href="./pages/about.html">About</a></li>
         </ul>
         <div class="mobile-cta">
@@ -1252,6 +1254,36 @@
         </div>
       </section>
 
+
+      <!-- ========== UPCOMING EVENTS ========== -->
+      <section class="section home-events" id="upcoming-events" aria-labelledby="home-events-title" data-events-teaser>
+        <div class="container">
+          <header class="home-events-head" data-reveal>
+            <div>
+              <span class="eyebrow">Upcoming Events</span>
+              <h2 id="home-events-title">See Us at These Shows</h2>
+            </div>
+            <a class="home-events-all" href="./pages/events.html">All Events</a>
+          </header>
+          <div class="events-list" data-events-teaser-list data-reveal data-reveal-delay="1">
+            <article class="event-card" id="home-nrla-lbm-expo-2026" data-event-id="nrla-lbm-expo-2026" data-event-end="2026-12-10">
+              <div class="event-card__body">
+                <h3 class="event-card__name">NRLA LBM Expo</h3>
+                <p class="event-card__dates">December 9 and 10, 2026</p>
+                <p class="event-card__venue">Earth Expo and Convention Center at Mohegan Sun, Uncasville, CT</p>
+                <p class="event-card__hours">Show floor open 9:30 a.m. to 5 p.m. both days.</p>
+                <p class="event-card__summary">American Pro is exhibiting with Patwin Plastics, showing TrueGrain decking, Legacy PVC decking, PVC porch flooring, and PVC mouldings.</p>
+              </div>
+              <div class="event-card__actions">
+                <a class="btn btn--primary" href="./pages/events.html#nrla-lbm-expo-2026">Event Details</a>
+                <a class="btn btn--ghost" href="#samples">Request Free Samples</a>
+                <a class="btn btn--secondary" href="./pages/for-the-pros.html?inquiry=dealer#inquiry">Become a Dealer</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <!-- ========== OEM / SPEC STRIP ========== -->
       <!-- ========== WHERE TO BUY (compact) ==========
            The full Genesee and Stonewood dealer sections moved off the homepage to
@@ -1457,6 +1489,12 @@
           </a>
           <p>American-made PVC building products. A division of Patwin Plastics, manufacturing precision profiles in the USA since 1971.</p>
           <div class="footer-contact"><a href="tel:18774426776">1-877-442-6776</a><a href="mailto:sales@americanprobp.com">sales@americanprobp.com</a><span>Mon to Fri, 8am to 4pm ET</span></div>
+          <a class="nadra-badge nadra-badge--footer" href="https://nadra.org/" target="_blank" rel="noopener">
+            <picture>
+              <source type="image/webp" srcset="./images/badges/nadra-proud-member.webp" />
+              <img src="./images/badges/nadra-proud-member.png" width="447" height="447" alt="Proud Member of NADRA, North American Deck and Railing Association" />
+            </picture>
+          </a>
         </div>
         <div class="footer-col">
           <h4>Products</h4>
@@ -1497,6 +1535,7 @@
           <h4>Support &amp; Company</h4>
           <ul>
             <li><a href="./pages/contact.html">Contact Us</a></li>
+            <li><a href="./pages/events.html">Events</a></li>
             <li><a href="./pages/resources.html#support">Product Information Help</a></li>
             <li><a href="./pages/warranty.html">Warranty</a></li>
             <li><a href="./pages/american-pro.html">About American Pro</a></li>
@@ -1622,6 +1661,7 @@
           .catch(function () { /* keep static fallback */ });
       })();
     </script>
+    <script src="./js/events.js?v=1" defer></script>
     <script src="./js/geo-banner.js?v=2" defer></script>
     <script src="./js/site.js?v=7" defer></script>
     <script src="./js/sample-kits.js?v=2" defer></script>

@@ -1,0 +1,18 @@
+{
+  "timezone": "America/New_York",
+  "events": [
+    {
+      "id": "nrla-lbm-expo-2026",
+      "name": "NRLA LBM Expo",
+      "start": "2026-12-09",
+      "end": "2026-12-10",
+      "datesLabel": "December 9 and 10, 2026",
+      "hoursLabel": "Show floor open 9:30 a.m. to 5 p.m. both days.",
+      "venue": "Earth Expo and Convention Center at Mohegan Sun",
+      "city": "Uncasville, CT",
+      "url": "https://lbmexpo.net/",
+      "urlLabel": "Visit the Expo Website",
+      "summary": "American Pro is exhibiting with Patwin Plastics, showing TrueGrain decking, Legacy PVC decking, PVC porch flooring, and PVC mouldings."
+    }
+  ]
+}
