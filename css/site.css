@@ -4116,7 +4116,6 @@ section[id] {
   border-radius: 8px;
 }
 .nadra-badge--footer {
-  margin-top: 1.35rem;
   padding: 0.35rem;
   box-shadow: none;
 }
@@ -4125,6 +4124,21 @@ section[id] {
 }
 .nadra-badge--footer img { width: 124px; }
 .nadra-badge--page img { width: 180px; }
+.nrla-badge.nadra-badge--footer img { width: 168px; }
+.nrla-badge.nadra-badge--page img { width: 220px; }
+.footer-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1.35rem;
+}
+.membership-badges {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
 .membership-block {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -4193,6 +4207,10 @@ section[id] {
   text-transform: uppercase;
   color: var(--color-text-faint, #7a7468);
   margin-bottom: var(--space-3);
+}
+.event-card__status--sponsor {
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
 }
 .event-card__name {
   font-family: var(--font-display);

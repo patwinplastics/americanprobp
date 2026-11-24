@@ -2,6 +2,20 @@
   "timezone": "America/New_York",
   "events": [
     {
+      "id": "nadra-northeast-networking-2026",
+      "name": "NADRA Northeast Networking Meeting",
+      "start": "2026-12-01",
+      "end": "2026-12-01",
+      "datesLabel": "December 1, 2026",
+      "hoursLabel": "6:00 p.m. to 10:00 p.m. ET",
+      "venue": "The Elks, 375 Union Avenue",
+      "city": "Bridgewater, NJ",
+      "url": "https://www.nadra.org/upcoming-events#!event/2026/12/1/nadra-northeast-networking-meeting",
+      "urlLabel": "Visit the Event Page",
+      "tag": "Attending and Sponsoring",
+      "summary": "American Pro is attending and sponsoring this NADRA Northeast Networking Meeting."
+    },
+    {
       "id": "nrla-lbm-expo-2026",
       "name": "NRLA LBM Expo",
       "start": "2026-12-09",
