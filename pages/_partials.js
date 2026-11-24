@@ -177,12 +177,20 @@
           </a>
           <p>American-made PVC building products. A division of Patwin Plastics, manufacturing precision profiles in the USA since 1971.</p>
           <div class="footer-contact"><a href="tel:18774426776">1-877-442-6776</a><a href="mailto:sales@americanprobp.com">sales@americanprobp.com</a><span>Mon to Fri, 8am to 4pm ET</span></div>
+          <div class="footer-badges">
           <a class="nadra-badge nadra-badge--footer" href="https://nadra.org/" target="_blank" rel="noopener">
             <picture>
               <source type="image/webp" srcset="${B}images/badges/nadra-proud-member.webp" />
               <img src="${B}images/badges/nadra-proud-member.png" width="447" height="447" alt="Proud Member of NADRA, North American Deck and Railing Association" />
             </picture>
           </a>
+          <a class="nadra-badge nrla-badge nadra-badge--footer" href="https://www.nrla.org/" target="_blank" rel="noopener">
+            <picture>
+              <source type="image/webp" srcset="${B}images/badges/nrla-logo.webp" />
+              <img src="${B}images/badges/nrla-logo.png" width="800" height="455" alt="Proud Member of NRLA, Northeastern Retail Lumber Association" />
+            </picture>
+          </a>
+          </div>
         </div>
         <div class="footer-col">
           <h4>Products</h4>

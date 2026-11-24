@@ -55,6 +55,7 @@
     var html = '<article class="event-card' + (past ? ' event-card--past' : '') + '" id="' + esc(ev.id) + '" data-event-id="' + esc(ev.id) + '" data-event-end="' + esc(ev.end) + '">';
     html += '<div class="event-card__body">';
     if (past) html += '<span class="event-card__status">Past Event</span>';
+    else if (ev.tag) html += '<span class="event-card__status event-card__status--sponsor">' + esc(ev.tag) + '</span>';
     html += '<' + heading + ' class="event-card__name">' + esc(ev.name) + '</' + heading + '>';
     if (ev.datesLabel) html += '<p class="event-card__dates">' + esc(ev.datesLabel) + '</p>';
     if (ev.venue || ev.city) {
@@ -89,7 +90,9 @@
     var tz = (data && data.timezone) || 'America/New_York';
     var today = todayYmd(tz);
     var events = (data && data.events) || [];
-    var upcoming = events.filter(function (ev) { return isUpcoming(ev, today); });
+    var upcoming = events.filter(function (ev) { return isUpcoming(ev, today); })
+      .slice()
+      .sort(function (a, b) { return (a.start || '').localeCompare(b.start || ''); });
     var past = events.filter(function (ev) { return !isUpcoming(ev, today); })
       .slice()
       .sort(function (a, b) { return (b.end || '').localeCompare(a.end || ''); });
@@ -114,7 +117,9 @@
     if (!section || !list) return;
     var tz = (data && data.timezone) || 'America/New_York';
     var today = todayYmd(tz);
-    var upcoming = ((data && data.events) || []).filter(function (ev) { return isUpcoming(ev, today); });
+    var upcoming = ((data && data.events) || []).filter(function (ev) { return isUpcoming(ev, today); })
+      .slice()
+      .sort(function (a, b) { return (a.start || '').localeCompare(b.start || ''); });
     if (!upcoming.length) {
       section.hidden = true;
       return;
