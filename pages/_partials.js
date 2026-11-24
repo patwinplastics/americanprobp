@@ -56,14 +56,14 @@
       name: 'Porch Flooring',
       tagline: 'Tongue-and-groove cellular PVC, slip-resistant.',
       href: B + 'pages/porch.html',
-      img: B + 'images/product_porch.jpg',
+      img: B + 'images/product_porch.webp',
       alt: 'PVC tongue and groove porch flooring',
     },
     {
       name: 'Mouldings',
       tagline: 'Crowns, sills, brick mould, casing, and more.',
       href: B + 'pages/mouldings.html',
-      img: B + 'images/product_moulding.jpg',
+      img: B + 'images/product_moulding.webp',
       alt: 'PVC architectural moulding profiles',
     },
     {
