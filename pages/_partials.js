@@ -101,7 +101,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="${B}index.html" class="logo" aria-label="American Pro Building Products, Home">
-        <img src="${B}images/logo/americanpro-header.png" alt="American Pro Building Products" class="logo-img" width="660" height="306"/>
+        <img src="${B}images/logo/americanpro-header.png?v=2" alt="American Pro Building Products" class="logo-img" width="2000" height="765"/>
       </a>
       <nav class="nav" aria-label="Primary">
         <div class="nav-products" data-mega>
@@ -173,7 +173,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="${B}index.html" class="logo">
-            <img src="${B}images/logo/americanpro-header-white.png" alt="American Pro Building Products" class="logo-img logo-img--footer" width="660" height="306"/>
+            <img src="${B}images/logo/americanpro-header-white.png?v=2" alt="American Pro Building Products" class="logo-img logo-img--footer" width="2000" height="765"/>
           </a>
           <p>American-made PVC building products. A division of Patwin Plastics, manufacturing precision profiles in the USA since 1971.</p>
           <div class="footer-contact"><a href="tel:18774426776">1-877-442-6776</a><a href="mailto:sales@americanprobp.com">sales@americanprobp.com</a><span>Mon to Fri, 8am to 4pm ET</span></div>

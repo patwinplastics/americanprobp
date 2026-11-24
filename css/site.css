@@ -118,14 +118,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: nowrap;
   gap: var(--space-6);
-  min-height: 6.5rem;
-  padding-block: 1.5rem 1rem;
+  min-height: 7.25rem;
+  padding-block: 0.875rem;
 }
 
 .logo {
   display: inline-flex;
   align-items: center;
+  flex-shrink: 0;
   gap: var(--space-3);
   font-family: var(--font-display);
   font-weight: 500;
@@ -136,12 +138,24 @@
 }
 .logo-img {
   display: block;
-  height: 80px;
+  height: 88px;
   width: auto;
   object-fit: contain;
+  flex-shrink: 0;
 }
 .logo-img--footer {
   height: 64px;
+}
+
+/* Keep the lockup and nav on one row at 1280–1400px */
+@media (max-width: 1400px) {
+  .logo-img { height: 80px; }
+  .header-inner { min-height: 6.5rem; padding-block: 0.75rem; gap: var(--space-5); }
+  .nav { gap: 1rem; }
+}
+@media (max-width: 1280px) {
+  .nav { gap: 0.7rem; }
+  .header-inner { gap: var(--space-4); }
 }
 
 .nav {
@@ -524,6 +538,8 @@
 @media (max-width: 960px) {
   .nav, .header-phone { display: none; }
   .menu-toggle { display: inline-flex; }
+  .logo-img { height: 72px; }
+  .header-inner { min-height: 6.5rem; padding-block: 0.85rem; }
 }
 
 /* Below 540px keep only the hamburger in the header. The Request Samples
@@ -531,15 +547,10 @@
    full logo lockup without text wrap. */
 @media (max-width: 540px) {
   .header-actions .btn--primary { display: none; }
-  /* Bump mobile logo and give the header more vertical room so the flag
-     mark on top of the lockup reads cleanly instead of compressing into
-     a single thin red bar. The drawer top must clear the full lockup
-     including the BUILDING PRODUCTS wordmark below it; otherwise the
-     drawer covers the bottom of the logo. Logo is 76px tall plus 3rem
-     of vertical padding = 7.75rem of stacked height, so we set the
-     header min-height and drawer top to 8.5rem with a small gap. */
-  .header-inner { min-height: 9rem; padding-block: 1.5rem 1.5rem; }
-  .logo-img { height: 76px; }
+  /* Tight lockup: 64px logo plus vertical padding. The drawer top must
+     still clear AMERICAN PRO and BUILDING PRODUCTS. */
+  .header-inner { min-height: 6.5rem; padding-block: 0.85rem; }
+  .logo-img { height: 64px; }
   /* Drawer top override is handled in a second @media block AFTER the
      base .mobile-menu rule below, so the base inset does not win on
      source order. */
@@ -615,16 +626,11 @@
 
 /* Small-screen drawer top must be declared AFTER the base .mobile-menu
    rule above so that source order resolves the tie in favor of this
-   override. The drawer needs to clear the full logo lockup (flag mark
-   on top of AMERICAN PRO on top of BUILDING PRODUCTS wordmark) which
-   ends near 9rem at <= 540px. */
+   override. The drawer needs to clear the full logo lockup. */
 @media (max-width: 540px) {
   .mobile-menu {
-    inset: 9.25rem 0 auto 0;
-    /* Top offset grows to clear the full logo lockup, so the height cap
-       must shrink to match or the bottom CTA would run off-screen. The
-       three declarations layer fallbacks; the last supported one wins. */
-    --drawer-top: 9.25rem;
+    inset: 6.5rem 0 auto 0;
+    --drawer-top: 6.5rem;
   }
   /* Slightly tighter link padding on the smallest screens so the full
      menu (5 links + 2 CTAs) fits without scrolling on most phones. */
@@ -3507,11 +3513,14 @@ html.reveal-ready [data-reveal].is-visible {
    the scroll-spy logic in js/site.js. Built to be reusable across pages:
    markup is a <nav class="subnav"> with anchor links to section[id]s. */
 :root {
-  --header-h: 6.5rem;   /* matches .header-inner min-height on desktop */
+  --header-h: 7.25rem;  /* matches .header-inner min-height on desktop (88px logo) */
   --subnav-h: 3.25rem;  /* height of the .subnav bar */
 }
+@media (max-width: 1400px) {
+  :root { --header-h: 6.5rem; }
+}
 @media (max-width: 540px) {
-  :root { --header-h: 9rem; } /* header grows for the full logo lockup */
+  :root { --header-h: 6.5rem; } /* 64px tight lockup plus padding */
 }
 
 /* Sections must clear BOTH the sticky header and the sticky sub-nav when
