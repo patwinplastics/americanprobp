@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//American Pro Building Products//Events//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:nadra-northeast-networking-2026@americanprobp.com
+DTSTAMP:20261126T083200Z
+DTSTART:20261201T230000Z
+DTEND:20261202T030000Z
+SUMMARY:NADRA Northeast Networking Meeting
+LOCATION:The Elks\, 375 Union Avenue\, Bridgewater\, NJ
+DESCRIPTION:American Pro is attending and sponsoring this meeting. Meet the
+  team to discuss cellular PVC decking\, porch flooring\, mouldings\, deale
+ r programs\, and samples.\n6:00 p.m. to 10:00 p.m. ET\nhttps://www.nadra.o
+ rg/upcoming-events#!event/2026/12/1/nadra-northeast-networking-meeting
+URL:https://www.nadra.org/upcoming-events#!event/2026/12/1/nadra-northeast-
+ networking-meeting
+END:VEVENT
+END:VCALENDAR
