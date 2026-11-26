@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//American Pro Building Products//Events//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:nrla-lbm-expo-2026@americanprobp.com
+DTSTAMP:20261126T083200Z
+DTSTART;VALUE=DATE:20261209
+DTEND;VALUE=DATE:20261211
+SUMMARY:NRLA LBM Expo
+LOCATION:Earth Expo and Convention Center at Mohegan Sun\, Uncasville\, CT
+DESCRIPTION:American Pro is exhibiting with Patwin Plastics. Review TrueGra
+ in decking\, Legacy PVC decking\, PVC porch flooring\, and PVC mouldings\,
+  and discuss dealer programs\, samples\, and custom profiles.\nShow floor 
+ open 9:30 a.m. to 5 p.m. both days.\nhttps://lbmexpo.net/
+URL:https://lbmexpo.net/
+END:VEVENT
+END:VCALENDAR

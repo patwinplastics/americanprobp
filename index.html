@@ -59,7 +59,7 @@
     <!-- <link rel="preload" as="image" type="image/webp" imagesrcset="./images/hero_deck-1000.webp 1000w, ./images/hero_deck-1600.webp 1600w, ./images/hero_deck.webp 2400w" imagesizes="100vw" fetchpriority="high" /> -->
 
     <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/site.css?v=28-nrla" />
+    <link rel="stylesheet" href="./css/site.css?v=30-events" />
     <link rel="stylesheet" href="./css/house-hero.css?v=4" />
     <link rel="stylesheet" href="./css/home-mobile.css?v=3" />
 
@@ -1261,38 +1261,46 @@
           <header class="home-events-head" data-reveal>
             <div>
               <span class="eyebrow">Upcoming Events</span>
-              <h2 id="home-events-title">See Us at These Shows</h2>
+              <h2 id="home-events-title">Trade Shows and Meetings</h2>
             </div>
             <a class="home-events-all" href="./pages/events.html">All Events</a>
           </header>
           <div class="events-list" data-events-teaser-list data-reveal data-reveal-delay="1">
             <article class="event-card" id="home-nadra-northeast-networking-2026" data-event-id="nadra-northeast-networking-2026" data-event-end="2026-12-01">
+              <div class="event-card__date" aria-hidden="true">
+                <span class="event-card__month">Dec</span>
+                <span class="event-card__day">1</span>
+                <span class="event-card__year">2026</span>
+              </div>
               <div class="event-card__body">
                 <span class="event-card__status event-card__status--sponsor">Attending and Sponsoring</span>
                 <h3 class="event-card__name">NADRA Northeast Networking Meeting</h3>
                 <p class="event-card__dates">December 1, 2026</p>
-                <p class="event-card__venue">The Elks, 375 Union Avenue, Bridgewater, NJ</p>
-                <p class="event-card__hours">6:00 p.m. to 10:00 p.m. ET</p>
-                <p class="event-card__summary">American Pro is attending and sponsoring this NADRA Northeast Networking Meeting.</p>
-              </div>
-              <div class="event-card__actions">
-                <a class="btn btn--primary" href="./pages/events.html#nadra-northeast-networking-2026">Event Details</a>
-                <a class="btn btn--ghost" href="#samples">Request Free Samples</a>
-                <a class="btn btn--secondary" href="./pages/for-the-pros.html?inquiry=dealer#inquiry">Become a Dealer</a>
+                <p class="event-card__meta"><span class="event-card__label">Location</span>The Elks, 375 Union Avenue, Bridgewater, NJ</p>
+                <p class="event-card__meta"><span class="event-card__label">Hours</span>6:00 p.m. to 10:00 p.m. ET</p>
+                <p class="event-card__summary">American Pro is attending and sponsoring this meeting. Meet the team to discuss cellular PVC decking, porch flooring, mouldings, dealer programs, and samples.</p>
+                <div class="event-card__actions">
+                  <a class="btn btn--primary" href="./pages/events.html#nadra-northeast-networking-2026">Event Details</a>
+                  <a class="btn btn--ghost" href="./downloads/calendar/nadra-northeast-networking-2026.ics" download>Add to Calendar</a>
+                </div>
               </div>
             </article>
             <article class="event-card" id="home-nrla-lbm-expo-2026" data-event-id="nrla-lbm-expo-2026" data-event-end="2026-12-10">
+              <div class="event-card__date event-card__date--range" aria-hidden="true">
+                <span class="event-card__month">Dec</span>
+                <span class="event-card__day-range">9<span class="event-card__day-and">and</span>10</span>
+                <span class="event-card__year">2026</span>
+              </div>
               <div class="event-card__body">
                 <h3 class="event-card__name">NRLA LBM Expo</h3>
                 <p class="event-card__dates">December 9 and 10, 2026</p>
-                <p class="event-card__venue">Earth Expo and Convention Center at Mohegan Sun, Uncasville, CT</p>
-                <p class="event-card__hours">Show floor open 9:30 a.m. to 5 p.m. both days.</p>
-                <p class="event-card__summary">American Pro is exhibiting with Patwin Plastics, showing TrueGrain decking, Legacy PVC decking, PVC porch flooring, and PVC mouldings.</p>
-              </div>
-              <div class="event-card__actions">
-                <a class="btn btn--primary" href="./pages/events.html#nrla-lbm-expo-2026">Event Details</a>
-                <a class="btn btn--ghost" href="#samples">Request Free Samples</a>
-                <a class="btn btn--secondary" href="./pages/for-the-pros.html?inquiry=dealer#inquiry">Become a Dealer</a>
+                <p class="event-card__meta"><span class="event-card__label">Location</span>Earth Expo and Convention Center at Mohegan Sun, Uncasville, CT</p>
+                <p class="event-card__meta"><span class="event-card__label">Hours</span>Show floor open 9:30 a.m. to 5 p.m. both days.</p>
+                <p class="event-card__summary">American Pro is exhibiting with Patwin Plastics. Review TrueGrain decking, Legacy PVC decking, PVC porch flooring, and PVC mouldings, and discuss dealer programs, samples, and custom profiles.</p>
+                <div class="event-card__actions">
+                  <a class="btn btn--primary" href="./pages/events.html#nrla-lbm-expo-2026">Event Details</a>
+                  <a class="btn btn--ghost" href="./downloads/calendar/nrla-lbm-expo-2026.ics" download>Add to Calendar</a>
+                </div>
               </div>
             </article>
           </div>
@@ -1684,7 +1692,7 @@
           .catch(function () { /* keep static fallback */ });
       })();
     </script>
-    <script src="./js/events.js?v=2" defer></script>
+    <script src="./js/events.js?v=3" defer></script>
     <script src="./js/geo-banner.js?v=2" defer></script>
     <script src="./js/site.js?v=7" defer></script>
     <script src="./js/sample-kits.js?v=2" defer></script>
