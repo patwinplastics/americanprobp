@@ -4200,7 +4200,7 @@ section[id] {
 }
 .event-card {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 6.35rem minmax(0, 1fr);
   gap: var(--space-6) var(--space-8);
   align-items: start;
   padding: clamp(var(--space-6), 3.5vw, var(--space-9));
@@ -4214,17 +4214,14 @@ section[id] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 5.75rem;
+  width: 100%;
+  min-width: 0;
   padding: 0.85rem 0.7rem 0.95rem;
   background: var(--color-surface-dark, #0e1f3a);
   color: #fff;
   border-radius: calc(var(--radius-lg) - 2px);
   text-align: center;
   line-height: 1;
-}
-.event-card__date--range {
-  min-width: 6.35rem;
-  padding-inline: 0.8rem;
 }
 .event-card__month,
 .event-card__year {
