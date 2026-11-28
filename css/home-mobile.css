@@ -14,8 +14,8 @@
   .home-main { display: flex; flex-direction: column; }
   .home-main > * { order: 50; }
   .home-main > .hero-slider    { order: 1; }
-  .home-main > .home-sell      { order: 1; }
-  .home-main > .house-hero     { order: 2; }
+  .home-main > .house-hero     { order: 1; }
+  .home-main > .home-sell      { order: 2; }
   .home-main > #samples        { order: 3; }
   .home-main > .trust          { order: 4; }
   .home-main > #products       { order: 5; }

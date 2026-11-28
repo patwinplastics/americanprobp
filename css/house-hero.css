@@ -323,9 +323,9 @@
 
 /* ---------- Desktop overlay layout ---------- */
 @media (min-width: 1200px) {
-  /* The house is now a mid-page products section. 6.5rem leaves
-     room for the sticky header so chips stay in view once scrolled here. */
-  .house-hero { height: clamp(560px, calc(100vh - 6.5rem), 840px); }
+  /* 11rem leaves room for the sticky header and the slim events banner
+     so the first viewport shows the full house, including chips. */
+  .house-hero { height: clamp(580px, calc(100vh - 11rem), 880px); }
   .house-stage { position: absolute; inset: 0; aspect-ratio: auto; height: 100%; }
   .house-stage::after {                 /* scrim behind headline; fades before the front door */
     content: "";
@@ -347,7 +347,7 @@
   }
   .house-copy__inner { padding: 0 0 0 clamp(1.5rem, 3vw, 3.25rem); max-width: none; margin: 0; }
   .house-copy__inner > * { pointer-events: auto; }
-  .house-title { max-width: 18ch; text-shadow: 0 2px 24px rgba(6, 18, 42, 0.45); }
+  .house-title { max-width: 22ch; font-size: clamp(1.85rem, 1.15rem + 1.8vw, 3.05rem); text-shadow: 0 2px 24px rgba(6, 18, 42, 0.45); }
   .house-sub { max-width: 34ch; margin-top: 0.6rem; }
   .house-actions { margin-top: 0.95rem; }
   .house-chips { margin-top: 0.85rem; }

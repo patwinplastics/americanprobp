@@ -54,14 +54,14 @@
       href="https://api.fontshare.com/v2/css?f[]=boska@400,500,500i,700&f[]=satoshi@400,500,600,700&display=swap"
       rel="stylesheet"
     />
-    <!-- Hero preload: Concept A porch photo. The house section is below the fold. -->
-    <link rel="preload" as="image" type="image/webp" href="./images/product_porch.webp" fetchpriority="high" />
+    <!-- Hero preload: the house is the first-viewport hero. -->
+    <link rel="preload" as="image" type="image/webp" imagesrcset="./images/house_hero/house-640.webp?v=3 640w, ./images/house_hero/house-1000.webp?v=3 1000w, ./images/house_hero/house-1672.webp?v=3 1672w" imagesizes="100vw" fetchpriority="high" />
 
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/site.css?v=32-banner" />
-    <link rel="stylesheet" href="./css/home-hero.css?v=1" />
-    <link rel="stylesheet" href="./css/house-hero.css?v=9" />
-    <link rel="stylesheet" href="./css/home-mobile.css?v=4" />
+    <link rel="stylesheet" href="./css/home-hero.css?v=2" />
+    <link rel="stylesheet" href="./css/house-hero.css?v=10" />
+    <link rel="stylesheet" href="./css/home-mobile.css?v=5" />
 
     <!-- Homepage funnel scaffolds (buyer selector, quiz, sample tiles) -->
     <style id="funnel-styles">
@@ -285,81 +285,10 @@
       </div>
     </header>
 
-    <!-- data-hero-mode="house" keeps the house section visible and hides
-         the legacy 3-slide hero. The selling hero is Concept A with Concept C
-         product tiles; the house lives just below, showing the products on
-         a real home. -->
+    <!-- data-hero-mode="house" keeps the house hero visible and hides the
+         legacy 3-slide hero. The house is first, under the events banner.
+         The porch selling section and product tiles follow. -->
     <main class="home-main" data-hero-mode="house">
-      <div class="home-sell" data-sell-hero>
-        <section class="home-sell-hero" aria-labelledby="home-sell-title">
-          <div class="home-sell-hero__media">
-            <img src="./images/product_porch.webp" alt="A white American Pro PVC porch with rocking chairs, hanging ferns, and a tree lined street beyond the rail" width="1600" height="1194" fetchpriority="high" />
-            <div class="home-sell-hero__shade" aria-hidden="true"></div>
-          </div>
-          <div class="container home-sell-hero__inner">
-            <span class="home-sell-kicker">Made in America Since 1971</span>
-            <h1 class="home-sell-title" id="home-sell-title">A Porch You Never Have to Worry About.</h1>
-            <p class="home-sell-lead">Cellular PVC Porch Flooring, Decking, and Architectural Mouldings That Will Not Split, Crack, Splinter, or Rot. A 25 Year Residential Warranty Stands Behind Every Board.</p>
-            <div class="home-sell-actions">
-              <a href="#samples" class="btn btn--primary btn--lg">Request Free Samples</a>
-              <a href="./pages/contact.html" class="btn btn--ghost-light btn--lg">Get a Quote</a>
-            </div>
-          </div>
-        </section>
-        <aside class="home-sell-proof" aria-label="Reasons to choose American Pro">
-          <div class="container home-sell-proof__grid">
-            <div class="home-sell-proof__item">
-              <span class="home-sell-proof__value">25 Year Residential Warranty</span>
-            </div>
-            <div class="home-sell-proof__item">
-              <span class="home-sell-proof__value">Made in America Since 1971</span>
-            </div>
-            <div class="home-sell-proof__item">
-              <span class="home-sell-proof__value">Free Samples</span>
-            </div>
-            <div class="home-sell-proof__item">
-              <span class="home-sell-proof__value"><a href="tel:18774426776">Call <span class="phone">1-877-442-6776</span></a></span>
-            </div>
-          </div>
-        </aside>
-        <section class="home-sell-tiles" aria-label="Porch Flooring, Decking, and Mouldings">
-          <div class="container">
-            <div class="home-sell-tiles__grid">
-              <a class="home-sell-tile" href="./pages/porch.html">
-                <span class="home-sell-tile__media">
-                  <img src="./images/product_porch.webp" alt="" width="1600" height="1194" />
-                </span>
-                <span class="home-sell-tile__body">
-                  <h2>Porch Flooring</h2>
-                  <p>A porch that stays beautiful season after season.</p>
-                  <span class="home-sell-tile__go">See Porch Flooring</span>
-                </span>
-              </a>
-              <a class="home-sell-tile" href="./pages/decking.html">
-                <span class="home-sell-tile__media">
-                  <img src="./images/product_decking.webp" alt="" width="1600" height="1194" />
-                </span>
-                <span class="home-sell-tile__body">
-                  <h2>Decking</h2>
-                  <p>A deck built for gatherings, backed by a 25 year residential warranty.</p>
-                  <span class="home-sell-tile__go">See Decking</span>
-                </span>
-              </a>
-              <a class="home-sell-tile" href="./pages/mouldings.html">
-                <span class="home-sell-tile__media">
-                  <img src="./images/product_moulding.webp" alt="" width="1920" height="1433" />
-                </span>
-                <span class="home-sell-tile__body">
-                  <h2>Mouldings</h2>
-                  <p>Custom lengths and a broader profile range than many PVC moulding makers offer.</p>
-                  <span class="home-sell-tile__go">See Mouldings</span>
-                </span>
-              </a>
-            </div>
-          </div>
-        </section>
-      </div>
-
       <!-- ========== HOUSE: PRODUCTS ON A REAL HOME (and interior walk-in) ==========
            Zone geometry and dot positions use a 1200 x 675 coordinate space that
            matches images/house_hero/house-*.jpg. Card copy lives in the
@@ -369,7 +298,7 @@
           <div class="house-exterior" data-house-exterior>
           <picture>
             <source type="image/webp" srcset="./images/house_hero/house-640.webp?v=3 640w, ./images/house_hero/house-1000.webp?v=3 1000w, ./images/house_hero/house-1672.webp?v=3 1672w" sizes="100vw" />
-            <img class="house-stage__img" src="./images/house_hero/house-1672.jpg?v=3" srcset="./images/house_hero/house-640.jpg?v=3 640w, ./images/house_hero/house-1000.jpg?v=3 1000w, ./images/house_hero/house-1672.jpg?v=3 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="White colonial home with American Pro porch flooring, decking, columns and mouldings, and a porch ceiling at sunset." />
+            <img class="house-stage__img" src="./images/house_hero/house-1672.jpg?v=3" srcset="./images/house_hero/house-640.jpg?v=3 640w, ./images/house_hero/house-1000.jpg?v=3 1000w, ./images/house_hero/house-1672.jpg?v=3 1672w" sizes="100vw" width="1672" height="941" fetchpriority="high" decoding="async" alt="White colonial home with American Pro porch flooring, decking, columns and mouldings, and a porch ceiling at sunset." />
           </picture>
 
           <svg class="house-zones" viewBox="0 0 1200 675" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false" data-house-zones>
@@ -488,9 +417,11 @@
         <div class="house-copy">
           <div class="container house-copy__inner">
             <span class="hero-eyebrow">On a Real Home</span>
-            <h2 class="house-title" id="house-hero-title">
-              Porch, Deck, and Mouldings
-            </h2>
+            <h1 class="house-title" id="house-hero-title">
+              Porch Flooring,<br />
+              Decking, and Mouldings<br />
+              Made in America
+            </h1>
             <p class="house-sub">
               A home finished with American Pro porch flooring, decking, columns and mouldings, and a porch ceiling.
             </p>
@@ -594,6 +525,76 @@
         </template>
       </section>
 
+      <div class="home-sell" data-sell-hero>
+        <section class="home-sell-hero" aria-labelledby="home-sell-title">
+          <div class="home-sell-hero__media">
+            <img src="./images/product_porch.webp" alt="A white American Pro PVC porch with rocking chairs, hanging ferns, and a tree lined street beyond the rail" width="1600" height="1194" loading="lazy" decoding="async" />
+            <div class="home-sell-hero__shade" aria-hidden="true"></div>
+          </div>
+          <div class="container home-sell-hero__inner">
+            <span class="home-sell-kicker">Made in America Since 1971</span>
+            <h2 class="home-sell-title" id="home-sell-title">A Porch You Never Have to Worry About.</h2>
+            <p class="home-sell-lead">Cellular PVC Porch Flooring, Decking, and Architectural Mouldings That Will Not Split, Crack, Splinter, or Rot. A 25 Year Residential Warranty Stands Behind Every Board.</p>
+            <div class="home-sell-actions">
+              <a href="#samples" class="btn btn--primary btn--lg">Request Free Samples</a>
+              <a href="./pages/contact.html" class="btn btn--ghost-light btn--lg">Get a Quote</a>
+            </div>
+          </div>
+        </section>
+        <aside class="home-sell-proof" aria-label="Reasons to choose American Pro">
+          <div class="container home-sell-proof__grid">
+            <div class="home-sell-proof__item">
+              <span class="home-sell-proof__value">25 Year Residential Warranty</span>
+            </div>
+            <div class="home-sell-proof__item">
+              <span class="home-sell-proof__value">Made in America Since 1971</span>
+            </div>
+            <div class="home-sell-proof__item">
+              <span class="home-sell-proof__value">Free Samples</span>
+            </div>
+            <div class="home-sell-proof__item">
+              <span class="home-sell-proof__value"><a href="tel:18774426776">Call <span class="phone">1-877-442-6776</span></a></span>
+            </div>
+          </div>
+        </aside>
+        <section class="home-sell-tiles" aria-label="Porch Flooring, Decking, and Mouldings">
+          <div class="container">
+            <div class="home-sell-tiles__grid">
+              <a class="home-sell-tile" href="./pages/porch.html">
+                <span class="home-sell-tile__media">
+                  <img src="./images/product_porch.webp" alt="" width="1600" height="1194" />
+                </span>
+                <span class="home-sell-tile__body">
+                  <h2>Porch Flooring</h2>
+                  <p>A porch that stays beautiful season after season.</p>
+                  <span class="home-sell-tile__go">See Porch Flooring</span>
+                </span>
+              </a>
+              <a class="home-sell-tile" href="./pages/decking.html">
+                <span class="home-sell-tile__media">
+                  <img src="./images/product_decking.webp" alt="" width="1600" height="1194" />
+                </span>
+                <span class="home-sell-tile__body">
+                  <h2>Decking</h2>
+                  <p>A deck built for gatherings, backed by a 25 year residential warranty.</p>
+                  <span class="home-sell-tile__go">See Decking</span>
+                </span>
+              </a>
+              <a class="home-sell-tile" href="./pages/mouldings.html">
+                <span class="home-sell-tile__media">
+                  <img src="./images/product_moulding.webp" alt="" width="1920" height="1433" />
+                </span>
+                <span class="home-sell-tile__body">
+                  <h2>Mouldings</h2>
+                  <p>Custom lengths and a broader profile range than many PVC moulding makers offer.</p>
+                  <span class="home-sell-tile__go">See Mouldings</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+
       <!-- ========== HERO SLIDER (TrueGrain Deck™ default, InvisiClip, brand) ========== -->
       <!-- STAGING: Slide order reworked so the first slide names a product.
            Order is now: 1) TrueGrain Deck, 2) InvisiClip, 3) American Pro brand.
@@ -617,11 +618,11 @@
           </div>
           <div class="container hero-inner">
             <span class="hero-eyebrow">Made in America Since 1971</span>
-            <h1 class="hero-title" id="hero-title">
+            <h2 class="hero-title" id="hero-title">
               Made in America PVC Decking,<br />
               Porch Flooring, and Mouldings<br />
               <em>for the Life Around Your Home.</em>
-            </h1>
+            </h2>
             <p class="hero-sub">
               American Pro is the building products line of Patwin Plastics, extruding
               UV stabilized cellular PVC since 1971. Boards and mouldings
@@ -1667,20 +1668,19 @@
       <span><b>Find my match</b><small>Take the quiz</small></span>
     </a>
     <script>
-      /* Hide the floating launchers while the selling hero, the house, or the
-         on-page 3D Deck Builder band is in view, so the pills never cover
-         Request Free Samples, Get a Quote, or house controls. */
+      /* Hide the floating launchers while the house hero (first on the page)
+         or the on-page 3D Deck Builder band is in view, so the pills never
+         cover house controls. They appear after the visitor scrolls past
+         the top hero. */
       (function () {
         var band = document.getElementById('visualizer');
-        var sell = document.querySelector('[data-sell-hero]');
         var house = document.querySelector('[data-house-hero]');
         var pills = document.querySelectorAll('[data-viz-launcher], [data-quiz-launcher]');
         if (!pills.length) return;
-        var sellCovering = !!sell;
         var houseCovering = !!house;
         var bandCovering = false;
         function sync() {
-          var hide = sellCovering || houseCovering || bandCovering;
+          var hide = houseCovering || bandCovering;
           pills.forEach(function (el) {
             el.classList.toggle('is-hidden', hide);
             el.setAttribute('aria-hidden', hide ? 'true' : 'false');
@@ -1690,16 +1690,9 @@
         }
         pills.forEach(function (el) { el.classList.add('is-hidden'); });
         if (!('IntersectionObserver' in window)) {
-          sellCovering = false;
           houseCovering = false;
           sync();
           return;
-        }
-        if (sell) {
-          new IntersectionObserver(function (entries) {
-            sellCovering = entries[0].isIntersecting;
-            sync();
-          }, { threshold: 0 }).observe(sell);
         }
         if (house) {
           new IntersectionObserver(function (entries) {

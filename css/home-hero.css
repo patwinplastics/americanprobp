@@ -1,6 +1,6 @@
 /* ==========================================================
    Homepage sell hero (Concept A) plus product tiles (Concept C)
-   The house lives in the products-on-a-real-home section below.
+   Follows the house hero: porch photo, proof, and product tiles.
    ========================================================== */
 
 .home-sell {
@@ -13,7 +13,7 @@
   isolation: isolate;
   overflow: hidden;
   color: #fff;
-  min-height: clamp(520px, calc(100vh - 17rem), 760px);
+  min-height: clamp(420px, 52vh, 620px);
   display: flex;
   align-items: flex-end;
 }
