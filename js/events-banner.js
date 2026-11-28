@@ -74,7 +74,35 @@
     return 'Meet American Pro at the NADRA Northeast Networking Meeting on December 1, and at the NRLA LBM Expo on December 9 and 10, Booth 114, exhibiting with Patwin Plastics.';
   }
 
-  function mount(text, root) {
+  function mobileMessageFrom(events, today) {
+    var hasNadra = false;
+    var hasLbm = false;
+    (events || []).forEach(function (ev) {
+      if (!ev || !ev.end || ev.end < today) return;
+      if (ev.id === 'nadra-northeast-networking-2026') hasNadra = true;
+      if (ev.id === 'nrla-lbm-expo-2026') hasLbm = true;
+    });
+    if (hasNadra && hasLbm) {
+      return 'Meet us at NADRA on December 1 and the NRLA LBM Expo, Booth 114, December 9 and 10.';
+    }
+    if (hasLbm) {
+      return 'Meet us at the NRLA LBM Expo, Booth 114, December 9 and 10.';
+    }
+    if (hasNadra) {
+      return 'Meet us at NADRA on December 1.';
+    }
+    return '';
+  }
+
+  function fallbackMobileMessage(today) {
+    if (today > FALLBACK_END) return '';
+    if (today > '2026-12-01') {
+      return 'Meet us at the NRLA LBM Expo, Booth 114, December 9 and 10.';
+    }
+    return 'Meet us at NADRA on December 1 and the NRLA LBM Expo, Booth 114, December 9 and 10.';
+  }
+
+  function mount(text, mobileText, root) {
     if (!text || document.querySelector('.events-banner')) return;
     var header = document.querySelector('.site-header');
     if (!header) return;
@@ -83,9 +111,13 @@
     banner.setAttribute('role', 'region');
     banner.setAttribute('aria-label', 'Upcoming events');
     var href = root + 'pages/events.html';
+    var mobile = mobileText || text;
     banner.innerHTML =
       '<div class="container events-banner-inner">' +
-        '<p class="events-banner-text">' + esc(text) + '</p>' +
+        '<p class="events-banner-text">' +
+          '<span class="events-banner-text__desktop">' + esc(text) + '</span>' +
+          '<span class="events-banner-text__mobile">' + esc(mobile) + '</span>' +
+        '</p>' +
         '<a class="events-banner-cta" href="' + href + '">View Events</a>' +
       '</div>';
     header.insertAdjacentElement('afterend', banner);
@@ -101,10 +133,11 @@
       var end = lastEnd(events);
       if (today > end) return;
       var text = messageFrom(events, today) || fallbackMessage(today);
-      mount(text, root);
+      var mobile = mobileMessageFrom(events, today) || fallbackMobileMessage(today) || text;
+      mount(text, mobile, root);
     })
     .catch(function () {
       if (today > FALLBACK_END) return;
-      mount(fallbackMessage(today), root);
+      mount(fallbackMessage(today), fallbackMobileMessage(today), root);
     });
 })();

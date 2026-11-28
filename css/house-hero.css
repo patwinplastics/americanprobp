@@ -288,6 +288,11 @@
   line-height: 1.5;
   color: rgba(251, 250, 247, 0.86);
 }
+.house-sub__mouse { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .house-sub__touch { display: none; }
+  .house-sub__mouse { display: inline; }
+}
 .house-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.4rem; }
 .house-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 1.4rem; }
 .house-chips__label {
