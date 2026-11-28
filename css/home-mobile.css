@@ -14,16 +14,17 @@
   .home-main { display: flex; flex-direction: column; }
   .home-main > * { order: 50; }
   .home-main > .hero-slider    { order: 1; }
-  .home-main > .house-hero     { order: 1; }
-  .home-main > #samples        { order: 2; }
-  .home-main > .trust          { order: 3; }
-  .home-main > #products       { order: 4; }
-  .home-main > .featured-video { order: 5; }
-  .home-main > .buyer-select   { order: 6; }
-  .home-main > .pillars        { order: 7; }
-  .home-main > #where-to-buy   { order: 8; }
-  .home-main > .home-blog      { order: 9; }
-  .home-main > #visualizer     { order: 10; }
+  .home-main > .home-sell      { order: 1; }
+  .home-main > .house-hero     { order: 2; }
+  .home-main > #samples        { order: 3; }
+  .home-main > .trust          { order: 4; }
+  .home-main > #products       { order: 5; }
+  .home-main > .featured-video { order: 6; }
+  .home-main > .buyer-select   { order: 7; }
+  .home-main > .pillars        { order: 8; }
+  .home-main > #where-to-buy   { order: 9; }
+  .home-main > .home-blog      { order: 10; }
+  .home-main > #visualizer     { order: 11; }
 
   /* ---------- Dropped on phones ---------- */
   .home-main > .m-hide { display: none !important; }

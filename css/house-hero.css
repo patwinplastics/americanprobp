@@ -17,6 +17,9 @@
   background: var(--hh-navy);
   color: var(--hh-cream);
   overflow: hidden;
+  /* Keep walk-in controls and in-page #explore-the-home jumps
+     clear of the sticky site header. */
+  scroll-margin-top: 6.5rem;
 }
 
 /* ---------- Stage (image + zones + dots share one coordinate box) ---------- */
@@ -320,9 +323,9 @@
 
 /* ---------- Desktop overlay layout ---------- */
 @media (min-width: 1200px) {
-  /* 11rem leaves room for the sticky header and the slim events banner
-     so the Front Door chip stays in view at 1280 x 800. */
-  .house-hero { height: clamp(580px, calc(100vh - 11rem), 880px); }
+  /* The house is now a mid-page Explore the Home section. 6.5rem leaves
+     room for the sticky header so chips stay in view once scrolled here. */
+  .house-hero { height: clamp(560px, calc(100vh - 6.5rem), 840px); }
   .house-stage { position: absolute; inset: 0; aspect-ratio: auto; height: 100%; }
   .house-stage::after {                 /* scrim behind headline; fades before the front door */
     content: "";

@@ -54,14 +54,14 @@
       href="https://api.fontshare.com/v2/css?f[]=boska@400,500,500i,700&f[]=satoshi@400,500,600,700&display=swap"
       rel="stylesheet"
     />
-    <!-- Hero preload: house hero is active. For slider mode, swap to the commented line. -->
-    <link rel="preload" as="image" type="image/webp" imagesrcset="./images/house_hero/house-640.webp?v=3 640w, ./images/house_hero/house-1000.webp?v=3 1000w, ./images/house_hero/house-1672.webp?v=3 1672w" imagesizes="100vw" fetchpriority="high" />
-    <!-- <link rel="preload" as="image" type="image/webp" imagesrcset="./images/hero_deck-1000.webp 1000w, ./images/hero_deck-1600.webp 1600w, ./images/hero_deck.webp 2400w" imagesizes="100vw" fetchpriority="high" /> -->
+    <!-- Hero preload: Concept A porch photo. The interactive house is below the fold. -->
+    <link rel="preload" as="image" type="image/webp" href="./images/product_porch.webp" fetchpriority="high" />
 
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/site.css?v=32-banner" />
-    <link rel="stylesheet" href="./css/house-hero.css?v=7" />
-    <link rel="stylesheet" href="./css/home-mobile.css?v=3" />
+    <link rel="stylesheet" href="./css/home-hero.css?v=1" />
+    <link rel="stylesheet" href="./css/house-hero.css?v=8" />
+    <link rel="stylesheet" href="./css/home-mobile.css?v=4" />
 
     <!-- Homepage funnel scaffolds (buyer selector, quiz, sample tiles) -->
     <style id="funnel-styles">
@@ -285,22 +285,91 @@
       </div>
     </header>
 
-    <!-- HERO MODE: data-hero-mode="house" shows the Interactive House hero.
-         Set it to "slider" to bring back the original 3-slide hero (also swap
-         the hero preload in <head>). Both sections stay in the page. -->
+    <!-- data-hero-mode="house" keeps the interactive house section visible
+         and hides the legacy 3-slide hero. The selling hero is Concept A
+         with Concept C product tiles; the house lives just below as
+         Explore the Home. -->
     <main class="home-main" data-hero-mode="house">
-      <!-- ========== INTERACTIVE HOUSE HERO ==========
-           Toggle lives on <main data-hero-mode>. "house" shows this section,
-           "slider" restores the original 3-slide hero (markup kept intact below).
+      <div class="home-sell" data-sell-hero>
+        <section class="home-sell-hero" aria-labelledby="home-sell-title">
+          <div class="home-sell-hero__media">
+            <img src="./images/product_porch.webp" alt="A white American Pro PVC porch with rocking chairs, hanging ferns, and a tree lined street beyond the rail" width="1600" height="1194" fetchpriority="high" />
+            <div class="home-sell-hero__shade" aria-hidden="true"></div>
+          </div>
+          <div class="container home-sell-hero__inner">
+            <span class="home-sell-kicker">Made in America Since 1971</span>
+            <h1 class="home-sell-title" id="home-sell-title">A Porch You Never Have to Worry About.</h1>
+            <p class="home-sell-lead">Cellular PVC Porch Flooring, Decking, and Architectural Mouldings That Will Not Split, Crack, Splinter, or Rot. A 25 Year Residential Warranty Stands Behind Every Board.</p>
+            <div class="home-sell-actions">
+              <a href="#samples" class="btn btn--primary btn--lg">Request Free Samples</a>
+              <a href="./pages/contact.html" class="btn btn--ghost-light btn--lg">Get a Quote</a>
+            </div>
+          </div>
+        </section>
+        <aside class="home-sell-proof" aria-label="Reasons to choose American Pro">
+          <div class="container home-sell-proof__grid">
+            <div class="home-sell-proof__item">
+              <span class="home-sell-proof__value">25 Year Residential Warranty</span>
+            </div>
+            <div class="home-sell-proof__item">
+              <span class="home-sell-proof__value">Made in America Since 1971</span>
+            </div>
+            <div class="home-sell-proof__item">
+              <span class="home-sell-proof__value">Free Samples</span>
+            </div>
+            <div class="home-sell-proof__item">
+              <span class="home-sell-proof__value"><a href="tel:18774426776">Call <span class="phone">1-877-442-6776</span></a></span>
+            </div>
+          </div>
+        </aside>
+        <section class="home-sell-tiles" aria-label="Porch Flooring, Decking, and Mouldings">
+          <div class="container">
+            <div class="home-sell-tiles__grid">
+              <a class="home-sell-tile" href="./pages/porch.html">
+                <span class="home-sell-tile__media">
+                  <img src="./images/product_porch.webp" alt="" width="1600" height="1194" />
+                </span>
+                <span class="home-sell-tile__body">
+                  <h2>Porch Flooring</h2>
+                  <p>A porch that stays beautiful season after season.</p>
+                  <span class="home-sell-tile__go">See Porch Flooring</span>
+                </span>
+              </a>
+              <a class="home-sell-tile" href="./pages/decking.html">
+                <span class="home-sell-tile__media">
+                  <img src="./images/product_decking.webp" alt="" width="1600" height="1194" />
+                </span>
+                <span class="home-sell-tile__body">
+                  <h2>Decking</h2>
+                  <p>A deck built for gatherings, backed by a 25 year residential warranty.</p>
+                  <span class="home-sell-tile__go">See Decking</span>
+                </span>
+              </a>
+              <a class="home-sell-tile" href="./pages/mouldings.html">
+                <span class="home-sell-tile__media">
+                  <img src="./images/product_moulding.webp" alt="" width="1920" height="1433" />
+                </span>
+                <span class="home-sell-tile__body">
+                  <h2>Mouldings</h2>
+                  <p>Custom lengths and a broader profile range than many PVC moulding makers offer.</p>
+                  <span class="home-sell-tile__go">See Mouldings</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ========== EXPLORE THE HOME (interactive house and walk-in) ==========
            Zone geometry and dot positions use a 1200 x 675 coordinate space that
            matches images/house_hero/house-*.jpg. Card copy lives in the
            <template> elements at the bottom of this section. -->
-      <section class="house-hero" aria-labelledby="house-hero-title" data-house-hero>
+      <section class="house-hero" id="explore-the-home" aria-labelledby="house-hero-title" data-house-hero>
         <div class="house-stage" data-house-stage>
           <div class="house-exterior" data-house-exterior>
           <picture>
             <source type="image/webp" srcset="./images/house_hero/house-640.webp?v=3 640w, ./images/house_hero/house-1000.webp?v=3 1000w, ./images/house_hero/house-1672.webp?v=3 1672w" sizes="100vw" />
-            <img class="house-stage__img" src="./images/house_hero/house-1672.jpg?v=3" srcset="./images/house_hero/house-640.jpg?v=3 640w, ./images/house_hero/house-1000.jpg?v=3 1000w, ./images/house_hero/house-1672.jpg?v=3 1672w" sizes="100vw" width="1672" height="941" fetchpriority="high" decoding="async" alt="White colonial home with a covered front porch, a large brown PVC deck, and crisp white PVC window trim at sunset. Select a highlighted area to explore that product line." />
+            <img class="house-stage__img" src="./images/house_hero/house-1672.jpg?v=3" srcset="./images/house_hero/house-640.jpg?v=3 640w, ./images/house_hero/house-1000.jpg?v=3 1000w, ./images/house_hero/house-1672.jpg?v=3 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="White colonial home with a covered front porch, a large brown PVC deck, and crisp white PVC window trim at sunset. Select a highlighted area to explore that product line." />
           </picture>
 
           <svg class="house-zones" viewBox="0 0 1200 675" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false" data-house-zones>
@@ -419,19 +488,18 @@
 
         <div class="house-copy">
           <div class="container house-copy__inner">
-            <span class="hero-eyebrow">Made in America Since 1971</span>
-            <h1 class="house-title" id="house-hero-title">
-              See the House.
-              <em>Step Through the Front Door.</em>
-            </h1>
+            <span class="hero-eyebrow">See It on the House</span>
+            <h2 class="house-title" id="house-hero-title">
+              Explore the Home
+            </h2>
             <p class="house-sub">
-              Cellular PVC Decking, Porch Flooring, and Architectural Mouldings That Will Not Split, Crack, Splinter, or Rot.
+              See porch flooring, decking, mouldings, and the front door on a real American Pro house.
               <span class="house-sub__mouse"> Hover the House to Explore Each Product, Then Enter to See the Interior Profiles.</span>
               <span class="house-sub__touch"> Tap the House to Explore Each Product, Then Enter to See the Interior Profiles.</span>
             </p>
             <div class="house-actions">
-              <a href="#samples" class="btn btn--primary btn--lg">Request Free Samples</a>
-              <button type="button" class="btn btn--ghost-light btn--lg" data-house-enter>Step Through the Front Door</button>
+              <button type="button" class="btn btn--primary btn--lg" data-house-enter>Step Through the Front Door</button>
+              <a href="#samples" class="btn btn--ghost-light btn--lg">Request Free Samples</a>
             </div>
             <div class="house-chips" role="group" aria-label="Explore product lines on the house">
               <span class="house-chips__label">Explore the Home</span>
@@ -1602,18 +1670,20 @@
       <span><b>Find my match</b><small>Take the quiz</small></span>
     </a>
     <script>
-      /* Hide the floating launchers while the homepage hero (and its CTAs)
-         is on screen, and while the on-page 3D Deck Builder band is in view,
-         so the pills never cover Request Free Samples or Get a Quote. */
+      /* Hide the floating launchers while the selling hero, the interactive
+         house, or the on-page 3D Deck Builder band is in view, so the pills
+         never cover Request Free Samples, Get a Quote, or house controls. */
       (function () {
         var band = document.getElementById('visualizer');
-        var hero = document.querySelector('[data-house-hero]');
+        var sell = document.querySelector('[data-sell-hero]');
+        var house = document.querySelector('[data-house-hero]');
         var pills = document.querySelectorAll('[data-viz-launcher], [data-quiz-launcher]');
         if (!pills.length) return;
-        var heroCovering = !!hero;
+        var sellCovering = !!sell;
+        var houseCovering = !!house;
         var bandCovering = false;
         function sync() {
-          var hide = heroCovering || bandCovering;
+          var hide = sellCovering || houseCovering || bandCovering;
           pills.forEach(function (el) {
             el.classList.toggle('is-hidden', hide);
             el.setAttribute('aria-hidden', hide ? 'true' : 'false');
@@ -1623,15 +1693,22 @@
         }
         pills.forEach(function (el) { el.classList.add('is-hidden'); });
         if (!('IntersectionObserver' in window)) {
-          heroCovering = false;
+          sellCovering = false;
+          houseCovering = false;
           sync();
           return;
         }
-        if (hero) {
+        if (sell) {
           new IntersectionObserver(function (entries) {
-            heroCovering = entries[0].isIntersecting;
+            sellCovering = entries[0].isIntersecting;
             sync();
-          }, { threshold: 0 }).observe(hero);
+          }, { threshold: 0 }).observe(sell);
+        }
+        if (house) {
+          new IntersectionObserver(function (entries) {
+            houseCovering = entries[0].isIntersecting;
+            sync();
+          }, { threshold: 0 }).observe(house);
         }
         if (band) {
           new IntersectionObserver(function (entries) {
@@ -1728,7 +1805,7 @@
     <script src="./js/site.js?v=7" defer></script>
     <script src="./js/sample-kits.js?v=2" defer></script>
     <script src="./js/home-mobile.js?v=3" defer></script>
-    <script src="./js/house-hero.js?v=5" defer></script>
+    <script src="./js/house-hero.js?v=6" defer></script>
     <script src="./js/site-search.js?v=2" defer></script>
 
   </body>

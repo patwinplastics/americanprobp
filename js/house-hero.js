@@ -260,6 +260,13 @@
     track('door', 'back-house');
   }
 
+  function scrollHouseClearOfHeader() {
+    var header = document.querySelector('.site-header');
+    var hh = header ? header.getBoundingClientRect().height : 0;
+    var y = hero.getBoundingClientRect().top + window.scrollY - hh - 8;
+    window.scrollTo({ top: Math.max(0, y), behavior: reduceMotion ? 'auto' : 'smooth' });
+  }
+
   function showDoorInstant() {
     if (walking || view === 'door') return;
     markInteracted();
@@ -276,6 +283,7 @@
     setExteriorActive(false);
     focusEl(scenes.door.querySelector('.house-enter__btn'));
     track('door', 'arrive');
+    window.requestAnimationFrame(scrollHouseClearOfHeader);
   }
 
   function walk(to) {
@@ -330,9 +338,6 @@
 
   function enterFrontDoor(el) {
     lastTrigger = el || dots.door;
-    if (phone.matches && stage) {
-      stage.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
-    }
     showDoorInstant();
     if (chips.door) chips.door.classList.add('is-active');
   }
