@@ -323,7 +323,7 @@
 
 /* ---------- Desktop overlay layout ---------- */
 @media (min-width: 1200px) {
-  /* The house is now a mid-page Explore the Home section. 6.5rem leaves
+  /* The house is now a mid-page products section. 6.5rem leaves
      room for the sticky header so chips stay in view once scrolled here. */
   .house-hero { height: clamp(560px, calc(100vh - 6.5rem), 840px); }
   .house-stage { position: absolute; inset: 0; aspect-ratio: auto; height: 100%; }
@@ -348,11 +348,11 @@
   .house-copy__inner { padding: 0 0 0 clamp(1.5rem, 3vw, 3.25rem); max-width: none; margin: 0; }
   .house-copy__inner > * { pointer-events: auto; }
   .house-title { max-width: 18ch; text-shadow: 0 2px 24px rgba(6, 18, 42, 0.45); }
-  .house-sub { max-width: 34ch; margin-top: 0.7rem; }
-  .house-actions { margin-top: 1.1rem; }
-  .house-chips { margin-top: 1.05rem; }
+  .house-sub { max-width: 34ch; margin-top: 0.6rem; }
+  .house-actions { margin-top: 0.95rem; }
+  .house-chips { margin-top: 0.85rem; }
   .house-copy { align-items: flex-end; }
-  .house-copy__inner { padding-bottom: 1.5rem; }
+  .house-copy__inner { padding-bottom: 1.25rem; }
   .house-hint { right: 1.5rem; bottom: 1.5rem; }
   /* Keep the Front Door label visible and to the right of the hotspot,
      out of the headline overlay, at 1280 and 1440 widths. */

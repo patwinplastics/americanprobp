@@ -54,13 +54,13 @@
       href="https://api.fontshare.com/v2/css?f[]=boska@400,500,500i,700&f[]=satoshi@400,500,600,700&display=swap"
       rel="stylesheet"
     />
-    <!-- Hero preload: Concept A porch photo. The interactive house is below the fold. -->
+    <!-- Hero preload: Concept A porch photo. The house section is below the fold. -->
     <link rel="preload" as="image" type="image/webp" href="./images/product_porch.webp" fetchpriority="high" />
 
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/site.css?v=32-banner" />
     <link rel="stylesheet" href="./css/home-hero.css?v=1" />
-    <link rel="stylesheet" href="./css/house-hero.css?v=8" />
+    <link rel="stylesheet" href="./css/house-hero.css?v=9" />
     <link rel="stylesheet" href="./css/home-mobile.css?v=4" />
 
     <!-- Homepage funnel scaffolds (buyer selector, quiz, sample tiles) -->
@@ -285,10 +285,10 @@
       </div>
     </header>
 
-    <!-- data-hero-mode="house" keeps the interactive house section visible
-         and hides the legacy 3-slide hero. The selling hero is Concept A
-         with Concept C product tiles; the house lives just below as
-         Explore the Home. -->
+    <!-- data-hero-mode="house" keeps the house section visible and hides
+         the legacy 3-slide hero. The selling hero is Concept A with Concept C
+         product tiles; the house lives just below, showing the products on
+         a real home. -->
     <main class="home-main" data-hero-mode="house">
       <div class="home-sell" data-sell-hero>
         <section class="home-sell-hero" aria-labelledby="home-sell-title">
@@ -360,7 +360,7 @@
         </section>
       </div>
 
-      <!-- ========== EXPLORE THE HOME (interactive house and walk-in) ==========
+      <!-- ========== HOUSE: PRODUCTS ON A REAL HOME (and interior walk-in) ==========
            Zone geometry and dot positions use a 1200 x 675 coordinate space that
            matches images/house_hero/house-*.jpg. Card copy lives in the
            <template> elements at the bottom of this section. -->
@@ -369,7 +369,7 @@
           <div class="house-exterior" data-house-exterior>
           <picture>
             <source type="image/webp" srcset="./images/house_hero/house-640.webp?v=3 640w, ./images/house_hero/house-1000.webp?v=3 1000w, ./images/house_hero/house-1672.webp?v=3 1672w" sizes="100vw" />
-            <img class="house-stage__img" src="./images/house_hero/house-1672.jpg?v=3" srcset="./images/house_hero/house-640.jpg?v=3 640w, ./images/house_hero/house-1000.jpg?v=3 1000w, ./images/house_hero/house-1672.jpg?v=3 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="White colonial home with a covered front porch, a large brown PVC deck, and crisp white PVC window trim at sunset. Select a highlighted area to explore that product line." />
+            <img class="house-stage__img" src="./images/house_hero/house-1672.jpg?v=3" srcset="./images/house_hero/house-640.jpg?v=3 640w, ./images/house_hero/house-1000.jpg?v=3 1000w, ./images/house_hero/house-1672.jpg?v=3 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="White colonial home with American Pro porch flooring, decking, columns and mouldings, and a porch ceiling at sunset." />
           </picture>
 
           <svg class="house-zones" viewBox="0 0 1200 675" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false" data-house-zones>
@@ -413,7 +413,7 @@
             </button>
             <button type="button" class="house-dot" data-dot="trim" data-x="726" data-y="160" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
               <span class="house-dot__ring" aria-hidden="true"></span>
-              <span class="house-dot__label">Mouldings</span>
+              <span class="house-dot__label">Columns and Mouldings</span>
             </button>
             <button type="button" class="house-dot" data-dot="ceiling" data-x="640" data-y="272" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
               <span class="house-dot__ring" aria-hidden="true"></span>
@@ -421,22 +421,21 @@
             </button>
             <button type="button" class="house-dot" data-dot="door" data-x="499.2" data-y="342.9" data-house-door>
               <span class="house-dot__ring" aria-hidden="true"></span>
-              <span class="house-dot__label">Front Door</span>
+              <span class="house-dot__label">Interior Mouldings</span>
             </button>
           </div>
 
           <p class="house-hint" data-house-hint>
             <span class="house-hint__dot" aria-hidden="true"></span>
-            <span class="house-hint__touch">Tap a glowing spot to explore</span>
-            <span class="house-hint__mouse">Hover the house to explore each product</span>
+            <span>Choose a product.</span>
           </p>
           </div>
 
           <div class="house-walk" data-house-walk>
-            <section class="house-scene" data-house-scene="door" aria-label="Standing at the front door" aria-hidden="true">
+            <section class="house-scene" data-house-scene="door" aria-label="Porch flooring and interior mouldings at the front door" aria-hidden="true">
               <picture class="house-scene__frame">
                 <source type="image/webp" srcset="./images/house_hero/door.webp?v=4" />
-                <img class="house-scene__img" src="./images/house_hero/door.jpg?v=4" width="1280" height="720" alt="Standing at the front door of a white colonial home, with narrow tongue and groove porch flooring and the door slightly open." decoding="async" fetchpriority="low" />
+                <img class="house-scene__img" src="./images/house_hero/door.jpg?v=4" width="1280" height="720" alt="The front porch of a white colonial home, with narrow tongue and groove porch flooring and the door slightly open." decoding="async" fetchpriority="low" />
               </picture>
               <button type="button" class="house-back" data-house-back="house">Back to the house</button>
               <button type="button" class="house-dot house-dot--scene" style="left:22%;top:80%" data-house-open="doorporch" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
@@ -444,17 +443,17 @@
                 <span class="house-dot__label">Porch Flooring</span>
               </button>
               <div class="house-enter">
-                <p class="house-enter__eyebrow">The Front Door</p>
-                <h2 class="house-enter__title" id="house-enter-title">Enter for interior mouldings</h2>
-                <button type="button" class="house-enter__btn" data-house-walk-to="entry">Enter</button>
+                <p class="house-enter__eyebrow">The Entry</p>
+                <h2 class="house-enter__title" id="house-enter-title">Interior Mouldings</h2>
+                <button type="button" class="house-enter__btn" data-house-walk-to="entry">See Mouldings</button>
               </div>
-              <button type="button" class="house-hit" data-house-walk-to="entry" aria-label="Enter for interior mouldings"></button>
+              <button type="button" class="house-hit" data-house-walk-to="entry" aria-label="See interior mouldings"></button>
             </section>
 
-            <section class="house-scene" data-house-scene="entry" aria-label="Just inside the front door" aria-hidden="true">
+            <section class="house-scene" data-house-scene="entry" aria-label="Interior mouldings in the entry" aria-hidden="true">
               <picture class="house-scene__frame">
                 <source type="image/webp" srcset="./images/house_hero/entry.webp?v=4" />
-                <img class="house-scene__img" src="./images/house_hero/entry.jpg?v=4" width="1280" height="720" alt="Stepping through the open front door into a sunlit entry with white crown, window casing, door casing, and baseboard." decoding="async" fetchpriority="low" />
+                <img class="house-scene__img" src="./images/house_hero/entry.jpg?v=4" width="1280" height="720" alt="A sunlit entry with white crown, window casing, door casing, and baseboard." decoding="async" fetchpriority="low" />
               </picture>
               <button type="button" class="house-back" data-house-back="door">Back to the porch</button>
               <button type="button" class="house-dot house-dot--scene house-dot--below" style="left:55%;top:2.6%" data-house-open="crown" aria-haspopup="dialog" aria-expanded="false" aria-controls="house-card">
@@ -488,26 +487,24 @@
 
         <div class="house-copy">
           <div class="container house-copy__inner">
-            <span class="hero-eyebrow">See It on the House</span>
+            <span class="hero-eyebrow">On a Real Home</span>
             <h2 class="house-title" id="house-hero-title">
-              Explore the Home
+              Porch, Deck, and Mouldings
             </h2>
             <p class="house-sub">
-              See porch flooring, decking, mouldings, and the front door on a real American Pro house.
-              <span class="house-sub__mouse"> Hover the House to Explore Each Product, Then Enter to See the Interior Profiles.</span>
-              <span class="house-sub__touch"> Tap the House to Explore Each Product, Then Enter to See the Interior Profiles.</span>
+              A home finished with American Pro porch flooring, decking, columns and mouldings, and a porch ceiling.
             </p>
             <div class="house-actions">
-              <button type="button" class="btn btn--primary btn--lg" data-house-enter>Step Through the Front Door</button>
+              <button type="button" class="btn btn--primary btn--lg" data-house-enter>See Interior Mouldings</button>
               <a href="#samples" class="btn btn--ghost-light btn--lg">Request Free Samples</a>
             </div>
-            <div class="house-chips" role="group" aria-label="Explore product lines on the house">
-              <span class="house-chips__label">Explore the Home</span>
+            <div class="house-chips" role="group" aria-label="Products on this home">
+              <span class="house-chips__label">On This Home</span>
               <button type="button" class="house-chip" data-chip="deck">Decking</button>
               <button type="button" class="house-chip" data-chip="porch">Porch Flooring</button>
-              <button type="button" class="house-chip" data-chip="trim">Mouldings</button>
+              <button type="button" class="house-chip" data-chip="trim">Columns and Mouldings</button>
               <button type="button" class="house-chip" data-chip="ceiling">Porch Ceiling</button>
-              <button type="button" class="house-chip" data-chip="door">Front Door</button>
+              <button type="button" class="house-chip" data-chip="door">Interior Mouldings</button>
             </div>
           </div>
         </div>
@@ -538,27 +535,27 @@
           <span class="house-card__eyebrow">The Front Porch</span>
           <h2 class="house-card__title" id="house-card-title">PVC Porch Flooring</h2>
           <p class="house-card__text">Tongue-and-groove cellular PVC porch boards in six fade-resistant finishes, 3/4" or 1" nominal.</p>
-          <a class="btn btn--primary house-card__cta" href="./pages/porch.html">Explore Porch Flooring</a>
+          <a class="btn btn--primary house-card__cta" href="./pages/porch.html">See Porch Flooring</a>
         </template>
         <template id="house-tpl-trim">
-          <img class="house-card__media" src="./images/house_hero/card-trim.webp" width="480" height="300" alt="White PVC crown, casing and window trim on a home exterior" loading="lazy" decoding="async" />
+          <img class="house-card__media" src="./images/house_hero/card-trim.webp" width="480" height="300" alt="White PVC columns, crown, casing, and window mouldings on a home exterior" loading="lazy" decoding="async" />
           <span class="house-card__eyebrow">Windows &amp; Eaves</span>
-          <h2 class="house-card__title" id="house-card-title">PVC Mouldings</h2>
+          <h2 class="house-card__title" id="house-card-title">Columns and Mouldings</h2>
           <p class="house-card__text">Crown, casing, sills, brick mould and more. Cut, route and paint it like premium millwork.</p>
-          <a class="btn btn--primary house-card__cta" href="./pages/mouldings.html">Explore Mouldings</a>
+          <a class="btn btn--primary house-card__cta" href="./pages/mouldings.html">See Mouldings</a>
         </template>
         <template id="house-tpl-ceiling">
           <img class="house-card__media" src="./images/house_hero/card-ceiling.webp?v=2" width="480" height="300" alt="American Pro Shiplap Nickelgap board in white beside an E&amp;CB Beadboard panel in porch ceiling blue" loading="lazy" decoding="async" />
           <span class="house-card__eyebrow">The Porch Ceiling</span>
           <h2 class="house-card__title" id="house-card-title">Porch Ceilings</h2>
           <p class="house-card__text">Shiplap Nickelgap and 6" E&amp;CB Beadboard in white or a soft porch ceiling blue. Standard 16 ft lengths, with custom lengths available.</p>
-          <a class="btn btn--primary house-card__cta" href="./pages/porch-ceiling.html">Explore Porch Ceilings</a>
+          <a class="btn btn--primary house-card__cta" href="./pages/porch-ceiling.html">See Porch Ceilings</a>
         </template>
         <template id="house-tpl-doorporch">
           <span class="house-card__eyebrow">The Front Porch</span>
           <h2 class="house-card__title" id="house-card-title">PVC Porch Flooring</h2>
           <p class="house-card__text">Tongue and groove cellular PVC porch boards in six fade-resistant finishes, 3/4" or 1" nominal.</p>
-          <a class="btn btn--primary house-card__cta" href="./pages/porch.html">Explore Porch Flooring</a>
+          <a class="btn btn--primary house-card__cta" href="./pages/porch.html">See Porch Flooring</a>
         </template>
         <template id="house-tpl-crown">
           <span class="house-card__eyebrow">The Ceiling Line</span>
@@ -570,7 +567,7 @@
             <li><span class="house-card__sku-name">4-5/8" Crown</span> <span class="house-card__sku">WM47PVC</span></li>
             <li><span class="house-card__sku-name">5-1/4" Crown</span> <span class="house-card__sku">L8027PVC</span></li>
           </ul>
-          <a class="btn btn--primary house-card__cta" href="./pages/mouldings.html#family-crowns">Explore Crowns</a>
+          <a class="btn btn--primary house-card__cta" href="./pages/mouldings.html#family-crowns">See Crowns</a>
         </template>
         <template id="house-tpl-base">
           <span class="house-card__eyebrow">The Floor Line</span>
@@ -582,7 +579,7 @@
             <li><span class="house-card__sku-name">Base Cap</span> <span class="house-card__sku">8416PVC</span></li>
             <li><span class="house-card__sku-name">Base Cap</span> <span class="house-card__sku">WM164PVC</span></li>
           </ul>
-          <a class="btn btn--primary house-card__cta" href="./pages/mouldings.html#family-base">Explore Base and Cap</a>
+          <a class="btn btn--primary house-card__cta" href="./pages/mouldings.html#family-base">See Base and Cap</a>
         </template>
         <template id="house-tpl-casing">
           <span class="house-card__eyebrow">Doors and Windows</span>
@@ -593,7 +590,7 @@
             <li><span class="house-card__sku-name">Adam's Casing</span> <span class="house-card__sku">WM97PVC</span></li>
             <li><span class="house-card__sku-name">Backband</span> <span class="house-card__sku">138BBPVC</span></li>
           </ul>
-          <a class="btn btn--primary house-card__cta" href="./pages/mouldings.html#family-casings">Explore Casings</a>
+          <a class="btn btn--primary house-card__cta" href="./pages/mouldings.html#family-casings">See Casings</a>
         </template>
       </section>
 
@@ -1670,9 +1667,9 @@
       <span><b>Find my match</b><small>Take the quiz</small></span>
     </a>
     <script>
-      /* Hide the floating launchers while the selling hero, the interactive
-         house, or the on-page 3D Deck Builder band is in view, so the pills
-         never cover Request Free Samples, Get a Quote, or house controls. */
+      /* Hide the floating launchers while the selling hero, the house, or the
+         on-page 3D Deck Builder band is in view, so the pills never cover
+         Request Free Samples, Get a Quote, or house controls. */
       (function () {
         var band = document.getElementById('visualizer');
         var sell = document.querySelector('[data-sell-hero]');
