@@ -3147,6 +3147,79 @@ html.reveal-ready [data-reveal].is-visible {
 }
 
 /* =========================================================================
+ * Sitewide upcoming-events banner (js/events-banner.js)
+ * Slim professional bar under the header. Injected only while events remain
+ * upcoming; hidden automatically after the last event date.
+ * ========================================================================= */
+.events-banner {
+  background: #0e1f3a;
+  color: #fbfaf7;
+  border-bottom: 1px solid rgba(217, 189, 163, 0.35);
+  font-family: var(--font-body, inherit);
+  z-index: 55;
+}
+.events-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem 1.25rem;
+  padding-block: 0.65rem;
+  flex-wrap: wrap;
+}
+.events-banner-text {
+  margin: 0;
+  flex: 1 1 16rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: #fbfaf7;
+}
+.events-banner-text__mobile { display: none; }
+.events-banner-cta {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 0.85rem/1 var(--font-body, inherit);
+  letter-spacing: 0.01em;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  padding: 0.5rem 0.95rem;
+  white-space: nowrap;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+.events-banner-cta:hover,
+.events-banner-cta:focus-visible {
+  background: #b91c2c;
+  border-color: #b91c2c;
+  outline: none;
+}
+@media (max-width: 719px) {
+  .events-banner-inner {
+    padding-block: 0.55rem 0.65rem;
+    gap: 0.55rem 0.85rem;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  .events-banner-text {
+    font-size: 0.8rem;
+    line-height: 1.35;
+    min-width: 0;
+  }
+  .events-banner-text__desktop { display: none; }
+  .events-banner-text__mobile { display: inline; }
+  .events-banner-cta { padding: 0.42rem 0.8rem; }
+}
+/* At 390-wide phones, keep the short copy to two lines by giving it
+   the full content width and placing the CTA on the following row. */
+@media (max-width: 419px) {
+  .events-banner-inner { flex-wrap: wrap; }
+  .events-banner-text { flex: 1 1 100%; }
+  .events-banner-cta { margin-left: auto; }
+}
+
+/* =========================================================================
  * Geo-targeted authorized-dealer callouts
  * Top-of-page slim banner + in-context card. Only inserted into the DOM by
  * js/geo-banner.js when the visitor IP resolves to a configured dealer

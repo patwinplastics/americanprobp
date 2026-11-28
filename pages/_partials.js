@@ -267,4 +267,11 @@
     ss.defer = true;
     document.head.appendChild(ss);
   }
+
+  if (!document.querySelector('script[src*="events-banner.js"]')) {
+    const eb = document.createElement('script');
+    eb.src = B + 'js/events-banner.js?v=2';
+    eb.defer = true;
+    document.head.appendChild(eb);
+  }
 })();
