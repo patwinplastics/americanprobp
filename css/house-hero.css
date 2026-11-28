@@ -314,33 +314,58 @@
 
 /* ---------- Desktop overlay layout ---------- */
 @media (min-width: 1200px) {
-  .house-hero { height: clamp(620px, calc(100vh - 6.5rem), 880px); }
+  /* 11rem leaves room for the sticky header and the slim events banner
+     so the Front Door chip stays in view at 1280 x 800. */
+  .house-hero { height: clamp(580px, calc(100vh - 11rem), 880px); }
   .house-stage { position: absolute; inset: 0; aspect-ratio: auto; height: 100%; }
-  .house-stage::after {                 /* scrim behind headline */
+  .house-stage::after {                 /* scrim behind headline; fades before the front door */
     content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
     background:
-      linear-gradient(90deg, rgba(14, 31, 58, 0.9) 0%, rgba(14, 31, 58, 0.72) 26%, rgba(14, 31, 58, 0.3) 42%, rgba(14, 31, 58, 0) 56%);
+      linear-gradient(90deg, rgba(14, 31, 58, 0.88) 0%, rgba(14, 31, 58, 0.62) 18%, rgba(14, 31, 58, 0.28) 28%, rgba(14, 31, 58, 0) 40%);
   }
   .house-copy {
     position: absolute;
     inset: 0 auto 0 0;
-    width: min(40%, 600px);
+    width: min(34%, 28rem);
     background: transparent;
     display: flex;
     align-items: center;
     pointer-events: none;
   }
-  .house-copy__inner { padding: 0 0 0 clamp(2rem, 4vw, 4.5rem); max-width: none; margin: 0; }
+  .house-copy__inner { padding: 0 0 0 clamp(1.5rem, 3vw, 3.25rem); max-width: none; margin: 0; }
   .house-copy__inner > * { pointer-events: auto; }
-  .house-title { text-shadow: 0 2px 24px rgba(6, 18, 42, 0.45); }
+  .house-title { max-width: 18ch; text-shadow: 0 2px 24px rgba(6, 18, 42, 0.45); }
+  .house-sub { max-width: 34ch; margin-top: 0.7rem; }
+  .house-actions { margin-top: 1.1rem; }
+  .house-chips { margin-top: 1.05rem; }
+  .house-copy { align-items: flex-end; }
+  .house-copy__inner { padding-bottom: 1.5rem; }
   .house-hint { right: 1.5rem; bottom: 1.5rem; }
+  /* Keep the Front Door label visible and to the right of the hotspot,
+     out of the headline overlay, at 1280 and 1440 widths. */
+  .house-dot[data-dot="door"] .house-dot__label {
+    left: calc(100% + 8px);
+    right: auto;
+    bottom: auto;
+    top: 50%;
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+  .house-dots { z-index: 6; }
 }
 
 /* ---------- Phones: crop to 4:3 on the right, card becomes a bottom sheet ---------- */
+@media (min-width: 720px) and (max-width: 1199px) {
+  .house-dot[data-dot="door"] .house-dot__label {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 @media (max-width: 719px) {
   .house-stage { aspect-ratio: 4 / 3; }
   .house-hint { right: 0.75rem; bottom: 0.75rem; font-size: 0.74rem; padding: 0.5rem 0.75rem; }

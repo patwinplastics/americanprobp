@@ -195,7 +195,7 @@
     });
   }
   Object.keys(dots).forEach(function (k) { if (k !== 'door') wireTrigger(dots[k], k); });
-  Object.keys(chips).forEach(function (k) { wireTrigger(chips[k], k); });
+  Object.keys(chips).forEach(function (k) { if (k !== 'door') wireTrigger(chips[k], k); });
 
   /* ---------- Card ---------- */
   card.addEventListener('mouseenter', function () { clearTimeout(closeTimer); });
@@ -255,6 +255,7 @@
     hero.classList.remove('is-inside');
     hero.setAttribute('data-house-view', 'house');
     setExteriorActive(true);
+    if (chips.door) chips.door.classList.remove('is-active');
     focusEl(dots.door);
     track('door', 'back-house');
   }
@@ -327,7 +328,31 @@
     }, WALK_MS);
   }
 
-  if (dots.door) {
+  function enterFrontDoor(el) {
+    lastTrigger = el || dots.door;
+    if (phone.matches && stage) {
+      stage.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+    }
+    showDoorInstant();
+    if (chips.door) chips.door.classList.add('is-active');
+  }
+
+  if (chips.door) {
+    chips.door.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      enterFrontDoor(chips.door);
+    });
+  }
+  hero.querySelectorAll('[data-house-enter]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      enterFrontDoor(btn);
+    });
+  });
+
+    if (dots.door) {
     dots.door.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -385,6 +410,10 @@
     });
   }
   if (dots.door) dots.door.addEventListener('pointerenter', preloadScenes, { once: true });
+  if (chips.door) chips.door.addEventListener('pointerenter', preloadScenes, { once: true });
+  hero.querySelectorAll('[data-house-enter]').forEach(function (btn) {
+    btn.addEventListener('pointerenter', preloadScenes, { once: true });
+  });
   if ('requestIdleCallback' in window) requestIdleCallback(preloadScenes);
   else window.addEventListener('load', preloadScenes);
 
